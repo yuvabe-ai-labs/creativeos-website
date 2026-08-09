@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { ImageIcon } from "lucide-react";
 
-import { WorkflowLoop } from "@/components/diagrams/workflow-loop";
+import { WorkflowCapsuleLoop } from "@/components/diagrams/workflow-capsule-loop";
+import { Reveal } from "@/components/motion/reveal";
 import { DiagramFrame, Section, SectionHeading } from "@/components/site/section";
 
 /**
@@ -31,31 +32,45 @@ export function Workflow() {
     <Section
       id="workflow"
       index="03"
-      eyebrow="From signal to approved asset"
+      eyebrow="How it works"
       className="bg-[linear-gradient(to_right,rgba(148,163,184,.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,.025)_1px,transparent_1px)] bg-[length:72px_72px]"
     >
       <div>
-        <SectionHeading className="max-w-[22ch]">
-          One connected workflow for reels and static posts.
-        </SectionHeading>
+        <Reveal>
+          <SectionHeading className="max-w-[22ch]">
+            Work compounds instead of restarting.
+          </SectionHeading>
+        </Reveal>
 
-        <DiagramFrame className="mt-[52px] overflow-x-auto px-4 py-7">
-          <div className="min-w-[720px]">
-            <WorkflowLoop />
-          </div>
-        </DiagramFrame>
+        {/*
+          The capsule loop from Sales Deck slide 03. Its viewBox is 1560x560 and
+          the stage labels sit at 19-20px, so it needs real width to stay legible
+          — below ~860px the frame scrolls rather than shrinking the type.
+        */}
+        <Reveal delay={0.08}>
+          <DiagramFrame
+            data-signal-flow
+            className="mt-[52px] overflow-x-auto px-4 py-9"
+          >
+            <div className="min-w-[860px]">
+              <WorkflowCapsuleLoop />
+            </div>
+          </DiagramFrame>
+        </Reveal>
 
-        <div className="mt-9 overflow-hidden rounded-[16px] border border-line bg-white shadow-[0_6px_16px_rgba(11,15,25,0.08)]">
-          <div className="flex items-center gap-2.5 border-b border-line px-5 py-3.5">
-            <span className="size-[9px] rounded-full bg-line" />
-            <span className="size-[9px] rounded-full bg-line" />
-            <span className="size-[9px] rounded-full bg-line" />
-            <span className="ml-2 text-[12px] leading-none text-ink-faint">
-              The production canvas
-            </span>
+        <Reveal delay={0.08}>
+          <div className="mt-9 overflow-hidden rounded-[16px] border border-line bg-white shadow-[0_6px_16px_rgba(11,15,25,0.08)]">
+            <div className="flex items-center gap-2.5 border-b border-line px-5 py-3.5">
+              <span className="size-[9px] rounded-full bg-line" />
+              <span className="size-[9px] rounded-full bg-line" />
+              <span className="size-[9px] rounded-full bg-line" />
+              <span className="ml-2 text-[12px] leading-none text-ink-faint">
+                The production canvas
+              </span>
+            </div>
+            <ProductionCanvas />
           </div>
-          <ProductionCanvas />
-        </div>
+        </Reveal>
       </div>
     </Section>
   );

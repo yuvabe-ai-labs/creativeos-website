@@ -153,6 +153,110 @@
   }
 }
 
+/* --- capsule loop (Sales Deck slide 03) -----------------------------------
+   One lit dot runs the capsule perimeter on a 12s cycle. `cosloopW` moves it,
+   `cosloopTrail` draws the filled stroke behind it, and `cosloopC` recolours
+   both amber on the CREATE half and purple on the LEARN half. `cosstage*`
+   flashes each stage marker as the dot arrives.
+   --------------------------------------------------------------------------- */
+@keyframes cosloopW {
+  to {
+    stroke-dashoffset: -2488;
+  }
+}
+@keyframes cosloopC {
+  0%,
+  40% {
+    stroke: #e3a900;
+  }
+  45%,
+  90% {
+    stroke: #5829c7;
+  }
+  95%,
+  100% {
+    stroke: #e3a900;
+  }
+}
+@keyframes cosloopTrail {
+  0% {
+    stroke-dashoffset: 2483;
+    opacity: 0.75;
+  }
+  88% {
+    opacity: 0.75;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+@keyframes cosstageW {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  1.5% {
+    opacity: 0.7;
+  }
+  12% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+@keyframes cosstageFY {
+  0% {
+    fill: #fff;
+    stroke: #aab1bf;
+    transform: scale(1);
+  }
+  1.5% {
+    fill: #ffca2d;
+    stroke: #e3a900;
+    transform: scale(1.2);
+    animation-timing-function: cubic-bezier(0.22, 1.25, 0.36, 1);
+  }
+  6% {
+    fill: #ffca2d;
+    stroke: #e3a900;
+    transform: scale(1.03);
+  }
+  18%,
+  100% {
+    fill: #fff;
+    stroke: #aab1bf;
+    transform: scale(1);
+  }
+}
+@keyframes cosstageF {
+  0% {
+    fill: #fff;
+    stroke: #aab1bf;
+    transform: scale(1);
+  }
+  1.5% {
+    fill: #5829c7;
+    stroke: #5829c7;
+    transform: scale(1.2);
+    animation-timing-function: cubic-bezier(0.22, 1.25, 0.36, 1);
+  }
+  6% {
+    fill: #5829c7;
+    stroke: #5829c7;
+    transform: scale(1.03);
+  }
+  18%,
+  100% {
+    fill: #fff;
+    stroke: #aab1bf;
+    transform: scale(1);
+  }
+}
+
 /* shadcn/ui token surface, retuned to the CreativeOS palette so any component
    pulled from the registry later lands on-brand by default. */
 :root {

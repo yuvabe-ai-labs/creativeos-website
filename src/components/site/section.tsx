@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 
 /**
@@ -22,7 +23,7 @@ export function Section({
     <section id={id} className={cn("border-b border-line", className)}>
       <div className="mx-auto flex max-w-[1240px] flex-col gap-7 px-8 py-24">
         {eyebrow ? (
-          <div className="flex items-baseline gap-4">
+          <Reveal className="flex items-baseline gap-4">
             {index ? (
               <div className="text-[12px] leading-none font-medium tracking-[0.22em] text-purple">
                 {index}
@@ -31,7 +32,7 @@ export function Section({
             <div className="text-[12px] leading-[1.4] font-medium tracking-[0.22em] text-ink-soft uppercase">
               {eyebrow}
             </div>
-          </div>
+          </Reveal>
         ) : null}
         {children}
       </div>
@@ -83,16 +84,15 @@ export function SectionLede({
 export function DiagramFrame({
   className,
   children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
+  ...props
+}: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
         "rounded-[16px] border border-line bg-white shadow-[0_8px_20px_rgba(11,15,25,0.06)]",
         className,
       )}
+      {...props}
     >
       {children}
     </div>

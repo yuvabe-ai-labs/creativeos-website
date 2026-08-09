@@ -1,5 +1,6 @@
 import { ContextOnceChart } from "@/components/diagrams/context-once-chart";
 import { ContextRebuiltChart } from "@/components/diagrams/context-rebuilt-chart";
+import { Reveal } from "@/components/motion/reveal";
 import {
   DiagramFrame,
   Section,
@@ -39,7 +40,7 @@ function LegendItem({
 export function ContextCost() {
   return (
     <Section index="01" eyebrow="The hidden cost of AI production" className="bg-white">
-      <div>
+      <Reveal>
         <SectionHeading className="max-w-[20ch]">
           Every new creative still starts from scratch.
         </SectionHeading>
@@ -47,10 +48,11 @@ export function ContextCost() {
           Dozens of assets later, the knowledge still sits in chats, drives, and
           dashboards. Every new asset rebuilds the same context.
         </SectionLede>
-      </div>
+      </Reveal>
 
-      <DiagramFrame className="mt-2 overflow-x-auto px-4 pt-[30px] pb-2">
-        <div className="min-w-[720px]">
+      <Reveal delay={0.08}>
+        <DiagramFrame className="mt-2 overflow-x-auto px-4 pt-[30px] pb-2">
+          <div className="min-w-[720px]">
           <div className="relative">
             <ContextRebuiltChart />
             <ChartCaption top="70%">
@@ -88,8 +90,9 @@ export function ContextCost() {
               Set up once — every new asset starts at the work
             </LegendItem>
           </div>
-        </div>
-      </DiagramFrame>
+          </div>
+        </DiagramFrame>
+      </Reveal>
     </Section>
   );
 }

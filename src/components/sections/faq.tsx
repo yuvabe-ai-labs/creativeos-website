@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Reveal } from "@/components/motion/reveal";
 import { Section } from "@/components/site/section";
 
 const QUESTIONS = [
@@ -49,21 +50,23 @@ export function Faq() {
         own — `type="multiple"` reproduces that. The 1px gap over a grey backdrop
         is what draws the hairline dividers.
       */}
-      <Accordion
-        type="multiple"
-        className="gap-px overflow-hidden rounded-[16px] border border-line bg-line"
-      >
-        {QUESTIONS.map(({ q, a }) => (
-          <AccordionItem key={q} value={q} className="border-b-0 bg-white not-last:border-b-0">
-            <AccordionTrigger className="rounded-none px-[26px] py-[22px] text-[16px] leading-6 font-semibold text-ink hover:no-underline">
-              {q}
-            </AccordionTrigger>
-            <AccordionContent className="max-w-[70ch] px-[26px] pt-0 pb-[22px] text-[15px] leading-[23px] text-ink-soft">
-              {a}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
+      <Reveal>
+        <Accordion
+          type="multiple"
+          className="gap-px overflow-hidden rounded-[16px] border border-line bg-line"
+        >
+          {QUESTIONS.map(({ q, a }) => (
+            <AccordionItem key={q} value={q} className="border-b-0 bg-white not-last:border-b-0">
+              <AccordionTrigger className="rounded-none px-[26px] py-[22px] text-[16px] leading-6 font-semibold text-ink hover:no-underline">
+                {q}
+              </AccordionTrigger>
+              <AccordionContent className="max-w-[70ch] px-[26px] pt-0 pb-[22px] text-[15px] leading-[23px] text-ink-soft">
+                {a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </Reveal>
     </Section>
   );
 }

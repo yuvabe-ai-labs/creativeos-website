@@ -1,5 +1,6 @@
-import { CtaLink } from "@/components/site/cta-link";
 import { HeroSignalFlow } from "@/components/diagrams/hero-signal-flow";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { CtaLink } from "@/components/site/cta-link";
 
 export function Hero() {
   return (
@@ -29,54 +30,62 @@ export function Hero() {
       />
 
       <div className="relative z-[2] mx-auto grid max-w-[1240px] grid-cols-1 items-center gap-16 px-8 pt-[104px] pb-[110px] hero:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-        <div>
-          <div className="mb-[26px] text-[12px] leading-[1.4] font-medium tracking-[0.22em] text-ink-soft uppercase">
+        {/* Above the fold, so this reads as a page-load entrance rather than a
+            scroll reveal — same wrapper, it simply fires immediately. */}
+        <RevealGroup>
+          <RevealItem className="mb-[26px] text-[12px] leading-[1.4] font-medium tracking-[0.22em] text-ink-soft uppercase">
             Built for high-volume D2C agencies
-          </div>
+          </RevealItem>
 
-          <h1 className="font-display m-0 max-w-[17ch] text-[clamp(2.5rem,4.6vw,4.1rem)] leading-[1.04] font-normal tracking-[-0.03em] text-ink">
-            Produce D2C content at the speed of the{" "}
-            <span
-              className="inline-block pb-[0.04em]"
-              style={{
-                backgroundImage: "linear-gradient(#5829c7,#5829c7)",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "100% .12em",
-                backgroundPosition: "0 90%",
-              }}
-            >
-              market
-            </span>
-            .
-          </h1>
+          <RevealItem>
+            <h1 className="font-display m-0 max-w-[17ch] text-[clamp(2.5rem,4.6vw,4.1rem)] leading-[1.04] font-normal tracking-[-0.03em] text-ink">
+              Produce D2C content at the speed of the{" "}
+              <span
+                className="inline-block pb-[0.04em]"
+                style={{
+                  backgroundImage: "linear-gradient(#5829c7,#5829c7)",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "100% .12em",
+                  backgroundPosition: "0 90%",
+                }}
+              >
+                market
+              </span>
+              .
+            </h1>
+          </RevealItem>
 
-          <p className="mt-[26px] mb-0 max-w-[52ch] text-[18px] leading-[28px] text-ink-muted text-pretty">
-            Reels and static posts for D2C brands — produced with your brand
-            context, your market, and your past work already in place. Fewer
-            retries. Lower cost.
-          </p>
+          <RevealItem>
+            <p className="mt-[26px] mb-0 max-w-[52ch] text-[18px] leading-[28px] text-ink-muted text-pretty">
+              Reels and static posts for D2C brands — produced with your brand
+              context, your market, and your past work already in place. Fewer
+              retries. Lower cost.
+            </p>
+          </RevealItem>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <RevealItem className="mt-8 flex flex-wrap gap-3">
             <CtaLink href="/pilot">Pilot CreativeOS with One Brand</CtaLink>
             <CtaLink href="#workflow" tone="outline" withArrow={false}>
               See How It Works
             </CtaLink>
-          </div>
+          </RevealItem>
 
-          <div className="mt-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-4 py-[9px]">
-            <span className="size-1.5 rounded-full bg-purple" />
-            <span className="text-[13px] leading-[1.4] font-medium text-ink-muted">
-              Up to 4x faster production
-            </span>
-          </div>
-        </div>
+          <RevealItem className="mt-7">
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-4 py-[9px]">
+              <span className="size-1.5 rounded-full bg-purple" />
+              <span className="text-[13px] leading-[1.4] font-medium text-ink-muted">
+                Up to 4x faster production
+              </span>
+            </div>
+          </RevealItem>
+        </RevealGroup>
 
         {/* Hidden below 1080px in the source — the diagram needs the width to read. */}
-        <div
-          data-signal-flow
+        <Reveal
+          delay={0.2}
           className="relative hidden min-h-[560px] w-full max-w-[560px] justify-self-end hero:block"
         >
-          <div className="absolute inset-0 overflow-visible">
+          <div data-signal-flow className="absolute inset-0 overflow-visible">
             <div
               aria-hidden="true"
               className="absolute inset-0 opacity-50"
@@ -113,7 +122,7 @@ export function Hero() {
               EVERYTHING THE AGENCY KNOWS, IN EVERY ASSET
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

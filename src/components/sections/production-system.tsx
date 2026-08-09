@@ -2,6 +2,7 @@ import { GlyphImprovesNextCycle } from "@/components/diagrams/glyph-improves-nex
 import { GlyphOrganisedLikeAgency } from "@/components/diagrams/glyph-organised-like-agency";
 import { GlyphPreservesJourney } from "@/components/diagrams/glyph-preserves-journey";
 import { GlyphStartsWithContext } from "@/components/diagrams/glyph-starts-with-context";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { Section, SectionHeading, SectionLede } from "@/components/site/section";
 
 const CAPABILITIES = [
@@ -31,17 +32,19 @@ export function ProductionSystem() {
   return (
     <Section index="02" eyebrow="Not another AI generator">
       <div>
-        <SectionHeading className="max-w-[22ch]">
-          A production system that remembers how your agency works.
-        </SectionHeading>
-        <SectionLede>
-          A chat remembers a conversation. CreativeOS remembers how your agency
-          produces work for the brand.
-        </SectionLede>
+        <Reveal>
+          <SectionHeading className="max-w-[22ch]">
+            A production system that remembers how your agency works.
+          </SectionHeading>
+          <SectionLede>
+            A chat remembers a conversation. CreativeOS remembers how your
+            agency produces work for the brand.
+          </SectionLede>
+        </Reveal>
 
-        <div className="mt-12 grid grid-cols-1 gap-x-16 gap-y-14 md:grid-cols-2">
+        <RevealGroup className="mt-12 grid grid-cols-1 gap-x-16 gap-y-14 md:grid-cols-2">
           {CAPABILITIES.map(({ title, body, Glyph }) => (
-            <div key={title} className="flex flex-col gap-4">
+            <RevealItem key={title} className="flex flex-col gap-4">
               <Glyph />
               <div className="px-2">
                 <div className="text-[17px] leading-6 font-semibold text-ink">
@@ -51,9 +54,9 @@ export function ProductionSystem() {
                   {body}
                 </p>
               </div>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </Section>
   );
