@@ -342,6 +342,19 @@
     background: #e4f2cf;
     color: #111827;
   }
+
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+  }
+
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-purple);
+    outline-offset: 2px;
+  }
 }
 
 /* Long-form prose for the legal pages. The marketing page has no body-copy
