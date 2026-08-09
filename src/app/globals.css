@@ -1,0 +1,252 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------------------------------------------------------------------------
+   CreativeOS design tokens
+   Ported from the Design Canvas source (design-reference/.../CreativeOS Home v2).
+   The SVG diagrams reference these same hex values literally, so keep the two
+   in sync when either changes.
+   --------------------------------------------------------------------------- */
+/* shadcn/ui's token bridge: exposes the `--background`/`--border`/… custom
+   properties below as Tailwind utilities (bg-background, border-border, …).
+   Required by the registry components — do not remove. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-heading: var(--font-clash-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@theme {
+  --font-display: var(--font-clash-display);
+  --font-sans: var(--font-gilroy);
+
+  /* Text */
+  --color-ink: #111827;
+  --color-ink-muted: #374151;
+  --color-ink-soft: #6b7280;
+  --color-ink-faint: #9ca3af;
+
+  /* Brand */
+  --color-purple: #5829c7;
+  --color-purple-deep: #4c24ab;
+  --color-lavender: #9688c0;
+  --color-yellow: #ffca2d;
+  --color-flame: #f04e28;
+  --color-flame-deep: #8a2e18;
+
+  /* Surfaces + rules */
+  --color-canvas: #fcfcfd;
+  --color-surface: #f8f8fa;
+  --color-night: #140f2b;
+  --color-line: #e5e7eb;
+  --color-line-strong: #d1d5db;
+  --color-rule: #c3c9d4;
+  --color-steel: #aab1bf;
+
+  /* The source hides the hero visual below 1080px; `hero:` is its inverse. */
+  --breakpoint-hero: 1081px;
+}
+
+/* --- signal-flow keyframes -------------------------------------------------
+   Comet dots travel a path whose stroke-dasharray gap exceeds the path length;
+   the dashoffset travel must equal the dash period or the loop visibly snaps.
+   --------------------------------------------------------------------------- */
+@keyframes cosray {
+  to {
+    stroke-dashoffset: -140;
+  }
+}
+@keyframes cosrayrev {
+  to {
+    stroke-dashoffset: 140;
+  }
+}
+@keyframes cosbeam {
+  to {
+    stroke-dashoffset: -90;
+  }
+}
+@keyframes cosripple {
+  0%,
+  28% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  34% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(24);
+    opacity: 0;
+  }
+}
+@keyframes cospulse {
+  0%,
+  28% {
+    transform: scale(1);
+  }
+  36% {
+    transform: scale(1.35);
+  }
+  52%,
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes cosglow {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+@keyframes cosfade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* shadcn/ui token surface, retuned to the CreativeOS palette so any component
+   pulled from the registry later lands on-brand by default. */
+:root {
+  --background: #fcfcfd;
+  --foreground: #111827;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+  --primary: #5829c7;
+  --primary-foreground: #ffffff;
+  --secondary: #f8f8fa;
+  --secondary-foreground: #111827;
+  --muted: #f8f8fa;
+  --muted-foreground: #6b7280;
+  --accent: #f8f8fa;
+  --accent-foreground: #111827;
+  --destructive: #f04e28;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #5829c7;
+  --chart-1: #5829c7;
+  --chart-2: #9688c0;
+  --chart-3: #ffca2d;
+  --chart-4: #aab1bf;
+  --chart-5: #f04e28;
+  --radius: 0.75rem;
+  --sidebar: #fcfcfd;
+  --sidebar-foreground: #111827;
+  --sidebar-primary: #5829c7;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f8f8fa;
+  --sidebar-accent-foreground: #111827;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #5829c7;
+}
+
+.dark {
+  --background: #140f2b;
+  --foreground: #ffffff;
+  --card: #1a1237;
+  --card-foreground: #ffffff;
+  --popover: #1a1237;
+  --popover-foreground: #ffffff;
+  --primary: #9688c0;
+  --primary-foreground: #140f2b;
+  --secondary: #241a49;
+  --secondary-foreground: #ffffff;
+  --muted: #241a49;
+  --muted-foreground: rgba(255, 255, 255, 0.55);
+  --accent: #241a49;
+  --accent-foreground: #ffffff;
+  --destructive: #f04e28;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #9688c0;
+  --sidebar: #1a1237;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #9688c0;
+  --sidebar-primary-foreground: #140f2b;
+  --sidebar-accent: #241a49;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #9688c0;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvas text-ink;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #e4f2cf;
+    color: #111827;
+  }
+}
+
+/* The diagrams are decorative; motion in them is never load-bearing. */
+@media (prefers-reduced-motion: reduce) {
+  [data-signal-flow] * {
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>CreativeOS | Faster D2C Reel and Post Production</title>
+<meta name="description" content="CreativeOS helps D2C agencies produce reels and static posts faster by combining brand context, market signals, previous generations, and reusable production learning.">
+<style>
+@font-face{font-family:"Clash Display";src:url("fonts/ClashDisplayRegular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Clash Display";src:url("fonts/ClashDisplayMedium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Clash Display";src:url("fonts/ClashDisplaySemibold.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-Medium.ttf") format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-SemiBold.ttf") format("truetype");font-weight:600;font-display:swap}
+html,body{margin:0;padding:0;background:#fcfcfd;color:#111827;font-family:"Gilroy",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+*{box-sizing:border-box}
+a{color:#5829c7;text-decoration:none}
+a:hover{color:#4c24ab}
+summary::-webkit-details-marker{display:none}
+summary{list-style:none;cursor:pointer}
+@keyframes cosray{to{stroke-dashoffset:-140}}
+@keyframes cosrayrev{to{stroke-dashoffset:140}}
+@keyframes cosbeam{to{stroke-dashoffset:-90}}
+@keyframes cosripple{0%,28%{transform:scale(1);opacity:0}34%{opacity:.9;transform:scale(1.1)}100%{transform:scale(17);opacity:0}}
+@keyframes cospulse{0%,28%{transform:scale(1)}36%{transform:scale(1.35)}52%,100%{transform:scale(1)}}
+@keyframes cosglow{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.85;transform:scale(1.06)}}
+@keyframes cosfade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){#hero-visual *{animation:none !important}}
+@media (max-width:1080px){#hero-grid{grid-template-columns:1fr !important}#hero-visual{display:none !important}}
+::selection{background:#e4f2cf;color:#111827}
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="width:100%;overflow-x:hidden">
+
+<header style="position:sticky;top:0;z-index:40;background:rgba(252,252,253,.92);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb">
+  <div style="max-width:1240px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="CreativeOS%20Home.dc.html" style="display:flex;align-items:center;gap:10px;color:#111827">
+      <span style="display:block;width:10px;height:10px;border-radius:3px;background:#5829c7"></span>
+      <span style="font:500 19px/1 'Clash Display',sans-serif;letter-spacing:-0.02em">CreativeOS</span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:30px">
+      <a href="CreativeOS%20Product.dc.html" style="font:500 14px/1 'Gilroy',sans-serif;color:#374151">Product</a>
+      <a href="#workflow" style="font:500 14px/1 'Gilroy',sans-serif;color:#374151">How it works</a>
+      <a href="CreativeOS%20Pilot.dc.html" style="font:500 14px/1 'Gilroy',sans-serif;color:#374151">Pilot</a>
+      <a href="CreativeOS%20Pilot.dc.html" style="display:inline-flex;align-items:center;gap:7px;background:#5829c7;color:#fff;padding:10px 18px;border-radius:12px;font:500 14px/1 'Gilroy',sans-serif;white-space:nowrap" style-hover="background:#4c24ab">Apply for a Pilot
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"></path></svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<section style="position:relative;overflow:hidden;border-bottom:1px solid #e5e7eb;background:#ffffff">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(148,163,184,.2) 1px, transparent 1px);background-size:24px 24px;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 45%,#000 80%);mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 45%,#000 80%)"></div>
+  <div id="hero-grid" style="position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:104px 32px 110px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:center">
+    <div>
+      <div style="font:500 12px/1.4 'Gilroy',sans-serif;text-transform:uppercase;letter-spacing:.22em;color:#6b7280;margin-bottom:26px">Built for high-volume D2C agencies</div>
+      <h1 style="max-width:17ch;margin:0;font-family:'Clash Display',sans-serif;font-size:clamp(2.5rem,4.6vw,4.1rem);font-weight:400;line-height:1.04;letter-spacing:-.03em;color:#111827">Produce D2C content at the speed of the <span style="display:inline-block;background-image:linear-gradient(#5829c7,#5829c7);background-repeat:no-repeat;background-size:100% .12em;background-position:0 90%;padding-bottom:.04em">market</span>.</h1>
+      <p style="max-width:52ch;margin:26px 0 0;font:400 18px/28px 'Gilroy',sans-serif;color:#374151;text-wrap:pretty">Reels and static posts for D2C brands — produced with your brand context, your market, and your past work already in place. Fewer retries. Lower cost.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
+        <a href="CreativeOS%20Pilot.dc.html" style="display:inline-flex;align-items:center;gap:8px;background:#5829c7;color:#fff;padding:15px 26px;border-radius:12px;font:500 15px/1 'Gilroy',sans-serif;white-space:nowrap" style-hover="background:#4c24ab">Pilot CreativeOS with One Brand
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"></path></svg>
+        </a>
+        <a href="#workflow" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#111827;border:1px solid #d1d5db;padding:15px 26px;border-radius:12px;font:500 15px/1 'Gilroy',sans-serif;white-space:nowrap" style-hover="background:#f8f8fa">See How It Works</a>
+      </div>
+      <div style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;background:#f8f8fa;border:1px solid #e5e7eb;border-radius:999px;padding:9px 16px">
+        <span style="width:6px;height:6px;border-radius:50%;background:#5829c7"></span>
+        <span style="font:500 13px/1.4 'Gilroy',sans-serif;color:#374151">Up to 4x faster production</span>
+      </div>
+    </div>
+
+    <div id="hero-visual" style="position:relative;min-height:560px;max-width:560px;justify-self:end;width:100%">
+      <div style="position:absolute;inset:0;border-radius:24px;background-color:#140f2b;background-image:radial-gradient(54% 42% at 88% 10%, rgba(150,136,192,.22) 0%, rgba(150,136,192,0) 100%),linear-gradient(180deg,#1a1237 0%,#140f2b 46%,#0f0c22 100%);overflow:hidden">
+        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px, transparent 1px);background-size:26px 26px;opacity:.5"></div>
+        <svg viewBox="0 0 560 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%">
+          <text x="150" y="100" text-anchor="end" style="font:500 12.5px 'Gilroy',sans-serif;letter-spacing:.4px" fill="rgba(255,255,255,.95)">Brand context</text>
+<circle cx="168" cy="96" r="3.5" fill="rgba(255,255,255,.5)"></circle>
+<text x="150" y="162" text-anchor="end" style="font:500 12.5px 'Gilroy',sans-serif;letter-spacing:.4px" fill="rgba(255,255,255,.95)">Tone + claims</text>
+<circle cx="168" cy="158" r="3.5" fill="rgba(255,255,255,.5)"></circle>
+<text x="150" y="224" text-anchor="end" style="font:500 12.5px 'Gilroy',sans-serif;letter-spacing:.4px" fill="rgba(255,255,255,.95)">Market trend</text>
+<circle cx="168" cy="220" r="3.5" fill="rgba(255,255,255,.5)"></circle>
+<text x="150" y="286" text-anchor="end" style="font:500 12.5px 'Gilroy',sans-serif;letter-spacing:.4px" fill="rgba(255,255,255,.95)">Past generations</text>
+<circle cx="168" cy="282" r="3.5" fill="rgba(255,255,255,.5)"></circle>
+<text x="150" y="348" text-anchor="end" style="font:500 12.5px 'Gilroy',sans-serif;letter-spacing:.4px" fill="rgba(255,255,255,.95)">References</text>
+<circle cx="168" cy="344" r="3.5" fill="rgba(255,255,255,.5)"></circle>
+<text x="150" y="410" text-anchor="end" style="font:500 12.5px 'Gilroy',sans-serif;letter-spacing:.4px" fill="rgba(255,255,255,.95)">Corrections</text>
+<circle cx="168" cy="406" r="3.5" fill="rgba(255,255,255,.5)"></circle>
+<text x="150" y="472" text-anchor="end" style="font:500 12.5px 'Gilroy',sans-serif;letter-spacing:.4px" fill="rgba(255,255,255,.95)">Review decisions</text>
+<circle cx="168" cy="468" r="3.5" fill="rgba(255,255,255,.5)"></circle>
+
+          <circle cx="300" cy="255" r="1.6" fill="rgba(255,255,255,.14)"></circle>
+          <path d="M196,38 C266,38 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,38 C266,38 262,280 320,280" fill="none" stroke="rgba(255,202,45,.18)" stroke-width="1" stroke-dasharray="4 220" style="animation:cosray 6.2s linear infinite;animation-delay:3.17s"></path>
+<path d="M196,50 C266,50 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,68 C266,68 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,90 C266,90 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,112 C266,112 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,112 C266,112 262,280 320,280" fill="none" stroke="rgba(255,202,45,.18)" stroke-width="1" stroke-dasharray="4 220" style="animation:cosray 6.2s linear infinite;animation-delay:6.65s"></path>
+<path d="M196,134 C266,134 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,156 C266,156 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,178 C266,178 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,200 C266,200 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,200 C266,200 262,280 320,280" fill="none" stroke="rgba(255,202,45,.18)" stroke-width="1" stroke-dasharray="4 220" style="animation:cosray 6.2s linear infinite;animation-delay:10.13s"></path>
+<path d="M196,222 C266,222 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,244 C266,244 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,266 C266,266 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,288 C266,288 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,288 C266,288 262,280 320,280" fill="none" stroke="rgba(255,202,45,.18)" stroke-width="1" stroke-dasharray="4 220" style="animation:cosray 6.2s linear infinite;animation-delay:13.61s"></path>
+<path d="M196,310 C266,310 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,332 C266,332 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,354 C266,354 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,376 C266,376 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,376 C266,376 262,280 320,280" fill="none" stroke="rgba(255,202,45,.18)" stroke-width="1" stroke-dasharray="4 220" style="animation:cosray 6.2s linear infinite;animation-delay:17.09s"></path>
+<path d="M196,398 C266,398 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,420 C266,420 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,442 C266,442 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,464 C266,464 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,464 C266,464 262,280 320,280" fill="none" stroke="rgba(255,202,45,.18)" stroke-width="1" stroke-dasharray="4 220" style="animation:cosray 6.2s linear infinite;animation-delay:20.57s"></path>
+<path d="M196,486 C266,486 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,508 C266,508 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M196,524 C266,524 262,280 320,280" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"></path>
+<path d="M190,44 C260,44 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,44 C260,44 262,280 320,280" fill="none" stroke="rgba(255,202,45,.30)" stroke-width="1.1" stroke-dasharray="5 200" style="animation:cosray 5.4s linear infinite;animation-delay:1.72s"></path>
+<path d="M190,62 C260,62 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,84 C260,84 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,106 C260,106 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,106 C260,106 262,280 320,280" fill="none" stroke="rgba(255,202,45,.30)" stroke-width="1.1" stroke-dasharray="5 200" style="animation:cosray 5.4s linear infinite;animation-delay:3.58s"></path>
+<path d="M190,128 C260,128 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,150 C260,150 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,172 C260,172 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,172 C260,172 262,280 320,280" fill="none" stroke="rgba(255,202,45,.30)" stroke-width="1.1" stroke-dasharray="5 200" style="animation:cosray 5.4s linear infinite;animation-delay:5.44s"></path>
+<path d="M190,194 C260,194 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,216 C260,216 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,238 C260,238 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,238 C260,238 262,280 320,280" fill="none" stroke="rgba(255,202,45,.30)" stroke-width="1.1" stroke-dasharray="5 200" style="animation:cosray 5.4s linear infinite;animation-delay:7.30s"></path>
+<path d="M190,260 C260,260 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,296 C260,296 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,318 C260,318 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,318 C260,318 262,280 320,280" fill="none" stroke="rgba(255,202,45,.30)" stroke-width="1.1" stroke-dasharray="5 200" style="animation:cosray 5.4s linear infinite;animation-delay:9.16s"></path>
+<path d="M190,340 C260,340 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,362 C260,362 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,384 C260,384 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,384 C260,384 262,280 320,280" fill="none" stroke="rgba(255,202,45,.30)" stroke-width="1.1" stroke-dasharray="5 200" style="animation:cosray 5.4s linear infinite;animation-delay:11.02s"></path>
+<path d="M190,406 C260,406 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,428 C260,428 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,450 C260,450 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,450 C260,450 262,280 320,280" fill="none" stroke="rgba(255,202,45,.30)" stroke-width="1.1" stroke-dasharray="5 200" style="animation:cosray 5.4s linear infinite;animation-delay:12.88s"></path>
+<path d="M190,472 C260,472 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,496 C260,496 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,518 C260,518 262,280 320,280" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"></path>
+<path d="M190,518 C260,518 262,280 320,280" fill="none" stroke="rgba(255,202,45,.30)" stroke-width="1.1" stroke-dasharray="5 200" style="animation:cosray 5.4s linear infinite;animation-delay:14.74s"></path>
+<path d="M186,52 C256,52 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,52 C256,52 262,280 320,280" fill="none" stroke="rgba(255,202,45,.45)" stroke-width="1.2" stroke-dasharray="5 200" style="animation:cosray 4.6s linear infinite;animation-delay:0.00s"></path>
+<path d="M186,74 C256,74 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,118 C256,118 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,140 C256,140 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,140 C256,140 262,280 320,280" fill="none" stroke="rgba(255,202,45,.45)" stroke-width="1.2" stroke-dasharray="5 200" style="animation:cosray 4.6s linear infinite;animation-delay:1.65s"></path>
+<path d="M186,184 C256,184 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,206 C256,206 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,250 C256,250 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,250 C256,250 262,280 320,280" fill="none" stroke="rgba(255,202,45,.45)" stroke-width="1.2" stroke-dasharray="5 200" style="animation:cosray 4.6s linear infinite;animation-delay:3.30s"></path>
+<path d="M186,272 C256,272 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,316 C256,316 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,338 C256,338 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,338 C256,338 262,280 320,280" fill="none" stroke="rgba(255,202,45,.45)" stroke-width="1.2" stroke-dasharray="5 200" style="animation:cosray 4.6s linear infinite;animation-delay:4.95s"></path>
+<path d="M186,382 C256,382 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,404 C256,404 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,448 C256,448 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,448 C256,448 262,280 320,280" fill="none" stroke="rgba(255,202,45,.45)" stroke-width="1.2" stroke-dasharray="5 200" style="animation:cosray 4.6s linear infinite;animation-delay:6.60s"></path>
+<path d="M186,490 C256,490 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<path d="M186,512 C256,512 262,280 320,280" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.1"></path>
+<circle cx="182" cy="52" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="74" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="118" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="140" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="184" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="206" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="250" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="272" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="316" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="338" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="382" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="404" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="448" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="490" r="2" fill="rgba(255,255,255,.25)"></circle>
+<circle cx="182" cy="512" r="2" fill="rgba(255,255,255,.25)"></circle>
+          <path d="M178,96 C250,96 260,280 320,280" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"></path>
+<path d="M178,96 C250,96 260,280 320,280" fill="none" stroke="rgba(255,202,45,.9)" stroke-width="1.6" stroke-dasharray="7 160" style="animation:cosray 3.2s linear infinite;animation-delay:0.00s"></path>
+<path d="M178,158 C250,158 260,280 320,280" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"></path>
+<path d="M178,158 C250,158 260,280 320,280" fill="none" stroke="rgba(255,202,45,.9)" stroke-width="1.6" stroke-dasharray="7 160" style="animation:cosray 3.2s linear infinite;animation-delay:0.40s"></path>
+<path d="M178,220 C250,220 260,280 320,280" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"></path>
+<path d="M178,220 C250,220 260,280 320,280" fill="none" stroke="rgba(255,202,45,.9)" stroke-width="1.6" stroke-dasharray="7 160" style="animation:cosray 3.2s linear infinite;animation-delay:0.80s"></path>
+<path d="M178,282 C250,282 260,280 320,280" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"></path>
+<path d="M178,282 C250,282 260,280 320,280" fill="none" stroke="rgba(255,202,45,.9)" stroke-width="1.6" stroke-dasharray="7 160" style="animation:cosray 3.2s linear infinite;animation-delay:1.20s"></path>
+<path d="M178,344 C250,344 260,280 320,280" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"></path>
+<path d="M178,344 C250,344 260,280 320,280" fill="none" stroke="rgba(255,202,45,.9)" stroke-width="1.6" stroke-dasharray="7 160" style="animation:cosray 3.2s linear infinite;animation-delay:1.60s"></path>
+<path d="M178,406 C250,406 260,280 320,280" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"></path>
+<path d="M178,406 C250,406 260,280 320,280" fill="none" stroke="rgba(255,202,45,.9)" stroke-width="1.6" stroke-dasharray="7 160" style="animation:cosray 3.2s linear infinite;animation-delay:2.00s"></path>
+<path d="M178,468 C250,468 260,280 320,280" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.6"></path>
+<path d="M178,468 C250,468 260,280 320,280" fill="none" stroke="rgba(255,202,45,.9)" stroke-width="1.6" stroke-dasharray="7 160" style="animation:cosray 3.2s linear infinite;animation-delay:2.40s"></path>
+
+          <circle cx="332" cy="280" r="22" fill="#5829c7"></circle>
+          <circle cx="332" cy="280" r="30" fill="none" stroke="rgba(255,202,45,.35)" stroke-width="1.5" style="animation:cosglow 3s ease-in-out infinite;transform-origin:332px 280px"></circle>
+          <path d="M8 5v14l11-7z" transform="translate(325,271)" fill="#140f2b" style="display:none"></path>
+          <g transform="translate(324,272)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#140f2b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"></path></svg></g>
+          <line x1="362" y1="280" x2="448" y2="280" stroke="rgba(255,255,255,.35)" stroke-width="1.6"></line>
+          <line x1="362" y1="280" x2="448" y2="280" stroke="#5829c7" stroke-width="2" stroke-dasharray="7 60" style="animation:cosbeam 3.2s linear infinite"></line>
+        </svg>
+        <div style="position:absolute;right:44px;top:50%;transform:translateY(-55px);width:110px">
+          <div style="position:relative;height:110px;display:flex;align-items:center;justify-content:center">
+            <span style="position:absolute;width:26px;height:26px;border-radius:50%;border:0.5px solid rgba(255,202,45,.45);animation:cosripple 3.2s ease-out infinite;animation-delay:1.6s"></span>
+            <span style="position:absolute;width:26px;height:26px;border-radius:50%;border:0.5px solid rgba(255,202,45,.30);animation:cosripple 3.2s ease-out infinite;animation-delay:1.85s"></span>
+            <span style="position:absolute;width:26px;height:26px;border-radius:50%;border:0.5px solid rgba(255,202,45,.18);animation:cosripple 3.2s ease-out infinite;animation-delay:2.1s"></span>
+            <span style="position:relative;width:26px;height:26px;border-radius:50%;background:#5829c7;box-shadow:0 0 18px rgba(255,202,45,.5);animation:cospulse 3.2s ease-out infinite;animation-delay:1.6s"></span>
+          </div>
+        </div>
+        <div style="position:absolute;left:34px;bottom:24px;font:600 10px/1.5 'Gilroy',sans-serif;letter-spacing:1.4px;color:rgba(255,255,255,.45)">EVERYTHING THE AGENCY KNOWS, IN EVERY ASSET</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-bottom:1px solid #e5e7eb;background:#fff">
+  <div style="max-width:1240px;margin:0 auto;padding:96px 32px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;align-items:baseline;gap:16px"><div style="font:500 12px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7;margin-bottom:0">01</div><div style="font:500 12px/1.4 'Gilroy',sans-serif;text-transform:uppercase;letter-spacing:.22em;color:#6b7280">The hidden cost of AI production</div></div>
+    <div>
+      <h2 style="margin:0;max-width:20ch;font-family:'Clash Display',sans-serif;font-size:clamp(1.9rem,3.2vw,3rem);font-weight:600;line-height:1.06;letter-spacing:-.025em">Every new creative still starts from scratch.</h2>
+      <p style="margin:24px 0 0;max-width:62ch;font:400 18px/28px 'Gilroy',sans-serif;color:#374151;text-wrap:pretty">Dozens of assets later, the knowledge still sits in chats, drives, and dashboards. Every new asset rebuilds the same context.</p>
+      
+    </div>
+      <div style="grid-column:1 / -1;margin-top:8px;border:1px solid #e5e7eb;border-radius:16px;background:#fff;padding:30px 16px 8px;box-shadow:0 8px 20px rgba(11,15,25,.06)">
+        <div style="position:relative"><svg viewBox="0 0 1080 340" style="display:block;width:100%;height:auto" aria-hidden="true">
+          <defs>
+            <linearGradient id="cosFade" x1="60" y1="116" x2="1020" y2="336" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#cbc3df" stop-opacity=".22"></stop>
+              <stop offset="1" stop-color="#9688c0" stop-opacity=".5"></stop>
+            </linearGradient>
+          </defs>
+          <path d="M60,116.0 C240,102 420,116.014 600,106 S 960,116.012 1020,110" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,126.6 C240,112.6 420,126.614 600,116.6 S 960,126.612 1020,120.6" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,137.2 C240,123.19999999999999 420,137.214 600,127.19999999999999 S 960,137.212 1020,131.2" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,147.8 C240,133.8 420,147.814 600,137.8 S 960,147.812 1020,141.8" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,158.4 C240,144.4 420,158.414 600,148.4 S 960,158.412 1020,152.4" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,169.0 C240,155 420,169.014 600,159 S 960,169.012 1020,163" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,179.6 C240,165.6 420,179.614 600,169.6 S 960,179.612 1020,173.6" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,190.2 C240,176.2 420,190.214 600,180.2 S 960,190.212 1020,184.2" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,200.8 C240,186.8 420,200.814 600,190.8 S 960,200.812 1020,194.8" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,211.4 C240,197.4 420,211.414 600,201.4 S 960,211.412 1020,205.4" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,222.0 C240,208 420,222.014 600,212 S 960,222.012 1020,216" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,232.6 C240,218.6 420,232.614 600,222.6 S 960,232.612 1020,226.6" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,243.2 C240,229.2 420,243.214 600,233.2 S 960,243.212 1020,237.2" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,253.8 C240,239.8 420,253.814 600,243.8 S 960,253.812 1020,247.8" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,264.4 C240,250.39999999999998 420,264.414 600,254.39999999999998 S 960,264.412 1020,258.4" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,275.0 C240,261 420,275.014 600,265 S 960,275.012 1020,269" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,285.6 C240,271.6 420,285.614 600,275.6 S 960,285.612 1020,279.6" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,296.2 C240,282.2 420,296.214 600,286.2 S 960,296.212 1020,290.2" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,306.8 C240,292.8 420,306.814 600,296.8 S 960,306.812 1020,300.8" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,317.4 C240,303.4 420,317.414 600,307.4 S 960,317.412 1020,311.4" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+<path d="M60,328.0 C240,314 420,328.014 600,318 S 960,328.012 1020,322" fill="none" stroke="url(#cosFade)" stroke-width="1"></path>
+
+          <g transform="translate(180,18) scale(0.86)" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="6" rx="2"></rect><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></g>
+<text x="190" y="52" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">EXPLAIN THE BRAND</text>
+<line x1="190" y1="62" x2="190" y2="78" stroke="#c3c9d4" stroke-width="1.6"></line>
+<line x1="190" y1="78" x2="190" y2="336" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+<g transform="translate(310,54) scale(0.86)" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13a2 2 0 0 0 2-2V7a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0V4a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0v-4a2 2 0 0 1 2-2"></path></g>
+<text x="320" y="88" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">TONE OF VOICE</text>
+<line x1="320" y1="98" x2="320" y2="114" stroke="#c3c9d4" stroke-width="1.6"></line>
+<line x1="320" y1="114" x2="320" y2="336" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+<g transform="translate(440,18) scale(0.86)" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="M3.3 7 12 12l8.7-5"></path><path d="M12 22V12"></path></g>
+<text x="450" y="52" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">PRODUCT DETAILS</text>
+<line x1="450" y1="62" x2="450" y2="78" stroke="#c3c9d4" stroke-width="1.6"></line>
+<line x1="450" y1="78" x2="450" y2="336" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+<g transform="translate(570,54) scale(0.86)" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></g>
+<text x="580" y="88" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">MOOD + LIGHTING</text>
+<line x1="580" y1="98" x2="580" y2="114" stroke="#c3c9d4" stroke-width="1.6"></line>
+<line x1="580" y1="114" x2="580" y2="336" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+<g transform="translate(700,18) scale(0.86)" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="8.5" cy="7.5" r=".5"></circle><circle cx="6.5" cy="12.5" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></g>
+<text x="710" y="52" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">COLORS + REFS</text>
+<line x1="710" y1="62" x2="710" y2="78" stroke="#c3c9d4" stroke-width="1.6"></line>
+<line x1="710" y1="78" x2="710" y2="336" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+<g transform="translate(830,54) scale(0.86)" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="m9 14 2 2 4-4"></path></g>
+<text x="840" y="88" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">COMPLIANCE CHECK</text>
+<line x1="840" y1="98" x2="840" y2="114" stroke="#c3c9d4" stroke-width="1.6"></line>
+<line x1="840" y1="114" x2="840" y2="336" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+<g transform="translate(970,18) scale(0.86)" fill="none" stroke="#5829c7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="m10 9 5 3-5 3z"></path></g>
+<text x="980" y="52" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="rgba(76,36,171,.8)">ACTUAL WORK</text>
+<line x1="980" y1="62" x2="980" y2="78" stroke="#5829c7" stroke-width="1.6"></line>
+<line x1="980" y1="78" x2="980" y2="336" stroke="#5829c7" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+
+          <path d="M80,146 C129.5,156 157,156 190,152 C248.5,144 281,138 320,141.2 C378.5,148.2 411,153 450,150.2 C508.5,141.2 541,137 580,140.6 C638.5,146.6 671,152 710,149.6 C768.5,142.6 801,139 840,141.8" fill="none" stroke="#aab1bf" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="3 8"></path>
+<path d="M840,141.8 C895,143.48000000000002 925,146 980,146" fill="none" stroke="#5829c7" stroke-width="2.4" stroke-linecap="round"></path>
+<text x="52" y="151" text-anchor="end" style="font:500 13px 'Gilroy',sans-serif" fill="#6b7280">Post 1</text>
+<circle cx="190" cy="152" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="320" cy="141.2" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="450" cy="150.2" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="580" cy="140.6" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="710" cy="149.6" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="840" cy="141.8" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="980" cy="146" r="9" fill="#5829c7"></circle><circle cx="980" cy="146" r="15" fill="none" stroke="rgba(88,41,199,.28)" stroke-width="2"></circle>
+<path d="M80,208 C129.5,199 157,199 190,202.6 C248.5,209.6 281,215 320,212.2 C378.5,206.2 411,202 450,204.4 C508.5,212.4 541,216 580,212.8 C638.5,204.8 671,200 710,203.2 C768.5,209.2 801,214 840,211.6" fill="none" stroke="#aab1bf" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="3 8"></path>
+<path d="M840,211.6 C895,210.16 925,208 980,208" fill="none" stroke="#5829c7" stroke-width="2.4" stroke-linecap="round"></path>
+<text x="52" y="213" text-anchor="end" style="font:500 13px 'Gilroy',sans-serif" fill="#6b7280">Reel 1</text>
+<circle cx="190" cy="202.6" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="320" cy="212.2" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="450" cy="204.4" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="580" cy="212.8" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="710" cy="203.2" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="840" cy="211.6" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="980" cy="208" r="9" fill="#5829c7"></circle><circle cx="980" cy="208" r="15" fill="none" stroke="rgba(88,41,199,.28)" stroke-width="2"></circle>
+<path d="M80,270 C129.5,278 157,278 190,274.8 C248.5,280.8 281,276 320,273.6 C378.5,264.6 411,261 450,264.6 C508.5,271.6 541,277 580,274.2 C638.5,268.2 671,264 710,266.4 C768.5,274.4 801,278 840,274.8" fill="none" stroke="#aab1bf" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="3 8"></path>
+<path d="M840,274.8 C895,272.88 925,270 980,270" fill="none" stroke="#5829c7" stroke-width="2.4" stroke-linecap="round"></path>
+<text x="52" y="275" text-anchor="end" style="font:500 13px 'Gilroy',sans-serif" fill="#6b7280">Post 2</text>
+<circle cx="190" cy="274.8" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="320" cy="273.6" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="450" cy="264.6" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="580" cy="274.2" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="710" cy="266.4" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="840" cy="274.8" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="980" cy="270" r="9" fill="#5829c7"></circle><circle cx="980" cy="270" r="15" fill="none" stroke="rgba(88,41,199,.28)" stroke-width="2"></circle>
+<path d="M80,330 C129.5,323 157,323 190,325.8 C248.5,315.8 281,320 320,324 C378.5,332 411,338 450,334.8 C508.5,328.8 541,324 580,326.4 C638.5,335.4 671,339 710,335.4 C768.5,327.4 801,322 840,325.2" fill="none" stroke="#aab1bf" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="3 8"></path>
+<path d="M840,325.2 C895,327.12 925,330 980,330" fill="none" stroke="#5829c7" stroke-width="2.4" stroke-linecap="round"></path>
+<text x="52" y="335" text-anchor="end" style="font:500 13px 'Gilroy',sans-serif" fill="#6b7280">Reel 2</text>
+<circle cx="190" cy="325.8" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="320" cy="324" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="450" cy="334.8" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="580" cy="326.4" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="710" cy="335.4" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="840" cy="325.2" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+<circle cx="980" cy="330" r="9" fill="#5829c7"></circle><circle cx="980" cy="330" r="15" fill="none" stroke="rgba(88,41,199,.28)" stroke-width="2"></circle>
+
+        </svg><div style="position:absolute;left:50%;top:70%;transform:translate(-50%,-50%);background:rgba(255,255,255,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:999px;padding:10px 22px;font:500 15px/1.4 'Gilroy',sans-serif;color:#374151;white-space:nowrap">The same context, rebuilt for every single asset</div></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:34px 22px">
+          <span style="flex:1;height:1px;background:#e5e7eb"></span>
+          <span style="display:inline-flex;align-items:center;font:600 12px/1 'Gilroy',sans-serif;letter-spacing:.14em;color:#6b7280;border:1px solid #e5e7eb;border-radius:999px;padding:8px 16px;background:#fcfcfd">VS · WITH CREATIVEOS</span>
+          <span style="flex:1;height:1px;background:#e5e7eb"></span>
+        </div>
+        <div style="position:relative"><svg viewBox="0 0 1080 340" style="display:block;width:100%;height:auto" aria-hidden="true">
+          <defs>
+            <linearGradient id="cosFadeB" x1="60" y1="118" x2="1020" y2="340" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#cbc3df" stop-opacity=".22"></stop>
+              <stop offset="1" stop-color="#9688c0" stop-opacity=".5"></stop>
+            </linearGradient>
+          </defs>
+          <path d="M60,118.0 C240,104 420,118.014 600,108 S 960,118.012 1020,112" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,128.6 C240,114.6 420,128.614 600,118.6 S 960,128.612 1020,122.6" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,139.2 C240,125.19999999999999 420,139.214 600,129.2 S 960,139.212 1020,133.2" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,149.8 C240,135.8 420,149.814 600,139.8 S 960,149.812 1020,143.8" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,160.4 C240,146.4 420,160.414 600,150.4 S 960,160.412 1020,154.4" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,171.0 C240,157 420,171.014 600,161 S 960,171.012 1020,165" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,181.6 C240,167.6 420,181.614 600,171.6 S 960,181.612 1020,175.6" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,192.2 C240,178.2 420,192.214 600,182.2 S 960,192.212 1020,186.2" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,202.8 C240,188.8 420,202.814 600,192.8 S 960,202.812 1020,196.8" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,213.4 C240,199.4 420,213.414 600,203.4 S 960,213.412 1020,207.4" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,224.0 C240,210 420,224.014 600,214 S 960,224.012 1020,218" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,234.6 C240,220.6 420,234.614 600,224.6 S 960,234.612 1020,228.6" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,245.2 C240,231.2 420,245.214 600,235.2 S 960,245.212 1020,239.2" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,255.8 C240,241.8 420,255.814 600,245.8 S 960,255.812 1020,249.8" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,266.4 C240,252.39999999999998 420,266.414 600,256.4 S 960,266.412 1020,260.4" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,277.0 C240,263 420,277.014 600,267 S 960,277.012 1020,271" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,287.6 C240,273.6 420,287.614 600,277.6 S 960,287.612 1020,281.6" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,298.2 C240,284.2 420,298.214 600,288.2 S 960,298.212 1020,292.2" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,308.8 C240,294.8 420,308.814 600,298.8 S 960,308.812 1020,302.8" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+<path d="M60,319.4 C240,305.4 420,319.414 600,309.4 S 960,319.412 1020,313.4" fill="none" stroke="url(#cosFadeB)" stroke-width="1"></path>
+
+          <g transform="translate(180,18) scale(0.86)" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="6" rx="2"></rect><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></g>
+<text x="190" y="52" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">EXPLAIN THE BRAND</text>
+<line x1="190" y1="62" x2="190" y2="78" stroke="#c3c9d4" stroke-width="1.6"></line>
+<line x1="190" y1="78" x2="190" y2="316" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+<g transform="translate(310,54) scale(0.86)" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13a2 2 0 0 0 2-2V7a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0V4a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0v-4a2 2 0 0 1 2-2"></path></g>
+<text x="320" y="88" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">TONE OF VOICE</text>
+<line x1="320" y1="98" x2="320" y2="114" stroke="#c3c9d4" stroke-width="1.6"></line>
+<line x1="320" y1="114" x2="320" y2="316" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+<g transform="translate(440,18) scale(0.86)" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="M3.3 7 12 12l8.7-5"></path><path d="M12 22V12"></path></g>
+<text x="450" y="52" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">PRODUCT DETAILS</text>
+<line x1="450" y1="62" x2="450" y2="78" stroke="#c3c9d4" stroke-width="1.6"></line>
+<line x1="450" y1="78" x2="450" y2="316" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+<g transform="translate(570,54) scale(0.86)" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></g>
+<text x="580" y="88" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">MOOD + LIGHTING</text>
+<line x1="580" y1="98" x2="580" y2="114" stroke="#c3c9d4" stroke-width="1.6"></line>
+<line x1="580" y1="114" x2="580" y2="316" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+<g transform="translate(700,18) scale(0.86)" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="8.5" cy="7.5" r=".5"></circle><circle cx="6.5" cy="12.5" r=".5"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></g>
+<text x="710" y="52" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">COLORS + REFS</text>
+<line x1="710" y1="62" x2="710" y2="78" stroke="#c3c9d4" stroke-width="1.6"></line>
+<line x1="710" y1="78" x2="710" y2="316" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+<g transform="translate(830,54) scale(0.86)" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="m9 14 2 2 4-4"></path></g>
+<text x="840" y="88" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">COMPLIANCE CHECK</text>
+<line x1="840" y1="98" x2="840" y2="114" stroke="#c3c9d4" stroke-width="1.6"></line>
+<line x1="840" y1="114" x2="840" y2="316" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+<g transform="translate(970,18) scale(0.86)" fill="none" stroke="#5829c7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="m10 9 5 3-5 3z"></path></g>
+<text x="980" y="52" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="rgba(76,36,171,.8)">WORK STARTS HERE</text>
+<line x1="980" y1="62" x2="980" y2="78" stroke="#5829c7" stroke-width="1.6"></line>
+<line x1="980" y1="78" x2="980" y2="316" stroke="#5829c7" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+
+          <text x="52" y="211" text-anchor="end" style="font:500 13px 'Gilroy',sans-serif" fill="#6b7280">Once</text>
+<path d="M80,206 C129.5,216 157,216 190,212 C248.5,200 281,194 320,198.8 C378.5,206.8 411,214 450,210.8 C508.5,200.8 541,196 580,200 C638.5,212 671,218 710,213.2 C768.5,205.2 801,198 840,201.2" fill="none" stroke="#5829c7" stroke-width="2.4" stroke-linecap="round"></path>
+<circle cx="190" cy="212" r="6" fill="#fff" stroke="#5829c7" stroke-width="2"></circle>
+<circle cx="320" cy="198.8" r="6" fill="#fff" stroke="#5829c7" stroke-width="2"></circle>
+<circle cx="450" cy="210.8" r="6" fill="#fff" stroke="#5829c7" stroke-width="2"></circle>
+<circle cx="580" cy="200" r="6" fill="#fff" stroke="#5829c7" stroke-width="2"></circle>
+<circle cx="710" cy="213.2" r="6" fill="#fff" stroke="#5829c7" stroke-width="2"></circle>
+<circle cx="840" cy="201.2" r="6" fill="#fff" stroke="#5829c7" stroke-width="2"></circle>
+<path d="M840,201.2 C910,201.2 920,140 980,140" fill="none" stroke="#5829c7" stroke-width="2.4" stroke-linecap="round"></path>
+<circle cx="980" cy="140" r="9" fill="#5829c7"></circle><circle cx="980" cy="140" r="15" fill="none" stroke="rgba(88,41,199,.28)" stroke-width="2"></circle>
+<path d="M840,201.2 C910,201.2 920,186 980,186" fill="none" stroke="#5829c7" stroke-width="2.4" stroke-linecap="round"></path>
+<circle cx="980" cy="186" r="9" fill="#5829c7"></circle><circle cx="980" cy="186" r="15" fill="none" stroke="rgba(88,41,199,.28)" stroke-width="2"></circle>
+<path d="M840,201.2 C910,201.2 920,232 980,232" fill="none" stroke="#5829c7" stroke-width="2.4" stroke-linecap="round"></path>
+<circle cx="980" cy="232" r="9" fill="#5829c7"></circle><circle cx="980" cy="232" r="15" fill="none" stroke="rgba(88,41,199,.28)" stroke-width="2"></circle>
+<path d="M840,201.2 C910,201.2 920,278 980,278" fill="none" stroke="#5829c7" stroke-width="2.4" stroke-linecap="round"></path>
+<circle cx="980" cy="278" r="9" fill="#5829c7"></circle><circle cx="980" cy="278" r="15" fill="none" stroke="rgba(88,41,199,.28)" stroke-width="2"></circle>
+<circle cx="840" cy="201.2" r="6" fill="#fff" stroke="#5829c7" stroke-width="2"></circle>
+
+        </svg><div style="position:absolute;left:50%;top:86%;transform:translate(-50%,-50%);background:rgba(255,255,255,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:999px;padding:10px 22px;font:500 15px/1.4 'Gilroy',sans-serif;color:#374151;white-space:nowrap">Context set once — every asset starts at the work</div></div>
+        <div style="padding:14px 22px 18px;border-top:1px solid #e5e7eb;display:flex;flex-wrap:wrap;gap:10px 24px;font:400 14px/21px 'Gilroy',sans-serif;color:#6b7280">
+          <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:9px;height:9px;border-radius:50%;background:#fff;border:2px solid #aab1bf"></span>Setup repeated for every asset</span>
+          <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:9px;height:9px;border-radius:50%;background:#5829c7"></span>The actual creative work</span>
+          <span style="display:inline-flex;align-items:center;gap:8px;color:#9ca3af">Set up once — every new asset starts at the work</span>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section style="border-bottom:1px solid #e5e7eb">
+  <div style="max-width:1240px;margin:0 auto;padding:96px 32px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;align-items:baseline;gap:16px"><div style="font:500 12px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7;margin-bottom:0">02</div><div style="font:500 12px/1.4 'Gilroy',sans-serif;text-transform:uppercase;letter-spacing:.22em;color:#6b7280">Not another AI generator</div></div>
+    <div>
+      <h2 style="margin:0;max-width:22ch;font-family:'Clash Display',sans-serif;font-size:clamp(1.9rem,3.2vw,3rem);font-weight:600;line-height:1.06;letter-spacing:-.025em">A production system that remembers how your agency works.</h2>
+      <p style="margin:24px 0 0;max-width:62ch;font:400 18px/28px 'Gilroy',sans-serif;color:#374151;text-wrap:pretty">A chat remembers a conversation. CreativeOS remembers how your agency produces work for the brand.</p>
+      <div style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:56px 64px">
+        <div style="display:flex;flex-direction:column;gap:16px"><div><svg viewBox="0 0 280 120" style="display:block;width:100%;height:auto" aria-hidden="true">
+  <circle cx="60" cy="60" r="34" fill="rgba(88,41,199,.08)" stroke="#5829c7" stroke-width="1.6"></circle>
+  <circle cx="60" cy="60" r="22" fill="rgba(88,41,199,.10)" stroke="#5829c7" stroke-width="1.2" stroke-dasharray="3 5"></circle>
+  <text x="60" y="64" text-anchor="middle" style="font:600 10px 'Gilroy',sans-serif;letter-spacing:.8px" fill="#4c24ab">BRAND</text>
+  <path d="M96,50 C140,38 170,36 214,40" fill="none" stroke="#aab1bf" stroke-width="1.6" stroke-dasharray="3 6"></path>
+  <path d="M96,66 C140,72 170,76 214,72" fill="none" stroke="#aab1bf" stroke-width="1.6" stroke-dasharray="3 6"></path>
+  <rect x="216" y="28" width="46" height="22" rx="6" fill="#fff" stroke="#c3c9d4" stroke-width="1.4"></rect>
+  <rect x="216" y="62" width="46" height="22" rx="6" fill="#fff" stroke="#c3c9d4" stroke-width="1.4"></rect>
+  <circle cx="262" cy="39" r="4" fill="#5829c7"></circle>
+  <circle cx="262" cy="73" r="4" fill="#5829c7"></circle>
+</svg></div><div style="padding:0 8px"><div style="font:600 17px/24px 'Gilroy',sans-serif;color:#111827">Starts with context</div><p style="margin:8px 0 0;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280;text-wrap:pretty">Every generation begins from accumulated brand and production knowledge, not a blank prompt.</p></div></div>
+        <div style="display:flex;flex-direction:column;gap:16px"><div><svg viewBox="0 0 280 120" style="display:block;width:100%;height:auto" aria-hidden="true">
+  <rect x="20" y="14" width="72" height="20" rx="6" fill="rgba(88,41,199,.08)" stroke="#5829c7" stroke-width="1.4"></rect>
+  <text x="56" y="27" text-anchor="middle" style="font:600 9px 'Gilroy',sans-serif;letter-spacing:.8px" fill="#4c24ab">BRAND</text>
+  <path d="M56,34 L56,50 L120,50 L120,58" fill="none" stroke="#c3c9d4" stroke-width="1.4"></path>
+  <path d="M56,34 L56,50 L190,50 L190,58" fill="none" stroke="#c3c9d4" stroke-width="1.4"></path>
+  <rect x="88" y="58" width="64" height="18" rx="5" fill="#fff" stroke="#c3c9d4" stroke-width="1.4"></rect>
+  <text x="120" y="70" text-anchor="middle" style="font:500 8.5px 'Gilroy',sans-serif;letter-spacing:.6px" fill="#6b7280">CAMPAIGN</text>
+  <rect x="158" y="58" width="64" height="18" rx="5" fill="#fff" stroke="#c3c9d4" stroke-width="1.4"></rect>
+  <text x="190" y="70" text-anchor="middle" style="font:500 8.5px 'Gilroy',sans-serif;letter-spacing:.6px" fill="#6b7280">CAMPAIGN</text>
+  <path d="M120,76 L120,88 M104,88 L136,88 M104,88 L104,94 M136,88 L136,94" fill="none" stroke="#c3c9d4" stroke-width="1.3"></path>
+  <path d="M190,76 L190,88 M174,88 L206,88 M174,88 L174,94 M206,88 L206,94" fill="none" stroke="#c3c9d4" stroke-width="1.3"></path>
+  <circle cx="104" cy="99" r="4.5" fill="#5829c7"></circle><circle cx="136" cy="99" r="4.5" fill="#5829c7"></circle>
+  <circle cx="174" cy="99" r="4.5" fill="#5829c7"></circle><circle cx="206" cy="99" r="4.5" fill="#5829c7"></circle>
+</svg></div><div style="padding:0 8px"><div style="font:600 17px/24px 'Gilroy',sans-serif;color:#111827">Organised like your agency</div><p style="margin:8px 0 0;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280;text-wrap:pretty">Work lives under brands, campaigns, and assets — not scattered chats.</p></div></div>
+        <div style="display:flex;flex-direction:column;gap:16px"><div><svg viewBox="0 0 280 120" style="display:block;width:100%;height:auto" aria-hidden="true">
+  <path d="M24,60 C70,48 120,72 170,60 C200,53 226,56 248,60" fill="none" stroke="#aab1bf" stroke-width="1.8" stroke-dasharray="3 6"></path>
+  <circle cx="24" cy="60" r="5" fill="#fff" stroke="#aab1bf" stroke-width="1.8"></circle>
+  <circle cx="80" cy="55" r="5" fill="#fff" stroke="#aab1bf" stroke-width="1.8"></circle>
+  <circle cx="140" cy="64" r="5" fill="#fff" stroke="#aab1bf" stroke-width="1.8"></circle>
+  <circle cx="196" cy="57" r="5" fill="#fff" stroke="#aab1bf" stroke-width="1.8"></circle>
+  <circle cx="248" cy="60" r="8" fill="#5829c7"></circle>
+  <circle cx="248" cy="60" r="14" fill="none" stroke="rgba(88,41,199,.28)" stroke-width="2"></circle>
+  <text x="24" y="82" text-anchor="middle" style="font:500 8.5px 'Gilroy',sans-serif;letter-spacing:.6px" fill="#9ca3af">ATTEMPT 1</text>
+  <text x="140" y="86" text-anchor="middle" style="font:500 8.5px 'Gilroy',sans-serif;letter-spacing:.6px" fill="#9ca3af">EDITS</text>
+  <text x="248" y="86" text-anchor="middle" style="font:600 8.5px 'Gilroy',sans-serif;letter-spacing:.6px" fill="#4c24ab">APPROVED</text>
+</svg></div><div style="padding:0 8px"><div style="font:600 17px/24px 'Gilroy',sans-serif;color:#111827">Preserves the journey</div><p style="margin:8px 0 0;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280;text-wrap:pretty">Every attempt, edit, and approval stays attached to the asset that shipped.</p></div></div>
+        <div style="display:flex;flex-direction:column;gap:16px"><div><svg viewBox="0 0 280 120" style="display:block;width:100%;height:auto" aria-hidden="true">
+  <path d="M30,96 L86,96 L86,68 L142,68 L142,44 L198,44 L198,24 L254,24" fill="none" stroke="#5829c7" stroke-width="2"></path>
+  <path d="M30,96 L86,96 M86,96 L86,96" fill="none"></path>
+  <circle cx="86" cy="96" r="4.5" fill="#fff" stroke="#5829c7" stroke-width="1.8"></circle>
+  <circle cx="142" cy="68" r="4.5" fill="#fff" stroke="#5829c7" stroke-width="1.8"></circle>
+  <circle cx="198" cy="44" r="4.5" fill="#fff" stroke="#5829c7" stroke-width="1.8"></circle>
+  <circle cx="254" cy="24" r="7" fill="#5829c7"></circle>
+  <text x="58" y="110" text-anchor="middle" style="font:500 8.5px 'Gilroy',sans-serif;letter-spacing:.6px" fill="#9ca3af">CAMPAIGN 1</text>
+  <text x="114" y="82" text-anchor="middle" style="font:500 8.5px 'Gilroy',sans-serif;letter-spacing:.6px" fill="#9ca3af">CAMPAIGN 2</text>
+  <text x="170" y="58" text-anchor="middle" style="font:500 8.5px 'Gilroy',sans-serif;letter-spacing:.6px" fill="#9ca3af">CAMPAIGN 3</text>
+</svg></div><div style="padding:0 8px"><div style="font:600 17px/24px 'Gilroy',sans-serif;color:#111827">Improves the next cycle</div><p style="margin:8px 0 0;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280;text-wrap:pretty">Approved prompts, references, and settings carry into the next campaign.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="workflow" style="border-bottom:1px solid #e5e7eb;background-image:linear-gradient(to right,rgba(148,163,184,.03) 1px,transparent 1px),linear-gradient(to bottom,rgba(148,163,184,.025) 1px,transparent 1px);background-size:72px 72px">
+  <div style="max-width:1240px;margin:0 auto;padding:96px 32px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;align-items:baseline;gap:16px"><div style="font:500 12px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7;margin-bottom:0">03</div><div style="font:500 12px/1.4 'Gilroy',sans-serif;text-transform:uppercase;letter-spacing:.22em;color:#6b7280">From signal to approved asset</div></div>
+    <div>
+      <h2 style="margin:0;max-width:22ch;font-family:'Clash Display',sans-serif;font-size:clamp(1.9rem,3.2vw,3rem);font-weight:600;line-height:1.06;letter-spacing:-.025em">One connected workflow for reels and static posts.</h2>
+      <div style="margin-top:52px;border:1px solid #e5e7eb;border-radius:16px;background:#fff;padding:28px 16px;box-shadow:0 8px 20px rgba(11,15,25,.06)">
+        <svg viewBox="0 0 1080 420" style="display:block;width:100%;height:auto" aria-hidden="true">
+          <path d="M161,230 A74,74 0 0 1 235,156 L845,156 A74,74 0 0 1 919,230 Z" fill="rgba(150,136,192,.12)"></path>
+          <path d="M161,230 A74,74 0 0 0 235,304 L845,304 A74,74 0 0 0 919,230 Z" fill="rgba(88,41,199,.07)"></path>
+          <line x1="161" y1="230" x2="919" y2="230" stroke="#fff" stroke-width="5"></line>
+          <text x="540" y="203" text-anchor="middle" style="font:600 21px 'Clash Display',sans-serif;letter-spacing:.08em" fill="rgba(88,41,199,.20)">CREATE</text>
+          <text x="540" y="277" text-anchor="middle" style="font:600 21px 'Clash Display',sans-serif;letter-spacing:.08em" fill="rgba(88,41,199,.20)">LEARN</text>
+          <path d="M235,140 L845,140 A90,90 0 0 1 845,320 L235,320 A90,90 0 0 1 235,140 Z" fill="none" stroke="#5829c7" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 8" style="animation:cosray 6s linear infinite"></path>
+          <circle cx="250" cy="140" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+          <circle cx="450" cy="140" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+          <circle cx="650" cy="140" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+          <circle cx="845" cy="140" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+          <circle cx="660" cy="320" r="6" fill="#fff" stroke="#aab1bf" stroke-width="2"></circle>
+          <circle cx="400" cy="320" r="9" fill="#5829c7"></circle><circle cx="400" cy="320" r="15" fill="none" stroke="rgba(88,41,199,.28)" stroke-width="2"></circle>
+          <text x="250" y="46" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#4c24ab">01</text>
+          <text x="250" y="68" text-anchor="middle" style="font:600 11.5px 'Gilroy',sans-serif;letter-spacing:.8px" fill="#9ca3af">BEGIN WITH</text>
+          <text x="250" y="86" text-anchor="middle" style="font:600 11.5px 'Gilroy',sans-serif;letter-spacing:.8px" fill="#9ca3af">EXISTING CONTEXT</text>
+          <line x1="250" y1="98" x2="250" y2="124" stroke="#c3c9d4" stroke-width="1.4"></line>
+          <text x="450" y="46" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#4c24ab">02</text>
+          <text x="450" y="68" text-anchor="middle" style="font:600 11.5px 'Gilroy',sans-serif;letter-spacing:.8px" fill="#9ca3af">ADD A</text>
+          <text x="450" y="86" text-anchor="middle" style="font:600 11.5px 'Gilroy',sans-serif;letter-spacing:.8px" fill="#9ca3af">MARKET SIGNAL</text>
+          <line x1="450" y1="98" x2="450" y2="124" stroke="#c3c9d4" stroke-width="1.4"></line>
+          <text x="650" y="46" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#4c24ab">03</text>
+          <text x="650" y="68" text-anchor="middle" style="font:600 11.5px 'Gilroy',sans-serif;letter-spacing:.8px" fill="#9ca3af">EXPLORE CREATIVE</text>
+          <text x="650" y="86" text-anchor="middle" style="font:600 11.5px 'Gilroy',sans-serif;letter-spacing:.8px" fill="#9ca3af">DIRECTIONS</text>
+          <line x1="650" y1="98" x2="650" y2="124" stroke="#c3c9d4" stroke-width="1.4"></line>
+          <text x="845" y="46" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#4c24ab">04</text>
+          <text x="845" y="68" text-anchor="middle" style="font:600 11.5px 'Gilroy',sans-serif;letter-spacing:.8px" fill="#9ca3af">PRODUCE</text>
+          <text x="845" y="86" text-anchor="middle" style="font:600 11.5px 'Gilroy',sans-serif;letter-spacing:.8px" fill="#9ca3af">THE ASSET</text>
+          <line x1="845" y1="98" x2="845" y2="124" stroke="#c3c9d4" stroke-width="1.4"></line>
+          <text x="660" y="366" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#4c24ab">05</text>
+          <text x="660" y="388" text-anchor="middle" style="font:600 11.5px 'Gilroy',sans-serif;letter-spacing:.8px" fill="#9ca3af">REVIEW AND REFINE</text>
+          <text x="400" y="366" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#4c24ab">06</text>
+          <text x="400" y="388" text-anchor="middle" style="font:600 11.5px 'Gilroy',sans-serif;letter-spacing:.8px" fill="#9ca3af">REUSE WHAT WAS LEARNED</text>
+        </svg>
+      </div>
+      <div style="margin-top:36px;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 6px 16px rgba(11,15,25,.08)">
+        <div style="padding:14px 20px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:10px">
+          <span style="width:9px;height:9px;border-radius:50%;background:#e5e7eb"></span><span style="width:9px;height:9px;border-radius:50%;background:#e5e7eb"></span><span style="width:9px;height:9px;border-radius:50%;background:#e5e7eb"></span>
+          <span style="margin-left:8px;font:400 12px/1 'Gilroy',sans-serif;color:#9ca3af">The production canvas</span>
+        </div>
+        <div style="position:relative;height:560px;background:#f8f8fa">
+          <image-slot id="cos-workflow-canvas" shape="rect" fit="cover" placeholder="Drop a wide crop of the CreativeOS canvas"></image-slot>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-bottom:1px solid #e5e7eb;background:#fff">
+  <div style="max-width:1240px;margin:0 auto;padding:96px 32px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;align-items:baseline;gap:16px"><div style="font:500 12px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7;margin-bottom:0">04</div><div style="font:500 12px/1.4 'Gilroy',sans-serif;text-transform:uppercase;letter-spacing:.22em;color:#6b7280">Catch errors while they are cheap</div></div>
+    <div>
+      <h2 style="margin:0;max-width:22ch;font-family:'Clash Display',sans-serif;font-size:clamp(1.9rem,3.2vw,3rem);font-weight:600;line-height:1.06;letter-spacing:-.025em">Catch mistakes early, before they get expensive.</h2>
+      <p style="margin:24px 0 0;max-width:62ch;font:400 18px/28px 'Gilroy',sans-serif;color:#374151;text-wrap:pretty">The same mistake costs a few credits in an image — and a full batch in video. CreativeOS adds a senior review checkpoint before any video is generated.</p>
+      <div style="margin-top:44px;border:1px solid #e5e7eb;border-radius:16px;background:#fff;padding:26px 16px 6px;box-shadow:0 8px 20px rgba(11,15,25,.06)">
+        <svg viewBox="0 0 1080 380" style="display:block;width:100%;height:auto" aria-hidden="true">
+          <text x="320" y="34" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">IMAGE</text>
+          <line x1="320" y1="44" x2="320" y2="356" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+          <text x="600" y="34" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">SENIOR REVIEW</text>
+          <line x1="600" y1="44" x2="600" y2="356" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+          <text x="880" y="34" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">VIDEO</text>
+          <line x1="880" y1="44" x2="880" y2="356" stroke="#c3c9d4" stroke-width="1.2" stroke-dasharray="2 7" opacity=".65"></line>
+
+          <text x="46" y="118" style="font:500 13px 'Gilroy',sans-serif" fill="#8a2e18">Without a</text>
+          <text x="46" y="136" style="font:500 13px 'Gilroy',sans-serif" fill="#8a2e18">checkpoint</text>
+          <path d="M160,130 C220,122 270,136 320,130 C420,120 500,138 600,130 C700,122 780,138 828,132" fill="none" stroke="#aab1bf" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="3 8"></path>
+          <circle cx="320" cy="130" r="7" fill="#f04e28"></circle>
+          <text x="320" y="106" text-anchor="middle" style="font:500 11px 'Gilroy',sans-serif" fill="#8a2e18">flaw slips through</text>
+          <circle cx="600" cy="130" r="6" fill="#fff" stroke="#c3c9d4" stroke-width="2" stroke-dasharray="2 3"></circle>
+          <text x="600" y="158" text-anchor="middle" style="font:500 11px 'Gilroy',sans-serif" fill="#9ca3af">no review</text>
+          <circle cx="880" cy="130" r="26" fill="rgba(240,78,40,.12)" stroke="#f04e28" stroke-width="2"></circle>
+          <path d="M870,120 L890,140 M890,120 L870,140" stroke="#f04e28" stroke-width="2.4" stroke-linecap="round"></path>
+          <text x="880" y="86" text-anchor="middle" style="font:600 11px 'Gilroy',sans-serif" fill="#8a2e18">4 videos rejected</text>
+          <path d="M880,160 C880,208 560,190 330,150" fill="none" stroke="#f04e28" stroke-width="1.6" stroke-dasharray="4 6" opacity=".6"></path>
+          <path d="M342,157 L328,149 L344,143" fill="none" stroke="#f04e28" stroke-width="1.6" opacity=".6" stroke-linecap="round" stroke-linejoin="round"></path>
+          <text x="620" y="212" text-anchor="middle" style="font:500 11px 'Gilroy',sans-serif" fill="#b45309" opacity=".9">fix the image, regenerate everything</text>
+
+          <line x1="60" y1="248" x2="1020" y2="248" stroke="#e5e7eb" stroke-width="1"></line>
+
+          <text x="46" y="296" style="font:500 13px 'Gilroy',sans-serif" fill="#4c24ab">With</text>
+          <text x="46" y="314" style="font:500 13px 'Gilroy',sans-serif" fill="#4c24ab">CreativeOS</text>
+          <path d="M160,308 C220,300 270,314 320,308 C420,298 500,316 600,308" fill="none" stroke="#aab1bf" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="3 8"></path>
+          <circle cx="320" cy="308" r="7" fill="#f04e28"></circle>
+          <text x="320" y="284" text-anchor="middle" style="font:500 11px 'Gilroy',sans-serif" fill="#6b7280">same flaw</text>
+          <circle cx="600" cy="308" r="13" fill="#5829c7"></circle>
+          <circle cx="600" cy="308" r="20" fill="none" stroke="rgba(88,41,199,.28)" stroke-width="2"></circle>
+          <path d="M594,308 L599,313 L607,303" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <text x="600" y="344" text-anchor="middle" style="font:600 11px 'Gilroy',sans-serif" fill="#4c24ab">caught + corrected here</text>
+          <path d="M620,304 C700,296 780,312 866,308" fill="none" stroke="#5829c7" stroke-width="2.4" stroke-linecap="round"></path>
+          <circle cx="880" cy="308" r="9" fill="#5829c7"></circle>
+          <circle cx="880" cy="308" r="15" fill="none" stroke="rgba(88,41,199,.28)" stroke-width="2"></circle>
+          <text x="880" y="284" text-anchor="middle" style="font:600 11px 'Gilroy',sans-serif" fill="#4c24ab">1 approved video</text>
+        </svg>
+      </div>
+      <div style="margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div style="border-top:2px solid #5829c7;padding-top:18px"><div style="font-family:'Clash Display',sans-serif;font-size:44px;font-weight:600;line-height:1;letter-spacing:-.02em;color:#111827">2x</div><p style="margin:8px 0 0;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280">reduction in production cost</p></div>
+        <div style="border-top:2px solid #5829c7;padding-top:18px"><div style="font-family:'Clash Display',sans-serif;font-size:44px;font-weight:600;line-height:1;letter-spacing:-.02em;color:#111827">75%</div><p style="margin:8px 0 0;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280">less production time</p></div>
+      </div>
+      <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:10px">
+        <span style="display:inline-flex;align-items:center;font:500 13px/1.4 'Gilroy',sans-serif;color:#374151;background:#f8f8fa;border:1px solid #e5e7eb;border-radius:999px;padding:9px 15px">Catch product errors early</span>
+        <span style="display:inline-flex;align-items:center;font:500 13px/1.4 'Gilroy',sans-serif;color:#374151;background:#f8f8fa;border:1px solid #e5e7eb;border-radius:999px;padding:9px 15px">Protect video credits</span>
+        <span style="display:inline-flex;align-items:center;font:500 13px/1.4 'Gilroy',sans-serif;color:#374151;background:#f8f8fa;border:1px solid #e5e7eb;border-radius:999px;padding:9px 15px">Senior oversight at the right stage</span>
+        <span style="display:inline-flex;align-items:center;font:500 13px/1.4 'Gilroy',sans-serif;color:#374151;background:#f8f8fa;border:1px solid #e5e7eb;border-radius:999px;padding:9px 15px">Corrections stay visible to the team</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<section style="border-bottom:1px solid #e5e7eb;background:#fff">
+  <div style="max-width:1240px;margin:0 auto;padding:96px 32px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;align-items:baseline;gap:16px"><div style="font:500 12px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7;margin-bottom:0">05</div><div style="font:500 12px/1.4 'Gilroy',sans-serif;text-transform:uppercase;letter-spacing:.22em;color:#6b7280">Connected to what is changing</div></div>
+    <div>
+      <h2 style="margin:0;max-width:22ch;font-family:'Clash Display',sans-serif;font-size:clamp(1.9rem,3.2vw,3rem);font-weight:600;line-height:1.06;letter-spacing:-.025em">Turn market signals into brand-relevant creative directions.</h2>
+      <p style="margin:24px 0 0;max-width:62ch;font:400 18px/28px 'Gilroy',sans-serif;color:#374151;text-wrap:pretty">From "this format is trending" to "here is how it works for this brand."</p>
+      <div style="margin-top:44px;border:1px solid #e5e7eb;border-radius:16px;background:linear-gradient(135deg,#ffffff 0%,#fcfcfd 60%,#f7f5fc 100%);padding:20px 16px 8px;box-shadow:0 8px 20px rgba(11,15,25,.06);overflow:hidden">
+        <svg viewBox="0 0 1080 360" style="display:block;width:100%;height:auto" aria-hidden="true">
+          <defs>
+            <radialGradient id="cosLensGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#5829c7" stop-opacity=".16"></stop>
+              <stop offset="1" stop-color="#5829c7" stop-opacity="0"></stop>
+            </radialGradient>
+            <linearGradient id="cosLensFill" x1="0" y1="70" x2="0" y2="290" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".92"></stop>
+              <stop offset=".5" stop-color="#e9e4f6" stop-opacity=".85"></stop>
+              <stop offset="1" stop-color="#ffffff" stop-opacity=".92"></stop>
+            </linearGradient>
+            <linearGradient id="cosBeam" x1="560" y1="0" x2="880" y2="0" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#9688c0"></stop>
+              <stop offset="1" stop-color="#5829c7"></stop>
+            </linearGradient>
+          </defs>
+          <text x="128" y="28" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#b6bcc7">MARKET SIGNALS</text>
+          <text x="226" y="60" text-anchor="end" style="font:600 11px 'Gilroy',sans-serif;letter-spacing:1px" fill="#b6bcc7">TRENDING FORMAT</text>
+<text x="226" y="123" text-anchor="end" style="font:600 11px 'Gilroy',sans-serif;letter-spacing:1px" fill="#b6bcc7">COMPETITOR PATTERN</text>
+<text x="226" y="186" text-anchor="end" style="font:600 11px 'Gilroy',sans-serif;letter-spacing:1px" fill="#b6bcc7">SEASONAL MOMENT</text>
+<text x="226" y="249" text-anchor="end" style="font:600 11px 'Gilroy',sans-serif;letter-spacing:1px" fill="#b6bcc7">AUDIENCE SHIFT</text>
+<text x="226" y="312" text-anchor="end" style="font:600 11px 'Gilroy',sans-serif;letter-spacing:1px" fill="#b6bcc7">PAST PERFORMANCE</text>
+
+          <path d="M240,56 C380,56 460,130.4 534,160.16" fill="none" stroke="#d5d9e0" stroke-width="1.6" stroke-linecap="round"></path>
+<path d="M240,56 C380,56 460,130.4 534,160.16" fill="none" stroke="#9688c0" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="6 130" style="animation:cosray 3.6s linear infinite;animation-delay:0s"></path>
+<path d="M240,119 C380,119 460,155.6 534,170.24" fill="none" stroke="#d5d9e0" stroke-width="1.6" stroke-linecap="round"></path>
+<path d="M240,119 C380,119 460,155.6 534,170.24" fill="none" stroke="#9688c0" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="6 130" style="animation:cosray 3.6s linear infinite;animation-delay:0.7s"></path>
+<path d="M240,182 C380,182 460,180.8 534,180.32" fill="none" stroke="#d5d9e0" stroke-width="1.6" stroke-linecap="round"></path>
+<path d="M240,182 C380,182 460,180.8 534,180.32" fill="none" stroke="#9688c0" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="6 130" style="animation:cosray 3.6s linear infinite;animation-delay:1.4s"></path>
+<path d="M240,245 C380,245 460,206 534,190.4" fill="none" stroke="#d5d9e0" stroke-width="1.6" stroke-linecap="round"></path>
+<path d="M240,245 C380,245 460,206 534,190.4" fill="none" stroke="#9688c0" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="6 130" style="animation:cosray 3.6s linear infinite;animation-delay:2.1s"></path>
+<path d="M240,308 C380,308 460,231.2 534,200.48" fill="none" stroke="#d5d9e0" stroke-width="1.6" stroke-linecap="round"></path>
+<path d="M240,308 C380,308 460,231.2 534,200.48" fill="none" stroke="#9688c0" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="6 130" style="animation:cosray 3.6s linear infinite;animation-delay:2.8s"></path>
+
+          <circle cx="240" cy="56" r="4.5" fill="#fff" stroke="#c3c9d4" stroke-width="1.8"></circle>
+<circle cx="240" cy="119" r="4.5" fill="#fff" stroke="#c3c9d4" stroke-width="1.8"></circle>
+<circle cx="240" cy="182" r="4.5" fill="#fff" stroke="#c3c9d4" stroke-width="1.8"></circle>
+<circle cx="240" cy="245" r="4.5" fill="#fff" stroke="#c3c9d4" stroke-width="1.8"></circle>
+<circle cx="240" cy="308" r="4.5" fill="#fff" stroke="#c3c9d4" stroke-width="1.8"></circle>
+
+          <ellipse cx="560" cy="180" rx="90" ry="150" fill="url(#cosLensGlow)"></ellipse>
+          <ellipse cx="560" cy="180" rx="32" ry="110" fill="url(#cosLensFill)" stroke="#5829c7" stroke-width="2"></ellipse>
+          <path d="M548,112 C540,150 540,210 548,248" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="3" stroke-linecap="round" opacity=".8"></path>
+          <ellipse cx="560" cy="180" rx="32" ry="110" fill="rgba(88,41,199,.06)" style="animation:cosglow 4s ease-in-out infinite;transform-origin:560px 180px"></ellipse>
+          <path d="M534,160.2 L588,180" stroke="rgba(88,41,199,.35)" stroke-width="1.4" stroke-linecap="round"></path>
+          <path d="M534,170.2 L588,180" stroke="rgba(88,41,199,.35)" stroke-width="1.4" stroke-linecap="round"></path>
+          <path d="M534,180.3 L588,180" stroke="rgba(88,41,199,.35)" stroke-width="1.4" stroke-linecap="round"></path>
+          <path d="M534,190.4 L588,180" stroke="rgba(88,41,199,.35)" stroke-width="1.4" stroke-linecap="round"></path>
+          <path d="M534,200.5 L588,180" stroke="rgba(88,41,199,.35)" stroke-width="1.4" stroke-linecap="round"></path>
+          <text x="560" y="30" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#4c24ab">BRAND CONTEXT</text>
+          <path d="M584,180 C700,180 780,180 858,180" fill="none" stroke="url(#cosBeam)" stroke-width="2.6" stroke-linecap="round"></path>
+          <path d="M584,180 C700,180 780,180 858,180" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="10 70" style="animation:cosbeam 2.4s linear infinite" opacity=".9"></path>
+          <circle cx="872" cy="180" r="9" fill="#5829c7"></circle>
+          <circle cx="872" cy="180" r="16" fill="none" stroke="rgba(88,41,199,.30)" stroke-width="2" style="animation:cosglow 3s ease-in-out infinite;transform-origin:872px 180px"></circle>
+          <text x="872" y="140" text-anchor="middle" style="font:600 12px 'Gilroy',sans-serif;letter-spacing:1px" fill="#4c24ab">ONE SHARP DIRECTION</text>
+          <text x="872" y="226" text-anchor="middle" style="font:500 12px 'Gilroy',sans-serif" fill="#6b7280">fits the brand and the moment</text>
+        </svg>
+      </div>
+      <p style="margin:24px 0 0;font:400 14px/21px 'Gilroy',sans-serif;color:#6b7280">Every signal keeps its source and date. Directions are informed by signals — not promised winners.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section style="border-bottom:1px solid #e5e7eb;background:#fff">
+  <div style="max-width:1240px;margin:0 auto;padding:96px 32px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;align-items:baseline;gap:16px"><div style="font:500 12px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7;margin-bottom:0">06</div><div style="font:500 12px/1.4 'Gilroy',sans-serif;text-transform:uppercase;letter-spacing:.22em;color:#6b7280">Pilot CreativeOS with one D2C brand</div></div>
+    <div>
+      <h2 style="margin:0;max-width:22ch;font-family:'Clash Display',sans-serif;font-size:clamp(1.9rem,3.2vw,3rem);font-weight:600;line-height:1.06;letter-spacing:-.025em">Measure the production difference on your own workflow.</h2>
+      <div style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:24px 48px">
+        <div style="display:flex;gap:16px;align-items:flex-start"><span style="flex:none;width:30px;height:30px;border-radius:999px;background:#fff;border:1px solid #d1d5db;display:flex;align-items:center;justify-content:center;font:600 12px/1 'Gilroy',sans-serif;color:#374151">1</span><p style="margin:4px 0 0;font:400 15px/23px 'Gilroy',sans-serif;color:#374151">Select one active D2C client.</p></div>
+        <div style="display:flex;gap:16px;align-items:flex-start"><span style="flex:none;width:30px;height:30px;border-radius:999px;background:#fff;border:1px solid #d1d5db;display:flex;align-items:center;justify-content:center;font:600 12px/1 'Gilroy',sans-serif;color:#374151">4</span><p style="margin:4px 0 0;font:400 15px/23px 'Gilroy',sans-serif;color:#374151">Produce a defined batch of assets.</p></div>
+        <div style="display:flex;gap:16px;align-items:flex-start"><span style="flex:none;width:30px;height:30px;border-radius:999px;background:#fff;border:1px solid #d1d5db;display:flex;align-items:center;justify-content:center;font:600 12px/1 'Gilroy',sans-serif;color:#374151">2</span><p style="margin:4px 0 0;font:400 15px/23px 'Gilroy',sans-serif;color:#374151">Import its brand and product context.</p></div>
+        <div style="display:flex;gap:16px;align-items:flex-start"><span style="flex:none;width:30px;height:30px;border-radius:999px;background:#fff;border:1px solid #d1d5db;display:flex;align-items:center;justify-content:center;font:600 12px/1 'Gilroy',sans-serif;color:#374151">5</span><p style="margin:4px 0 0;font:400 15px/23px 'Gilroy',sans-serif;color:#374151">Compare time, attempts, cost, and review cycles with your current process.</p></div>
+        <div style="display:flex;gap:16px;align-items:flex-start"><span style="flex:none;width:30px;height:30px;border-radius:999px;background:#fff;border:1px solid #d1d5db;display:flex;align-items:center;justify-content:center;font:600 12px/1 'Gilroy',sans-serif;color:#374151">3</span><p style="margin:4px 0 0;font:400 15px/23px 'Gilroy',sans-serif;color:#374151">Choose a recurring reel or static-post workflow.</p></div>
+        <div style="display:flex;gap:16px;align-items:flex-start"><span style="flex:none;width:30px;height:30px;border-radius:999px;background:#fff;border:1px solid #d1d5db;display:flex;align-items:center;justify-content:center;font:600 12px/1 'Gilroy',sans-serif;color:#374151">6</span><p style="margin:4px 0 0;font:400 15px/23px 'Gilroy',sans-serif;color:#374151">Review the findings together.</p></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:32px">
+        <a href="CreativeOS%20Pilot.dc.html" style="display:inline-flex;align-items:center;gap:8px;background:#5829c7;color:#fff;padding:15px 26px;border-radius:12px;font:500 15px/1 'Gilroy',sans-serif;white-space:nowrap" style-hover="background:#4c24ab">Apply for a Pilot
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"></path></svg>
+        </a>
+        <span style="font:400 15px/22px 'Gilroy',sans-serif;color:#6b7280">Best suited to agencies producing recurring reels and static posts for D2C clients.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-bottom:1px solid #e5e7eb">
+  <div style="max-width:1240px;margin:0 auto;padding:96px 32px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;align-items:baseline;gap:16px"><div style="font:500 12px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7;margin-bottom:0">07</div><div style="font:500 12px/1.4 'Gilroy',sans-serif;text-transform:uppercase;letter-spacing:.22em;color:#6b7280">Questions</div></div>
+    <div style="display:flex;flex-direction:column;gap:1px;background:#e5e7eb;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden">
+      <details style="background:#fff"><summary style="padding:22px 26px;font:600 16px/24px 'Gilroy',sans-serif;color:#111827">Is this an image or video generator?</summary><p style="margin:0;padding:0 26px 22px;max-width:70ch;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280">CreativeOS is the production layer around generation. It brings brand context, references, market signals, prompts, controls, attempts, and approvals into one connected workflow.</p></details>
+      <details style="background:#fff"><summary style="padding:22px 26px;font:600 16px/24px 'Gilroy',sans-serif;color:#111827">Does CreativeOS replace our existing models?</summary><p style="margin:0;padding:0 26px 22px;max-width:70ch;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280">Not necessarily. It can coordinate the models used by the agency while preserving the production context around their outputs.</p></details>
+      <details style="background:#fff"><summary style="padding:22px 26px;font:600 16px/24px 'Gilroy',sans-serif;color:#111827">Does it automatically create finished reels?</summary><p style="margin:0;padding:0 26px 22px;max-width:70ch;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280">The initial product focuses on producing the prompts, images, frames, and video clips required for reels. Final timeline editing, audio syncing, and reel assembly remain in your existing editing software.</p></details>
+      <details style="background:#fff"><summary style="padding:22px 26px;font:600 16px/24px 'Gilroy',sans-serif;color:#111827">How does it learn from our work?</summary><p style="margin:0;padding:0 26px 22px;max-width:70ch;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280">It captures reusable production information such as prompts, controls, references, edits, approved attempts, and rejected directions. This is not foundation-model training.</p></details>
+      <details style="background:#fff"><summary style="padding:22px 26px;font:600 16px/24px 'Gilroy',sans-serif;color:#111827">How is it connected to market trends?</summary><p style="margin:0;padding:0 26px 22px;max-width:70ch;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280">CreativeOS brings current D2C category, format, competitor, and cultural signals into creative planning. Each signal carries its source and freshness.</p></details>
+      <details style="background:#fff"><summary style="padding:22px 26px;font:600 16px/24px 'Gilroy',sans-serif;color:#111827">Does it guarantee better-performing content?</summary><p style="margin:0;padding:0 26px 22px;max-width:70ch;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280">No. Market and production context can improve relevance and reduce production waste, but campaign performance depends on media, audience, offer, creative quality, and other factors.</p></details>
+      <details style="background:#fff"><summary style="padding:22px 26px;font:600 16px/24px 'Gilroy',sans-serif;color:#111827">Is one client's information isolated from another?</summary><p style="margin:0;padding:0 26px 22px;max-width:70ch;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280">Each client has a separate brand workspace and context boundary. Stronger security claims will be published once the underlying controls are implemented.</p></details>
+      <details style="background:#fff"><summary style="padding:22px 26px;font:600 16px/24px 'Gilroy',sans-serif;color:#111827">Will designers lose control?</summary><p style="margin:0;padding:0 26px 22px;max-width:70ch;font:400 15px/23px 'Gilroy',sans-serif;color:#6b7280">No. Designers select directions, references, controls, edits, and approved outputs. CreativeOS reduces repeated setup and context reconstruction.</p></details>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fcfcfd">
+  <div style="max-width:1240px;margin:0 auto;padding:112px 32px 120px">
+    <div style="max-width:780px">
+      <h2 style="margin:0;font-family:'Clash Display',sans-serif;font-size:clamp(1.9rem,3.2vw,3rem);font-weight:600;line-height:1.06;letter-spacing:-.025em">Your next D2C creative should not start from zero.</h2>
+      <p style="margin:22px 0 0;font:400 18px/28px 'Gilroy',sans-serif;color:#374151;text-wrap:pretty">Pilot with one brand. Measure time, retries, and cost against your current process.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:34px">
+        <a href="CreativeOS%20Pilot.dc.html" style="display:inline-flex;align-items:center;gap:8px;background:#5829c7;color:#fff;padding:15px 26px;border-radius:12px;font:500 15px/1 'Gilroy',sans-serif;white-space:nowrap" style-hover="background:#4c24ab">Apply for a Pilot
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"></path></svg>
+        </a>
+        <a href="mailto:studios@yuvabe.com?subject=CreativeOS%20product%20walkthrough" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#111827;border:1px solid #d1d5db;padding:15px 26px;border-radius:12px;font:500 15px/1 'Gilroy',sans-serif;white-space:nowrap" style-hover="background:#f8f8fa">Book a Product Walkthrough</a>
+      </div>
+      <p style="margin:24px 0 0;font:400 14px/21px 'Gilroy',sans-serif;color:#6b7280">For high-volume D2C agencies producing recurring reels and static posts.</p>
+    </div>
+  </div>
+</section>
+
+<footer style="background-color:#140f2b;background-image:linear-gradient(180deg,#1a1237 0%,#0f0c22 100%)">
+  <div style="max-width:1240px;margin:0 auto;padding:64px 32px 48px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <span style="display:block;width:10px;height:10px;border-radius:3px;background:#5829c7"></span>
+        <span style="font:500 19px/1 'Clash Display',sans-serif;letter-spacing:-.02em;color:#fff">CreativeOS</span>
+      </div>
+      <p style="margin:0 0 24px;max-width:34ch;font:400 14px/21px 'Gilroy',sans-serif;color:rgba(255,255,255,.55)">A market-connected creative production system for high-volume D2C agencies.</p>
+      <img src="assets/yuvabe-logo.png" alt="Yuvabe Studios" style="display:block;height:28px;width:auto;filter:invert(1) brightness(2);opacity:.8">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:500 12px/1 'Gilroy',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:4px">Product</div>
+      <a href="CreativeOS%20Product.dc.html" style="font:400 14px/1 'Gilroy',sans-serif;color:rgba(255,255,255,.75)">Product</a>
+      <a href="CreativeOS%20Home.dc.html#workflow" style="font:400 14px/1 'Gilroy',sans-serif;color:rgba(255,255,255,.75)">Reels</a>
+      <a href="CreativeOS%20Home.dc.html#workflow" style="font:400 14px/1 'Gilroy',sans-serif;color:rgba(255,255,255,.75)">Static posts</a>
+      <a href="CreativeOS%20Product.dc.html#market" style="font:400 14px/1 'Gilroy',sans-serif;color:rgba(255,255,255,.75)">Market intelligence</a>
+      <a href="CreativeOS%20Product.dc.html#learning" style="font:400 14px/1 'Gilroy',sans-serif;color:rgba(255,255,255,.75)">Production learning</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:500 12px/1 'Gilroy',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:4px">Company</div>
+      <a href="https://yuvabe.com" style="font:400 14px/1 'Gilroy',sans-serif;color:rgba(255,255,255,.75)">Yuvabe Studios</a>
+      <a href="CreativeOS%20Pilot.dc.html" style="font:400 14px/1 'Gilroy',sans-serif;color:rgba(255,255,255,.75)">Pilot programme</a>
+      <a href="mailto:studios@yuvabe.com" style="font:400 14px/1 'Gilroy',sans-serif;color:rgba(255,255,255,.75)">Contact</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:500 12px/1 'Gilroy',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:4px">Legal</div>
+      <a href="mailto:studios@yuvabe.com?subject=Privacy" style="font:400 14px/1 'Gilroy',sans-serif;color:rgba(255,255,255,.75)">Privacy</a>
+      <a href="mailto:studios@yuvabe.com?subject=Terms" style="font:400 14px/1 'Gilroy',sans-serif;color:rgba(255,255,255,.75)">Terms</a>
+      <a href="mailto:studios@yuvabe.com?subject=Data%20processing" style="font:400 14px/1 'Gilroy',sans-serif;color:rgba(255,255,255,.75)">Data processing</a>
+    </div>
+  </div>
+  <div style="max-width:1240px;margin:0 auto;padding:0 32px 40px">
+    <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font:400 13px/1 'Gilroy',sans-serif;color:rgba(255,255,255,.4)">© 2026 Yuvabe Studios. Auroville, India.</div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
