@@ -344,6 +344,59 @@
   }
 }
 
+/* Long-form prose for the legal pages. The marketing page has no body-copy
+   treatment to borrow, so this defines one: a 70ch measure, Clash Display for
+   headings, and enough vertical rhythm that a dense policy stays readable. */
+@layer components {
+  .legal-prose {
+    @apply text-[16px] leading-[27px] text-ink-muted;
+  }
+  .legal-prose > * + * {
+    @apply mt-5;
+  }
+  .legal-prose h2 {
+    @apply font-display mt-14 mb-0 scroll-mt-28 text-[26px] leading-[1.15] font-semibold tracking-[-0.02em] text-ink;
+  }
+  .legal-prose h3 {
+    @apply mt-9 mb-0 text-[17px] leading-6 font-semibold text-ink;
+  }
+  .legal-prose p {
+    @apply max-w-[70ch];
+  }
+  .legal-prose ul,
+  .legal-prose ol {
+    @apply max-w-[70ch] space-y-2.5 pl-0;
+  }
+  .legal-prose li {
+    @apply relative pl-6;
+  }
+  .legal-prose ul > li::before {
+    @apply absolute top-[11px] left-1 size-1.5 rounded-full bg-purple/40 content-[''];
+  }
+  .legal-prose ol {
+    @apply list-decimal pl-6;
+  }
+  .legal-prose ol > li {
+    @apply pl-1;
+  }
+  .legal-prose a {
+    @apply text-purple underline underline-offset-2 hover:text-purple-deep;
+  }
+  .legal-prose strong {
+    @apply font-semibold text-ink;
+  }
+  /* Definition-style rows used for the Meta permission table. */
+  .legal-prose dl {
+    @apply max-w-[70ch] space-y-4 rounded-[16px] border border-line bg-white p-6;
+  }
+  .legal-prose dt {
+    @apply font-mono text-[14px] font-semibold text-purple-deep;
+  }
+  .legal-prose dd {
+    @apply mt-1 ml-0;
+  }
+}
+
 /* The diagrams are decorative; motion in them is never load-bearing. */
 @media (prefers-reduced-motion: reduce) {
   [data-signal-flow] * {

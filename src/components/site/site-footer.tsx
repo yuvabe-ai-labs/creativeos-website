@@ -25,12 +25,11 @@ const COLUMNS = [
   {
     heading: "Legal",
     links: [
-      { label: "Privacy", href: "mailto:studios@yuvabe.com?subject=Privacy" },
-      { label: "Terms", href: "mailto:studios@yuvabe.com?subject=Terms" },
-      {
-        label: "Data processing",
-        href: "mailto:studios@yuvabe.com?subject=Data%20processing",
-      },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms & Conditions", href: "/terms" },
+      // Meta App Review looks for a reachable deletion route from the policy;
+      // this shortcut points at the section that documents it.
+      { label: "Data deletion", href: "/privacy#deletion" },
     ],
   },
 ];
