@@ -105,6 +105,13 @@
     stroke-dashoffset: -90;
   }
 }
+/* Portrait rays travel further than the wide ones, so they need their own
+   period: dasharray "6 300" sums to 306, which is what this must travel. */
+@keyframes cosraytall {
+  to {
+    stroke-dashoffset: -306;
+  }
+}
 @keyframes cosripple {
   0%,
   28% {
@@ -117,6 +124,25 @@
   }
   100% {
     transform: scale(24);
+    opacity: 0;
+  }
+}
+/* The wide hero's ripple lives in an overflow-clipped HTML box, so scaling to
+   24 is invisible past the edge. Inside a portrait SVG viewBox there is no such
+   clip — a 24x ring becomes two huge arcs across the drawing. This is the same
+   effect at a scale that stays inside the canvas. */
+@keyframes cosripplesm {
+  0%,
+  28% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  34% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(4.2);
     opacity: 0;
   }
 }

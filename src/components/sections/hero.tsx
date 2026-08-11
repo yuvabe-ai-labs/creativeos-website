@@ -1,4 +1,7 @@
-import { HeroSignalFlow } from "@/components/diagrams/hero-signal-flow";
+import {
+  HeroSignalFlow,
+  HeroSignalFlowPortrait,
+} from "@/components/diagrams/hero-signal-flow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { CtaLink } from "@/components/site/cta-link";
 
@@ -80,7 +83,29 @@ export function Hero() {
           </RevealItem>
         </RevealGroup>
 
-        {/* Hidden below 1080px in the source — the diagram needs the width to read. */}
+        {/* Portrait — the canonical drawing, and what most readers see. */}
+        <Reveal
+          delay={0.2}
+          className="w-full max-w-[420px] justify-self-center hero:hidden"
+        >
+          <div data-signal-flow className="relative">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 opacity-40"
+              style={{
+                backgroundImage:
+                  "radial-gradient(rgba(148,163,184,.28) 1px, transparent 1px)",
+                backgroundSize: "26px 26px",
+              }}
+            />
+            <HeroSignalFlowPortrait />
+          </div>
+          <div className="mt-3 text-center text-[10px] leading-[1.5] font-semibold tracking-[1.4px] text-ink-faint">
+            EVERYTHING THE AGENCY KNOWS, IN EVERY ASSET
+          </div>
+        </Reveal>
+
+        {/* Wide — the enhancement, from 1081px up. */}
         <Reveal
           delay={0.2}
           className="relative hidden min-h-[560px] w-full max-w-[560px] justify-self-end hero:block"

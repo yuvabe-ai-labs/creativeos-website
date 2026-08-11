@@ -37,18 +37,34 @@ coherent.
 
 ## 1.2 Canvas and scale
 
-Diagrams are authored in a fixed `viewBox` and scaled to fit. Use one of these
-three canvases — do not invent a new width.
+> ## Mobile first
+>
+> **The portrait drawing is the diagram. The wide drawing is the enhancement.**
+>
+> Most of this site is read on a phone. A diagram that only works at 1140px is a
+> diagram most readers never see — and since the diagrams carry the argument,
+> that means most readers never get the argument.
+>
+> Draw the portrait version first, get it right, and only then decide what the
+> extra width buys. Not the other way round.
 
-| Canvas | `viewBox` | Use |
+Diagrams are authored in a fixed `viewBox` and scaled to fit. Use one of these
+canvases — do not invent a new width.
+
+| Canvas | `viewBox` | Role |
 | :--- | :--- | :--- |
-| **Inline glyph** | `0 0 280 120` | Sits beside a paragraph in a feature grid |
-| **Section** | `0 0 1080 <340–420>` | Full-width diagram inside a bordered frame |
+| **Portrait** | `0 0 390 <320–620>` | **The canonical drawing.** Start here. |
+| **Inline glyph** | `0 0 280 120` | Small enough to work everywhere unchanged |
+| **Section** | `0 0 1080 <340–420>` | The wide enhancement |
 | **Slide** | `0 0 1560 560` | Sales deck, 1920px stage |
 
-Height varies with content; width does not. The section canvas is 1080 units
-wide because it renders at roughly 1140px inside the 1240px measure — close
-enough to 1:1 that a unit reads as a pixel.
+Height varies with content; width does not.
+
+Both primary canvases render close to 1:1 — the portrait canvas at ~390px on a
+phone, the section canvas at ~1140px inside the 1240px measure. That is the most
+useful property of the system: **font sizes port between them unchanged**, so
+11–13px stays 11–13px in both. Do not pick a canvas width far from the viewport
+width it renders at, or this breaks.
 
 > **This is why type sizes look small in the source.** A `fontSize: "12px"` in a
 > 1080-unit canvas renders at about 12.7 CSS px. Never "fix" these numbers by
@@ -238,67 +254,63 @@ signals, one asset" reading. Never round these.
 </div>
 ```
 
-## 1.9 Mobile
+## 1.9 Portrait first, then widen
 
-> **Status:** specified here, **not yet built.** What currently ships is the
-> horizontal-scroll fallback from §1.2. That is a stopgap, not a design — a
-> reader on a phone gets a diagram they must drag sideways to read, and the hero
-> diagram is hidden from them entirely. Treat this section as the spec to
-> implement, not a description of the site today.
+> **Status:** the principle below is settled; the portrait drawings are being
+> built in place, diagram by diagram. Where a portrait variant does not exist
+> yet, the wide drawing scrolls sideways — a stopgap, not a design. The build
+> status table at the end of Part 2 tracks which is which.
 
 ### The principle
 
-Every diagram in this system reads **left → right**: inputs, then a boundary,
-then one output. A phone is a tall, narrow, vertically-scrolling surface.
+A phone is a tall, narrow, vertically-scrolling surface, and it is where most of
+this site is read. So the diagram is drawn **top → bottom**: inputs, then a
+boundary, then one output, descending the way the reader is already moving.
 
-> **Rotate the narrative axis; do not scale the canvas.**
-> Desktop reads left → right. Mobile reads top → bottom.
+> **Draw portrait. Widen by rotating the axis, never by scaling the canvas.**
+> Portrait reads top → bottom. Wide reads left → right.
 
-Shrinking a 1080-unit diagram to 390 units makes 12px type render at 4px. Every
-attempt to fix that by enlarging the type breaks the layout, because the
-proportions were drawn for a wide canvas. The only treatment that survives
-contact with a phone is a redraw on a portrait canvas.
+The wide version is the same idea turned on its side, with room for more. It is
+not a different diagram, and the portrait one is not a compromised version of
+it.
 
-### Canvases
-
-| Canvas | `viewBox` | Renders at |
-| :--- | :--- | :--- |
-| **Mobile portrait** | `0 0 390 <320–620>` | ~390px — effectively 1:1 |
-| **Inline glyph** | `0 0 280 120` | Unchanged — already works on mobile |
-
-The 1080 section canvas renders at ~1140px and the 390 mobile canvas at ~390px.
-Both are close enough to 1:1 that **font sizes port between them unchanged** —
-11–13px stays 11–13px. This is the single most useful property of the system;
-do not break it by picking a mobile canvas width far from the viewport width.
+Going the other way — drawing wide and shrinking — cannot work: a 1080-unit
+canvas at 390px renders 12px type at 4px, and enlarging the type to compensate
+breaks proportions drawn for a wide canvas.
 
 ### Breakpoints
 
 | Range | Treatment |
 | :--- | :--- |
-| `< 768px` | Mobile portrait variant |
-| `768px – 1080px` | Section canvas, horizontal scroll permitted |
-| `≥ 1080px` | Full desktop |
+| `< 768px` | Portrait drawing — the canonical one |
+| `768px – 1080px` | Wide drawing, horizontal scroll permitted |
+| `≥ 1080px` | Wide drawing |
 
 ### The density budget
 
-A mobile variant carries **at most 40% of the desktop element count**. This is a
-hard budget, not a guideline — the failure mode is a faithful portrait redraw
-that is still far too busy.
+The portrait drawing is the budget, and it is tight: everything in it has to
+earn its place at 390 units. Width does not buy the right to be busier — the
+wide version spends its extra room on **breathing space and depth**, not on more
+information.
 
-**Must survive**
+**Every drawing carries**
 
-- The single idea from the diagram's docblock
+- The single idea from the docblock
 - The grey-versus-purple contrast
-- The terminal node (r9 + r15 halo)
+- The terminal node
 - Every label that names a stage
 
-**Cut first, in this order**
+**What extra width buys, in this order**
 
-1. Decorative depth layers and gradient hairlines — they read as texture at
-   desktop size and as noise at phone size
-2. Repeated lanes — two conveys "every asset" as well as four
-3. Intermediate stage markers — keep the first, the last, and the transition
-4. Secondary descriptive captions, which the adjacent prose already carries
+1. Room between elements — the same content, less compressed
+2. Depth texture: background ray layers, gradient hairlines. Atmosphere, not
+   information.
+3. More instances of a repeated thing — four asset lanes instead of two, where
+   repetition *is* the point
+4. Secondary captions the prose already carries
+
+If a wide drawing says something the portrait one does not, the portrait one is
+missing part of the argument. Fix the portrait drawing, not the wide one.
 
 ### Type on mobile
 
@@ -422,18 +434,29 @@ Design Canvas source and is safe to copy wholesale.
 > The three depth layers are the whole trick. They read as "more than you can
 > count" without any single ray being noticeable. Do not thin them out.
 
-**Mobile — `0 0 390 460`, strategy: rotate.** The most important variant to
-build, because mobile currently gets no hero visual at all.
+**Portrait — `0 0 390 460`. Shipped as `HeroSignalFlowPortrait`.**
 
-- Rotate the convergence to run **downward**. Seven labels become a two-column
-  grid across the top at 11px/600 UPPERCASE, each with its anchor dot beneath.
-- Keep **one** depth layer, not three, at `rgba(75,85,99,.10)` weight 1 — enough
-  to imply volume without turning the middle of the canvas grey.
-- Seven foreground rays curve from the label dots down to a node at `(195,320)`,
-  radius 18 with a 24 ring. Animate **three** of the seven, not all seven.
-- Output beam runs vertically from the node to a pulsing dot at `(195,410)`.
-- Drop the "EVERYTHING THE AGENCY KNOWS" caption — at this width it competes
-  with the labels, and the hero paragraph already says it.
+- Convergence runs **downward**. The seven labels sit in two columns — four
+  left, right-aligned; three right, left-aligned — at 12px/500 sentence case,
+  each with an `r3` anchor dot on the ray it names.
+- Anchor columns at `x=128` and `x=262`. That spread is what opens the fan; a
+  narrower gap makes the rays read as one rope rather than seven signals.
+- **One** depth layer at `rgba(75,85,99,.10)` weight 1, offset 16 units outside
+  the foreground dots. Three layers fog the labels at this size.
+- Seven foreground rays, `#8b93a3` `1.4`, into a node at `(195,336)` — `r18`
+  solid with a `cosglow` `r25` ring. The arrow inside points **down**, because
+  here the flow travels down.
+- **Three of seven rays carry a comet**, on `cosraytall` (`6 300` dash, `-306`
+  travel). Seven simultaneous dots read as flicker at this size.
+- Output beam descends to a pulsing `r13` dot at `(195,430)`.
+- The caption sits **below the SVG as HTML**, not inside the canvas.
+
+> **The ripple trap.** The wide version's ripple scales to 24×, which is fine
+> because it lives in an HTML box that clips it. Inside a portrait `viewBox`
+> there is no such clip, and a 24× ring draws two enormous arcs straight across
+> the drawing. The portrait node uses `cosripplesm` (4.2×) instead. Any effect
+> that relies on being clipped by its container needs re-deriving when it moves
+> into an SVG canvas.
 
 ---
 
@@ -690,12 +713,12 @@ at y248.
 
 ## Build status
 
-| Diagram | Desktop | Mobile |
+| Diagram | Portrait (canonical) | Wide |
 | :--- | :--- | :--- |
-| `HeroSignalFlow` | Shipped | **Spec only** — currently hidden below 1080px |
-| `ContextRebuiltChart` | Shipped | **Spec only** — scrolls |
-| `ContextOnceChart` | Shipped | **Spec only** — scrolls |
-| The four glyphs | Shipped | Shipped — no variant needed |
-| `WorkflowCapsuleLoop` | Shipped | **Spec only** — scrolls |
-| `CheckpointLanes` | Shipped | **Spec only** — scrolls |
-| `SignalLens` | Shipped | **Spec only** — scrolls |
+| Hero signal flow | **Shipped** — `HeroSignalFlowPortrait` | Shipped |
+| Context rebuilt chart | **Spec only** — scrolls | Shipped |
+| Context once chart | **Spec only** — scrolls | Shipped |
+| The four glyphs | **Shipped** — no separate variant needed | Shipped |
+| Workflow capsule loop | **Spec only** — scrolls | Shipped |
+| Checkpoint lanes | **Spec only** — scrolls | Shipped |
+| Signal lens | **Spec only** — scrolls | Shipped |

@@ -1,7 +1,215 @@
 /**
- * Converging input rays feeding a central node that emits one output beam.
- * The staggered `animation-delay` per comet path is what reads as "many signals,
- * one asset" — do not normalise the delays.
+ * Everything the agency knows converges into every asset.
+ *
+ * Two drawings of one idea. `HeroSignalFlowPortrait` is the canonical one — it
+ * is what most readers see. `HeroSignalFlow` is the wide enhancement, shown at
+ * the `hero:` breakpoint (1081px) and up.
+ *
+ * See docs/diagram-system.md §2.1.
+ */
+
+/** Seven inputs, split into two columns that converge from either side. */
+const LEFT_INPUTS = [
+  { label: "Brand context", y: 40 },
+  { label: "Market trend", y: 76 },
+  { label: "References", y: 112 },
+  { label: "Review decisions", y: 148 },
+];
+
+const RIGHT_INPUTS = [
+  { label: "Tone + claims", y: 40 },
+  { label: "Past generations", y: 76 },
+  { label: "Corrections", y: 112 },
+];
+
+const NODE = { x: 195, y: 336 };
+
+/** x of the anchor dots each column's rays leave from. */
+const LEFT_DOT = 128;
+const RIGHT_DOT = 262;
+
+/**
+ * Bezier from an anchor dot down into the node.
+ *
+ * The first control point carries the ray outward before it turns, which is
+ * what opens the fan; holding the second control point away from the node's
+ * vertical keeps the rays apart until late, so they read as many separate
+ * signals rather than one rope.
+ */
+function rayFrom(x: number, y: number) {
+  const outward = x < NODE.x ? -18 : 18;
+  const midY = y + (NODE.y - y) * 0.55;
+  const midX = x + (NODE.x - x) * 0.35;
+  return `M${x},${y} C${x + outward},${y + 24} ${midX},${midY} ${NODE.x},${NODE.y}`;
+}
+
+/**
+ * Portrait signal flow — the canonical drawing.
+ *
+ * The wide version fans rays in from the left; here they converge from both
+ * sides and downward, which is the direction the reader is already scrolling.
+ * Only three of the seven rays carry a comet: at this size seven simultaneous
+ * dots read as flicker rather than flow (§1.9).
+ */
+export function HeroSignalFlowPortrait() {
+  return (
+    <svg
+      viewBox="0 0 390 460"
+      className="block h-auto w-full"
+      aria-hidden="true"
+    >
+      {/* One depth layer only. Enough to imply volume, not enough to fog the labels. */}
+      {[28, 64, 100, 136, 172].map((y, i) => (
+        <path
+          key={`bg-l-${i}`}
+          d={rayFrom(LEFT_DOT - 16, y)}
+          fill="none"
+          stroke="rgba(75,85,99,.10)"
+          strokeWidth="1"
+        />
+      ))}
+      {[28, 64, 100, 136].map((y, i) => (
+        <path
+          key={`bg-r-${i}`}
+          d={rayFrom(RIGHT_DOT + 16, y)}
+          fill="none"
+          stroke="rgba(75,85,99,.10)"
+          strokeWidth="1"
+        />
+      ))}
+
+      {/* Foreground rays. Comets on the first, third and fifth only. */}
+      {[...LEFT_INPUTS, ...RIGHT_INPUTS].map((input, i) => {
+        const isLeft = i < LEFT_INPUTS.length;
+        const d = rayFrom(isLeft ? LEFT_DOT : RIGHT_DOT, input.y);
+        const comet = i % 3 === 0;
+        return (
+          <g key={input.label}>
+            <path d={d} fill="none" stroke="#8b93a3" strokeWidth="1.4" />
+            {comet ? (
+              <path
+                d={d}
+                fill="none"
+                stroke="rgba(88,41,199,.8)"
+                strokeWidth="1.6"
+                strokeDasharray="6 300"
+                style={{
+                  animation: "cosraytall 3.6s linear infinite",
+                  animationDelay: `${(i / 3) * 1.2}s`,
+                }}
+              />
+            ) : null}
+          </g>
+        );
+      })}
+
+      {/* Labels, each with its anchor dot on the ray it names. */}
+      {LEFT_INPUTS.map((input) => (
+        <g key={input.label}>
+          <text
+            x={LEFT_DOT - 12}
+            y={input.y + 4}
+            textAnchor="end"
+            style={{ fontWeight: "500", fontSize: "12px", letterSpacing: ".2px" }}
+            fill="#1f2937"
+          >
+            {input.label}
+          </text>
+          <circle cx={LEFT_DOT} cy={input.y} r="3" fill="#9ca3af" />
+        </g>
+      ))}
+      {RIGHT_INPUTS.map((input) => (
+        <g key={input.label}>
+          <text
+            x={RIGHT_DOT + 12}
+            y={input.y + 4}
+            style={{ fontWeight: "500", fontSize: "12px", letterSpacing: ".2px" }}
+            fill="#1f2937"
+          >
+            {input.label}
+          </text>
+          <circle cx={RIGHT_DOT} cy={input.y} r="3" fill="#9ca3af" />
+        </g>
+      ))}
+
+      {/* The node. Arrow points down, because here the flow travels down. */}
+      <circle cx={NODE.x} cy={NODE.y} r="18" fill="#5829c7" />
+      <circle
+        cx={NODE.x}
+        cy={NODE.y}
+        r="25"
+        fill="none"
+        stroke="rgba(88,41,199,.3)"
+        strokeWidth="1.5"
+        style={{
+          animation: "cosglow 3s ease-in-out infinite",
+          transformOrigin: `${NODE.x}px ${NODE.y}px`,
+        }}
+      />
+      <path
+        d={`M${NODE.x},${NODE.y - 8} L${NODE.x},${NODE.y + 8} M${NODE.x - 7},${NODE.y + 1} L${NODE.x},${NODE.y + 8} L${NODE.x + 7},${NODE.y + 1}`}
+        fill="none"
+        stroke="#fff"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+
+      {/* Output beam, straight down into the pulsing result. */}
+      <line
+        x1={NODE.x}
+        y1="362"
+        x2={NODE.x}
+        y2="414"
+        stroke="#d5d9e0"
+        strokeWidth="1.6"
+      />
+      <line
+        x1={NODE.x}
+        y1="362"
+        x2={NODE.x}
+        y2="414"
+        stroke="#5829c7"
+        strokeWidth="2"
+        strokeDasharray="8 82"
+        style={{ animation: "cosbeam 3.2s linear infinite" }}
+      />
+      <circle
+        cx={NODE.x}
+        cy="430"
+        r="13"
+        fill="none"
+        stroke="rgba(88,41,199,.45)"
+        strokeWidth="0.5"
+        style={{
+          animation: "cosripplesm 3.2s ease-out infinite",
+          animationDelay: "1.6s",
+          transformBox: "fill-box",
+          transformOrigin: "center",
+        }}
+      />
+      <circle
+        cx={NODE.x}
+        cy="430"
+        r="13"
+        fill="#5829c7"
+        style={{
+          animation: "cospulse 3.2s ease-out infinite",
+          animationDelay: "1.6s",
+          transformBox: "fill-box",
+          transformOrigin: "center",
+        }}
+      />
+    </svg>
+  );
+}
+
+/**
+ * Wide signal flow — the enhancement.
+ *
+ * The extra width buys three depth layers of rays, which read as "more than you
+ * can count". The staggered `animation-delay` per comet is what makes it read as
+ * many signals arriving into one asset; do not normalise the delays.
  *
  * Ported verbatim from the Design Canvas source; see design-reference/.
  */
