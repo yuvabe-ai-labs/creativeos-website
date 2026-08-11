@@ -238,7 +238,128 @@ signals, one asset" reading. Never round these.
 </div>
 ```
 
-## 1.9 Accessibility
+## 1.9 Mobile
+
+> **Status:** specified here, **not yet built.** What currently ships is the
+> horizontal-scroll fallback from §1.2. That is a stopgap, not a design — a
+> reader on a phone gets a diagram they must drag sideways to read, and the hero
+> diagram is hidden from them entirely. Treat this section as the spec to
+> implement, not a description of the site today.
+
+### The principle
+
+Every diagram in this system reads **left → right**: inputs, then a boundary,
+then one output. A phone is a tall, narrow, vertically-scrolling surface.
+
+> **Rotate the narrative axis; do not scale the canvas.**
+> Desktop reads left → right. Mobile reads top → bottom.
+
+Shrinking a 1080-unit diagram to 390 units makes 12px type render at 4px. Every
+attempt to fix that by enlarging the type breaks the layout, because the
+proportions were drawn for a wide canvas. The only treatment that survives
+contact with a phone is a redraw on a portrait canvas.
+
+### Canvases
+
+| Canvas | `viewBox` | Renders at |
+| :--- | :--- | :--- |
+| **Mobile portrait** | `0 0 390 <320–620>` | ~390px — effectively 1:1 |
+| **Inline glyph** | `0 0 280 120` | Unchanged — already works on mobile |
+
+The 1080 section canvas renders at ~1140px and the 390 mobile canvas at ~390px.
+Both are close enough to 1:1 that **font sizes port between them unchanged** —
+11–13px stays 11–13px. This is the single most useful property of the system;
+do not break it by picking a mobile canvas width far from the viewport width.
+
+### Breakpoints
+
+| Range | Treatment |
+| :--- | :--- |
+| `< 768px` | Mobile portrait variant |
+| `768px – 1080px` | Section canvas, horizontal scroll permitted |
+| `≥ 1080px` | Full desktop |
+
+### The density budget
+
+A mobile variant carries **at most 40% of the desktop element count**. This is a
+hard budget, not a guideline — the failure mode is a faithful portrait redraw
+that is still far too busy.
+
+**Must survive**
+
+- The single idea from the diagram's docblock
+- The grey-versus-purple contrast
+- The terminal node (r9 + r15 halo)
+- Every label that names a stage
+
+**Cut first, in this order**
+
+1. Decorative depth layers and gradient hairlines — they read as texture at
+   desktop size and as noise at phone size
+2. Repeated lanes — two conveys "every asset" as well as four
+3. Intermediate stage markers — keep the first, the last, and the transition
+4. Secondary descriptive captions, which the adjacent prose already carries
+
+### Type on mobile
+
+| | |
+| :--- | :--- |
+| **Floor** | **11px rendered. Never smaller.** Below this, labels are decoration. |
+| Micro-labels | 11px / weight 600 / UPPERCASE |
+| Data labels | 12–13px / weight 500 |
+| Display words | 20–24px (down from 38px on the slide canvas) |
+
+If a mobile variant cannot fit its labels at 11px, it has too many elements —
+go back to the density budget. **Do not shrink the type.**
+
+Right-aligned label columns do not work at 390 units; there is no room for a
+label gutter beside a diagram. Move labels **above** the element they name.
+
+### Choosing a treatment
+
+Three strategies. Pick by what the diagram is doing, not by what is easiest.
+
+| Strategy | Use when | Example |
+| :--- | :--- | :--- |
+| **Rotate** | The diagram is a sequence or a convergence | Hero, signal lens, checkpoint lanes |
+| **Reduce** | The structure already works vertically, there is just too much of it | The comparison charts — same drawing, fewer lanes |
+| **Stack** | The diagram is a side-by-side comparison | Checkpoint lanes: two lanes become two stacked blocks |
+
+**Scrolling is not on this list.** It remains acceptable only between 768px and
+1080px, where the desktop diagram is merely cramped rather than illegible.
+
+### Implementation
+
+Author the mobile variant as a **separate exported component** in the same file,
+and switch with CSS so both are server-rendered:
+
+```tsx
+export function SignalLens() { /* 1080 canvas */ }
+export function SignalLensMobile() { /* 390 canvas */ }
+```
+
+```tsx
+<div data-signal-flow>
+  <div className="hidden md:block"><SignalLens /></div>
+  <div className="md:hidden"><SignalLensMobile /></div>
+</div>
+```
+
+**Why CSS and not a media-query hook.** These pages are statically prerendered.
+A JS hook cannot know the viewport during SSR, so it renders the wrong variant
+and swaps after hydration — a visible flash on every diagram. The cost of the
+CSS approach is that both markups ship. Accept it, and spend the budget by
+keeping the mobile variant genuinely small — which the density budget already
+requires.
+
+### Motion on mobile
+
+Halve the number of animated elements. A phone renders these at a fraction of
+the area, and a dozen simultaneous comets read as flicker rather than flow.
+Keep one animated path per input group and the terminal node's pulse. All the
+§1.8 rules still apply, including `data-signal-flow` on the wrapper.
+
+## 1.10 Accessibility
 
 - Every diagram carries `aria-hidden="true"`. It is decorative in the accessibility
   tree, and the adjacent prose must carry the same argument.
@@ -247,7 +368,7 @@ signals, one asset" reading. Never round these.
   path is solid *and* purple.
 - Never put an interactive control inside a diagram.
 
-## 1.10 Checklist for a new diagram
+## 1.11 Checklist for a new diagram
 
 1. One sentence describing the single idea. Written down.
 2. Canvas from §1.2 — no new widths.
@@ -259,6 +380,8 @@ signals, one asset" reading. Never round these.
 8. Comet dash periods match their keyframe travel exactly.
 9. Reads correctly with animation off.
 10. `aria-hidden="true"`, and the prose says the same thing.
+11. **A mobile variant exists** — §1.9. Axis rotated, inside the density budget,
+    no label under 11px, at most half the animated elements.
 
 ---
 
@@ -299,6 +422,19 @@ Design Canvas source and is safe to copy wholesale.
 > The three depth layers are the whole trick. They read as "more than you can
 > count" without any single ray being noticeable. Do not thin them out.
 
+**Mobile — `0 0 390 460`, strategy: rotate.** The most important variant to
+build, because mobile currently gets no hero visual at all.
+
+- Rotate the convergence to run **downward**. Seven labels become a two-column
+  grid across the top at 11px/600 UPPERCASE, each with its anchor dot beneath.
+- Keep **one** depth layer, not three, at `rgba(75,85,99,.10)` weight 1 — enough
+  to imply volume without turning the middle of the canvas grey.
+- Seven foreground rays curve from the label dots down to a node at `(195,320)`,
+  radius 18 with a 24 ring. Animate **three** of the seven, not all seven.
+- Output beam runs vertically from the node to a pulsing dot at `(195,410)`.
+- Drop the "EVERYTHING THE AGENCY KNOWS" caption — at this width it competes
+  with the labels, and the hero paragraph already says it.
+
 ---
 
 ## 2.2 `ContextRebuiltChart`
@@ -321,6 +457,18 @@ Design Canvas source and is safe to copy wholesale.
 
 > The point is the ratio: six grey markers to one purple segment, four times
 > over. Adding lanes strengthens it; shortening the grey run destroys it.
+
+**Mobile — `0 0 390 480`, strategy: rotate + reduce.**
+
+- Stages run **down the left edge** as seven rows, 11px/600 UPPERCASE,
+  left-aligned at `x=12`, each with a horizontal `2 7` guide across the canvas.
+  Vertical drop-lines become horizontal rules.
+- **Two lanes, not four** — one Post, one Reel — as vertical paths descending
+  through the seven stage rows, `#aab1bf` `2.2` dashed `3 8`, turning solid
+  `#5829c7` `2.4` for the final segment into an `r9` + `r15` node at the bottom.
+- Drop the 21 gradient hairlines entirely. At this size they fog the labels.
+- Caption moves **below** the diagram as ordinary prose, not an overlaid pill —
+  a frosted pill over a 390px canvas covers the thing it is describing.
 
 ---
 
@@ -347,6 +495,15 @@ Caption sits lower, at 86%.
 > Keep the two charts on one shared x-grid. If a stage moves in one, move it in
 > the other, or the reader loses the comparison.
 
+**Mobile — `0 0 390 480`, strategy: rotate + reduce.** Mirrors 2.2's mobile
+variant exactly, with the same three changes as the desktop pair: last stage
+becomes WORK STARTS HERE, the two lanes collapse to **one** solid purple lane,
+and after the final stage it fans out into **three** terminal nodes rather than
+four — three fits the width without crowding and reads identically.
+
+> The two mobile charts must stay on **one shared y-grid**, exactly as the
+> desktop pair share an x-grid. Rotating the axis rotates this constraint too.
+
 ---
 
 ## 2.4–2.7 Capability glyphs
@@ -363,6 +520,14 @@ Small, quiet, no animation, no halo nodes. Type at 8.5–10px.
 
 > These are the only diagrams where the accent appears without a grey
 > counterpart — at this size a two-state comparison does not read.
+
+**Mobile — no variant needed.** The 280-unit canvas renders at ~330px inside a
+single-column grid, close to its authored size. Nothing to rotate and nothing to
+cut.
+
+> This is worth noticing: the glyphs needed no mobile work because they were
+> authored near phone width in the first place. That is the argument for the
+> 390-unit mobile canvas in §1.9 — draw at the size it will be read.
 
 ---
 
@@ -394,6 +559,22 @@ Small, quiet, no animation, no halo nodes. Type at 8.5–10px.
 
 Bottom labels run **right to left** (05 at x960, 06 at x580) because the return
 leg travels backwards. That is correct, not a mistake.
+
+**Mobile — `0 0 390 620`, strategy: rotate.** The capsule stands **upright** — a
+tall stadium roughly 210 units wide by 520 tall, centred.
+
+- The two lobes split **horizontally** rather than vertically, so CREATE occupies
+  the upper half and LEARN the lower, with the white divider running across. Both
+  words stay horizontal at 22px — **never rotate the type to fit a vertical
+  capsule**; rotated words at 11–22px are unreadable on a phone.
+- Stages 01–04 descend the **right** edge, 05–06 ascend the **left**, which
+  preserves the clockwise reading of the desktop version.
+- Labels move **outside** the capsule, right-aligned for the left column and
+  left-aligned for the right, at 11px/600. Numerals stay `#4c24ab`.
+- Markers shrink from `r13` to `r9` with `2.4` outlines.
+- Keep the full 12s cycle and all six stage flashes — this diagram's whole idea
+  is the loop, so its motion is load-bearing rather than decorative. **Recompute
+  the six delays** for the new path length; the desktop values will be wrong.
 
 ---
 
@@ -427,6 +608,25 @@ at y248.
 > Both lanes must start with an identical error dot. The argument is that the
 > mistake is the same and only the checkpoint differs.
 
+**Mobile — `0 0 390 560`, strategy: rotate + stack.**
+
+- The three columns become **three rows** — IMAGE, SENIOR REVIEW, VIDEO — as
+  11px/600 labels with horizontal `2 7` guides.
+- The two lanes become **two vertical tracks side by side**, "Without" on the
+  left at `x=120` and "With CreativeOS" on the right at `x=270`, each labelled
+  at the top rather than the side. Both descend through the same three rows, so
+  the reader compares across at each stage.
+- The error dot sits at the IMAGE row in **both** tracks, unchanged — this is
+  the one element that must not be cut.
+- The return arc becomes a short curve looping from the VIDEO row back up to
+  IMAGE on the left track only, keeping its `4 6` dash and error colour. Its
+  caption moves below the diagram.
+- Terminal nodes shrink to `r8` + `r13`.
+
+> The stacked layout is stronger here than the desktop one: two vertical tracks
+> put the outcomes side by side at the same eye level, so the contrast lands in
+> a single glance.
+
 ---
 
 ## 2.10 `SignalLens`
@@ -452,6 +652,24 @@ at y248.
 > Five in, one out. Keep the count asymmetric — equal counts would imply
 > filtering rather than synthesis.
 
+**Mobile — `0 0 390 520`, strategy: rotate.**
+
+- Five signal labels form a **two-column grid across the top** (three left, two
+  right) at 11px/600, each with an `r4` marker below it. The desktop's
+  right-aligned gutter has no room to exist at 390 units.
+- Five rays converge **downward** into the lens. Animate **two**, not five.
+- The lens **turns 90°** into a horizontal ellipse at `(195,300)`, `rx110 ry32`,
+  keeping its gradient fill, `2` purple stroke and highlight arc. BRAND CONTEXT
+  labels it from directly above.
+- Refraction lines converge downward from the lens underside to a point at
+  `(195,340)`.
+- Vertical output beam to a terminal node at `(195,460)`, `r9` + `r16` halo,
+  ONE SHARP DIRECTION above it and the supporting line below.
+
+> Rotating the lens is what makes this work. A vertical lens on a narrow canvas
+> leaves no width for the rays to fan across, and the refraction — the point of
+> the whole diagram — collapses into a single line.
+
 ---
 
 ## Adding a diagram
@@ -461,6 +679,23 @@ at y248.
    `style="…"` → style objects, and split every `font:` shorthand per §1.6.
 3. Drop it in `src/components/diagrams/` as a named export, with a docblock
    stating the single idea and anything a future editor could break.
-4. If it animates, wrap it in `data-signal-flow` and add the keyframes to
+4. **Draw the mobile variant in the same pass**, per §1.9, and export it from the
+   same file as `<Name>Mobile`. Doing it later means re-deriving the geometry
+   from scratch, and in practice means it never happens.
+5. If it animates, wrap it in `data-signal-flow` and add the keyframes to
    `globals.css`.
-5. Add a section to Part 2 above.
+6. Add a section to Part 2 above, including its mobile treatment.
+
+---
+
+## Build status
+
+| Diagram | Desktop | Mobile |
+| :--- | :--- | :--- |
+| `HeroSignalFlow` | Shipped | **Spec only** — currently hidden below 1080px |
+| `ContextRebuiltChart` | Shipped | **Spec only** — scrolls |
+| `ContextOnceChart` | Shipped | **Spec only** — scrolls |
+| The four glyphs | Shipped | Shipped — no variant needed |
+| `WorkflowCapsuleLoop` | Shipped | **Spec only** — scrolls |
+| `CheckpointLanes` | Shipped | **Spec only** — scrolls |
+| `SignalLens` | Shipped | **Spec only** — scrolls |

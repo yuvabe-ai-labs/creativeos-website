@@ -154,6 +154,11 @@ as such.
 **Every band is skimmable.** A reader who only reads the numbered eyebrows and
 headlines should still get the argument.
 
+**Mobile is not a smaller desktop.** Because the diagrams carry the argument, a
+diagram that is illegible on a phone costs the argument, not just some polish.
+Each one needs a portrait redraw with its narrative axis rotated top-to-bottom,
+not a scaled-down copy. See [Diagram system §1.9](./diagram-system.md).
+
 ---
 
 ## 7. Constraints
@@ -182,6 +187,7 @@ typeface; confirm the licence covers web embedding at production traffic.
 | Gap | Impact | Notes |
 | :--- | :--- | :--- |
 | Pilot form does not submit | **High** — applications are silently lost | No server action, no validation, no spam protection, and no error path at all. Tagged `TODO(pilot-submit)`. |
+| Diagrams have no mobile variants | **High** — the diagrams carry the argument (§6), so on a phone the argument is degraded | Six of ten need a portrait redraw. The hero diagram is hidden below 1080px, so mobile readers get no visual at all; the rest scroll sideways. Specified in [Diagram system §1.9](./diagram-system.md) and per-diagram in Part 2, not yet built. |
 | `/product` route missing | Medium — header and footer links 404 | Design exists, not ported. |
 | Applicant data not in Privacy Policy | Medium — the form collects names, work emails and commercial detail | Must be covered before the form goes live. |
 | Production canvas screenshot missing | Low | Placeholder in section 03; the source `<image-slot>` shipped empty. |
