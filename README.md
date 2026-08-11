@@ -5,6 +5,15 @@ Claude Design project [Marketing website for CreativeOS][design].
 
 [design]: https://claude.ai/design/p/cea94ec2-f426-45a4-b7d7-0961cf86d4a2
 
+## Documentation
+
+- **[PRD](./docs/PRD.md)** — what the site is for, who it is for, what each page
+  has to do, and the known gaps.
+- **[Diagram system](./docs/diagram-system.md)** — the visual language every
+  diagram follows (colour roles, stroke scale, dash vocabulary, type, node
+  scale, motion) plus a specification for each of the ten diagrams. **Read Part 1
+  before drawing a new one.**
+
 ## Stack
 
 | | |
