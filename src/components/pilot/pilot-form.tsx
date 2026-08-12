@@ -6,11 +6,16 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { HONEYPOT_FIELD, PLANS, type Plan } from "@/lib/submissions";
 import { cn } from "@/lib/utils";
 
+/*
+  The form is deliberately squarer than the rest of the page: cards and
+  diagram frames sit at 16px, inputs here at 4px. Soft radii read as marketing
+  chrome, and this is the one place on the site that is an instrument.
+*/
 const FIELD =
-  "w-full rounded-xl border border-line-strong bg-canvas px-3.5 py-[11px] text-[15px] leading-[22px] text-ink placeholder:text-ink-faint";
+  "w-full rounded-[4px] border border-line-strong bg-canvas px-3.5 py-[11px] text-[15px] leading-[22px] text-ink placeholder:text-ink-faint";
 
 const CARD =
-  "rounded-[16px] border border-line bg-white p-9 shadow-[0_6px_16px_rgba(11,15,25,0.08)]";
+  "rounded-[8px] border border-line bg-white p-9 shadow-[0_2px_10px_rgba(11,15,25,0.06)]";
 
 function Field({
   label,
@@ -191,7 +196,7 @@ export function PilotForm({ defaultPlan }: { defaultPlan: Plan }) {
         {status === "error" && error ? (
           <p
             aria-live="polite"
-            className="m-0 rounded-xl border border-[#f3c9bd] bg-[#fdf1ee] px-3.5 py-3 text-[14px] leading-[21px] text-[#8a2e18]"
+            className="m-0 rounded-[4px] border border-[#f3c9bd] bg-[#fdf1ee] px-3.5 py-3 text-[14px] leading-[21px] text-[#8a2e18]"
           >
             {error}
           </p>
@@ -200,7 +205,7 @@ export function PilotForm({ defaultPlan }: { defaultPlan: Plan }) {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="mt-1.5 inline-flex items-center justify-center gap-2 rounded-xl bg-purple px-[26px] py-[15px] text-[15px] leading-none font-medium text-white transition-colors hover:bg-purple-deep disabled:cursor-not-allowed disabled:opacity-70"
+          className="mt-1.5 inline-flex items-center justify-center gap-2 rounded-[4px] bg-purple px-[26px] py-[15px] text-[15px] leading-none font-medium text-white transition-colors hover:bg-purple-deep disabled:cursor-not-allowed disabled:opacity-70"
         >
           {status === "submitting" ? "Sending…" : "Send"}
           {status === "submitting" ? null : (
