@@ -1,21 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check, ChevronDown } from "lucide-react";
 
 import { HONEYPOT_FIELD, PLANS, type Plan } from "@/lib/submissions";
 import { cn } from "@/lib/utils";
 
 /*
-  The form is deliberately squarer than the rest of the page: cards and
-  diagram frames sit at 16px, inputs here at 4px. Soft radii read as marketing
-  chrome, and this is the one place on the site that is an instrument.
+  The form is the one element on the site that is an instrument rather than
+  chrome, so it is drawn tighter than its surroundings: 4px radii against the
+  page's 16px, 11px tracked caps for labels, and a deliberate focus state.
+  Labels follow the diagram system's micro-label rule (11px / 600 / uppercase),
+  which is the vocabulary the section eyebrows already speak.
 */
+
 const FIELD =
-  "w-full rounded-[4px] border border-line-strong bg-canvas px-3.5 py-[11px] text-[15px] leading-[22px] text-ink placeholder:text-ink-faint";
+  "w-full rounded-[4px] border border-line-strong bg-surface px-3 py-[9px] text-[14px] leading-[21px] text-ink outline-none transition-[border-color,box-shadow] duration-150 placeholder:text-ink-faint focus:border-purple focus:shadow-[0_0_0_3px_rgba(88,41,199,0.10)]";
 
 const CARD =
-  "rounded-[8px] border border-line bg-white p-9 shadow-[0_2px_10px_rgba(11,15,25,0.06)]";
+  "rounded-[8px] border border-line bg-white p-7 shadow-[0_2px_10px_rgba(11,15,25,0.06)]";
+
+const LABEL =
+  "text-[11px] leading-none font-semibold tracking-[0.1em] text-ink-soft uppercase";
 
 function Field({
   label,
@@ -28,9 +34,7 @@ function Field({
 }) {
   return (
     <label className={cn("flex flex-col gap-[7px]", className)}>
-      <span className="text-[13px] leading-[1.4] font-medium text-ink-muted">
-        {label}
-      </span>
+      <span className={LABEL}>{label}</span>
       {children}
     </label>
   );
@@ -39,21 +43,19 @@ function Field({
 function Success({ onReset }: { onReset: () => void }) {
   return (
     <div aria-live="polite">
-      <div className="flex size-11 items-center justify-center rounded-full bg-[#eaf6d8] text-[#335c12]">
-        <Check className="size-5" strokeWidth={2.4} aria-hidden="true" />
+      <div className="flex size-9 items-center justify-center rounded-full bg-[#eaf6d8] text-[#335c12]">
+        <Check className="size-[18px]" strokeWidth={2.4} aria-hidden="true" />
       </div>
-      <h2 className="mt-5 mb-0 text-[20px] leading-7 font-semibold tracking-[-0.01em] text-ink">
+      <h2 className="font-display mt-4 mb-0 text-[19px] leading-7 font-semibold tracking-[-0.015em] text-ink">
         Message received
       </h2>
-      <p className="mt-2.5 mb-0 text-[15px] leading-[22px] text-ink-soft">
-        We read every enquiry ourselves and reply with fit and next steps. If
-        you are applying for a pilot, we will come back with what we need — a
-        sample workflow and a nominated brand.
+      <p className="mt-2 mb-0 text-[14px] leading-[21px] text-ink-soft">
+        We read every enquiry ourselves and reply with fit and next steps.
       </p>
       <button
         type="button"
         onClick={onReset}
-        className="mt-7 text-[14px] leading-none font-medium text-purple underline underline-offset-4 hover:text-purple-deep"
+        className="mt-6 text-[13px] leading-none font-medium text-purple underline underline-offset-4 hover:text-purple-deep"
       >
         Send another
       </button>
@@ -116,15 +118,17 @@ export function PilotForm({ defaultPlan }: { defaultPlan: Plan }) {
 
   return (
     <div className={CARD}>
-      <h2 className="mt-0 mb-1.5 text-[20px] leading-7 font-semibold tracking-[-0.01em] text-ink">
-        Talk to us
-      </h2>
-      <p className="mt-0 mb-7 text-[15px] leading-[22px] text-ink-soft">
-        Under a minute. We reply with fit and next steps.
-      </p>
+      <div className="flex items-baseline justify-between gap-4 border-b border-line pb-4">
+        <h2 className="font-display m-0 text-[19px] leading-none font-semibold tracking-[-0.015em] text-ink">
+          Talk to us
+        </h2>
+        <span className="text-[11px] leading-none font-semibold tracking-[0.1em] text-ink-faint uppercase">
+          Under a minute
+        </span>
+      </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-[18px]">
-        <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2">
+      <form onSubmit={handleSubmit} className="mt-5 flex flex-col gap-[14px]">
+        <div className="grid grid-cols-1 gap-[14px] sm:grid-cols-2">
           <Field label="Full name">
             <input name="fullName" type="text" required className={FIELD} />
           </Field>
@@ -150,24 +154,35 @@ export function PilotForm({ defaultPlan }: { defaultPlan: Plan }) {
         </div>
 
         <Field label="Plan of interest">
-          <select
-            name="plan"
-            required
-            defaultValue={defaultPlan}
-            className={FIELD}
-          >
-            {PLANS.map((plan) => (
-              <option key={plan} value={plan}>
-                {plan}
-              </option>
-            ))}
-          </select>
+          {/*
+            appearance-none plus our own chevron: the native arrow sits hard
+            against the edge and renders differently on every platform.
+          */}
+          <span className="relative block">
+            <select
+              name="plan"
+              required
+              defaultValue={defaultPlan}
+              className={cn(FIELD, "appearance-none pr-10")}
+            >
+              {PLANS.map((plan) => (
+                <option key={plan} value={plan}>
+                  {plan}
+                </option>
+              ))}
+            </select>
+            <ChevronDown
+              className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-ink-soft"
+              strokeWidth={1.8}
+              aria-hidden="true"
+            />
+          </span>
         </Field>
 
         <Field label="How can we help?">
           <textarea
             name="message"
-            rows={4}
+            rows={3}
             required
             placeholder="What you produce today, and what you are trying to fix."
             className={cn(FIELD, "resize-y")}
@@ -196,7 +211,7 @@ export function PilotForm({ defaultPlan }: { defaultPlan: Plan }) {
         {status === "error" && error ? (
           <p
             aria-live="polite"
-            className="m-0 rounded-[4px] border border-[#f3c9bd] bg-[#fdf1ee] px-3.5 py-3 text-[14px] leading-[21px] text-[#8a2e18]"
+            className="m-0 rounded-[4px] border border-flame/25 bg-flame/[0.06] px-3 py-2.5 text-[13px] leading-[19px] text-flame-deep"
           >
             {error}
           </p>
@@ -205,13 +220,17 @@ export function PilotForm({ defaultPlan }: { defaultPlan: Plan }) {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="mt-1.5 inline-flex items-center justify-center gap-2 rounded-[4px] bg-purple px-[26px] py-[15px] text-[15px] leading-none font-medium text-white transition-colors hover:bg-purple-deep disabled:cursor-not-allowed disabled:opacity-70"
+          className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-[4px] bg-purple px-6 py-[13px] text-[14px] leading-none font-medium tracking-[0.01em] text-white transition-colors duration-150 hover:bg-purple-deep disabled:cursor-not-allowed disabled:opacity-70"
         >
           {status === "submitting" ? "Sending…" : "Send"}
           {status === "submitting" ? null : (
             <ArrowUpRight className="size-4" aria-hidden="true" />
           )}
         </button>
+
+        <p className="m-0 text-center text-[12px] leading-[18px] text-ink-faint">
+          We never add you to a mailing list.
+        </p>
       </form>
     </div>
   );
