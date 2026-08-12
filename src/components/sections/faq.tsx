@@ -44,7 +44,7 @@ const QUESTIONS = [
 
 export function Faq() {
   return (
-    <Section index="07" eyebrow="Questions">
+    <Section index="08" eyebrow="Questions">
       {/*
         The source used independent <details> elements, so each row opens on its
         own — `type="multiple"` reproduces that. The 1px gap over a grey backdrop

@@ -4,6 +4,7 @@ import { FinalCta } from "@/components/sections/final-cta";
 import { Hero } from "@/components/sections/hero";
 import { MarketSignals } from "@/components/sections/market-signals";
 import { Pilot } from "@/components/sections/pilot";
+import { Pricing } from "@/components/sections/pricing";
 import { ProductionSystem } from "@/components/sections/production-system";
 import { ReviewCheckpoint } from "@/components/sections/review-checkpoint";
 import { Workflow } from "@/components/sections/workflow";
@@ -22,6 +23,7 @@ export default function HomePage() {
         <ReviewCheckpoint />
         <MarketSignals />
         <Pilot />
+        <Pricing />
         <Faq />
         <FinalCta />
       </main>
