@@ -6,7 +6,6 @@ import {
   DiagramFrame,
   Section,
   SectionHeading,
-  SectionLede,
 } from "@/components/site/section";
 import { cn } from "@/lib/utils";
 
@@ -161,15 +160,6 @@ export function Pricing() {
           <SectionHeading className="max-w-[20ch]">
             Priced by the volume you actually produce.
           </SectionHeading>
-        </Reveal>
-
-        <Reveal delay={0.06}>
-          <SectionLede>
-            Every plan includes brand memory, the self-learning agent and the
-            full brief → concept → storyboard → assets workflow. The tiers
-            differ in how much you ship, and in how many brands and people you
-            ship it for.
-          </SectionLede>
         </Reveal>
 
         <RevealGroup className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">

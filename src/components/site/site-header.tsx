@@ -10,7 +10,6 @@ import { CtaLink } from "@/components/site/cta-link";
 const NAV = [
   { label: "How it works", href: "/#workflow" },
   { label: "Pricing", href: "/#pricing" },
-  { label: "Pilot", href: "/pilot" },
 ];
 
 export function SiteHeader() {
