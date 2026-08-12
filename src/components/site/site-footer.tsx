@@ -7,11 +7,11 @@ const COLUMNS = [
   {
     heading: "Product",
     links: [
-      { label: "Product", href: "/product" },
+      { label: "Pricing", href: "/#pricing" },
       { label: "Reels", href: "/#workflow" },
       { label: "Static posts", href: "/#workflow" },
-      { label: "Market intelligence", href: "/product#market" },
-      { label: "Production learning", href: "/product#learning" },
+      { label: "Market intelligence", href: "/#market" },
+      { label: "Production learning", href: "/#system" },
     ],
   },
   {

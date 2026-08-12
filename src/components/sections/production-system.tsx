@@ -30,7 +30,7 @@ const CAPABILITIES = [
 
 export function ProductionSystem() {
   return (
-    <Section index="02" eyebrow="Not another AI generator">
+    <Section id="system" index="02" eyebrow="Not another AI generator">
       <div>
         <Reveal>
           <SectionHeading className="max-w-[22ch]">

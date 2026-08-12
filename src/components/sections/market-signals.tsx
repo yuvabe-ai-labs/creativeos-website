@@ -4,7 +4,7 @@ import { Section, SectionHeading, SectionLede } from "@/components/site/section"
 
 export function MarketSignals() {
   return (
-    <Section index="05" eyebrow="Connected to what is changing" className="bg-white">
+    <Section id="market" index="05" eyebrow="Connected to what is changing" className="bg-white">
       <div>
         <Reveal>
           <SectionHeading className="max-w-[22ch]">
