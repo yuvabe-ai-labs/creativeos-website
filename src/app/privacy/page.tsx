@@ -64,6 +64,16 @@ export default function PrivacyPolicyPage() {
         open to public self-signup.
       </p>
 
+      <h3>Pilot applications and enquiries</h3>
+      <p>
+        When you submit the form on our pilot page we collect your name, work
+        email address, agency, agency website, the plan you are interested in,
+        and whatever you write in the message field. We use it only to reply to
+        you and to assess fit for the pilot programme. It is stored in a private
+        Google Sheet and emailed to our team. We do not add you to a marketing
+        list, and we do not sell or share it.
+      </p>
+
       <h3>Content you put into the workspace</h3>
       <p>
         {SITE.product} stores the material you create and upload while producing
@@ -278,6 +288,11 @@ export default function PrivacyPolicyPage() {
 
       <h2 id="retention">7. Retention</h2>
       <ul>
+        <li>
+          <strong>Pilot applications and enquiries</strong> — kept for up to 24
+          months so we can pick a conversation back up, then deleted. Ask us
+          sooner and we will remove it.
+        </li>
         <li>
           <strong>Workspace content</strong> — kept for as long as your agency
           holds an account with us, because its value is cumulative. Deleted
