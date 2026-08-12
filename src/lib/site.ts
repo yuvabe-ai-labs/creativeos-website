@@ -10,14 +10,14 @@ export const SITE = {
   address: "Auroville, Tamil Nadu 605101, India",
   jurisdiction: "India",
   courts: "the courts of Puducherry, India",
-  contactEmail: "studios@yuvabe.com",
-  privacyEmail: "studios@yuvabe.com",
+  contactEmail: "info@yuvabe.com",
+  privacyEmail: "info@yuvabe.com",
   url: "https://creativeos.yuvabe.com",
   /**
    * Shown as "Last updated" on both legal pages. Update whenever the substance
    * of either document changes — not on cosmetic edits.
    */
-  legalLastUpdated: "9 August 2026",
+  legalLastUpdated: "12 August 2026",
 } as const;
 
 /**

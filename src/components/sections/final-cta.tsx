@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/motion/reveal";
 import { CtaLink } from "@/components/site/cta-link";
+import { SITE } from "@/lib/site";
 
 export function FinalCta() {
   return (
@@ -17,7 +18,9 @@ export function FinalCta() {
           <div className="mt-[34px] flex flex-wrap gap-3">
             <CtaLink href="/pilot">Apply for a Pilot</CtaLink>
             <CtaLink
-              href="mailto:studios@yuvabe.com?subject=CreativeOS%20product%20walkthrough"
+              href={`mailto:${SITE.contactEmail}?subject=${encodeURIComponent(
+                "CreativeOS product walkthrough",
+              )}`}
               tone="outline"
               withArrow={false}
             >

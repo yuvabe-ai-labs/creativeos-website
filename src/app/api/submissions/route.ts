@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { SITE } from "@/lib/site";
 import { HONEYPOT_FIELD, parseSubmission } from "@/lib/submissions";
 
 /**
@@ -89,7 +90,7 @@ export async function POST(request: Request) {
     console.error("[submissions] delivery failed", error);
     return fail(
       502,
-      "We could not deliver your message just now. Please try again, or email studios@yuvabe.com.",
+      `We could not deliver your message just now. Please try again, or email ${SITE.contactEmail}.`,
     );
   }
 

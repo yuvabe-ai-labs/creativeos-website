@@ -25,7 +25,7 @@
  */
 
 const SECRET = 'REPLACE_WITH_THE_SAME_VALUE_AS_SHEETS_WEBHOOK_SECRET';
-const NOTIFY_TO = 'studios@yuvabe.com';
+const NOTIFY_TO = 'info@yuvabe.com';
 const SHEET_NAME = 'Submissions';
 const HEADERS = [
   'Timestamp',

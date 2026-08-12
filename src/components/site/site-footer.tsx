@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { SITE } from "@/lib/site";
 
 const COLUMNS = [
   {
@@ -19,7 +20,7 @@ const COLUMNS = [
     links: [
       { label: "Yuvabe Studios", href: "https://yuvabe.com" },
       { label: "Pilot programme", href: "/pilot" },
-      { label: "Contact", href: "mailto:studios@yuvabe.com" },
+      { label: "Contact", href: `mailto:${SITE.contactEmail}` },
     ],
   },
   {
