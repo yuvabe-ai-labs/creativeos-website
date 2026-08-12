@@ -8,7 +8,6 @@ import {
   SectionHeading,
   SectionLede,
 } from "@/components/site/section";
-import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 /**
@@ -33,15 +32,6 @@ type Plan = {
   featured?: boolean;
 };
 
-/**
- * `CtaLink` renders a plain <a> for `mailto:` hrefs — `next/link` would try to
- * client-side route it. The prefilled subject is what makes an unstructured
- * mailto usable: replies arrive already labelled.
- */
-const CONTACT_HREF = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent(
-  "CreativeOS — custom plan enquiry",
-)}`;
-
 const PLANS: readonly Plan[] = [
   {
     name: "Creator",
@@ -58,7 +48,7 @@ const PLANS: readonly Plan[] = [
       "Basic asset library and usage analytics",
       "Email support",
     ],
-    cta: { label: "Start with a pilot", href: "/pilot" },
+    cta: { label: "Start with a pilot", href: "/pilot?plan=creator" },
   },
   {
     name: "Studio",
@@ -76,7 +66,7 @@ const PLANS: readonly Plan[] = [
       "Shared asset library and team usage analytics",
       "Priority support",
     ],
-    cta: { label: "Start with a pilot", href: "/pilot" },
+    cta: { label: "Start with a pilot", href: "/pilot?plan=studio" },
   },
   {
     name: "Custom",
@@ -92,7 +82,7 @@ const PLANS: readonly Plan[] = [
       "Per-brand and per-user analytics and credit controls",
       "Priority support and onboarding",
     ],
-    cta: { label: "Talk to us", href: CONTACT_HREF },
+    cta: { label: "Talk to us", href: "/pilot?plan=custom" },
   },
 ];
 
