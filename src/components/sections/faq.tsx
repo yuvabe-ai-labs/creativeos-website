@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Reveal } from "@/components/motion/reveal";
-import { Section } from "@/components/site/section";
+import { Section, SectionHeading } from "@/components/site/section";
 
 const QUESTIONS = [
   {
@@ -51,6 +51,10 @@ export function Faq() {
         is what draws the hairline dividers.
       */}
       <Reveal>
+        <SectionHeading>FAQs</SectionHeading>
+      </Reveal>
+
+      <Reveal delay={0.06}>
         <Accordion
           type="multiple"
           className="gap-px overflow-hidden rounded-[16px] border border-line bg-line"
