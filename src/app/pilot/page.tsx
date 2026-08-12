@@ -14,19 +14,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/pilot" },
 };
 
-const MEASURES = [
-  "Baseline production time",
-  "CreativeOS production time",
-  "Time to first review-ready version",
-  "Number of generation attempts",
-  "Estimated generation cost",
-  "Number of brand corrections",
-  "Number of tools used",
-  "Number of review cycles",
-  "User satisfaction",
-  "Quality rating by a senior reviewer",
-];
-
 const FIT = [
   "Produces recurring content for D2C brands",
   "Has measurable content volume",
@@ -66,39 +53,8 @@ export default async function PilotPage({
                 One brand. One recurring workflow. Measured against how you
                 produce today — findings shared either way.
               </p>
-              <p className="mt-7 mb-0 max-w-[52ch] text-[14px] leading-[21px] text-ink-soft">
-                Applying commits you to nothing. We reply with fit and next
-                steps.
-              </p>
-            </Reveal>
 
-            <Reveal delay={0.08}>
-              <PilotForm defaultPlan={defaultPlan} />
-            </Reveal>
-          </div>
-        </section>
-
-        <section className="border-b border-line">
-          <div className="mx-auto grid max-w-[1240px] grid-cols-1 items-start gap-12 px-8 py-[72px] lg:grid-cols-2 lg:gap-16">
-            <Reveal>
-              <h2 className="font-display mt-0 mb-7 text-[clamp(1.6rem,2.4vw,2.2rem)] leading-[1.1] font-semibold tracking-[-0.022em]">
-                What we measure together
-              </h2>
-              {/* 1px gap over a grey backdrop draws the hairline grid. */}
-              <ul className="grid list-none grid-cols-1 gap-px overflow-hidden rounded-[16px] border border-line bg-line p-0 sm:grid-cols-2">
-                {MEASURES.map((measure) => (
-                  <li
-                    key={measure}
-                    className="bg-white px-[22px] py-[18px] text-[15px] leading-[22px] text-ink-muted"
-                  >
-                    {measure}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-
-            <Reveal delay={0.08}>
-              <h2 className="font-display mt-0 mb-6 text-[clamp(1.6rem,2.4vw,2.2rem)] leading-[1.1] font-semibold tracking-[-0.022em]">
+              <h2 className="mt-10 mb-4 text-[16px] leading-none font-semibold tracking-[-0.01em] text-ink">
                 Who this fits
               </h2>
               <ul className="flex list-none flex-col gap-3 p-0">
@@ -111,6 +67,15 @@ export default async function PilotPage({
                   </li>
                 ))}
               </ul>
+
+              <p className="mt-8 mb-0 max-w-[52ch] text-[14px] leading-[21px] text-ink-soft">
+                Applying commits you to nothing. We reply with fit and next
+                steps.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.08}>
+              <PilotForm defaultPlan={defaultPlan} />
             </Reveal>
           </div>
         </section>
