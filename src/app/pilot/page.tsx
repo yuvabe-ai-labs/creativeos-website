@@ -5,6 +5,7 @@ import { PilotForm } from "@/components/pilot/pilot-form";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { SITE } from "@/lib/site";
+import { planFromQuery } from "@/lib/submissions";
 
 export const metadata: Metadata = {
   title: `Apply for a pilot | ${SITE.product}`,
@@ -35,13 +36,25 @@ const FIT = [
   "Has a senior reviewer who can evaluate output quality",
 ];
 
-export default function PilotPage() {
+export default async function PilotPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const { plan } = await searchParams;
+  const defaultPlan = planFromQuery(typeof plan === "string" ? plan : undefined);
+
   return (
     <>
       <SiteHeader />
       <main className="w-full">
+        {/*
+          The form is the point of this page, so it shares the hero rather than
+          sitting below the fold. Below `lg` everything stacks in source order,
+          which puts the form directly after the headline.
+        */}
         <section className="border-b border-line bg-white">
-          <div className="mx-auto max-w-[1240px] px-8 pt-20 pb-16">
+          <div className="mx-auto grid max-w-[1240px] grid-cols-1 items-start gap-12 px-8 pt-16 pb-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
             <Reveal>
               <div className="mb-6 text-[12px] leading-[1.4] font-medium tracking-[0.22em] text-ink-soft uppercase">
                 Pilot programme
@@ -49,16 +62,24 @@ export default function PilotPage() {
               <h1 className="font-display m-0 max-w-[20ch] text-[clamp(2.3rem,4.4vw,3.8rem)] leading-[1.05] font-normal tracking-[-0.03em] text-ink">
                 Pilot CreativeOS with one active D2C brand.
               </h1>
-              <p className="mt-[26px] mb-0 max-w-[58ch] text-[18px] leading-[28px] text-ink-muted text-pretty">
+              <p className="mt-[26px] mb-0 max-w-[52ch] text-[18px] leading-[28px] text-ink-muted text-pretty">
                 One brand. One recurring workflow. Measured against how you
                 produce today — findings shared either way.
               </p>
+              <p className="mt-7 mb-0 max-w-[52ch] text-[14px] leading-[21px] text-ink-soft">
+                Applying commits you to nothing. We reply with fit and next
+                steps.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.08}>
+              <PilotForm defaultPlan={defaultPlan} />
             </Reveal>
           </div>
         </section>
 
         <section className="border-b border-line">
-          <div className="mx-auto grid max-w-[1240px] grid-cols-1 items-start gap-16 px-8 py-[72px] lg:grid-cols-[1.1fr_1fr]">
+          <div className="mx-auto grid max-w-[1240px] grid-cols-1 items-start gap-12 px-8 py-[72px] lg:grid-cols-2 lg:gap-16">
             <Reveal>
               <h2 className="font-display mt-0 mb-7 text-[clamp(1.6rem,2.4vw,2.2rem)] leading-[1.1] font-semibold tracking-[-0.022em]">
                 What we measure together
@@ -74,8 +95,10 @@ export default function PilotPage() {
                   </li>
                 ))}
               </ul>
+            </Reveal>
 
-              <h2 className="font-display mt-12 mb-6 text-[clamp(1.6rem,2.4vw,2.2rem)] leading-[1.1] font-semibold tracking-[-0.022em]">
+            <Reveal delay={0.08}>
+              <h2 className="font-display mt-0 mb-6 text-[clamp(1.6rem,2.4vw,2.2rem)] leading-[1.1] font-semibold tracking-[-0.022em]">
                 Who this fits
               </h2>
               <ul className="flex list-none flex-col gap-3 p-0">
@@ -88,15 +111,6 @@ export default function PilotPage() {
                   </li>
                 ))}
               </ul>
-
-              <p className="mt-7 mb-0 max-w-[52ch] text-[14px] leading-[21px] text-ink-soft">
-                Applying commits you to nothing. We reply with fit and next
-                steps.
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.08}>
-              <PilotForm />
             </Reveal>
           </div>
         </section>
