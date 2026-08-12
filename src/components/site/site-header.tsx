@@ -2,9 +2,14 @@ import Link from "next/link";
 
 import { CtaLink } from "@/components/site/cta-link";
 
+/*
+  Hrefs are root-relative (`/#workflow`, not `#workflow`) so the links resolve
+  from /pilot, /privacy and /terms as well as from the homepage. A bare hash
+  resolves against the current route and silently scrolls nowhere.
+*/
 const NAV = [
-  { label: "Product", href: "/product" },
-  { label: "How it works", href: "#workflow" },
+  { label: "How it works", href: "/#workflow" },
+  { label: "Pricing", href: "/#pricing" },
   { label: "Pilot", href: "/pilot" },
 ];
 
