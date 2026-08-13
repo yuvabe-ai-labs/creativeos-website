@@ -27,13 +27,16 @@ const CHIPS: Array<{
   /** Seconds into the 9s cycle; drives the ring pulse via negative delay. */
   arrival: number;
 }> = [
-  { label: "Explain the brand", thumb: "/assets/hero/placeholder-09.jpg", size: 96, x: 200, y: 110, arrival: 0.2 },
-  { label: "Tone of voice", thumb: "/assets/hero/placeholder-14.jpg", size: 72, x: 450, y: 190, arrival: 0.95 },
-  { label: "Product details", thumb: "/assets/hero/placeholder-11.jpg", size: 112, x: 170, y: 290, arrival: 1.7 },
-  { label: "Mood + lighting", thumb: "/assets/hero/placeholder-06.jpg", size: 80, x: 385, y: 370, arrival: 2.45 },
-  { label: "Colors + refs", thumb: "/assets/hero/placeholder-05.jpg", size: 104, x: 200, y: 470, arrival: 3.2 },
-  { label: "Market trends", thumb: "/assets/hero/placeholder-15.jpg", size: 88, x: 450, y: 545, arrival: 3.95 },
-  { label: "Compliance check", x: 260, y: 640, arrival: 4.6 },
+  // Arrivals are arc-length fractions of the thread scaled to its 4.05s
+  // travel (45% of the 9s cycle) — computed, not eyeballed, so the pulse
+  // lands as the dot passes.
+  { label: "Explain the brand", thumb: "/assets/hero/placeholder-09.jpg", size: 96, x: 200, y: 110, arrival: 0.05 },
+  { label: "Tone of voice", thumb: "/assets/hero/placeholder-14.jpg", size: 72, x: 450, y: 190, arrival: 0.52 },
+  { label: "Product details", thumb: "/assets/hero/placeholder-11.jpg", size: 112, x: 170, y: 290, arrival: 1.16 },
+  { label: "Mood + lighting", thumb: "/assets/hero/placeholder-06.jpg", size: 80, x: 385, y: 370, arrival: 1.66 },
+  { label: "Colors + refs", thumb: "/assets/hero/placeholder-05.jpg", size: 104, x: 200, y: 470, arrival: 2.14 },
+  { label: "Market trends", thumb: "/assets/hero/placeholder-15.jpg", size: 88, x: 450, y: 545, arrival: 2.71 },
+  { label: "Compliance check", x: 260, y: 640, arrival: 3.13 },
 ];
 
 const OUTPUTS = [
@@ -70,7 +73,7 @@ const OUTPUTS = [
    that unit's thumb height) so it never crosses a thumbnail or pill — then
    sweeps right along the bottom and rises into the centre card from below. */
 const THREAD =
-  "M200,170 C300,190 415,205 450,238 C480,290 250,300 170,358 C120,400 300,390 385,422 C445,447 270,470 200,534C150,580 380,570 450,601 C490,625 330,650 260,665 C350,690 520,560 620,452";
+  "M200,170 C300,190 415,205 450,238 C480,290 250,300 170,358 C120,400 300,390 385,422 C445,447 270,470 200,534C150,580 380,570 450,601 C470,635 340,655 260,665 C380,700 540,640 620,455";
 
 /* From the centre card's right edge to each deliverable's left edge. */
 const FANS = [
@@ -217,53 +220,68 @@ export function ContextWeb() {
                   }}
                 />
               ))}
-              <div className="relative h-full w-full overflow-hidden rounded-[18px] bg-[#eceef3] shadow-[0_24px_60px_rgba(11,15,25,.18)] ring-1 ring-black/5">
+              <div className="relative h-full w-full rounded-[18px] border-2 border-dashed border-rule">
+                {/* Skeleton: the grey fill and its sweep exist only for the
+                    ~1s shimmer window after the dot arrives. */}
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(100deg, transparent 30%, rgba(255,255,255,.85) 50%, transparent 70%)",
-                    backgroundSize: "200% 100%",
-                    animation:
-                      "coswebShimmer 1.1s linear infinite, coswebShimmerGate 9s linear infinite",
-                  }}
-                />
-                <Image
-                  src="/assets/hero/placeholder-11.jpg"
-                  alt="The asset on the canvas"
-                  fill
-                  sizes="220px"
-                  className="object-cover"
+                  className="absolute -inset-[2px] overflow-hidden rounded-[18px] bg-[#eceef3]"
+                  style={{ animation: "coswebShimmerGate 9s linear infinite" }}
+                >
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(100deg, transparent 30%, rgba(255,255,255,.85) 50%, transparent 70%)",
+                      backgroundSize: "200% 100%",
+                      animation: "coswebShimmer 1.1s linear infinite",
+                    }}
+                  />
+                </div>
+                <div
+                  className="absolute -inset-[2px] overflow-hidden rounded-[18px] shadow-[0_24px_60px_rgba(11,15,25,.18)] ring-1 ring-black/5"
                   style={{ animation: "coswebImg 9s linear infinite" }}
-                />
+                >
+                  <Image
+                    src="/assets/hero/placeholder-11.jpg"
+                    alt="The asset on the canvas"
+                    fill
+                    sizes="220px"
+                    className="object-cover"
+                  />
+                </div>
               </div>
             </div>
 
-            {/* The deliverables that inherit it. */}
+            {/* The deliverables that inherit it: dashed destination frames
+                until the fan dots land, then the asset and its name fade in. */}
             {OUTPUTS.map((out) => (
               <div
                 key={out.caption}
                 className="absolute -translate-x-1/2 -translate-y-1/2"
-                style={{
-                  ...pct(out.x, out.y),
-                  width: out.w,
-                  animation: "coswebFlash 9s linear infinite",
-                }}
+                style={{ ...pct(out.x, out.y), width: out.w }}
               >
                 <div
-                  className="relative w-full overflow-hidden rounded-[14px] shadow-[0_16px_40px_rgba(11,15,25,.16)] ring-1 ring-black/5"
+                  className="relative w-full rounded-[14px] border-2 border-dashed border-rule"
                   style={{ aspectRatio: out.ratio }}
                 >
-                  <Image
-                    src={out.src}
-                    alt={out.alt}
-                    fill
-                    sizes="140px"
-                    className="object-cover"
-                  />
+                  <div
+                    className="absolute -inset-[2px] overflow-hidden rounded-[14px] shadow-[0_16px_40px_rgba(11,15,25,.16)] ring-1 ring-black/5"
+                    style={{ animation: "coswebFlash 9s linear infinite" }}
+                  >
+                    <Image
+                      src={out.src}
+                      alt={out.alt}
+                      fill
+                      sizes="140px"
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
-                <div className="mt-2 text-center text-[11px] leading-none font-medium tracking-[0.14em] whitespace-nowrap text-ink-soft uppercase">
+                <div
+                  className="mt-2 text-center text-[11px] leading-none font-medium tracking-[0.14em] whitespace-nowrap text-ink-soft uppercase"
+                  style={{ animation: "coswebFlash 9s linear infinite" }}
+                >
                   {out.caption}
                 </div>
               </div>
