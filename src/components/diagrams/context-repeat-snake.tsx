@@ -1,8 +1,9 @@
-import { ChipLabel, type ChipGlyphName } from "@/components/diagrams/chip-glyphs";
+import { ChipGlyph, RowCaption, stepFor } from "@/components/diagrams/context-steps";
 
 /**
- * Re-setup as a serpentine: one dot walks three rows of the same five context
- * chips, and only reaches a finished reel at the end of each row.
+ * Re-setup as a serpentine: one dot walks three rows of the same four context
+ * chips, and only reaches a finished reel at the end of each row. The chips
+ * are named in the legend above, not on the path — see `context-steps`.
  *
  * The return legs between rows are empty by design — that stretch where the dot
  * is moving and nothing happens is the re-setup cost, stated as time. The track
@@ -23,11 +24,15 @@ const CYCLE_S = 12;
  *
  * These drive two things that have to agree: the per-chip `cosdKF*` latch, and
  * the negative delay that places the shared pulse on the same instant.
+ *
+ * The first entry of rows 2 and 3 is the U-turn's leftmost extent — that chip
+ * sits at x=160 while the row itself starts at x=174, so the dot sweeps past it
+ * inside the turn rather than along the straight.
  */
 const CHIP_ARRIVAL = [
-  1.35, 3.72, 6.09, 8.46, 10.83,
-  37.93, 41.43, 43.8, 46.17, 48.54,
-  75.63, 79.13, 81.5, 83.87, 86.24,
+  1.693, 4.739, 7.786, 10.833,
+  37.925, 42.443, 45.489, 48.536,
+  75.629, 80.146, 83.193, 86.239,
 ] as const;
 
 /** The boustrophedon route — left to right, U-turn, right to left, and again. */
@@ -58,46 +63,24 @@ const REELS = [
   { label: "Reel 3", y: 276, flashDelay: "6.77s", tick: "costickS3" },
 ] as const;
 
-/** The same five x on every row — the repetition is the whole point. */
-const CHIP_X = [150, 220, 290, 360, 430] as const;
-const ROW_Y = [60, 180, 300] as const;
-
 /**
- * Only the first row is labelled — the point is that rows 2 and 3 repeat it.
+ * The same four x on every row — the repetition is the whole point.
  *
- * "Compliance" is wider than the chip pitch, so the labels cannot all sit on
- * one line. Alternating them above and below the path solves that with room to
- * spare — neighbours are never on the same side, so each has two pitches of
- * width — and leaves room for a glyph on each.
+ * Four rather than five: the dots are representational, standing for context
+ * being set rather than itemising it, so a fifth bought clutter and no meaning.
  */
-const CHIP_LABELS = [
-  { x: 150, glyph: "brand", side: "above", text: "Brand" },
-  { x: 220, glyph: "lighting", side: "below", text: "Lighting" },
-  { x: 290, glyph: "tone", side: "above", text: "Tone" },
-  { x: 360, glyph: "compliance", side: "below", text: "Compliance" },
-  { x: 430, glyph: "trends", side: "above", text: "Trends" },
-] as const satisfies readonly {
-  x: number;
-  glyph: ChipGlyphName;
-  side: "above" | "below";
-  text: string;
-}[];
-
-/**
- * Vertical centre of each label row, either side of the path at y=60. Both sit
- * ~11 units clear of the chips, and the lower one clears the return leg at
- * y=120 by 21.
- */
-export const LABEL_ROW_Y = { above: 32, below: 88 } as const;
+const CHIP_X = [160, 250, 340, 430] as const;
+const ROW_Y = [60, 180, 300] as const;
+/** Glyphs sit above the first row, clear of the chips by ~11 units. */
+const GLYPH_ROW_Y = 34;
 
 export function ContextRepeatSnake() {
   return (
     // A 600-unit-wide viewBox, matching `context-set-once`. Equal viewBox widths
-    // in equal columns mean one SVG unit is the same size in both, so a 17px
-    // label is the same 17px in either. 600 rather than a looser frame because
-    // the tighter the crop, the larger everything renders in the same column —
-    // which is most of what makes these labels readable.
-    <svg viewBox="91 8 600 348" className="block h-auto w-full" aria-hidden="true">
+    // in equal columns mean one SVG unit is the same size in both. The crop is
+    // tighter now that the labels have moved out to the legend — there is no
+    // band above and below the path left to reserve for them.
+    <svg viewBox="91 14 600 328" className="block h-auto w-full" aria-hidden="true">
       <g fill="none" strokeWidth="3" strokeDasharray="2 14" strokeLinecap="round">
         {CONNECTOR_LEGS.map((d) => (
           <path key={d} d={d} stroke="#e5e7eb" />
@@ -116,22 +99,16 @@ export function ContextRepeatSnake() {
         style={{ animation: `cossnake ${CYCLE} linear infinite` }}
       />
 
-      {CHIP_LABELS.map((label) => (
-        <ChipLabel
-          key={label.text}
-          name={label.glyph}
-          text={label.text}
-          x={label.x}
-          y={LABEL_ROW_Y[label.side]}
-          color="#9ca3af"
-        />
-      ))}
-
       {ROW_Y.map((cy, row) =>
         CHIP_X.map((cx, col) => {
           const i = row * CHIP_X.length + col;
           return (
             <g key={`${cy}-${cx}`}>
+              {/* Only the first row is glyphed — rows 2 and 3 are the same four
+                  steps again, and the legend already named them. */}
+              {row === 0 ? (
+                <ChipGlyph step={stepFor(col)} x={cx} y={GLYPH_ROW_Y} />
+              ) : null}
               {/* The pulse rides a shared keyframe, placed on this chip's moment
                   by a negative delay of (cycle - arrival). */}
               <circle
@@ -139,7 +116,7 @@ export function ContextRepeatSnake() {
                 cy={cy}
                 r="5.5"
                 fill="none"
-                stroke="#5829c7"
+                stroke={stepFor(col).color}
                 strokeWidth="2"
                 opacity={0}
                 style={{
@@ -154,7 +131,7 @@ export function ContextRepeatSnake() {
                 cy={cy}
                 r="5.5"
                 fill="#fff"
-                stroke="#5829c7"
+                stroke={stepFor(col).color}
                 strokeWidth="2"
                 style={{
                   transformBox: "fill-box",
@@ -200,10 +177,13 @@ export function ContextRepeatSnake() {
         </g>
       ))}
 
-      {/* Row caption, playing the part `Context set once` plays in the other
-          card — same 15px / 1px-tracked treatment, in grey. */}
-      <text x="290" y="208" textAnchor="middle" style={{ fontWeight: "500", fontSize: "15px", letterSpacing: "1px" }} fill="#9ca3af">Context set again</text>
-      <text x="290" y="328" textAnchor="middle" style={{ fontWeight: "500", fontSize: "15px", letterSpacing: "1px" }} fill="#9ca3af">Context set again</text>
+      {/* Row captions, each 32 units under its own path, with the four context
+          colours stacked beside them. Reading down they are the argument: set
+          once, then again, then again — where the card opposite stops after
+          the first. */}
+      <RowCaption x={290} y={92} text="Context set once" color="#9ca3af" />
+      <RowCaption x={290} y={212} text="Context set again" color="#9ca3af" />
+      <RowCaption x={290} y={332} text="Context set again" color="#9ca3af" />
     </svg>
   );
 }

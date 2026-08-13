@@ -522,100 +522,82 @@
    take its time afterwards — it trails the contact instead of delaying it.
    Both pops last ~200ms in real time, which is why the offsets differ: the
    two cards run on 12s and 3.5s. Percentages are distance along the path. */
-@keyframes cosdKF0 {
-  0%, 1.35% { fill: #fff; transform: scale(1); }
-  1.55% { fill: #5829c7; transform: scale(1.5); }
-  3.25% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF1 {
-  0%, 3.72% { fill: #fff; transform: scale(1); }
-  3.92% { fill: #5829c7; transform: scale(1.5); }
-  5.62% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF2 {
-  0%, 6.09% { fill: #fff; transform: scale(1); }
-  6.29% { fill: #5829c7; transform: scale(1.5); }
-  7.99% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF3 {
-  0%, 8.46% { fill: #fff; transform: scale(1); }
-  8.66% { fill: #5829c7; transform: scale(1.5); }
-  10.36% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF4 {
-  0%, 10.83% { fill: #fff; transform: scale(1); }
-  11.03% { fill: #5829c7; transform: scale(1.5); }
-  12.73% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF5 {
-  0%, 37.93% { fill: #fff; transform: scale(1); }
-  38.13% { fill: #5829c7; transform: scale(1.5); }
-  39.83% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF6 {
-  0%, 41.43% { fill: #fff; transform: scale(1); }
-  41.63% { fill: #5829c7; transform: scale(1.5); }
-  43.33% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF7 {
-  0%, 43.8% { fill: #fff; transform: scale(1); }
-  44.0% { fill: #5829c7; transform: scale(1.5); }
-  45.7% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF8 {
-  0%, 46.17% { fill: #fff; transform: scale(1); }
-  46.37% { fill: #5829c7; transform: scale(1.5); }
-  48.07% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF9 {
-  0%, 48.54% { fill: #fff; transform: scale(1); }
-  48.74% { fill: #5829c7; transform: scale(1.5); }
-  50.44% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF10 {
-  0%, 75.63% { fill: #fff; transform: scale(1); }
-  75.83% { fill: #5829c7; transform: scale(1.5); }
-  77.53% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF11 {
-  0%, 79.13% { fill: #fff; transform: scale(1); }
-  79.33% { fill: #5829c7; transform: scale(1.5); }
-  81.03% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF12 {
-  0%, 81.5% { fill: #fff; transform: scale(1); }
-  81.7% { fill: #5829c7; transform: scale(1.5); }
-  83.4% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF13 {
-  0%, 83.87% { fill: #fff; transform: scale(1); }
-  84.07% { fill: #5829c7; transform: scale(1.5); }
-  85.77% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKF14 {
-  0%, 86.24% { fill: #fff; transform: scale(1); }
-  86.44% { fill: #5829c7; transform: scale(1.5); }
-  88.14% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
 /* …and emits one expanding ring as it lights. This is shared by every chip on
    both cards: a pulse is a short event that recurs once per cycle, so a
    negative `animation-delay` of (cycle - arrival) places it on that chip's
    moment without needing a keyframe per chip. Only the latch above does. */
+@keyframes cosdKF0 {
+  0%, 1.693% { fill: #fff; transform: scale(1); }
+  1.893% { fill: #b5379b; transform: scale(1.5); }
+  3.593% { transform: scale(1); }
+  100% { fill: #b5379b; transform: scale(1); }
+}
+@keyframes cosdKF1 {
+  0%, 4.739% { fill: #fff; transform: scale(1); }
+  4.939% { fill: #e3a900; transform: scale(1.5); }
+  6.639% { transform: scale(1); }
+  100% { fill: #e3a900; transform: scale(1); }
+}
+@keyframes cosdKF2 {
+  0%, 7.786% { fill: #fff; transform: scale(1); }
+  7.986% { fill: #2b8fb8; transform: scale(1.5); }
+  9.686% { transform: scale(1); }
+  100% { fill: #2b8fb8; transform: scale(1); }
+}
+@keyframes cosdKF3 {
+  0%, 10.833% { fill: #fff; transform: scale(1); }
+  11.033% { fill: #5829c7; transform: scale(1.5); }
+  12.733% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF4 {
+  0%, 37.925% { fill: #fff; transform: scale(1); }
+  38.125% { fill: #b5379b; transform: scale(1.5); }
+  39.825% { transform: scale(1); }
+  100% { fill: #b5379b; transform: scale(1); }
+}
+@keyframes cosdKF5 {
+  0%, 42.443% { fill: #fff; transform: scale(1); }
+  42.643% { fill: #e3a900; transform: scale(1.5); }
+  44.343% { transform: scale(1); }
+  100% { fill: #e3a900; transform: scale(1); }
+}
+@keyframes cosdKF6 {
+  0%, 45.489% { fill: #fff; transform: scale(1); }
+  45.689% { fill: #2b8fb8; transform: scale(1.5); }
+  47.389% { transform: scale(1); }
+  100% { fill: #2b8fb8; transform: scale(1); }
+}
+@keyframes cosdKF7 {
+  0%, 48.536% { fill: #fff; transform: scale(1); }
+  48.736% { fill: #5829c7; transform: scale(1.5); }
+  50.436% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF8 {
+  0%, 75.629% { fill: #fff; transform: scale(1); }
+  75.829% { fill: #b5379b; transform: scale(1.5); }
+  77.529% { transform: scale(1); }
+  100% { fill: #b5379b; transform: scale(1); }
+}
+@keyframes cosdKF9 {
+  0%, 80.146% { fill: #fff; transform: scale(1); }
+  80.346% { fill: #e3a900; transform: scale(1.5); }
+  82.046% { transform: scale(1); }
+  100% { fill: #e3a900; transform: scale(1); }
+}
+@keyframes cosdKF10 {
+  0%, 83.193% { fill: #fff; transform: scale(1); }
+  83.393% { fill: #2b8fb8; transform: scale(1.5); }
+  85.093% { transform: scale(1); }
+  100% { fill: #2b8fb8; transform: scale(1); }
+}
+@keyframes cosdKF11 {
+  0%, 86.239% { fill: #fff; transform: scale(1); }
+  86.439% { fill: #5829c7; transform: scale(1.5); }
+  88.139% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
 @keyframes cosChipPulse {
   0% {
     transform: scale(0.8);
@@ -646,34 +628,29 @@
     opacity: 0;
   }
 }
+
 @keyframes cosdKP0 {
-  0%, 4.64% { fill: #fff; transform: scale(1); }
-  5.34% { fill: #5829c7; transform: scale(1.5); }
-  10.34% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
+  0%, 4.644% { fill: #fff; transform: scale(1); }
+  5.344% { fill: #b5379b; transform: scale(1.5); }
+  10.344% { transform: scale(1); }
+  100% { fill: #b5379b; transform: scale(1); }
 }
 @keyframes cosdKP1 {
-  0%, 12.08% { fill: #fff; transform: scale(1); }
-  12.78% { fill: #5829c7; transform: scale(1.5); }
-  17.78% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
+  0%, 13.933% { fill: #fff; transform: scale(1); }
+  14.633% { fill: #e3a900; transform: scale(1.5); }
+  19.633% { transform: scale(1); }
+  100% { fill: #e3a900; transform: scale(1); }
 }
 @keyframes cosdKP2 {
-  0%, 19.51% { fill: #fff; transform: scale(1); }
-  20.21% { fill: #5829c7; transform: scale(1.5); }
-  25.21% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
+  0%, 23.222% { fill: #fff; transform: scale(1); }
+  23.922% { fill: #2b8fb8; transform: scale(1.5); }
+  28.922% { transform: scale(1); }
+  100% { fill: #2b8fb8; transform: scale(1); }
 }
 @keyframes cosdKP3 {
-  0%, 26.94% { fill: #fff; transform: scale(1); }
-  27.64% { fill: #5829c7; transform: scale(1.5); }
-  32.64% { transform: scale(1); }
-  100% { fill: #5829c7; transform: scale(1); }
-}
-@keyframes cosdKP4 {
-  0%, 34.37% { fill: #fff; transform: scale(1); }
-  35.07% { fill: #5829c7; transform: scale(1.5); }
-  40.07% { transform: scale(1); }
+  0%, 32.511% { fill: #fff; transform: scale(1); }
+  33.211% { fill: #5829c7; transform: scale(1.5); }
+  38.211% { transform: scale(1); }
   100% { fill: #5829c7; transform: scale(1); }
 }
 

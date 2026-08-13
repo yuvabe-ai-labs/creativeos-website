@@ -1,5 +1,6 @@
 import { ContextRepeatSnake } from "@/components/diagrams/context-repeat-snake";
 import { ContextSetOnce } from "@/components/diagrams/context-set-once";
+import { ContextLegend } from "@/components/diagrams/context-steps";
 import { Reveal } from "@/components/motion/reveal";
 import { ComparisonCard, ComparisonGrid } from "@/components/site/comparison-card";
 import { Section, SectionHeading, SectionLede } from "@/components/site/section";
@@ -16,6 +17,14 @@ export function ContextCost() {
             Dozens of assets later, the knowledge still sits in chats, drives, and
             dashboards. Every new asset rebuilds the same context.
           </SectionLede>
+        </Reveal>
+
+        {/* One legend for both cards. The diagrams carry colour only, so this
+            is where the colours get their names — and the only place they do. */}
+        <Reveal delay={0.06}>
+          <div className="mt-8">
+            <ContextLegend />
+          </div>
         </Reveal>
 
         <ComparisonGrid divider>

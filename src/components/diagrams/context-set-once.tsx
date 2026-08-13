@@ -1,11 +1,10 @@
-import { ChipLabel, type ChipGlyphName } from "@/components/diagrams/chip-glyphs";
-import { LABEL_ROW_Y } from "@/components/diagrams/context-repeat-snake";
+import { ChipGlyph, RowCaption, stepFor } from "@/components/diagrams/context-steps";
 
 /**
  * Context set once, then three reels off the same row.
  *
  * This is `context-repeat-snake` with the return trips removed, and that is
- * the point: same viewBox, same glyphs, same reel rows, same dot speed. The
+ * the point: same viewBox, same chip colours, same reel rows, same dot speed. The
  * only difference is that the dot runs the row once and fans out, instead of
  * walking it three times.
  *
@@ -26,30 +25,18 @@ const CYCLE_S = 3.5;
  * units and `cosrowP` covers it by 41.8%, so this is just distance scaled — the
  * same derivation the serpentine uses, at that card's speed.
  */
-const CHIP_ARRIVAL = [4.64, 12.08, 19.51, 26.94, 34.37] as const;
+const CHIP_ARRIVAL = [4.644, 13.933, 23.222, 32.511] as const;
 
 /**
- * Six evenly spaced stops at a 64-unit pitch: five chips, then the junction.
+ * Five evenly spaced stops at an 80-unit pitch: four chips, then the junction.
  * The junction is part of the rhythm rather than an extra mark crowded onto
  * the end of the row.
  */
-const CHIP_X = [150, 214, 278, 342, 406] as const;
+const CHIP_X = [150, 230, 310, 390] as const;
 const JUNCTION_X = 470;
 const ROW_Y = 60;
-
-/** Same glyphs and the same above/below alternation as the other card. */
-const CHIP_LABELS = [
-  { x: 150, glyph: "brand", side: "above", text: "Brand" },
-  { x: 214, glyph: "lighting", side: "below", text: "Lighting" },
-  { x: 278, glyph: "tone", side: "above", text: "Tone" },
-  { x: 342, glyph: "compliance", side: "below", text: "Compliance" },
-  { x: 406, glyph: "trends", side: "above", text: "Trends" },
-] as const satisfies readonly {
-  x: number;
-  glyph: ChipGlyphName;
-  side: "above" | "below";
-  text: string;
-}[];
+/** Matches the serpentine's glyph row, so the two read at one height. */
+const GLYPH_ROW_Y = 34;
 
 /**
  * Reel rows sit at the same y as the other card's, so the eye can compare them
@@ -70,7 +57,7 @@ const REELS = [
 
 export function ContextSetOnce() {
   return (
-    <svg viewBox="91 8 600 348" className="block h-auto w-full" aria-hidden="true">
+    <svg viewBox="91 14 600 328" className="block h-auto w-full" aria-hidden="true">
       {/* Tracks: the row, then the three routes out of the junction. */}
       <g fill="none" stroke="#c3c9d4" strokeWidth="3" strokeDasharray="2 14" strokeLinecap="round">
         <path d="M110,60 H470" />
@@ -103,18 +90,9 @@ export function ContextSetOnce() {
         />
       ))}
 
-      {CHIP_LABELS.map((label) => (
-        <ChipLabel
-          key={label.text}
-          name={label.glyph}
-          text={label.text}
-          x={label.x}
-          y={LABEL_ROW_Y[label.side]}
-          color="#6b7280"
-        />
-      ))}
       {CHIP_X.map((cx, i) => (
         <g key={cx}>
+          <ChipGlyph step={stepFor(i)} x={cx} y={GLYPH_ROW_Y} />
           {/* Shared pulse keyframe, placed on this chip's moment by a negative
               delay of (cycle - arrival). */}
           <circle
@@ -122,7 +100,7 @@ export function ContextSetOnce() {
             cy={ROW_Y}
             r="5.5"
             fill="none"
-            stroke="#5829c7"
+            stroke={stepFor(i).color}
             strokeWidth="2"
             opacity={0}
             style={{
@@ -137,7 +115,7 @@ export function ContextSetOnce() {
             cy={ROW_Y}
             r="5.5"
             fill="#fff"
-            stroke="#5829c7"
+            stroke={stepFor(i).color}
             strokeWidth="2"
             style={{
               transformBox: "fill-box",
@@ -162,9 +140,10 @@ export function ContextSetOnce() {
         style={{ transformBox: "fill-box", transformOrigin: "center", animation: `cosringP ${CYCLE} linear infinite` }}
       />
 
-      {/* Mirrors "Context set again" on the other card, in the product's colour.
-          Clears the below-path labels, which reach y=99. */}
-      <text x="290" y="140" textAnchor="middle" style={{ fontWeight: "500", fontSize: "15px", letterSpacing: "1px" }} fill="#9688c0">Context set once</text>
+      {/* Sits 32 units under the path, level with the other card's first-row
+          caption — the two say "Context set once" at the same height, and only
+          that card goes on to say it twice more. */}
+      <RowCaption x={290} y={92} text="Context set once" color="#9688c0" />
 
       {REELS.map((reel) => (
         <g key={reel.label}>
