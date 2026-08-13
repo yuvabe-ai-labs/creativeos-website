@@ -1050,12 +1050,12 @@
    are amber (assets are the CREATE side). */
 @keyframes coswebDot {
   0% { stroke-dashoffset: 0; opacity: 1; }
-  45% { stroke-dashoffset: -104; opacity: 1; }
-  45.5%, 100% { stroke-dashoffset: -104; opacity: 0; }
+  32% { stroke-dashoffset: -104; opacity: 1; }
+  32.5%, 100% { stroke-dashoffset: -104; opacity: 0; }
 }
 @keyframes coswebTrail {
   0% { stroke-dashoffset: 100; opacity: 0.7; }
-  45% { stroke-dashoffset: 0; opacity: 0.7; }
+  32% { stroke-dashoffset: 0; opacity: 0.7; }
   93% { stroke-dashoffset: 0; opacity: 0.7; }
   99%, 100% { stroke-dashoffset: 0; opacity: 0; }
 }
@@ -1064,8 +1064,8 @@
    beam rings pulse out as it lands (coswebBeam), and only then do the fans
    leave — an asset can't be reused before it exists. */
 @keyframes coswebImg {
-  0%, 45% { opacity: 0; }
-  56%, 97% { opacity: 1; }
+  0%, 32% { opacity: 0; }
+  42%, 97% { opacity: 1; }
   100% { opacity: 0; }
 }
 @keyframes coswebShimmer {
@@ -1075,25 +1075,25 @@
    resolving (66%) — before that the centre is a flat grey rectangle. The
    sweep itself is a separate fast loop; this gates its visibility. */
 @keyframes coswebShimmerGate {
-  0%, 44% { opacity: 0; }
-  46%, 56% { opacity: 1; }
-  58%, 100% { opacity: 0; }
+  0%, 31% { opacity: 0; }
+  33%, 42% { opacity: 1; }
+  44%, 100% { opacity: 0; }
 }
 @keyframes coswebBeam {
-  0%, 54% { transform: scale(1); opacity: 0; }
-  57% { opacity: 0.55; }
-  72%, 100% { transform: scale(1.5); opacity: 0; }
+  0%, 40% { transform: scale(1); opacity: 0; }
+  43% { opacity: 0.55; }
+  58%, 100% { transform: scale(1.5); opacity: 0; }
 }
 @keyframes coswebFan {
-  0%, 58% { stroke-dashoffset: 0; opacity: 0; }
-  59% { opacity: 1; }
-  78% { stroke-dashoffset: -105; opacity: 1; }
-  79%, 100% { stroke-dashoffset: -105; opacity: 0; }
+  0%, 44% { stroke-dashoffset: 0; opacity: 0; }
+  45% { opacity: 1; }
+  62% { stroke-dashoffset: -105; opacity: 1; }
+  63%, 100% { stroke-dashoffset: -105; opacity: 0; }
 }
 @keyframes coswebFanTrail {
-  0%, 58% { stroke-dashoffset: 100; opacity: 0; }
-  59% { opacity: 0.7; }
-  78% { stroke-dashoffset: 0; opacity: 0.7; }
+  0%, 44% { stroke-dashoffset: 100; opacity: 0; }
+  45% { opacity: 0.7; }
+  62% { stroke-dashoffset: 0; opacity: 0.7; }
   94% { stroke-dashoffset: 0; opacity: 0.7; }
   99%, 100% { stroke-dashoffset: 0; opacity: 0; }
 }
@@ -1101,8 +1101,8 @@
    each destination, and the image + caption fade in only as the fan dots
    land (88%), holding to the loop end. */
 @keyframes coswebFlash {
-  0%, 76% { opacity: 0; }
-  81%, 98% { opacity: 1; }
+  0%, 60% { opacity: 0; }
+  66%, 98% { opacity: 1; }
   100% { opacity: 0; }
 }
 /* Chip ring pulse; a short event, so per-chip `animation-delay` places it on

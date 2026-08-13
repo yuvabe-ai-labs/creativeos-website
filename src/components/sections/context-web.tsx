@@ -31,18 +31,20 @@ const CHIPS: Array<{
   /** Renders the pill on the left of the thumb — for chips whose right side is crowded. */
   labelFirst?: boolean;
 }> = [
-  // Arrivals are arc-length fractions of the thread scaled to its 4.05s
-  // travel (45% of the 9s cycle) — computed, not eyeballed, so the pulse
-  // lands as the dot passes. `depth` is the perspective: nearer units render
-  // larger and fully opaque, farther ones smaller and fainter. It scales
-  // around the anchor, so the thread stays in sync.
-  { label: "Explain the brand", thumb: "/assets/hero/placeholder-09.jpg", size: 96, x: 432, y: 67, arrival: 0.12, depth: 1.05 },
-  { label: "Tone of voice", thumb: "/assets/hero/placeholder-14.jpg", size: 72, x: 267, y: 129, arrival: 0.69, depth: 0.82 },
-  { label: "Product details", thumb: "/assets/hero/placeholder-11.jpg", size: 112, x: 143, y: 246, arrival: 1.26, depth: 1.12 },
-  { label: "Mood + lighting", thumb: "/assets/hero/placeholder-06.jpg", size: 80, x: 121, y: 417, arrival: 1.82, depth: 0.88 },
-  { label: "Colors + refs", thumb: "/assets/hero/placeholder-05.jpg", size: 104, x: 216, y: 559, arrival: 2.39, depth: 1.0 },
-  { label: "Market trends", thumb: "/assets/hero/placeholder-15.jpg", size: 88, x: 330, y: 635, arrival: 2.96, depth: 0.94, labelFirst: true },
-  { label: "Compliance check", thumb: "/assets/hero/placeholder-16.jpg", size: 76, x: 585, y: 634, arrival: 3.48, depth: 0.88 },
+  // Arrivals are nearest-point arc-length fractions of the thread scaled to
+  // its 2.24s travel (32% of the 7s cycle) — computed, not eyeballed, so the
+  // pulse lands as the dot passes. `depth` is the perspective: nearer units
+  // render larger and fully opaque, farther ones smaller and fainter. It
+  // scales around the anchor, so the thread stays in sync.
+  // Steps alternate sides of the S: units left of the path carry their label
+  // on the left (thumb kissing the line), units right of it the reverse.
+  { label: "Explain the brand", thumb: "/assets/hero/placeholder-09.jpg", size: 96, x: 200, y: 110, arrival: 0.05, depth: 1.05, labelFirst: true },
+  { label: "Tone of voice", thumb: "/assets/hero/placeholder-14.jpg", size: 72, x: 450, y: 190, arrival: 0.47, depth: 0.82 },
+  { label: "Product details", thumb: "/assets/hero/placeholder-11.jpg", size: 112, x: 170, y: 290, arrival: 1.06, depth: 1.12, labelFirst: true },
+  { label: "Mood + lighting", thumb: "/assets/hero/placeholder-06.jpg", size: 80, x: 385, y: 370, arrival: 0.76, depth: 0.88 },
+  { label: "Colors + refs", thumb: "/assets/hero/placeholder-05.jpg", size: 104, x: 200, y: 470, arrival: 1.3, depth: 1.0, labelFirst: true },
+  { label: "Market trends", thumb: "/assets/hero/placeholder-15.jpg", size: 88, x: 450, y: 545, arrival: 1.84, depth: 0.94 },
+  { label: "Compliance check", thumb: "/assets/hero/placeholder-16.jpg", size: 76, x: 260, y: 620, arrival: 1.53, depth: 0.88, labelFirst: true },
 ];
 
 const OUTPUTS = [
@@ -75,11 +77,10 @@ const OUTPUTS = [
   },
 ];
 
-/* One swooping arc around the central image's left — a big parenthesis the
-   chips sit just outside of, entering the card from below. Chip anchors are
-   points on this arc pushed 55 units away from the card's centre. */
+/* A softened S — four shallow bends past the alternating steps, entering the
+   card from below. Short on purpose: the dot clears it in ~2.2s. */
 const THREAD =
-  "M500,105 C260,140 170,240 170,360 C170,480 260,585 520,612 C580,618 615,540 620,470";
+  "M200,145 C350,175 450,205 460,235 C470,300 240,300 205,360 C175,430 220,505 300,545 C400,590 500,620 620,458";
 
 /* From the centre card's right edge to each deliverable's left edge. */
 const FANS = [
@@ -134,7 +135,7 @@ export function ContextWeb() {
                 stroke="rgba(88,41,199,.35)"
                 strokeWidth="1.5"
                 strokeDasharray="100 100"
-                style={{ animation: "coswebTrail 9s linear infinite" }}
+                style={{ animation: "coswebTrail 7s linear infinite" }}
               />
               <path
                 d={THREAD}
@@ -143,7 +144,7 @@ export function ContextWeb() {
                 strokeWidth="6"
                 strokeLinecap="round"
                 strokeDasharray="4 100"
-                style={{ animation: "coswebDot 9s linear infinite" }}
+                style={{ animation: "coswebDot 7s linear infinite" }}
               />
 
               {/* The fan: three amber dots leaving together — the reuse. */}
@@ -155,7 +156,7 @@ export function ContextWeb() {
                     stroke="rgba(227,169,0,.4)"
                     strokeWidth="1.5"
                     strokeDasharray="100 100"
-                    style={{ animation: "coswebFanTrail 9s linear infinite" }}
+                    style={{ animation: "coswebFanTrail 7s linear infinite" }}
                   />
                   <path
                     d={d}
@@ -164,7 +165,7 @@ export function ContextWeb() {
                     strokeWidth="6"
                     strokeLinecap="round"
                     strokeDasharray="5 100"
-                    style={{ animation: "coswebFan 9s linear infinite" }}
+                    style={{ animation: "coswebFan 7s linear infinite" }}
                   />
                 </g>
               ))}
@@ -202,8 +203,8 @@ export function ContextWeb() {
                 <span
                   className="rounded-full bg-white px-4 py-2 text-[13px] leading-none font-medium whitespace-nowrap text-ink-muted ring-1 ring-line shadow-[0_2px_10px_rgba(11,15,25,.07)]"
                   style={{
-                    animation: "coswebChip 9s linear infinite",
-                    animationDelay: `-${9 - chip.arrival}s`,
+                    animation: "coswebChip 7s linear infinite",
+                    animationDelay: `-${7 - chip.arrival}s`,
                   }}
                 >
                   {chip.label}
@@ -229,7 +230,7 @@ export function ContextWeb() {
                   className="absolute inset-0 rounded-[18px] border-2"
                   style={{
                     borderColor: beam.color,
-                    animation: "coswebBeam 9s linear infinite",
+                    animation: "coswebBeam 7s linear infinite",
                     animationDelay: beam.delay,
                   }}
                 />
@@ -240,7 +241,7 @@ export function ContextWeb() {
                 <div
                   aria-hidden="true"
                   className="absolute -inset-[2px] overflow-hidden rounded-[18px] bg-[#eceef3]"
-                  style={{ animation: "coswebShimmerGate 9s linear infinite" }}
+                  style={{ animation: "coswebShimmerGate 7s linear infinite" }}
                 >
                   <div
                     className="absolute inset-0"
@@ -254,7 +255,7 @@ export function ContextWeb() {
                 </div>
                 <div
                   className="absolute -inset-[2px] overflow-hidden rounded-[18px] shadow-[0_24px_60px_rgba(11,15,25,.18)] ring-1 ring-black/5"
-                  style={{ animation: "coswebImg 9s linear infinite" }}
+                  style={{ animation: "coswebImg 7s linear infinite" }}
                 >
                   <Image
                     src="/assets/hero/placeholder-11.jpg"
@@ -281,7 +282,7 @@ export function ContextWeb() {
                 >
                   <div
                     className="absolute -inset-[2px] overflow-hidden rounded-[14px] shadow-[0_16px_40px_rgba(11,15,25,.16)] ring-1 ring-black/5"
-                    style={{ animation: "coswebFlash 9s linear infinite" }}
+                    style={{ animation: "coswebFlash 7s linear infinite" }}
                   >
                     <Image
                       src={out.src}
@@ -294,7 +295,7 @@ export function ContextWeb() {
                 </div>
                 <div
                   className="mt-2 text-center text-[11px] leading-none font-medium tracking-[0.14em] whitespace-nowrap text-ink-soft uppercase"
-                  style={{ animation: "coswebFlash 9s linear infinite" }}
+                  style={{ animation: "coswebFlash 7s linear infinite" }}
                 >
                   {out.caption}
                 </div>
