@@ -1041,6 +1041,51 @@
   }
 }
 
+/* --- context web (section 01) ----------------------------------------------
+   One dot strings the context chips together (0-55% of a 9s cycle), then
+   three fan dots leave the centre asset for the output crops (60-85%) — the
+   pause between is the beat where the canvas "has" the context. Trails use
+   pathLength="100" normalisation, same device as section 01's old cards.
+   The thread is purple (context is the LEARN side of the system); the fans
+   are amber (assets are the CREATE side). */
+@keyframes coswebDot {
+  0% { stroke-dashoffset: 0; opacity: 1; }
+  55% { stroke-dashoffset: -104; opacity: 1; }
+  55.5%, 100% { stroke-dashoffset: -104; opacity: 0; }
+}
+@keyframes coswebTrail {
+  0% { stroke-dashoffset: 100; opacity: 0.7; }
+  55% { stroke-dashoffset: 0; opacity: 0.7; }
+  93% { stroke-dashoffset: 0; opacity: 0.7; }
+  99%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+@keyframes coswebFan {
+  0%, 60% { stroke-dashoffset: 0; opacity: 0; }
+  61% { opacity: 1; }
+  85% { stroke-dashoffset: -105; opacity: 1; }
+  86%, 100% { stroke-dashoffset: -105; opacity: 0; }
+}
+@keyframes coswebFanTrail {
+  0%, 60% { stroke-dashoffset: 100; opacity: 0; }
+  61% { opacity: 0.7; }
+  85% { stroke-dashoffset: 0; opacity: 0.7; }
+  93% { stroke-dashoffset: 0; opacity: 0.7; }
+  99%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+/* Output cards brighten as the fan dots land (~85%), hold to the loop end. */
+@keyframes coswebFlash {
+  0%, 84% { opacity: 0.55; }
+  88%, 98% { opacity: 1; }
+  100% { opacity: 0.55; }
+}
+/* Chip ring pulse; a short event, so per-chip `animation-delay` places it on
+   that chip's arrival without needing a keyframe per chip. */
+@keyframes coswebChip {
+  0% { box-shadow: 0 0 0 0 rgba(150, 136, 192, 0.55); }
+  7% { box-shadow: 0 0 0 14px rgba(150, 136, 192, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(150, 136, 192, 0); }
+}
+
 /* --- dark hero scatter (Flora-pattern hero) --------------------------------
    Cards enter once, then drift. The two transforms live on nested elements —
    entrance on the positioned wrapper, float on the frame — so neither

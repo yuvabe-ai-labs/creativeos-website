@@ -1,4 +1,4 @@
-import { ContextCost } from "@/components/sections/context-cost";
+import { ContextWeb } from "@/components/sections/context-web";
 import { Faq } from "@/components/sections/faq";
 import { FinalCta } from "@/components/sections/final-cta";
 import { HeroFlora } from "@/components/sections/hero-flora";
@@ -23,7 +23,7 @@ export default function HomePage() {
       <SiteHeader tone="dark" />
       <main className="w-full">
         <HeroFlora />
-        <ContextCost />
+        <ContextWeb />
         <ToolSprawl />
         <ReviewCheckpoint />
         <Workflow />
