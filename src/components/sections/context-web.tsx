@@ -102,17 +102,17 @@ const BLOOM: Array<{
 }> = [
   // around the Reel
   { x: 1105, y: 75, w: 60, ratio: "3 / 4", blur: 1, delay: 0, border: "rgba(88,41,199,.45)" },
-  { x: 1130, y: 190, w: 48, ratio: "1 / 1", blur: 1.5, delay: 0.08, border: "rgba(150,136,192,.55)" },
-  { x: 920, y: 120, w: 40, ratio: "9 / 16", blur: 2, delay: 0.15, border: "rgba(88,41,199,.4)" },
+  { x: 1130, y: 190, w: 48, ratio: "1 / 1", blur: 1.5, delay: 0, border: "rgba(150,136,192,.55)" },
+  { x: 920, y: 120, w: 40, ratio: "9 / 16", blur: 2, delay: 0, border: "rgba(88,41,199,.4)" },
   // around the Post
-  { x: 950, y: 320, w: 54, ratio: "1 / 1", blur: 1, delay: 0.03, border: "rgba(88,41,199,.45)" },
-  { x: 1150, y: 350, w: 66, ratio: "4 / 5", blur: 0.5, delay: 0.12, border: "rgba(88,41,199,.5)" },
-  { x: 1145, y: 455, w: 44, ratio: "1 / 1", blur: 2, delay: 0.1, border: "rgba(150,136,192,.55)" },
-  { x: 945, y: 445, w: 38, ratio: "3 / 4", blur: 2.5, delay: 0.1, border: "rgba(150,136,192,.5)" },
+  { x: 950, y: 320, w: 54, ratio: "1 / 1", blur: 1, delay: 0, border: "rgba(88,41,199,.45)" },
+  { x: 1150, y: 350, w: 66, ratio: "4 / 5", blur: 0.5, delay: 0, border: "rgba(88,41,199,.5)" },
+  { x: 1145, y: 455, w: 44, ratio: "1 / 1", blur: 2, delay: 0, border: "rgba(150,136,192,.55)" },
+  { x: 945, y: 445, w: 38, ratio: "3 / 4", blur: 2.5, delay: 0, border: "rgba(150,136,192,.5)" },
   // around the Story
-  { x: 925, y: 565, w: 52, ratio: "4 / 5", blur: 1, delay: 0.03, border: "rgba(88,41,199,.45)" },
-  { x: 1110, y: 520, w: 62, ratio: "1 / 1", blur: 0.8, delay: 0.18, border: "rgba(88,41,199,.5)" },
-  { x: 1105, y: 645, w: 46, ratio: "3 / 4", blur: 1.8, delay: 0.22, border: "rgba(150,136,192,.55)" },
+  { x: 925, y: 565, w: 52, ratio: "4 / 5", blur: 1, delay: 0, border: "rgba(88,41,199,.45)" },
+  { x: 1110, y: 520, w: 62, ratio: "1 / 1", blur: 0.8, delay: 0, border: "rgba(88,41,199,.5)" },
+  { x: 1105, y: 645, w: 46, ratio: "3 / 4", blur: 1.8, delay: 0, border: "rgba(150,136,192,.55)" },
 ];
 
 /* A softened S — four shallow bends past the alternating steps, entering the
@@ -356,7 +356,7 @@ export function ContextWeb() {
                   style={{ aspectRatio: out.ratio }}
                 >
                   <div
-                    className="absolute -inset-[2px] overflow-hidden rounded-[14px] shadow-[0_16px_40px_rgba(11,15,25,.18)] ring-1 ring-black/5"
+                    className="absolute -inset-[2px] overflow-hidden rounded-[14px] shadow-[0_16px_44px_rgba(88,41,199,.28)] ring-1 ring-black/5"
                     style={{ animation: "coswebFlash 7s linear infinite" }}
                   >
                     <Image

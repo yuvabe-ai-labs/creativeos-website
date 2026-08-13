@@ -1110,8 +1110,8 @@
    the standalone `scale` property leaves the element's transform untouched,
    so nothing translates. */
 @keyframes coswebEcho {
-  0%, 66% { opacity: 0; scale: 0.85; }
-  76% { opacity: 1; }
+  0%, 60% { opacity: 0; scale: 0.85; }
+  66% { opacity: 1; }
   98% { opacity: 1; scale: 1; }
   100% { opacity: 0; scale: 1; }
 }
