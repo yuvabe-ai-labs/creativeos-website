@@ -36,7 +36,7 @@ export function Workflow() {
   return (
     <Section
       id="workflow"
-      index="04"
+      index="03"
       eyebrow="How it works"
       tone="dark"
       className="[background-image:radial-gradient(52%_44%_at_84%_0%,rgba(88,41,199,.28),transparent),radial-gradient(rgba(255,255,255,.05)_1px,transparent_1px)] [background-size:auto,26px_26px]"

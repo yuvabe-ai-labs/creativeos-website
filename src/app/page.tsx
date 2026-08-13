@@ -5,7 +5,6 @@ import { HeroFlora } from "@/components/sections/hero-flora";
 import { MarketSignals } from "@/components/sections/market-signals";
 import { Pilot } from "@/components/sections/pilot";
 import { Pricing } from "@/components/sections/pricing";
-import { ReviewCheckpoint } from "@/components/sections/review-checkpoint";
 import { ToolSprawl } from "@/components/sections/tool-sprawl";
 import { Workflow } from "@/components/sections/workflow";
 import { SiteFooter } from "@/components/site/site-footer";
@@ -25,7 +24,6 @@ export default function HomePage() {
         <HeroFlora />
         <ContextWeb />
         <ToolSprawl />
-        <ReviewCheckpoint />
         <Workflow />
         <MarketSignals />
         <Pilot />
