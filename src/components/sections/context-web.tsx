@@ -35,8 +35,8 @@ const CHIPS: Array<{
   { label: "Product details", thumb: "/assets/hero/placeholder-11.jpg", size: 112, x: 170, y: 290, arrival: 1.16 },
   { label: "Mood + lighting", thumb: "/assets/hero/placeholder-06.jpg", size: 80, x: 385, y: 370, arrival: 1.66 },
   { label: "Colors + refs", thumb: "/assets/hero/placeholder-05.jpg", size: 104, x: 200, y: 470, arrival: 2.14 },
-  { label: "Market trends", thumb: "/assets/hero/placeholder-15.jpg", size: 88, x: 450, y: 545, arrival: 2.71 },
-  { label: "Compliance check", x: 260, y: 640, arrival: 3.13 },
+  { label: "Market trends", thumb: "/assets/hero/placeholder-15.jpg", size: 88, x: 450, y: 545, arrival: 2.69 },
+  { label: "Compliance check", thumb: "/assets/hero/placeholder-16.jpg", size: 76, x: 260, y: 620, arrival: 3.12 },
 ];
 
 const OUTPUTS = [
@@ -73,7 +73,7 @@ const OUTPUTS = [
    that unit's thumb height) so it never crosses a thumbnail or pill — then
    sweeps right along the bottom and rises into the centre card from below. */
 const THREAD =
-  "M200,170 C300,190 415,205 450,238 C480,290 250,300 170,358 C120,400 300,390 385,422 C445,447 270,470 200,534C150,580 380,570 450,601 C470,635 340,655 260,665 C380,700 540,640 620,455";
+  "M200,170 C300,190 415,205 450,238 C480,290 250,300 170,358 C120,400 300,390 385,422 C445,447 270,470 200,534C150,580 380,570 450,601 C470,635 340,662 260,670 C180,678 480,705 620,455";
 
 /* From the centre card's right edge to each deliverable's left edge. */
 const FANS = [
