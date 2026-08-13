@@ -376,6 +376,15 @@ export function ContextWeb() {
                 </div>
               </div>
             ))}
+
+            {/* The claim, anchored to the centre card's axis — the container's
+                50% sits left of the diagram's visual middle. */}
+            <p
+              className="absolute bottom-0 m-0 -translate-x-1/2 text-[12px] leading-none font-medium tracking-[0.24em] whitespace-nowrap text-ink-soft uppercase"
+              style={{ left: `${(640 / 1200) * 100}%` }}
+            >
+              One context · many outputs
+            </p>
           </div>
         </Reveal>
 
@@ -422,6 +431,9 @@ export function ContextWeb() {
                 </div>
               ))}
             </div>
+            <p className="m-0 mt-8 text-center text-[12px] leading-none font-medium tracking-[0.24em] text-ink-soft uppercase">
+              One context · many outputs
+            </p>
           </div>
         </Reveal>
       </div>
