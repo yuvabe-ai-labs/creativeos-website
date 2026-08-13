@@ -37,10 +37,10 @@ const CARDS: Array<{
     mobile: true,
   },
   {
-    src: "/assets/hero/placeholder-01.jpg",
-    alt: "Product still",
-    pos: { left: "31%", top: "9%", width: "clamp(100px, 12vw, 190px)" },
-    ratio: "4 / 3",
+    src: "/assets/hero/placeholder-11.jpg",
+    alt: "Amber dropper bottle still",
+    pos: { left: "31%", top: "4%", width: "clamp(100px, 10.5vw, 165px)" },
+    ratio: "3 / 4",
     delay: 0.24,
     float: "7.5s",
   },
@@ -71,27 +71,35 @@ const CARDS: Array<{
     float: "8.5s",
   },
   {
-    src: "/assets/hero/placeholder-08.jpg",
-    alt: "Product on colour",
+    src: "/assets/hero/placeholder-12.jpg",
+    alt: "Cream jar campaign still",
     pos: { right: "3%", top: "48%", width: "clamp(100px, 11vw, 180px)" },
     ratio: "3 / 4",
     delay: 0.6,
     float: "7s",
   },
   {
-    src: "/assets/hero/placeholder-10.jpg",
-    alt: "Skincare campaign still",
+    src: "/assets/hero/placeholder-13.jpg",
+    alt: "Haircare range still",
     pos: { right: "8%", bottom: "5%", width: "clamp(120px, 15vw, 240px)" },
     ratio: "4 / 3",
     delay: 0.69,
     float: "9.5s",
     mobile: true,
   },
+  {
+    src: "/assets/hero/placeholder-14.jpg",
+    alt: "Bottle product still",
+    pos: { left: "15%", bottom: "-9%", width: "clamp(80px, 9vw, 140px)" },
+    ratio: "3 / 4",
+    delay: 0.78,
+    float: "8s",
+  },
 ];
 
 /* Typeset rather than logo PNGs: the reference assets carry solid backgrounds
    that turn into blocks on a dark ground. Names read cleaner on the stage. */
-const MODELS = ["ChatGPT", "Gemini", "Kling", "Canva", "OpenArt"];
+const MODELS = ["ChatGPT", "Gemini", "Kling", "Canva"];
 
 export function HeroFlora() {
   return (
