@@ -49,7 +49,18 @@ const CHIPS: Array<{
   { label: "Compliance check", thumb: "/assets/hero/placeholder-16.jpg", size: 76, x: 260, y: 620, arrival: 1.53, depth: 0.88, labelFirst: true },
 ];
 
-const OUTPUTS = [
+/* Ghost frames behind each deliverable: the rest of the run, implied. Depth
+   is told twice — smaller AND blurrier is farther. */
+const OUTPUTS: Array<{
+  src: string;
+  alt: string;
+  caption: string;
+  x: number;
+  y: number;
+  w: number;
+  ratio: string;
+  echoes: Array<{ dx: number; dy: number; s: number; blur: number; op: number }>;
+}> = [
   {
     src: "/assets/hero/placeholder-02.jpg",
     alt: "Summer look reel crop",
@@ -58,6 +69,10 @@ const OUTPUTS = [
     y: 140,
     w: 110,
     ratio: "9 / 16",
+    echoes: [
+      { dx: 84, dy: -46, s: 0.78, blur: 1.5, op: 0.85 },
+      { dx: 104, dy: 46, s: 0.58, blur: 2.5, op: 0.7 },
+    ],
   },
   {
     src: "/assets/hero/placeholder-12.jpg",
@@ -67,6 +82,11 @@ const OUTPUTS = [
     y: 350,
     w: 130,
     ratio: "1 / 1",
+    echoes: [
+      { dx: -84, dy: -58, s: 0.82, blur: 1.5, op: 0.85 },
+      { dx: 100, dy: 34, s: 0.66, blur: 2.5, op: 0.7 },
+      { dx: -92, dy: 56, s: 0.5, blur: 3.5, op: 0.55 },
+    ],
   },
   {
     src: "/assets/hero/placeholder-13.jpg",
@@ -76,6 +96,10 @@ const OUTPUTS = [
     y: 555,
     w: 120,
     ratio: "4 / 5",
+    echoes: [
+      { dx: -86, dy: -34, s: 0.74, blur: 2, op: 0.8 },
+      { dx: 88, dy: 52, s: 0.56, blur: 3, op: 0.6 },
+    ],
   },
 ];
 
@@ -295,6 +319,20 @@ export function ContextWeb() {
                   className="relative w-full rounded-[14px] border-2 border-dashed border-rule"
                   style={{ aspectRatio: out.ratio }}
                 >
+                  {out.echoes.map((echo) => (
+                    <span
+                      key={`${echo.dx},${echo.dy}`}
+                      aria-hidden="true"
+                      className="absolute top-1/2 left-1/2 -z-10 rounded-[12px] bg-white/70 ring-1 ring-black/5"
+                      style={{
+                        width: out.w * echo.s,
+                        aspectRatio: out.ratio,
+                        transform: `translate(-50%, -50%) translate(${echo.dx}px, ${echo.dy}px)`,
+                        filter: `blur(${echo.blur}px)`,
+                        opacity: echo.op,
+                      }}
+                    />
+                  ))}
                   <div
                     className="absolute -inset-[2px] overflow-hidden rounded-[14px] shadow-[0_16px_40px_rgba(11,15,25,.16)] ring-1 ring-black/5"
                     style={{ animation: "coswebFlash 7s linear infinite" }}
