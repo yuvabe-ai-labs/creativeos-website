@@ -5,72 +5,83 @@ import { Section, SectionHeading, SectionLede } from "@/components/site/section"
 
 /*
   Section 01 as "The String": the Weave-pattern organic scatter, telling the
-  context argument. Six context chips (the deck's vocabulary) hang on the left;
-  one lavender comet strings them together into the asset at the centre; three
-  amber dots then fan out to output crops that light up as they land. Set once,
-  inherited by every asset — said in one 9s loop.
+  context argument. Seven context chips — each with a reference thumbnail —
+  hang on the left; one purple comet strings them together into the asset at
+  the centre; three amber dots then fan out to named deliverables that light
+  up as they land. Set once, inherited by every asset — said in one 9s loop.
 
   HTML overlays and the SVG underlay share one coordinate system: the SVG is
-  1200x640 with preserveAspectRatio="none", and every HTML element is placed
-  at (x/1200, y/640) percentages with a centre translate — so the drawn paths
+  1200x680 with preserveAspectRatio="none", and every HTML element is placed
+  at (x/1200, y/680) percentages with a centre translate — so the drawn paths
   meet the chips and cards at any container width.
 */
 
-const CHIPS = [
-  // Arrival times (seconds into the 9s cycle) drive the ring pulses; the
-  // negative delay is (cycle - arrival), per the note on cosChipPulse.
-  { label: "Explain the brand", x: 170, y: 140, arrival: 0.2 },
-  { label: "Tone of voice", x: 330, y: 225, arrival: 1.0 },
-  { label: "Product details", x: 150, y: 330, arrival: 1.9 },
-  { label: "Mood + lighting", x: 300, y: 430, arrival: 2.8 },
-  { label: "Colors + refs", x: 180, y: 530, arrival: 3.7 },
-  { label: "Compliance check", x: 360, y: 565, arrival: 4.4 },
+const CHIPS: Array<{
+  label: string;
+  /** Reference thumbnail beside the pill; compliance is a check, not a visual. */
+  thumb?: string;
+  /** Rendered thumb edge in px — varied, comparable to the deliverables. */
+  size?: number;
+  x: number;
+  y: number;
+  /** Seconds into the 9s cycle; drives the ring pulse via negative delay. */
+  arrival: number;
+}> = [
+  { label: "Explain the brand", thumb: "/assets/hero/placeholder-09.jpg", size: 96, x: 200, y: 110, arrival: 0.2 },
+  { label: "Tone of voice", thumb: "/assets/hero/placeholder-14.jpg", size: 72, x: 450, y: 190, arrival: 0.95 },
+  { label: "Product details", thumb: "/assets/hero/placeholder-11.jpg", size: 112, x: 170, y: 290, arrival: 1.7 },
+  { label: "Mood + lighting", thumb: "/assets/hero/placeholder-06.jpg", size: 80, x: 385, y: 370, arrival: 2.45 },
+  { label: "Colors + refs", thumb: "/assets/hero/placeholder-05.jpg", size: 104, x: 200, y: 470, arrival: 3.2 },
+  { label: "Market trends", thumb: "/assets/hero/placeholder-15.jpg", size: 88, x: 450, y: 545, arrival: 3.95 },
+  { label: "Compliance check", x: 260, y: 640, arrival: 4.6 },
 ];
 
 const OUTPUTS = [
   {
     src: "/assets/hero/placeholder-02.jpg",
-    alt: "Reel crop",
-    caption: "Reel · 9:16",
-    x: 1000,
-    y: 150,
+    alt: "Summer look reel crop",
+    caption: "Summer look · Reel",
+    x: 1010,
+    y: 140,
     w: 110,
     ratio: "9 / 16",
   },
   {
     src: "/assets/hero/placeholder-12.jpg",
-    alt: "Post crop",
-    caption: "Post · 1:1",
-    x: 1040,
-    y: 330,
+    alt: "Launch post crop",
+    caption: "Launch post · 1:1",
+    x: 1050,
+    y: 350,
     w: 130,
     ratio: "1 / 1",
   },
   {
     src: "/assets/hero/placeholder-13.jpg",
-    alt: "Story crop",
-    caption: "Story · 4:5",
-    x: 1000,
-    y: 520,
+    alt: "Restock story crop",
+    caption: "Restock story · 4:5",
+    x: 1010,
+    y: 555,
     w: 120,
     ratio: "4 / 5",
   },
 ];
 
-/* One thread through every chip anchor into the centre card's left edge. */
+/* One thread underlining every chip — it dips beneath each unit (offset by
+   that unit's thumb height) so it never crosses a thumbnail or pill — then
+   sweeps right along the bottom and rises into the centre card from below. */
 const THREAD =
-  "M170,140 C260,155 315,180 330,225 C348,278 225,290 150,330 C95,362 235,395 300,430 C355,460 245,495 180,530 C150,546 275,558 360,565 C440,571 462,430 482,345";
+  "M200,170 C300,190 415,205 450,238 C480,290 250,300 170,358 C120,400 300,390 385,422 C445,447 270,470 200,534C150,580 380,570 450,601 C490,625 330,650 260,665 C350,690 520,560 620,452";
 
-/* From the centre card's right edge to each output card's left edge. */
+/* From the centre card's right edge to each deliverable's left edge. */
 const FANS = [
-  "M718,318 C820,285 890,215 942,162",
-  "M718,330 C810,330 890,330 972,330",
-  "M718,342 C820,375 890,450 942,505",
+  "M750,318 C850,282 922,208 952,158",
+  "M750,340 C845,344 908,348 982,350",
+  "M750,362 C850,398 922,482 948,548",
 ];
 
 const pct = (x: number, y: number) => ({
   left: `${(x / 1200) * 100}%`,
-  top: `${(y / 640) * 100}%`,
+  top: `${(y / 680) * 100}%`,
 });
 
 export function ContextWeb() {
@@ -87,18 +98,18 @@ export function ContextWeb() {
             String the context together once.
           </SectionHeading>
           <SectionLede>
-            Brand, tone, product, lighting, compliance — connected on the canvas
+            Brand, tone, product, lighting, market — connected on the canvas
             once, then inherited by every asset that follows.
           </SectionLede>
         </Reveal>
 
         {/* The canvas. */}
         <Reveal delay={0.08}>
-          <div data-signal-flow className="relative mt-14 hidden h-[640px] md:block">
+          <div data-signal-flow className="relative mt-14 hidden h-[680px] md:block">
             <svg
               aria-hidden="true"
               className="absolute inset-0 h-full w-full"
-              viewBox="0 0 1200 640"
+              viewBox="0 0 1200 680"
               preserveAspectRatio="none"
               fill="none"
             >
@@ -150,36 +161,86 @@ export function ContextWeb() {
               ))}
             </svg>
 
-            {/* Context chips. */}
+            {/* Context chips, each with its reference beside it. */}
             {CHIPS.map((chip) => (
-              <span
+              <div
                 key={chip.label}
-                className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-white px-4 py-2 text-[13px] leading-none font-medium whitespace-nowrap text-ink-muted ring-1 ring-line shadow-[0_2px_10px_rgba(11,15,25,.07)]"
-                style={{
-                  ...pct(chip.x, chip.y),
-                  animation: "coswebChip 9s linear infinite",
-                  animationDelay: `-${9 - chip.arrival}s`,
-                }}
+                className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-2.5"
+                style={pct(chip.x, chip.y)}
               >
-                {chip.label}
-              </span>
+                {chip.thumb ? (
+                  <span
+                    className="relative block shrink-0 overflow-hidden rounded-[12px] shadow-[0_8px_24px_rgba(11,15,25,.14)] ring-1 ring-black/5"
+                    style={{ width: chip.size, height: chip.size }}
+                  >
+                    <Image
+                      src={chip.thumb}
+                      alt=""
+                      fill
+                      sizes="120px"
+                      className="object-cover"
+                    />
+                  </span>
+                ) : null}
+                <span
+                  className="rounded-full bg-white px-4 py-2 text-[13px] leading-none font-medium whitespace-nowrap text-ink-muted ring-1 ring-line shadow-[0_2px_10px_rgba(11,15,25,.07)]"
+                  style={{
+                    animation: "coswebChip 9s linear infinite",
+                    animationDelay: `-${9 - chip.arrival}s`,
+                  }}
+                >
+                  {chip.label}
+                </span>
+              </div>
             ))}
 
-            {/* The asset being made. */}
+            {/* The asset being made: a skeleton that shimmers while the string
+                gathers context, the image resolving like a finished generation,
+                and three beam rings pulsing out as it lands. */}
             <div
-              className="absolute size-[230px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[18px] shadow-[0_24px_60px_rgba(11,15,25,.18)] ring-1 ring-black/5"
-              style={pct(600, 330)}
+              className="absolute size-[220px] -translate-x-1/2 -translate-y-1/2"
+              style={pct(640, 340)}
             >
-              <Image
-                src="/assets/hero/placeholder-11.jpg"
-                alt="The asset on the canvas"
-                fill
-                sizes="230px"
-                className="object-cover"
-              />
+              {[
+                { color: "rgba(88,41,199,.5)", delay: "0s" },
+                { color: "rgba(227,169,0,.5)", delay: "0.12s" },
+                { color: "rgba(150,136,192,.45)", delay: "0.24s" },
+              ].map((beam) => (
+                <span
+                  key={beam.delay}
+                  aria-hidden="true"
+                  className="absolute inset-0 rounded-[18px] border-2"
+                  style={{
+                    borderColor: beam.color,
+                    animation: "coswebBeam 9s linear infinite",
+                    animationDelay: beam.delay,
+                  }}
+                />
+              ))}
+              <div className="relative h-full w-full overflow-hidden rounded-[18px] bg-[#eceef3] shadow-[0_24px_60px_rgba(11,15,25,.18)] ring-1 ring-black/5">
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(100deg, transparent 30%, rgba(255,255,255,.85) 50%, transparent 70%)",
+                    backgroundSize: "200% 100%",
+                    animation:
+                      "coswebShimmer 1.1s linear infinite, coswebShimmerGate 9s linear infinite",
+                  }}
+                />
+                <Image
+                  src="/assets/hero/placeholder-11.jpg"
+                  alt="The asset on the canvas"
+                  fill
+                  sizes="220px"
+                  className="object-cover"
+                  style={{ animation: "coswebImg 9s linear infinite" }}
+                />
+              </div>
             </div>
 
-            {/* The assets that inherit it. */}
+            {/* The deliverables that inherit it. */}
             {OUTPUTS.map((out) => (
               <div
                 key={out.caption}
@@ -202,7 +263,7 @@ export function ContextWeb() {
                     className="object-cover"
                   />
                 </div>
-                <div className="mt-2 text-center text-[11px] leading-none font-medium tracking-[0.14em] text-ink-soft uppercase">
+                <div className="mt-2 text-center text-[11px] leading-none font-medium tracking-[0.14em] whitespace-nowrap text-ink-soft uppercase">
                   {out.caption}
                 </div>
               </div>
@@ -210,7 +271,7 @@ export function ContextWeb() {
           </div>
         </Reveal>
 
-        {/* The same story stacked, for phones: chips, asset, crops. */}
+        {/* The same story stacked, for phones: chips, asset, deliverables. */}
         <Reveal delay={0.08}>
           <div className="mt-12 md:hidden">
             <div className="flex flex-wrap justify-center gap-2.5">

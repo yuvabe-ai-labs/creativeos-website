@@ -1059,24 +1059,51 @@
   93% { stroke-dashoffset: 0; opacity: 0.7; }
   99%, 100% { stroke-dashoffset: 0; opacity: 0; }
 }
+/* The generation beat sits between the string and the fan: the centre image
+   resolves at 55-66% (coswebImg) over an always-shimmering skeleton, the
+   beam rings pulse out as it lands (coswebBeam), and only then do the fans
+   leave — an asset can't be reused before it exists. */
+@keyframes coswebImg {
+  0%, 55% { opacity: 0; }
+  66%, 97% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes coswebShimmer {
+  to { background-position: -200% 0; }
+}
+/* The shimmer only exists between the dot's arrival (55%) and the image
+   resolving (66%) — before that the centre is a flat grey rectangle. The
+   sweep itself is a separate fast loop; this gates its visibility. */
+@keyframes coswebShimmerGate {
+  0%, 54% { opacity: 0; }
+  56%, 66% { opacity: 1; }
+  68%, 100% { opacity: 0; }
+}
+@keyframes coswebBeam {
+  0%, 64% { transform: scale(1); opacity: 0; }
+  67% { opacity: 0.55; }
+  82%, 100% { transform: scale(1.5); opacity: 0; }
+}
 @keyframes coswebFan {
-  0%, 60% { stroke-dashoffset: 0; opacity: 0; }
-  61% { opacity: 1; }
-  85% { stroke-dashoffset: -105; opacity: 1; }
-  86%, 100% { stroke-dashoffset: -105; opacity: 0; }
+  0%, 68% { stroke-dashoffset: 0; opacity: 0; }
+  69% { opacity: 1; }
+  88% { stroke-dashoffset: -105; opacity: 1; }
+  89%, 100% { stroke-dashoffset: -105; opacity: 0; }
 }
 @keyframes coswebFanTrail {
-  0%, 60% { stroke-dashoffset: 100; opacity: 0; }
-  61% { opacity: 0.7; }
-  85% { stroke-dashoffset: 0; opacity: 0.7; }
-  93% { stroke-dashoffset: 0; opacity: 0.7; }
+  0%, 68% { stroke-dashoffset: 100; opacity: 0; }
+  69% { opacity: 0.7; }
+  88% { stroke-dashoffset: 0; opacity: 0.7; }
+  94% { stroke-dashoffset: 0; opacity: 0.7; }
   99%, 100% { stroke-dashoffset: 0; opacity: 0; }
 }
-/* Output cards brighten as the fan dots land (~85%), hold to the loop end. */
+/* Output cards brighten as the fan dots land (~85%), hold to the loop end.
+   The resting state is only slightly dimmed — on the light ground a deeper
+   dim reads as washed-out imagery rather than as a waiting state. */
 @keyframes coswebFlash {
-  0%, 84% { opacity: 0.55; }
-  88%, 98% { opacity: 1; }
-  100% { opacity: 0.55; }
+  0%, 87% { opacity: 0.78; }
+  90%, 98% { opacity: 1; }
+  100% { opacity: 0.78; }
 }
 /* Chip ring pulse; a short event, so per-chip `animation-delay` places it on
    that chip's arrival without needing a keyframe per chip. */
