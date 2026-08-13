@@ -18,8 +18,9 @@ export function ContextCost() {
           </SectionLede>
         </Reveal>
 
-        <ComparisonGrid>
+        <ComparisonGrid divider>
           <ComparisonCard
+            bare
             tone="today"
             title="Today — set context for every reel"
             caption="Context needs to be set every time for a new asset."
@@ -28,6 +29,7 @@ export function ContextCost() {
           </ComparisonCard>
 
           <ComparisonCard
+            bare
             tone="creativeos"
             title="CreativeOS — set once, run parallel"
             caption="Inputs set once — all three reels generate in parallel, a fraction of the time."
