@@ -1,7 +1,7 @@
 import { ContextCost } from "@/components/sections/context-cost";
 import { Faq } from "@/components/sections/faq";
 import { FinalCta } from "@/components/sections/final-cta";
-import { Hero } from "@/components/sections/hero";
+import { HeroFlora } from "@/components/sections/hero-flora";
 import { MarketSignals } from "@/components/sections/market-signals";
 import { Pilot } from "@/components/sections/pilot";
 import { Pricing } from "@/components/sections/pricing";
@@ -20,9 +20,9 @@ import { SiteHeader } from "@/components/site/site-header";
 export default function HomePage() {
   return (
     <>
-      <SiteHeader />
+      <SiteHeader tone="dark" />
       <main className="w-full">
-        <Hero />
+        <HeroFlora />
         <ContextCost />
         <ToolSprawl />
         <ReviewCheckpoint />

@@ -996,9 +996,35 @@
   }
 }
 
+/* --- dark hero scatter (Flora-pattern hero) --------------------------------
+   Cards enter once, then drift. The two transforms live on nested elements —
+   entrance on the positioned wrapper, float on the frame — so neither
+   overwrites the other. Float durations differ per card (7-10s) and phases
+   are desynced with negative delays, so the scatter never breathes in sync. */
+@keyframes cosheroin {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes cosfloat {
+  0%,
+  100% {
+    transform: translateY(-6px);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+
 /* The diagrams are decorative; motion in them is never load-bearing. */
 @media (prefers-reduced-motion: reduce) {
-  [data-signal-flow] * {
+  [data-signal-flow] *,
+  [data-hero-cards] div {
     animation: none !important;
   }
 
