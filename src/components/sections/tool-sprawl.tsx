@@ -14,8 +14,12 @@ export function ToolSprawl() {
     >
       <div>
         <Reveal>
-          <SectionHeading className="max-w-[20ch]">
-            One asset, five tools.
+          {/* The eyebrow states the problem, so the heading answers it. "One
+              asset, five tools." named the pain and left the product unsaid —
+              the odd one out among 03, 04 and 05, which all lead with what
+              CreativeOS does. "Canvas" is the lede's own word for it. */}
+          <SectionHeading className="max-w-[24ch]">
+            One canvas, not five tools.
           </SectionHeading>
           <SectionLede>
             Script in one tool, images in another, video in a third. Every fix

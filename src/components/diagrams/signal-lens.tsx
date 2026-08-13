@@ -1,7 +1,19 @@
 /**
  * Market signals refracted through brand context into one creative direction.
  *
- * Ported verbatim from the Design Canvas source; see design-reference/.
+ * Type follows the same rules as the other diagrams: the five signals are items,
+ * so they are sentence case in `#6b7280`; MARKET SIGNALS, BRAND CONTEXT and ONE
+ * SHARP DIRECTION are group headings, so they keep the caps the site uses for
+ * CREATIVEOS and the capsule's stage names.
+ *
+ * Sizes are set so labels RENDER at ~14px, as they do in every other diagram.
+ * That is not the same as sharing a font-size: this viewBox is 1080 wide in a
+ * frame the others meet at 600-1560, so its units are a different size on
+ * screen. Its labels were 11px here, which came out visibly smaller than
+ * everything else on the page — and in `#b6bcc7`, a grey that exists nowhere
+ * in the palette.
+ *
+ * Ported from the Design Canvas source; see design-reference/.
  */
 export function SignalLens() {
   return (
@@ -23,22 +35,22 @@ export function SignalLens() {
     <stop offset="1" stopColor="#5829c7" />
     </linearGradient>
     </defs>
-    <text x="128" y="28" style={{ fontWeight: "600", fontSize: "12px", letterSpacing: "1px" }} fill="#b6bcc7">MARKET SIGNALS</text>
-    <text x="226" y="60" textAnchor="end" style={{ fontWeight: "600", fontSize: "11px", letterSpacing: "1px" }} fill="#b6bcc7">TRENDING FORMAT</text>
-    <text x="226" y="123" textAnchor="end" style={{ fontWeight: "600", fontSize: "11px", letterSpacing: "1px" }} fill="#b6bcc7">COMPETITOR PATTERN</text>
-    <text x="226" y="186" textAnchor="end" style={{ fontWeight: "600", fontSize: "11px", letterSpacing: "1px" }} fill="#b6bcc7">SEASONAL MOMENT</text>
-    <text x="226" y="249" textAnchor="end" style={{ fontWeight: "600", fontSize: "11px", letterSpacing: "1px" }} fill="#b6bcc7">AUDIENCE SHIFT</text>
-    <text x="226" y="312" textAnchor="end" style={{ fontWeight: "600", fontSize: "11px", letterSpacing: "1px" }} fill="#b6bcc7">PAST PERFORMANCE</text>
+    <text x="128" y="28" style={{ fontWeight: "600", fontSize: "13px", letterSpacing: "1px" }} fill="#6b7280">MARKET SIGNALS</text>
+    <text x="226" y="60" textAnchor="end" style={{ fontWeight: "500", fontSize: "13px" }} fill="#6b7280">Trending format</text>
+    <text x="226" y="123" textAnchor="end" style={{ fontWeight: "500", fontSize: "13px" }} fill="#6b7280">Competitor pattern</text>
+    <text x="226" y="186" textAnchor="end" style={{ fontWeight: "500", fontSize: "13px" }} fill="#6b7280">Seasonal moment</text>
+    <text x="226" y="249" textAnchor="end" style={{ fontWeight: "500", fontSize: "13px" }} fill="#6b7280">Audience shift</text>
+    <text x="226" y="312" textAnchor="end" style={{ fontWeight: "500", fontSize: "13px" }} fill="#6b7280">Past performance</text>
     
-    <path d="M240,56 C380,56 460,130.4 534,160.16" fill="none" stroke="#d5d9e0" strokeWidth="1.6" strokeLinecap="round" />
+    <path d="M240,56 C380,56 460,130.4 534,160.16" fill="none" stroke="#c3c9d4" strokeWidth="1.6" strokeLinecap="round" />
     <path d="M240,56 C380,56 460,130.4 534,160.16" fill="none" stroke="#9688c0" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="6 130" style={{ animation: "cosray 3.6s linear infinite", animationDelay: "0s" }} />
-    <path d="M240,119 C380,119 460,155.6 534,170.24" fill="none" stroke="#d5d9e0" strokeWidth="1.6" strokeLinecap="round" />
+    <path d="M240,119 C380,119 460,155.6 534,170.24" fill="none" stroke="#c3c9d4" strokeWidth="1.6" strokeLinecap="round" />
     <path d="M240,119 C380,119 460,155.6 534,170.24" fill="none" stroke="#9688c0" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="6 130" style={{ animation: "cosray 3.6s linear infinite", animationDelay: "0.7s" }} />
-    <path d="M240,182 C380,182 460,180.8 534,180.32" fill="none" stroke="#d5d9e0" strokeWidth="1.6" strokeLinecap="round" />
+    <path d="M240,182 C380,182 460,180.8 534,180.32" fill="none" stroke="#c3c9d4" strokeWidth="1.6" strokeLinecap="round" />
     <path d="M240,182 C380,182 460,180.8 534,180.32" fill="none" stroke="#9688c0" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="6 130" style={{ animation: "cosray 3.6s linear infinite", animationDelay: "1.4s" }} />
-    <path d="M240,245 C380,245 460,206 534,190.4" fill="none" stroke="#d5d9e0" strokeWidth="1.6" strokeLinecap="round" />
+    <path d="M240,245 C380,245 460,206 534,190.4" fill="none" stroke="#c3c9d4" strokeWidth="1.6" strokeLinecap="round" />
     <path d="M240,245 C380,245 460,206 534,190.4" fill="none" stroke="#9688c0" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="6 130" style={{ animation: "cosray 3.6s linear infinite", animationDelay: "2.1s" }} />
-    <path d="M240,308 C380,308 460,231.2 534,200.48" fill="none" stroke="#d5d9e0" strokeWidth="1.6" strokeLinecap="round" />
+    <path d="M240,308 C380,308 460,231.2 534,200.48" fill="none" stroke="#c3c9d4" strokeWidth="1.6" strokeLinecap="round" />
     <path d="M240,308 C380,308 460,231.2 534,200.48" fill="none" stroke="#9688c0" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="6 130" style={{ animation: "cosray 3.6s linear infinite", animationDelay: "2.8s" }} />
     
     <circle cx="240" cy="56" r="4.5" fill="#fff" stroke="#c3c9d4" strokeWidth="1.8" />
@@ -56,13 +68,13 @@ export function SignalLens() {
     <path d="M534,180.3 L588,180" stroke="rgba(88,41,199,.35)" strokeWidth="1.4" strokeLinecap="round" />
     <path d="M534,190.4 L588,180" stroke="rgba(88,41,199,.35)" strokeWidth="1.4" strokeLinecap="round" />
     <path d="M534,200.5 L588,180" stroke="rgba(88,41,199,.35)" strokeWidth="1.4" strokeLinecap="round" />
-    <text x="560" y="30" textAnchor="middle" style={{ fontWeight: "600", fontSize: "12px", letterSpacing: "1px" }} fill="#4c24ab">BRAND CONTEXT</text>
+    <text x="560" y="30" textAnchor="middle" style={{ fontWeight: "600", fontSize: "13px", letterSpacing: "1px" }} fill="#4c24ab">BRAND CONTEXT</text>
     <path d="M584,180 C700,180 780,180 858,180" fill="none" stroke="url(#cosBeam)" strokeWidth="2.6" strokeLinecap="round" />
     <path d="M584,180 C700,180 780,180 858,180" fill="none" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="10 70" style={{ animation: "cosbeam 2.4s linear infinite" }} opacity=".9" />
     <circle cx="872" cy="180" r="9" fill="#5829c7" />
     <circle cx="872" cy="180" r="16" fill="none" stroke="rgba(88,41,199,.30)" strokeWidth="2" style={{ animation: "cosglow 3s ease-in-out infinite", transformOrigin: "872px 180px" }} />
-    <text x="872" y="140" textAnchor="middle" style={{ fontWeight: "600", fontSize: "12px", letterSpacing: "1px" }} fill="#4c24ab">ONE SHARP DIRECTION</text>
-    <text x="872" y="226" textAnchor="middle" style={{ fontWeight: "500", fontSize: "12px" }} fill="#6b7280">fits the brand and the moment</text>
+    <text x="872" y="140" textAnchor="middle" style={{ fontWeight: "600", fontSize: "13px", letterSpacing: "1px" }} fill="#4c24ab">ONE SHARP DIRECTION</text>
+    <text x="872" y="226" textAnchor="middle" style={{ fontWeight: "500", fontSize: "13px", letterSpacing: "1px" }} fill="#9688c0">fits the brand and the moment</text>
     </svg>
   );
 }
