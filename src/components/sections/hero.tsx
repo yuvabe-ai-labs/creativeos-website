@@ -125,18 +125,29 @@ export function Hero() {
 
             <HeroSignalFlow />
 
-            {/* Output node: a solid dot with a ripple expanding out of it. */}
+            {/* Output node: a gradient dot that throws a wave of rings when
+                the beam's dot lands in it at 1.85s. Three rings rather than
+                one, stepping down the purple ramp and staggered 0.13s apart —
+                a single ring read as a blip; a wave reads as an emission. */}
             <div className="absolute top-1/2 right-4 w-[26px] -translate-y-[55px]">
               <div className="relative flex h-[110px] items-center justify-center">
+                {[
+                  { color: "rgba(115,67,227,0.55)", delay: "1.85s" },
+                  { color: "rgba(150,136,192,0.45)", delay: "1.98s" },
+                  { color: "rgba(182,169,216,0.35)", delay: "2.11s" },
+                ].map((ring) => (
+                  <span
+                    key={ring.delay}
+                    className="absolute size-[26px] rounded-full border"
+                    style={{
+                      borderColor: ring.color,
+                      animation: "cosripple 3.2s ease-out infinite",
+                      animationDelay: ring.delay,
+                    }}
+                  />
+                ))}
                 <span
-                  className="absolute size-[26px] rounded-full border-[0.5px] border-purple/45"
-                  style={{
-                    animation: "cosripple 3.2s ease-out infinite",
-                    animationDelay: "1.85s",
-                  }}
-                />
-                <span
-                  className="relative size-[26px] rounded-full bg-purple shadow-[0_0_18px_rgba(88,41,199,0.5)]"
+                  className="relative size-[26px] rounded-full bg-[linear-gradient(135deg,#7343e3,#4c24ab)] shadow-[0_0_18px_rgba(88,41,199,0.5)]"
                   style={{
                     animation: "cospulse 3.2s ease-out infinite",
                     animationDelay: "1.85s",

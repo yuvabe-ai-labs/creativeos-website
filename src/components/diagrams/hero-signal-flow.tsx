@@ -8,18 +8,22 @@
  * See docs/diagram-system.md §2.1.
  */
 
-/** Seven inputs, split into two columns that converge from either side. */
+/**
+ * Five inputs, split into two columns that converge from either side.
+ *
+ * Was seven. "References" said the same thing as "Past generations" and
+ * "Corrections" the same as "Review decisions", so the list read longer than
+ * it was. Five distinct ones fan wider and carry larger type in the same box.
+ */
 const LEFT_INPUTS = [
-  { label: "Brand context", y: 40 },
-  { label: "Market trend", y: 76 },
-  { label: "References", y: 112 },
-  { label: "Review decisions", y: 148 },
+  { label: "Brand context", y: 34 },
+  { label: "Market trend", y: 92 },
+  { label: "Review decisions", y: 150 },
 ];
 
 const RIGHT_INPUTS = [
-  { label: "Tone + claims", y: 40 },
-  { label: "Past generations", y: 76 },
-  { label: "Corrections", y: 112 },
+  { label: "Tone + claims", y: 56 },
+  { label: "Past generations", y: 128 },
 ];
 
 const NODE = { x: 195, y: 336 };
@@ -48,13 +52,13 @@ function rayFrom(x: number, y: number) {
  *
  * The wide version fans rays in from the left; here they converge from both
  * sides and downward, which is the direction the reader is already scrolling.
- * Only three of the seven rays carry a comet: at this size seven simultaneous
- * dots read as flicker rather than flow (§1.9).
+ * Only two of the five rays carry a comet: at this size simultaneous dots on
+ * every ray read as flicker rather than flow (§1.9).
  */
 export function HeroSignalFlowPortrait() {
   return (
     <svg
-      viewBox="0 0 390 460"
+      viewBox="-35 0 460 460"
       className="block h-auto w-full"
       aria-hidden="true"
     >
@@ -85,7 +89,7 @@ export function HeroSignalFlowPortrait() {
         const comet = i % 3 === 0;
         return (
           <g key={input.label}>
-            <path d={d} fill="none" stroke="#8b93a3" strokeWidth="1.4" />
+            <path d={d} fill="none" stroke="url(#cosHeroRay)" strokeWidth="1.4" />
             {comet ? (
               <path
                 d={d}
@@ -110,7 +114,7 @@ export function HeroSignalFlowPortrait() {
             x={LEFT_DOT - 12}
             y={input.y + 4}
             textAnchor="end"
-            style={{ fontWeight: "500", fontSize: "13px" }}
+            style={{ fontWeight: "500", fontSize: "16px" }}
             fill="#6b7280"
           >
             {input.label}
@@ -123,7 +127,7 @@ export function HeroSignalFlowPortrait() {
           <text
             x={RIGHT_DOT + 12}
             y={input.y + 4}
-            style={{ fontWeight: "500", fontSize: "13px" }}
+            style={{ fontWeight: "500", fontSize: "16px" }}
             fill="#6b7280"
           >
             {input.label}
@@ -133,7 +137,7 @@ export function HeroSignalFlowPortrait() {
       ))}
 
       {/* The node. Arrow points down, because here the flow travels down. */}
-      <circle cx={NODE.x} cy={NODE.y} r="18" fill="#5829c7" />
+      <circle cx={NODE.x} cy={NODE.y} r="18" fill="url(#cosHeroNodeP)" />
       <circle
         cx={NODE.x}
         cy={NODE.y}
@@ -169,7 +173,7 @@ export function HeroSignalFlowPortrait() {
         y1="362"
         x2={NODE.x}
         y2="414"
-        stroke="#5829c7"
+        stroke="url(#cosHeroBeamP)"
         strokeWidth="2"
         strokeDasharray="8 82"
         style={{ animation: "cosbeam 3.2s linear infinite" }}
@@ -192,7 +196,7 @@ export function HeroSignalFlowPortrait() {
         cx={NODE.x}
         cy="430"
         r="13"
-        fill="#5829c7"
+        fill="url(#cosHeroNodeP)"
         style={{
           animation: "cospulse 3.2s ease-out infinite",
           animationDelay: "1.85s",
@@ -215,21 +219,33 @@ export function HeroSignalFlowPortrait() {
  */
 export function HeroSignalFlow() {
   return (
-    <svg viewBox="-80 0 640 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%" }}>
-    <text x="55" y="100" textAnchor="end" style={{ fontWeight: "500", fontSize: "16px" }} fill="#6b7280">Brand context</text>
-    <circle cx="73" cy="96" r="3.5" fill="#9ca3af" />
-    <text x="55" y="162" textAnchor="end" style={{ fontWeight: "500", fontSize: "16px" }} fill="#6b7280">Tone + claims</text>
-    <circle cx="73" cy="158" r="3.5" fill="#9ca3af" />
-    <text x="55" y="224" textAnchor="end" style={{ fontWeight: "500", fontSize: "16px" }} fill="#6b7280">Market trend</text>
-    <circle cx="73" cy="220" r="3.5" fill="#9ca3af" />
-    <text x="55" y="286" textAnchor="end" style={{ fontWeight: "500", fontSize: "16px" }} fill="#6b7280">Past generations</text>
-    <circle cx="73" cy="282" r="3.5" fill="#9ca3af" />
-    <text x="55" y="348" textAnchor="end" style={{ fontWeight: "500", fontSize: "16px" }} fill="#6b7280">References</text>
-    <circle cx="73" cy="344" r="3.5" fill="#9ca3af" />
-    <text x="55" y="410" textAnchor="end" style={{ fontWeight: "500", fontSize: "16px" }} fill="#6b7280">Corrections</text>
-    <circle cx="73" cy="406" r="3.5" fill="#9ca3af" />
-    <text x="55" y="472" textAnchor="end" style={{ fontWeight: "500", fontSize: "16px" }} fill="#6b7280">Review decisions</text>
-    <circle cx="73" cy="468" r="3.5" fill="#9ca3af" />
+    <svg viewBox="-114 0 674 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%" }}>
+    <defs>
+      {/* Same gradient idea as the portrait, on this drawing's axis: the fan
+          runs left to right, so the ramp does too. */}
+      <linearGradient id="cosHeroRay" gradientUnits="userSpaceOnUse" x1="83" y1="0" x2="332" y2="0">
+        <stop offset="0%" stopColor="#a99cd0" />
+        <stop offset="100%" stopColor="#5829c7" />
+      </linearGradient>
+      <linearGradient id="cosHeroNode" gradientUnits="userSpaceOnUse" x1="310" y1="258" x2="354" y2="302">
+        <stop offset="0%" stopColor="#7343e3" />
+        <stop offset="100%" stopColor="#4c24ab" />
+      </linearGradient>
+      <linearGradient id="cosHeroBeam" gradientUnits="userSpaceOnUse" x1="362" y1="0" x2="504" y2="0">
+        <stop offset="0%" stopColor="#9688c0" />
+        <stop offset="100%" stopColor="#5829c7" />
+      </linearGradient>
+    </defs>
+    <text x="55" y="68" textAnchor="end" style={{ fontWeight: "500", fontSize: "20px" }} fill="#6b7280">Brand context</text>
+    <circle cx="73" cy="64" r="3.5" fill="#9ca3af" />
+    <text x="55" y="176" textAnchor="end" style={{ fontWeight: "500", fontSize: "20px" }} fill="#6b7280">Tone + claims</text>
+    <circle cx="73" cy="172" r="3.5" fill="#9ca3af" />
+    <text x="55" y="284" textAnchor="end" style={{ fontWeight: "500", fontSize: "20px" }} fill="#6b7280">Market trend</text>
+    <circle cx="73" cy="280" r="3.5" fill="#9ca3af" />
+    <text x="55" y="392" textAnchor="end" style={{ fontWeight: "500", fontSize: "20px" }} fill="#6b7280">Past generations</text>
+    <circle cx="73" cy="388" r="3.5" fill="#9ca3af" />
+    <text x="55" y="500" textAnchor="end" style={{ fontWeight: "500", fontSize: "20px" }} fill="#6b7280">Review decisions</text>
+    <circle cx="73" cy="496" r="3.5" fill="#9ca3af" />
     
     <circle cx="300" cy="255" r="1.6" fill="rgba(75,85,99,.14)" />
     <path d="M101,38 C196,38 262,280 320,280" fill="none" stroke="rgba(75,85,99,.05)" strokeWidth="1" />
@@ -327,27 +343,23 @@ export function HeroSignalFlow() {
     <circle cx="87" cy="448" r="2" fill="#d1d5db" />
     <circle cx="87" cy="490" r="2" fill="#d1d5db" />
     <circle cx="87" cy="512" r="2" fill="#d1d5db" />
-    <path d="M83,96 C180,96 260,280 320,280" fill="none" stroke="#8b93a3" strokeWidth="1.6" />
-    <path d="M83,96 C180,96 260,280 320,280" fill="none" stroke="rgba(88,41,199,.8)" strokeWidth="1.6" strokeDasharray="7 160" style={{ animation: "cosray167 3.2s linear infinite", animationDelay: "0.00s" }} />
-    <path d="M83,158 C180,158 260,280 320,280" fill="none" stroke="#8b93a3" strokeWidth="1.6" />
-    <path d="M83,158 C180,158 260,280 320,280" fill="none" stroke="rgba(88,41,199,.8)" strokeWidth="1.6" strokeDasharray="7 160" style={{ animation: "cosray167 3.2s linear infinite", animationDelay: "0.40s" }} />
-    <path d="M83,220 C180,220 260,280 320,280" fill="none" stroke="#8b93a3" strokeWidth="1.6" />
-    <path d="M83,220 C180,220 260,280 320,280" fill="none" stroke="rgba(88,41,199,.8)" strokeWidth="1.6" strokeDasharray="7 160" style={{ animation: "cosray167 3.2s linear infinite", animationDelay: "0.80s" }} />
-    <path d="M83,282 C180,282 260,280 320,280" fill="none" stroke="#8b93a3" strokeWidth="1.6" />
-    <path d="M83,282 C180,282 260,280 320,280" fill="none" stroke="rgba(88,41,199,.8)" strokeWidth="1.6" strokeDasharray="7 160" style={{ animation: "cosray167 3.2s linear infinite", animationDelay: "1.20s" }} />
-    <path d="M83,344 C180,344 260,280 320,280" fill="none" stroke="#8b93a3" strokeWidth="1.6" />
-    <path d="M83,344 C180,344 260,280 320,280" fill="none" stroke="rgba(88,41,199,.8)" strokeWidth="1.6" strokeDasharray="7 160" style={{ animation: "cosray167 3.2s linear infinite", animationDelay: "1.60s" }} />
-    <path d="M83,406 C180,406 260,280 320,280" fill="none" stroke="#8b93a3" strokeWidth="1.6" />
-    <path d="M83,406 C180,406 260,280 320,280" fill="none" stroke="rgba(88,41,199,.8)" strokeWidth="1.6" strokeDasharray="7 160" style={{ animation: "cosray167 3.2s linear infinite", animationDelay: "2.00s" }} />
-    <path d="M83,468 C180,468 260,280 320,280" fill="none" stroke="#8b93a3" strokeWidth="1.6" />
-    <path d="M83,468 C180,468 260,280 320,280" fill="none" stroke="rgba(88,41,199,.8)" strokeWidth="1.6" strokeDasharray="7 160" style={{ animation: "cosray167 3.2s linear infinite", animationDelay: "2.40s" }} />
+    <path d="M83,64 C180,64 260,280 320,280" fill="none" stroke="url(#cosHeroRay)" strokeWidth="1.6" />
+    <path d="M83,64 C180,64 260,280 320,280" fill="none" stroke="rgba(88,41,199,.8)" strokeWidth="1.6" strokeDasharray="7 160" style={{ animation: "cosray167 3.2s linear infinite", animationDelay: "0.00s" }} />
+    <path d="M83,172 C180,172 260,280 320,280" fill="none" stroke="url(#cosHeroRay)" strokeWidth="1.6" />
+    <path d="M83,172 C180,172 260,280 320,280" fill="none" stroke="rgba(88,41,199,.8)" strokeWidth="1.6" strokeDasharray="7 160" style={{ animation: "cosray167 3.2s linear infinite", animationDelay: "0.64s" }} />
+    <path d="M83,280 C180,280 260,280 320,280" fill="none" stroke="url(#cosHeroRay)" strokeWidth="1.6" />
+    <path d="M83,280 C180,280 260,280 320,280" fill="none" stroke="rgba(88,41,199,.8)" strokeWidth="1.6" strokeDasharray="7 160" style={{ animation: "cosray167 3.2s linear infinite", animationDelay: "1.28s" }} />
+    <path d="M83,388 C180,388 260,280 320,280" fill="none" stroke="url(#cosHeroRay)" strokeWidth="1.6" />
+    <path d="M83,388 C180,388 260,280 320,280" fill="none" stroke="rgba(88,41,199,.8)" strokeWidth="1.6" strokeDasharray="7 160" style={{ animation: "cosray167 3.2s linear infinite", animationDelay: "1.92s" }} />
+    <path d="M83,496 C180,496 260,280 320,280" fill="none" stroke="url(#cosHeroRay)" strokeWidth="1.6" />
+    <path d="M83,496 C180,496 260,280 320,280" fill="none" stroke="rgba(88,41,199,.8)" strokeWidth="1.6" strokeDasharray="7 160" style={{ animation: "cosray167 3.2s linear infinite", animationDelay: "2.56s" }} />
     
-    <circle cx="332" cy="280" r="22" fill="#5829c7" />
+    <circle cx="332" cy="280" r="22" fill="url(#cosHeroNode)" />
     <circle cx="332" cy="280" r="30" fill="none" stroke="rgba(88,41,199,.3)" strokeWidth="1.5" style={{ animation: "cosglow 3s ease-in-out infinite", transformOrigin: "332px 280px" }} />
     <path d="M8 5v14l11-7z" transform="translate(325,271)" fill="#140f2b" style={{ display: "none" }} />
     <g transform="translate(324,272)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg></g>
     <line x1="362" y1="280" x2="504" y2="280" stroke="#c3c9d4" strokeWidth="1.6" />
-    <line x1="362" y1="280" x2="504" y2="280" stroke="#5829c7" strokeWidth="2" strokeDasharray="7 83" style={{ animation: "cosbeam 3.2s linear infinite" }} />
+    <line x1="362" y1="280" x2="504" y2="280" stroke="url(#cosHeroBeam)" strokeWidth="2" strokeDasharray="7 83" style={{ animation: "cosbeam 3.2s linear infinite" }} />
     </svg>
   );
 }
