@@ -97,10 +97,6 @@ const CARDS: Array<{
   },
 ];
 
-/* Typeset rather than logo PNGs: the reference assets carry solid backgrounds
-   that turn into blocks on a dark ground. Names read cleaner on the stage. */
-const MODELS = ["ChatGPT", "Gemini", "Kling", "Canva"];
-
 export function HeroFlora() {
   return (
     <section
@@ -257,23 +253,13 @@ export function HeroFlora() {
         </RevealGroup>
       </div>
 
-      {/* The floor of the stage: the models it runs, not invented clients. */}
-      <div className="relative z-[2] mx-auto w-full max-w-[1240px] px-8 pb-10">
-        <p className="mb-5 text-center text-[11px] leading-[1.4] font-medium tracking-[0.24em] text-white/45 uppercase">
-          Runs the models you already use
+      {/* The floor of the stage: the hero diagram's caption, carried over. */}
+      <div className="relative z-[2] mx-auto w-full max-w-[1240px] px-8 pb-12">
+        <p className="m-0 text-center text-[12px] leading-[1.9] font-medium tracking-[0.24em] text-white/50 uppercase">
+          Everything the agency knows,
+          <br />
+          in every asset.
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-          {MODELS.map((name, i) => (
-            <span key={name} className="flex items-center gap-x-8">
-              {i > 0 ? (
-                <span className="size-1 rounded-full bg-white/25" aria-hidden="true" />
-              ) : null}
-              <span className="font-display text-[17px] leading-none font-medium tracking-[-0.01em] text-white/55">
-                {name}
-              </span>
-            </span>
-          ))}
-        </div>
       </div>
     </section>
   );
