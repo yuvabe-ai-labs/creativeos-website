@@ -4,7 +4,12 @@ import { Section, SectionHeading, SectionLede } from "@/components/site/section"
 
 export function MarketSignals() {
   return (
-    <Section id="market" index="05" eyebrow="Connected to what is changing" className="bg-white">
+    <Section
+      id="market"
+      index="02"
+      eyebrow="Connected to what is changing"
+      className="bg-white [background-image:radial-gradient(60%_52%_at_86%_16%,rgba(150,136,192,.24),transparent),radial-gradient(48%_42%_at_8%_88%,rgba(255,202,45,.16),transparent),radial-gradient(rgba(148,163,184,.2)_1px,transparent_1px)] [background-size:auto,auto,26px_26px]"
+    >
       <div>
         <Reveal>
           <SectionHeading className="max-w-[22ch]">
@@ -17,23 +22,12 @@ export function MarketSignals() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div
-            data-signal-flow
-            className="panel mt-11 overflow-x-auto px-4 pt-5 pb-2"
-            style={{
-              backgroundImage:
-                "linear-gradient(135deg,#ffffff 0%,#fcfcfd 60%,#f7f5fc 100%)",
-            }}
-          >
+          {/* The lens draws straight on the washed canvas — no panel. */}
+          <div data-signal-flow className="mt-11 overflow-x-auto">
             <div className="min-w-[720px]">
               <SignalLens />
             </div>
           </div>
-
-          <p className="mt-6 mb-0 text-[14px] leading-[21px] text-ink-soft">
-            Every signal keeps its source and date. Directions are informed by
-            signals — not promised winners.
-          </p>
         </Reveal>
       </div>
     </Section>

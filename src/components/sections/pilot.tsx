@@ -13,7 +13,7 @@ const STEPS = [
 
 export function Pilot() {
   return (
-    <Section index="06" eyebrow="Pilot CreativeOS with one D2C brand" className="bg-white">
+    <Section index="05" eyebrow="Pilot CreativeOS with one D2C brand" className="bg-white">
       <div>
         <Reveal>
           <SectionHeading className="max-w-[22ch]">

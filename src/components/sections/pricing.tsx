@@ -156,7 +156,7 @@ export function Pricing() {
       No `bg-white` here, unlike its neighbours: the cards are white, and a
       white band would erase them.
     */
-    <Section id="pricing" index="07" eyebrow="Plans and pricing">
+    <Section id="pricing" index="06" eyebrow="Plans and pricing">
       <div>
         <Reveal>
           <SectionHeading className="max-w-[20ch]">

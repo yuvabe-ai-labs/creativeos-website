@@ -9,6 +9,7 @@ export function Section({
   id,
   index,
   eyebrow,
+  tone = "light",
   className,
   children,
 }: {
@@ -16,20 +17,37 @@ export function Section({
   /** Two-digit counter shown in purple before the eyebrow, e.g. "01". */
   index?: string;
   eyebrow?: string;
+  /** `dark` puts the band on the night ground with light-on-dark chrome. */
+  tone?: "light" | "dark";
   className?: string;
   children: React.ReactNode;
 }) {
+  const dark = tone === "dark";
+
   return (
-    <section id={id} className={cn("border-b border-line", className)}>
+    <section
+      id={id}
+      className={cn("border-b", dark ? "border-white/10 bg-night" : "border-line", className)}
+    >
       <div className="mx-auto flex max-w-[1240px] flex-col gap-7 px-8 py-24">
         {eyebrow ? (
           <Reveal className="flex items-baseline gap-4">
             {index ? (
-              <div className="text-[12px] leading-none font-medium tracking-[0.22em] text-purple">
+              <div
+                className={cn(
+                  "text-[12px] leading-none font-medium tracking-[0.22em]",
+                  dark ? "text-lavender" : "text-purple",
+                )}
+              >
                 {index}
               </div>
             ) : null}
-            <div className="text-[12px] leading-[1.4] font-medium tracking-[0.22em] text-ink-soft uppercase">
+            <div
+              className={cn(
+                "text-[12px] leading-[1.4] font-medium tracking-[0.22em] uppercase",
+                dark ? "text-white/50" : "text-ink-soft",
+              )}
+            >
               {eyebrow}
             </div>
           </Reveal>
