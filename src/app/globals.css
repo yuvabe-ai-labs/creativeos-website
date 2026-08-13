@@ -1105,6 +1105,15 @@
   66%, 98% { opacity: 1; }
   100% { opacity: 0; }
 }
+/* The bloom: gradient frames that surface only after the deliverables are
+   visible — the run widening — and reset with the loop. The translate is
+   restated because the keyframe owns transform. */
+@keyframes coswebEcho {
+  0%, 66% { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+  76% { opacity: 1; }
+  98% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; }
+}
 /* Chip ring pulse; a short event, so per-chip `animation-delay` places it on
    that chip's arrival without needing a keyframe per chip. */
 @keyframes coswebChip {

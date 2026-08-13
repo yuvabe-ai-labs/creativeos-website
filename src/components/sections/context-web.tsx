@@ -103,6 +103,33 @@ const OUTPUTS: Array<{
   },
 ];
 
+/* The bloom: ten gradient frames across the output field that only surface
+   once the deliverables are visible — the run widening past what's shown —
+   then reset with the loop. Small delays scatter the arrival. */
+const BLOOM: Array<{
+  x: number;
+  y: number;
+  w: number;
+  ratio: string;
+  blur: number;
+  delay: number;
+  border: string;
+}> = [
+  // around the Reel
+  { x: 1105, y: 75, w: 60, ratio: "3 / 4", blur: 1, delay: 0, border: "rgba(88,41,199,.45)" },
+  { x: 1130, y: 190, w: 48, ratio: "1 / 1", blur: 1.5, delay: 0.08, border: "rgba(150,136,192,.55)" },
+  { x: 920, y: 120, w: 40, ratio: "9 / 16", blur: 2, delay: 0.15, border: "rgba(88,41,199,.4)" },
+  // around the Post
+  { x: 950, y: 290, w: 54, ratio: "1 / 1", blur: 1, delay: 0.03, border: "rgba(88,41,199,.45)" },
+  { x: 1150, y: 320, w: 66, ratio: "4 / 5", blur: 0.5, delay: 0.12, border: "rgba(88,41,199,.5)" },
+  { x: 1145, y: 425, w: 44, ratio: "1 / 1", blur: 2, delay: 0.1, border: "rgba(150,136,192,.55)" },
+  { x: 945, y: 415, w: 38, ratio: "3 / 4", blur: 2.5, delay: 0.1, border: "rgba(150,136,192,.5)" },
+  // around the Story
+  { x: 925, y: 545, w: 52, ratio: "4 / 5", blur: 1, delay: 0.03, border: "rgba(88,41,199,.45)" },
+  { x: 1110, y: 500, w: 62, ratio: "1 / 1", blur: 0.8, delay: 0.18, border: "rgba(88,41,199,.5)" },
+  { x: 1105, y: 625, w: 46, ratio: "3 / 4", blur: 1.8, delay: 0.22, border: "rgba(150,136,192,.55)" },
+];
+
 /* A softened S — four shallow bends past the alternating steps, entering the
    card from below. Short on purpose: the dot clears it in ~2.2s. */
 const THREAD =
@@ -307,6 +334,26 @@ export function ContextWeb() {
               </div>
             </div>
 
+            {/* The bloom: the run widening once the deliverables exist. */}
+            {BLOOM.map((b) => (
+              <span
+                key={`${b.x},${b.y}`}
+                aria-hidden="true"
+                className="absolute rounded-[10px] border-2"
+                style={{
+                  ...pct(b.x, b.y),
+                  width: b.w,
+                  aspectRatio: b.ratio,
+                  borderColor: b.border,
+                  backgroundImage:
+                    "linear-gradient(135deg, rgba(88,41,199,.22), rgba(150,136,192,.08))",
+                  filter: `blur(${b.blur}px)`,
+                  animation: "coswebEcho 7s linear infinite",
+                  animationDelay: `${b.delay}s`,
+                }}
+              />
+            ))}
+
             {/* The deliverables that inherit it: dashed destination frames
                 until the fan dots land, then the asset and its name fade in. */}
             {OUTPUTS.map((out) => (
@@ -323,7 +370,7 @@ export function ContextWeb() {
                     <span
                       key={`${echo.dx},${echo.dy}`}
                       aria-hidden="true"
-                      className="absolute top-1/2 left-1/2 -z-10 rounded-[12px] bg-white/70 ring-1 ring-black/5"
+                      className="absolute top-1/2 left-1/2 -z-10 rounded-[12px] bg-white/90 ring-1 ring-black/10"
                       style={{
                         width: out.w * echo.s,
                         aspectRatio: out.ratio,
