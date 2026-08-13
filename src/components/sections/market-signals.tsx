@@ -6,7 +6,7 @@ export function MarketSignals() {
   return (
     <Section
       id="market"
-      index="04"
+      index="02"
       eyebrow="Connected to what is changing"
       className="bg-white [background-image:radial-gradient(60%_52%_at_86%_16%,rgba(150,136,192,.24),transparent),radial-gradient(48%_42%_at_8%_88%,rgba(255,202,45,.16),transparent),radial-gradient(rgba(148,163,184,.2)_1px,transparent_1px)] [background-size:auto,auto,26px_26px]"
     >

@@ -23,9 +23,9 @@ export default function HomePage() {
       <main className="w-full">
         <HeroFlora />
         <ContextWeb />
-        <ToolSprawl />
-        <Workflow />
         <MarketSignals />
+        <Workflow />
+        <ToolSprawl />
         <Pilot />
         <Pricing />
         <Faq />

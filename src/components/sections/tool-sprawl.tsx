@@ -8,7 +8,7 @@ export function ToolSprawl() {
   return (
     <Section
       id="tools"
-      index="02"
+      index="04"
       eyebrow="Any edit means jumping between platforms"
       className="bg-white"
     >
