@@ -654,6 +654,108 @@
   100% { fill: #5829c7; transform: scale(1); }
 }
 
+
+/* --- travelled-path trails (section 01) ------------------------------------
+   The line the dot leaves behind, the same device the capsule loop in section
+   04 uses. Every trail path carries `pathLength="100"`, renormalising its dash
+   units to 100 regardless of geometry, so `stroke-dasharray: 100 100` with the
+   offset running 100 -> 0 reveals the stroke from the start of the path
+   forward — which puts the drawn line exactly under the dot.
+
+   Every trail persists once drawn and clears only when the loop restarts —
+   nothing fades mid-cycle. On the serpentine the colour is still lost between
+   reels, but by the return legs being grey rather than gradient: the dot
+   travels them and picks up nothing, so the next row has to start its blend
+   again from the first chip.
+
+   Hence one keyframe per leg rather than one for the whole path — each needs
+   its own reveal window. Windows are distance along the path expressed over
+   the 2954-unit travel. */
+@keyframes cosTrailRow1 {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0.8;
+  }
+  17.13%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.8;
+  }
+}
+@keyframes cosTrailRet1 {
+  0%,
+  17.13% {
+    stroke-dashoffset: 100;
+    opacity: 0.45;
+  }
+  39.87%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.45;
+  }
+}
+@keyframes cosTrailRow2 {
+  0%,
+  39.87% {
+    stroke-dashoffset: 100;
+    opacity: 0.8;
+  }
+  54.83%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.8;
+  }
+}
+@keyframes cosTrailRet2 {
+  0%,
+  54.83% {
+    stroke-dashoffset: 100;
+    opacity: 0.45;
+  }
+  77.57%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.45;
+  }
+}
+@keyframes cosTrailRow3 {
+  0%,
+  77.57% {
+    stroke-dashoffset: 100;
+    opacity: 0.8;
+  }
+  92.53%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.8;
+  }
+}
+/* The right card's trails hold to 100% instead of fading — nothing it captures
+   is thrown away, which is the entire difference between the two cards. */
+@keyframes cosrowTrail {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0.8;
+  }
+  41.8%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.8;
+  }
+}
+@keyframes cosfanTrail {
+  0%,
+  41.8% {
+    stroke-dashoffset: 100;
+    opacity: 0.8;
+  }
+  76%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.8;
+  }
+}
+
 /* The serpentine's ticks latch too — by the end of the cycle all three reels
    are done, but each took a full row of re-setup to get there. */
 @keyframes costickS1 {

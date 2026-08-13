@@ -1,4 +1,9 @@
-import { ChipGlyph, RowCaption, stepFor } from "@/components/diagrams/context-steps";
+import {
+  CONTEXT_STEPS,
+  ChipGlyph,
+  RowCaption,
+  stepFor,
+} from "@/components/diagrams/context-steps";
 
 /**
  * Context set once, then three reels off the same row.
@@ -65,6 +70,53 @@ export function ContextSetOnce() {
           <path key={reel.label} d={reel.route} />
         ))}
       </g>
+
+      <defs>
+        {/* Same device as the serpentine's: stops on the chip positions, so the
+            row draws in each colour as it is collected and blends between. */}
+        <linearGradient id="cosCtxRowP" gradientUnits="userSpaceOnUse" x1="110" y1="0" x2="470" y2="0">
+          {CONTEXT_STEPS.map((step, i) => (
+            <stop
+              key={step.key}
+              offset={`${(((CHIP_X[i] ?? 390) - 110) / 360) * 100}%`}
+              stopColor={step.color}
+            />
+          ))}
+        </linearGradient>
+      </defs>
+
+      {/* Trails, drawn in behind the dots. `pathLength` renormalises each to
+          100 dash units, so one keyframe per phase covers the row and all
+          three arms despite their different lengths.
+
+          Like the serpentine's, these persist until the loop restarts. Unlike
+          it, there is no grey stretch anywhere: the row keeps its blend all
+          the way to the junction and the arms carry it out. */}
+      <path
+        d="M110,60 H470"
+        pathLength="100"
+        fill="none"
+        stroke="url(#cosCtxRowP)"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        strokeDasharray="100 100"
+        opacity={0}
+        style={{ animation: `cosrowTrail ${CYCLE} linear infinite` }}
+      />
+      {REELS.map((reel) => (
+        <path
+          key={`${reel.label}-trail`}
+          d={reel.route}
+          pathLength="100"
+          fill="none"
+          stroke="#5829c7"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeDasharray="100 100"
+          opacity={0}
+          style={{ animation: `cosfanTrail ${CYCLE} linear infinite` }}
+        />
+      ))}
 
       {/* One pass along the row… */}
       <path

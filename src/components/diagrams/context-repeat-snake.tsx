@@ -1,4 +1,9 @@
-import { ChipGlyph, RowCaption, stepFor } from "@/components/diagrams/context-steps";
+import {
+  CONTEXT_STEPS,
+  ChipGlyph,
+  RowCaption,
+  stepFor,
+} from "@/components/diagrams/context-steps";
 
 /**
  * Re-setup as a serpentine: one dot walks three rows of the same four context
@@ -74,6 +79,23 @@ const ROW_Y = [60, 180, 300] as const;
 /** Glyphs sit above the first row, clear of the chips by ~11 units. */
 const GLYPH_ROW_Y = 34;
 
+/**
+ * The trail, split leg by leg and interleaved in the order the dot travels
+ * them. Rows draw in the context gradient, returns in grey.
+ *
+ * That grey is the argument: the dot crosses a return leg and gains nothing,
+ * so the next row has to rebuild its blend from the first chip. Splitting the
+ * trail per leg is what makes that expressible — a single path can only be one
+ * colour treatment along its whole length.
+ */
+const TRAIL_LEGS = [
+  { d: WORK_LEGS[0], work: true, anim: "cosTrailRow1" },
+  { d: CONNECTOR_LEGS[0], work: false, anim: "cosTrailRet1" },
+  { d: WORK_LEGS[1], work: true, anim: "cosTrailRow2" },
+  { d: CONNECTOR_LEGS[1], work: false, anim: "cosTrailRet2" },
+  { d: WORK_LEGS[2], work: true, anim: "cosTrailRow3" },
+] as const;
+
 export function ContextRepeatSnake() {
   return (
     // A 600-unit-wide viewBox, matching `context-set-once`. Equal viewBox widths
@@ -89,6 +111,43 @@ export function ContextRepeatSnake() {
           <path key={d} d={d} stroke="#c3c9d4" />
         ))}
       </g>
+      <defs>
+        {/* Stops land on the chip x positions, so the trail is that chip's hue
+            as it passes and blends on the way to the next — context mixing as
+            it is collected. Rows 2 and 3 span 174-616, a subset of this. */}
+        <linearGradient id="cosCtxRow" gradientUnits="userSpaceOnUse" x1="110" y1="0" x2="616" y2="0">
+          {CONTEXT_STEPS.map((step, i) => (
+            <stop
+              key={step.key}
+              offset={`${(((CHIP_X[i] ?? 430) - 110) / 506) * 100}%`}
+              stopColor={step.color}
+            />
+          ))}
+        </linearGradient>
+      </defs>
+
+      {/* The trail the dot leaves behind, one path per leg. `pathLength`
+          renormalises each to 100 dash units so the reveal keyframes are
+          windows in time rather than lengths.
+
+          Each leg persists once drawn and clears only when the loop restarts.
+          Rows carry the context gradient; the return legs are grey — the dot
+          travels them and picks up nothing, so the colour is lost between
+          reels and the next row starts its blend again from the first chip. */}
+      {TRAIL_LEGS.map((legTrail) => (
+        <path
+          key={legTrail.anim}
+          d={legTrail.d}
+          pathLength="100"
+          fill="none"
+          stroke={legTrail.work ? "url(#cosCtxRow)" : "#9ca3af"}
+          strokeWidth={legTrail.work ? 3.5 : 2.5}
+          strokeLinecap="round"
+          strokeDasharray="100 100"
+          opacity={0}
+          style={{ animation: `${legTrail.anim} ${CYCLE} linear infinite` }}
+        />
+      ))}
       <path
         d={SNAKE}
         fill="none"
