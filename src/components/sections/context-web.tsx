@@ -49,8 +49,7 @@ const CHIPS: Array<{
   { label: "Compliance check", thumb: "/assets/hero/placeholder-16.jpg", size: 76, x: 260, y: 620, arrival: 1.53, depth: 0.88, labelFirst: true },
 ];
 
-/* Ghost frames behind each deliverable: the rest of the run, implied. Depth
-   is told twice — smaller AND blurrier is farther. */
+/* The three named deliverables on the right. */
 const OUTPUTS: Array<{
   src: string;
   alt: string;
@@ -59,7 +58,6 @@ const OUTPUTS: Array<{
   y: number;
   w: number;
   ratio: string;
-  echoes: Array<{ dx: number; dy: number; s: number; blur: number; op: number }>;
 }> = [
   {
     src: "/assets/hero/placeholder-02.jpg",
@@ -69,10 +67,6 @@ const OUTPUTS: Array<{
     y: 140,
     w: 110,
     ratio: "9 / 16",
-    echoes: [
-      { dx: 84, dy: -46, s: 0.78, blur: 1.5, op: 0.85 },
-      { dx: 104, dy: 46, s: 0.58, blur: 2.5, op: 0.7 },
-    ],
   },
   {
     src: "/assets/hero/placeholder-12.jpg",
@@ -82,11 +76,6 @@ const OUTPUTS: Array<{
     y: 350,
     w: 130,
     ratio: "1 / 1",
-    echoes: [
-      { dx: -84, dy: -58, s: 0.82, blur: 1.5, op: 0.85 },
-      { dx: 100, dy: 34, s: 0.66, blur: 2.5, op: 0.7 },
-      { dx: -92, dy: 56, s: 0.5, blur: 3.5, op: 0.55 },
-    ],
   },
   {
     src: "/assets/hero/placeholder-13.jpg",
@@ -96,10 +85,6 @@ const OUTPUTS: Array<{
     y: 555,
     w: 120,
     ratio: "4 / 5",
-    echoes: [
-      { dx: -86, dy: -34, s: 0.74, blur: 2, op: 0.8 },
-      { dx: 88, dy: 52, s: 0.56, blur: 3, op: 0.6 },
-    ],
   },
 ];
 
@@ -301,7 +286,7 @@ export function ContextWeb() {
                   }}
                 />
               ))}
-              <div className="relative h-full w-full rounded-[18px] border-2 border-dashed border-rule">
+              <div className="relative h-full w-full rounded-[18px] border-2 border-dashed border-purple/35">
                 {/* Skeleton: the grey fill and its sweep exist only for the
                     ~1s shimmer window after the dot arrives. */}
                 <div
@@ -320,7 +305,7 @@ export function ContextWeb() {
                   />
                 </div>
                 <div
-                  className="absolute -inset-[2px] overflow-hidden rounded-[18px] shadow-[0_24px_60px_rgba(11,15,25,.18)] ring-1 ring-black/5"
+                  className="absolute -inset-[2px] overflow-hidden rounded-[18px] border-2 border-purple/50 shadow-[0_24px_60px_rgba(11,15,25,.18)]"
                   style={{ animation: "coswebImg 7s linear infinite" }}
                 >
                   <Image
@@ -344,6 +329,7 @@ export function ContextWeb() {
                   ...pct(b.x, b.y),
                   width: b.w,
                   aspectRatio: b.ratio,
+                  transform: "translate(-50%, -50%)",
                   borderColor: b.border,
                   backgroundImage:
                     "linear-gradient(135deg, rgba(88,41,199,.22), rgba(150,136,192,.08))",
@@ -363,25 +349,11 @@ export function ContextWeb() {
                 style={{ ...pct(out.x, out.y), width: out.w }}
               >
                 <div
-                  className="relative w-full rounded-[14px] border-2 border-dashed border-rule"
+                  className="relative w-full rounded-[14px] border-2 border-dashed border-purple/35"
                   style={{ aspectRatio: out.ratio }}
                 >
-                  {out.echoes.map((echo) => (
-                    <span
-                      key={`${echo.dx},${echo.dy}`}
-                      aria-hidden="true"
-                      className="absolute top-1/2 left-1/2 -z-10 rounded-[12px] bg-white/90 ring-1 ring-black/10"
-                      style={{
-                        width: out.w * echo.s,
-                        aspectRatio: out.ratio,
-                        transform: `translate(-50%, -50%) translate(${echo.dx}px, ${echo.dy}px)`,
-                        filter: `blur(${echo.blur}px)`,
-                        opacity: echo.op,
-                      }}
-                    />
-                  ))}
                   <div
-                    className="absolute -inset-[2px] overflow-hidden rounded-[14px] shadow-[0_16px_40px_rgba(11,15,25,.16)] ring-1 ring-black/5"
+                    className="absolute -inset-[2px] overflow-hidden rounded-[14px] border-2 border-purple/50 shadow-[0_16px_40px_rgba(11,15,25,.16)]"
                     style={{ animation: "coswebFlash 7s linear infinite" }}
                   >
                     <Image
