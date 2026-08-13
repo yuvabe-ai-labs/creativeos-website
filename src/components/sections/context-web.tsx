@@ -356,7 +356,7 @@ export function ContextWeb() {
                   style={{ aspectRatio: out.ratio }}
                 >
                   <div
-                    className="absolute -inset-[2px] overflow-hidden rounded-[14px] shadow-[0_16px_44px_rgba(88,41,199,.28)] ring-1 ring-black/5"
+                    className="absolute -inset-[2px] overflow-hidden rounded-[14px] shadow-[0_10px_22px_rgba(88,41,199,.38)] ring-1 ring-black/5"
                     style={{ animation: "coswebFlash 7s linear infinite" }}
                   >
                     <Image
