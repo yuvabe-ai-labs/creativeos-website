@@ -18,9 +18,8 @@ export function ContextCost() {
           </SectionLede>
         </Reveal>
 
-        <ComparisonGrid divider>
+        <ComparisonGrid>
           <ComparisonCard
-            bare
             tone="today"
             title="Today — set context for every reel"
             stat={{ value: "3×", label: "context setup, for 3 reels" }}
@@ -30,7 +29,6 @@ export function ContextCost() {
           </ComparisonCard>
 
           <ComparisonCard
-            bare
             tone="creativeos"
             title="CreativeOS — set once, run parallel"
             stat={{ value: "1×", label: "context setup, for 3 reels" }}
