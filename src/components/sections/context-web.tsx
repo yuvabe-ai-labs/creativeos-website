@@ -26,17 +26,23 @@ const CHIPS: Array<{
   y: number;
   /** Seconds into the 9s cycle; drives the ring pulse via negative delay. */
   arrival: number;
+  /** Perspective scale around the anchor; also drives opacity. */
+  depth: number;
+  /** Renders the pill on the left of the thumb — for chips whose right side is crowded. */
+  labelFirst?: boolean;
 }> = [
   // Arrivals are arc-length fractions of the thread scaled to its 4.05s
   // travel (45% of the 9s cycle) — computed, not eyeballed, so the pulse
-  // lands as the dot passes.
-  { label: "Explain the brand", thumb: "/assets/hero/placeholder-09.jpg", size: 96, x: 200, y: 110, arrival: 0.05 },
-  { label: "Tone of voice", thumb: "/assets/hero/placeholder-14.jpg", size: 72, x: 450, y: 190, arrival: 0.52 },
-  { label: "Product details", thumb: "/assets/hero/placeholder-11.jpg", size: 112, x: 170, y: 290, arrival: 1.16 },
-  { label: "Mood + lighting", thumb: "/assets/hero/placeholder-06.jpg", size: 80, x: 385, y: 370, arrival: 1.66 },
-  { label: "Colors + refs", thumb: "/assets/hero/placeholder-05.jpg", size: 104, x: 200, y: 470, arrival: 2.14 },
-  { label: "Market trends", thumb: "/assets/hero/placeholder-15.jpg", size: 88, x: 450, y: 545, arrival: 2.69 },
-  { label: "Compliance check", thumb: "/assets/hero/placeholder-16.jpg", size: 76, x: 260, y: 620, arrival: 3.12 },
+  // lands as the dot passes. `depth` is the perspective: nearer units render
+  // larger and fully opaque, farther ones smaller and fainter. It scales
+  // around the anchor, so the thread stays in sync.
+  { label: "Explain the brand", thumb: "/assets/hero/placeholder-09.jpg", size: 96, x: 432, y: 67, arrival: 0.12, depth: 1.05 },
+  { label: "Tone of voice", thumb: "/assets/hero/placeholder-14.jpg", size: 72, x: 267, y: 129, arrival: 0.69, depth: 0.82 },
+  { label: "Product details", thumb: "/assets/hero/placeholder-11.jpg", size: 112, x: 143, y: 246, arrival: 1.26, depth: 1.12 },
+  { label: "Mood + lighting", thumb: "/assets/hero/placeholder-06.jpg", size: 80, x: 121, y: 417, arrival: 1.82, depth: 0.88 },
+  { label: "Colors + refs", thumb: "/assets/hero/placeholder-05.jpg", size: 104, x: 216, y: 559, arrival: 2.39, depth: 1.0 },
+  { label: "Market trends", thumb: "/assets/hero/placeholder-15.jpg", size: 88, x: 330, y: 635, arrival: 2.96, depth: 0.94, labelFirst: true },
+  { label: "Compliance check", thumb: "/assets/hero/placeholder-16.jpg", size: 76, x: 585, y: 634, arrival: 3.48, depth: 0.88 },
 ];
 
 const OUTPUTS = [
@@ -69,11 +75,11 @@ const OUTPUTS = [
   },
 ];
 
-/* One thread underlining every chip — it dips beneath each unit (offset by
-   that unit's thumb height) so it never crosses a thumbnail or pill — then
-   sweeps right along the bottom and rises into the centre card from below. */
+/* One swooping arc around the central image's left — a big parenthesis the
+   chips sit just outside of, entering the card from below. Chip anchors are
+   points on this arc pushed 55 units away from the card's centre. */
 const THREAD =
-  "M200,170 C300,190 415,205 450,238 C480,290 250,300 170,358 C120,400 300,390 385,422 C445,447 270,470 200,534C150,580 380,570 450,601 C470,635 340,662 260,670 C180,678 480,705 620,455";
+  "M500,105 C260,140 170,240 170,360 C170,480 260,585 520,612 C580,618 615,540 620,470";
 
 /* From the centre card's right edge to each deliverable's left edge. */
 const FANS = [
@@ -168,8 +174,16 @@ export function ContextWeb() {
             {CHIPS.map((chip) => (
               <div
                 key={chip.label}
-                className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-2.5"
-                style={pct(chip.x, chip.y)}
+                className={
+                  chip.labelFirst
+                    ? "absolute flex flex-row-reverse items-center gap-2.5"
+                    : "absolute flex items-center gap-2.5"
+                }
+                style={{
+                  ...pct(chip.x, chip.y),
+                  transform: `translate(-50%, -50%) scale(${chip.depth})`,
+                  opacity: Math.min(1, 0.25 + 0.72 * chip.depth),
+                }}
               >
                 {chip.thumb ? (
                   <span
