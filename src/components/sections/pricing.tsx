@@ -91,8 +91,10 @@ function PlanCard({ plan }: { plan: Plan }) {
       <DiagramFrame
         className={cn(
           "flex h-full flex-col p-7",
-          plan.featured &&
-            "border-purple shadow-[0_10px_28px_rgba(88,41,199,0.14)]",
+          // The featured plan stands out by border colour alone. A drop shadow
+          // lifted it off the page harder than anything else on the site, which
+          // read as a different design language rather than emphasis.
+          plan.featured && "border-purple",
         )}
       >
         <div className="flex items-center justify-between gap-3">

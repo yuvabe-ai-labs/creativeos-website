@@ -1,6 +1,6 @@
 import {
   CONTEXT_STEPS,
-  ChipGlyph,
+  ChipHead,
   RowCaption,
   stepFor,
 } from "@/components/diagrams/context-steps";
@@ -40,8 +40,6 @@ const CHIP_ARRIVAL = [4.644, 13.933, 23.222, 32.511] as const;
 const CHIP_X = [150, 230, 310, 390] as const;
 const JUNCTION_X = 470;
 const ROW_Y = 60;
-/** Matches the serpentine's glyph row, so the two read at one height. */
-const GLYPH_ROW_Y = 34;
 
 /**
  * Reel rows sit at the same y as the other card's, so the eye can compare them
@@ -62,7 +60,7 @@ const REELS = [
 
 export function ContextSetOnce() {
   return (
-    <svg viewBox="91 14 600 328" className="block h-auto w-full" aria-hidden="true">
+    <svg viewBox="91 0 600 342" className="block h-auto w-full" aria-hidden="true">
       {/* Tracks: the row, then the three routes out of the junction. */}
       <g fill="none" stroke="#c3c9d4" strokeWidth="3" strokeDasharray="2 14" strokeLinecap="round">
         <path d="M110,60 H470" />
@@ -144,7 +142,7 @@ export function ContextSetOnce() {
 
       {CHIP_X.map((cx, i) => (
         <g key={cx}>
-          <ChipGlyph step={stepFor(i)} x={cx} y={GLYPH_ROW_Y} />
+          <ChipHead step={stepFor(i)} x={cx} />
           {/* Shared pulse keyframe, placed on this chip's moment by a negative
               delay of (cycle - arrival). */}
           <circle
@@ -178,14 +176,15 @@ export function ContextSetOnce() {
         </g>
       ))}
 
-      {/* The junction — context assembled, pulsing as the row's dot lands. Kept
-          near chip scale so it reads as a branch, not a second subject. */}
-      <circle cx={JUNCTION_X} cy={ROW_Y} r="7" fill="#5829c7" />
-      <circle cx={JUNCTION_X} cy={ROW_Y} r="12" fill="none" stroke="rgba(88,41,199,.35)" strokeWidth="2" />
+      {/* The junction — context assembled once, and the moment the whole card
+          is about. Deliberately larger than the chips: this is the product
+          idea, not another input. */}
+      <circle cx={JUNCTION_X} cy={ROW_Y} r="8.5" fill="#5829c7" />
+      <circle cx={JUNCTION_X} cy={ROW_Y} r="15" fill="none" stroke="rgba(88,41,199,.35)" strokeWidth="2" />
       <circle
         cx={JUNCTION_X}
         cy={ROW_Y}
-        r="12"
+        r="15"
         fill="none"
         stroke="rgba(88,41,199,.5)"
         strokeWidth="2"

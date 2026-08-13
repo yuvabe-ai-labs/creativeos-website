@@ -16,6 +16,7 @@ export function ComparisonCard({
   title,
   tone,
   caption,
+  stat,
   bare = false,
   children,
 }: {
@@ -23,6 +24,13 @@ export function ComparisonCard({
   /** `today` is the muted control; `creativeos` is the purple treatment. */
   tone: "today" | "creativeos";
   caption: string;
+  /**
+   * A figure the drawing earns, shown under it. Section 01's whole claim is a
+   * difference in cost, and that difference otherwise lives only in the
+   * animation's duration — invisible in a screenshot, a deck, or to anyone who
+   * scrolls past. This states it in a form that survives a still image.
+   */
+  stat?: { value: string; label: string };
   /**
    * Drops the panel — no border, fill, shadow or inset — so the drawing gets
    * the column's full width. Section 01's diagrams carry small labels that need
@@ -38,7 +46,7 @@ export function ComparisonCard({
       className={cn(
         "flex flex-col",
         !bare &&
-          "rounded-[16px] border border-line bg-white px-6 pt-[22px] pb-[18px] shadow-[0_8px_20px_rgba(11,15,25,0.06)]",
+          "panel px-6 pt-[22px] pb-[18px]",
       )}
     >
       <div className="flex items-center gap-2.5">
@@ -61,10 +69,29 @@ export function ComparisonCard({
         {children}
       </div>
 
+      {stat ? (
+        <div
+          className={cn(
+            "flex items-baseline justify-center gap-2 border-t border-line pt-3.5",
+            bare ? "mt-4" : "mt-3",
+          )}
+        >
+          <span
+            className={cn(
+              "font-display text-[26px] leading-none font-semibold tracking-[-0.02em]",
+              isProduct ? "text-purple" : "text-ink",
+            )}
+          >
+            {stat.value}
+          </span>
+          <span className="text-[14px] leading-none text-ink-soft">{stat.label}</span>
+        </div>
+      ) : null}
+
       <p
         className={cn(
           "mt-2 mb-0 text-center text-[14px] leading-[21px] text-ink-soft",
-          bare && "mt-4",
+          bare && !stat && "mt-4",
         )}
       >
         {caption}

@@ -59,7 +59,7 @@ export function Workflow() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="mt-9 overflow-hidden rounded-[16px] border border-line bg-white shadow-[0_6px_16px_rgba(11,15,25,0.08)]">
+          <div className="panel mt-9 overflow-hidden">
             <div className="flex items-center gap-2.5 border-b border-line px-5 py-3.5">
               <span className="size-[9px] rounded-full bg-line" />
               <span className="size-[9px] rounded-full bg-line" />

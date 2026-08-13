@@ -1,6 +1,6 @@
 import {
   CONTEXT_STEPS,
-  ChipGlyph,
+  ChipHead,
   RowCaption,
   stepFor,
 } from "@/components/diagrams/context-steps";
@@ -76,8 +76,6 @@ const REELS = [
  */
 const CHIP_X = [160, 250, 340, 430] as const;
 const ROW_Y = [60, 180, 300] as const;
-/** Glyphs sit above the first row, clear of the chips by ~11 units. */
-const GLYPH_ROW_Y = 34;
 
 /**
  * The trail, split leg by leg and interleaved in the order the dot travels
@@ -98,11 +96,11 @@ const TRAIL_LEGS = [
 
 export function ContextRepeatSnake() {
   return (
-    // A 600-unit-wide viewBox, matching `context-set-once`. Equal viewBox widths
-    // in equal columns mean one SVG unit is the same size in both. The crop is
-    // tighter now that the labels have moved out to the legend — there is no
-    // band above and below the path left to reserve for them.
-    <svg viewBox="91 14 600 328" className="block h-auto w-full" aria-hidden="true">
+    // A 600-unit-wide viewBox, matching `context-set-once`. Equal viewBox
+    // widths in equal columns mean one SVG unit is the same size in both, so
+    // the two drawings share a scale without either being measured against the
+    // other. The top of the box holds the first row's labels and glyphs.
+    <svg viewBox="91 0 600 342" className="block h-auto w-full" aria-hidden="true">
       <g fill="none" strokeWidth="3" strokeDasharray="2 14" strokeLinecap="round">
         {CONNECTOR_LEGS.map((d) => (
           <path key={d} d={d} stroke="#e5e7eb" />
@@ -163,11 +161,9 @@ export function ContextRepeatSnake() {
           const i = row * CHIP_X.length + col;
           return (
             <g key={`${cy}-${cx}`}>
-              {/* Only the first row is glyphed — rows 2 and 3 are the same four
-                  steps again, and the legend already named them. */}
-              {row === 0 ? (
-                <ChipGlyph step={stepFor(col)} x={cx} y={GLYPH_ROW_Y} />
-              ) : null}
+              {/* Only the first row is labelled — rows 2 and 3 are the same
+                  four steps again, and repeating the names is the clutter. */}
+              {row === 0 ? <ChipHead step={stepFor(col)} x={cx} /> : null}
               {/* The pulse rides a shared keyframe, placed on this chip's moment
                   by a negative delay of (cycle - arrival). */}
               <circle

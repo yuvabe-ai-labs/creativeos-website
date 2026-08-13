@@ -1,6 +1,5 @@
 import { ContextRepeatSnake } from "@/components/diagrams/context-repeat-snake";
 import { ContextSetOnce } from "@/components/diagrams/context-set-once";
-import { ContextLegend } from "@/components/diagrams/context-steps";
 import { Reveal } from "@/components/motion/reveal";
 import { ComparisonCard, ComparisonGrid } from "@/components/site/comparison-card";
 import { Section, SectionHeading, SectionLede } from "@/components/site/section";
@@ -19,19 +18,12 @@ export function ContextCost() {
           </SectionLede>
         </Reveal>
 
-        {/* One legend for both cards. The diagrams carry colour only, so this
-            is where the colours get their names — and the only place they do. */}
-        <Reveal delay={0.06}>
-          <div className="mt-8">
-            <ContextLegend />
-          </div>
-        </Reveal>
-
         <ComparisonGrid divider>
           <ComparisonCard
             bare
             tone="today"
             title="Today — set context for every reel"
+            stat={{ value: "3×", label: "context setup, for 3 reels" }}
             caption="Context needs to be set every time for a new asset."
           >
             <ContextRepeatSnake />
@@ -41,6 +33,7 @@ export function ContextCost() {
             bare
             tone="creativeos"
             title="CreativeOS — set once, run parallel"
+            stat={{ value: "1×", label: "context setup, for 3 reels" }}
             caption="Inputs set once — all three reels generate in parallel, a fraction of the time."
           >
             <ContextSetOnce />

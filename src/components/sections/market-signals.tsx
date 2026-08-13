@@ -19,7 +19,7 @@ export function MarketSignals() {
         <Reveal delay={0.08}>
           <div
             data-signal-flow
-            className="mt-11 overflow-x-auto rounded-[16px] border border-line px-4 pt-5 pb-2 shadow-[0_8px_20px_rgba(11,15,25,0.06)]"
+            className="panel mt-11 overflow-x-auto px-4 pt-5 pb-2"
             style={{
               backgroundImage:
                 "linear-gradient(135deg,#ffffff 0%,#fcfcfd 60%,#f7f5fc 100%)",

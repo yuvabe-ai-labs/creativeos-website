@@ -3,17 +3,21 @@
  * both section 01 diagrams.
  *
  * The dots on those paths are representational: they stand for context being
- * set, not for a literal inventory. So the names live out here in a legend and
- * the diagrams carry colour alone, which is what let the labels come off the
- * paths and the drawings breathe.
+ * set, not for a literal inventory.
+ *
+ * Names are set directly above the first row of each card rather than in a
+ * legend. Direct labelling removes the lookup step, and it only fits because
+ * there are four short steps at an 80-90 unit pitch — an earlier five-step set
+ * including "Compliance" had to alternate above and below the path to avoid
+ * colliding, which is what made the drawings feel crowded.
  *
  * COLOUR ORDER IS FIXED and validated as a categorical palette on the light
  * surface (magenta → amber → blue → purple): worst adjacent pair ΔE 18.2 under
  * deuteranopia, well clear of the 8 target. Re-run the check before reordering
  * or substituting — adjacent pairs are what the eye compares, and an earlier
  * darker amber collided with the flame red at ΔE 0.9. The amber sits below 3:1
- * against white, which is legal only because this legend labels every colour;
- * do not use these hues unlabelled.
+ * against white, which is legal only because every colour is labelled where it
+ * appears; do not use these hues unlabelled.
  */
 
 export type ContextStep = {
@@ -166,31 +170,29 @@ export function RowCaption({
   );
 }
 
+/** Label baseline and glyph centre for a chip's heading, in diagram units. */
+export const CHIP_HEAD = { label: 16, glyph: 36 } as const;
+
 /**
- * The legend. Sits once above both cards rather than twice inside them: the
- * names are the same on either side, and repeating them was most of the
- * clutter the diagrams were carrying.
+ * A chip's name and glyph, stacked above the path and centred on its dot.
+ *
+ * Only the first row of each card gets one: it teaches the colour, and every
+ * row below then relies on that mapping — which is exactly the point the
+ * serpentine is making by repeating itself.
  */
-export function ContextLegend() {
+export function ChipHead({ step, x }: { step: ContextStep; x: number }) {
   return (
-    <ul className="m-0 flex list-none flex-wrap items-center gap-x-7 gap-y-3 p-0">
-      {CONTEXT_STEPS.map((step) => (
-        <li key={step.key} className="inline-flex items-center gap-2">
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden
-            className="size-[18px] shrink-0"
-            fill="none"
-            stroke={step.color}
-            strokeWidth="2.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            {step.glyph}
-          </svg>
-          <span className="text-[15px] leading-none text-ink-soft">{step.label}</span>
-        </li>
-      ))}
-    </ul>
+    <g>
+      <text
+        x={x}
+        y={CHIP_HEAD.label}
+        textAnchor="middle"
+        style={{ fontWeight: "500", fontSize: "15px" }}
+        fill="#6b7280"
+      >
+        {step.label}
+      </text>
+      <ChipGlyph step={step} x={x} y={CHIP_HEAD.glyph} />
+    </g>
   );
 }

@@ -18,7 +18,7 @@ const FIELD =
   "w-full rounded-[4px] border border-line-strong bg-surface px-3 py-[9px] text-[14px] leading-[21px] text-ink outline-none transition-[border-color,box-shadow] duration-150 placeholder:text-ink-faint focus:border-purple focus:shadow-[0_0_0_3px_rgba(88,41,199,0.10)]";
 
 const CARD =
-  "rounded-[8px] border border-line bg-white p-7 shadow-[0_2px_10px_rgba(11,15,25,0.06)]";
+  "panel p-7";
 
 const LABEL =
   "text-[11px] leading-none font-semibold tracking-[0.1em] text-ink-soft uppercase";

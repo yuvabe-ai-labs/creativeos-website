@@ -89,7 +89,7 @@ export function DiagramFrame({
   return (
     <div
       className={cn(
-        "rounded-[16px] border border-line bg-white shadow-[0_8px_20px_rgba(11,15,25,0.06)]",
+        "panel",
         className,
       )}
       {...props}
