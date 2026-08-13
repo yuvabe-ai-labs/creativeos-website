@@ -12,7 +12,9 @@ const COLUMNS = [
       { label: "Reels", href: "/#workflow" },
       { label: "Static posts", href: "/#workflow" },
       { label: "Market intelligence", href: "/#market" },
-      { label: "Production learning", href: "/#system" },
+      /* `#system` went with the "production system" band; the closest thing the
+         page still says about learning is stage 06 of the workflow loop. */
+      { label: "Production learning", href: "/#workflow" },
     ],
   },
   {

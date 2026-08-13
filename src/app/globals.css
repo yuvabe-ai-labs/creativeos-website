@@ -283,6 +283,371 @@
   }
 }
 
+/* --- sequenced hops (comparison cards) ------------------------------------
+   One dot at a time travels a single edge, then vanishes; siblings pick up via
+   `animation-delay` so the eye follows a route rather than a swarm. The dot is
+   a `14 900` dash — the 900 gap parks the rest of the dash off the path — and
+   the offset travel is the *path length*, not the dash period, because the dot
+   is meant to exit at the far end rather than wrap.
+   --------------------------------------------------------------------------- */
+@keyframes cosloopS {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  25% {
+    stroke-dashoffset: -400;
+    opacity: 1;
+  }
+  25.5% {
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: -400;
+    opacity: 0;
+  }
+}
+@keyframes cosloopR {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  50% {
+    stroke-dashoffset: -400;
+    opacity: 1;
+  }
+  50.5% {
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: -400;
+    opacity: 0;
+  }
+}
+@keyframes cosloopT {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  20% {
+    stroke-dashoffset: -460;
+    opacity: 1;
+  }
+  20.5% {
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: -460;
+    opacity: 0;
+  }
+}
+
+/* --- the setup race (section 01) -------------------------------------------
+   A 12s cycle in which three sequential runs (TODAY) are outpaced by one
+   parallel run (CREATIVEOS). `S` is the short inputs->node leg, `P` the long
+   node->output leg, `B` the curved branch to the outer outputs; each travels
+   its own path length. The percentages are the cycle, so a leg that ends at
+   30% is the dot arriving 3.6s in.
+   --------------------------------------------------------------------------- */
+@keyframes cosraceS {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  10% {
+    stroke-dashoffset: -150;
+    opacity: 1;
+  }
+  10.5% {
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: -150;
+    opacity: 0;
+  }
+}
+@keyframes cosraceP {
+  0%,
+  13% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  13.5% {
+    opacity: 1;
+  }
+  30% {
+    stroke-dashoffset: -194;
+    opacity: 1;
+  }
+  30.5% {
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: -194;
+    opacity: 0;
+  }
+}
+@keyframes cosraceB {
+  0%,
+  13% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  13.5% {
+    opacity: 1;
+  }
+  33% {
+    stroke-dashoffset: -300;
+    opacity: 1;
+  }
+  33.5% {
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: -300;
+    opacity: 0;
+  }
+}
+/* Output box lights up as the dot lands — purple for CreativeOS, grey for today. */
+@keyframes cosflashL {
+  0%,
+  31% {
+    fill: rgba(88, 41, 199, 0.04);
+    stroke: #c3c9d4;
+  }
+  34%,
+  45% {
+    fill: rgba(88, 41, 199, 0.16);
+    stroke: #5829c7;
+  }
+  56%,
+  100% {
+    fill: rgba(88, 41, 199, 0.04);
+    stroke: #c3c9d4;
+  }
+}
+@keyframes cosflashG {
+  0%,
+  31% {
+    fill: rgba(107, 114, 128, 0.04);
+    stroke: #c3c9d4;
+  }
+  34%,
+  45% {
+    fill: rgba(107, 114, 128, 0.16);
+    stroke: #6b7280;
+  }
+  56%,
+  100% {
+    fill: rgba(107, 114, 128, 0.04);
+    stroke: #c3c9d4;
+  }
+}
+@keyframes cosringD {
+  0%,
+  10% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  13% {
+    opacity: 0.9;
+  }
+  30% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+/* Green ticks accumulate: one per finished reel, all three cleared at cycle end.
+   In the CreativeOS half all three use `costick1` — they land together. */
+@keyframes costick1 {
+  0%,
+  33% {
+    opacity: 0;
+  }
+  36% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes costick2 {
+  0%,
+  61% {
+    opacity: 0;
+  }
+  64% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes costick3 {
+  0%,
+  89% {
+    opacity: 0;
+  }
+  92% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* --- the serpentine re-setup (section 01, left card) -----------------------
+   One dot walks a boustrophedon path across three rows of five context chips,
+   ticking off a reel at the end of each row. The path is ~2954 units long and
+   the dot is a `14 2940` dash, so the offset travels the full dash period.
+   --------------------------------------------------------------------------- */
+@keyframes cossnake {
+  to {
+    stroke-dashoffset: -2954;
+  }
+}
+
+/* Each chip pops and *latches* purple as the dot reaches it, staying lit until
+   the cycle restarts. That latch is why these are fifteen near-identical
+   keyframes rather than one keyframe with fifteen `animation-delay`s: the lit
+   state has to run to an absolute 100%, and a delay only shifts a relative
+   window. Chips are 2.37% apart along a row, rows ~37.7% apart. */
+@keyframes cosdKF0 {
+  0%, 0.85% { fill: #fff; transform: scale(1); }
+  2.85% { fill: #5829c7; transform: scale(1.9); }
+  5.85% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF1 {
+  0%, 3.22% { fill: #fff; transform: scale(1); }
+  5.22% { fill: #5829c7; transform: scale(1.9); }
+  8.22% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF2 {
+  0%, 5.59% { fill: #fff; transform: scale(1); }
+  7.59% { fill: #5829c7; transform: scale(1.9); }
+  10.59% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF3 {
+  0%, 7.96% { fill: #fff; transform: scale(1); }
+  9.96% { fill: #5829c7; transform: scale(1.9); }
+  12.96% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF4 {
+  0%, 10.33% { fill: #fff; transform: scale(1); }
+  12.33% { fill: #5829c7; transform: scale(1.9); }
+  15.33% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF5 {
+  0%, 38.57% { fill: #fff; transform: scale(1); }
+  40.57% { fill: #5829c7; transform: scale(1.9); }
+  43.57% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF6 {
+  0%, 40.94% { fill: #fff; transform: scale(1); }
+  42.94% { fill: #5829c7; transform: scale(1.9); }
+  45.94% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF7 {
+  0%, 43.31% { fill: #fff; transform: scale(1); }
+  45.31% { fill: #5829c7; transform: scale(1.9); }
+  48.31% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF8 {
+  0%, 45.67% { fill: #fff; transform: scale(1); }
+  47.67% { fill: #5829c7; transform: scale(1.9); }
+  50.67% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF9 {
+  0%, 48.04% { fill: #fff; transform: scale(1); }
+  50.04% { fill: #5829c7; transform: scale(1.9); }
+  53.04% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF10 {
+  0%, 76.28% { fill: #fff; transform: scale(1); }
+  78.28% { fill: #5829c7; transform: scale(1.9); }
+  81.28% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF11 {
+  0%, 78.65% { fill: #fff; transform: scale(1); }
+  80.65% { fill: #5829c7; transform: scale(1.9); }
+  83.65% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF12 {
+  0%, 81.02% { fill: #fff; transform: scale(1); }
+  83.02% { fill: #5829c7; transform: scale(1.9); }
+  86.02% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF13 {
+  0%, 83.39% { fill: #fff; transform: scale(1); }
+  85.39% { fill: #5829c7; transform: scale(1.9); }
+  88.39% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+@keyframes cosdKF14 {
+  0%, 85.76% { fill: #fff; transform: scale(1); }
+  87.76% { fill: #5829c7; transform: scale(1.9); }
+  90.76% { transform: scale(1); }
+  100% { fill: #5829c7; transform: scale(1); }
+}
+
+/* The serpentine's ticks latch too — by the end of the cycle all three reels
+   are done, but each took a full row of re-setup to get there. */
+@keyframes costickS1 {
+  0%,
+  15% {
+    opacity: 0;
+  }
+  17%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes costickS2 {
+  0%,
+  52.5% {
+    opacity: 0;
+  }
+  54%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes costickS3 {
+  0%,
+  90% {
+    opacity: 0;
+  }
+  91.5%,
+  100% {
+    opacity: 1;
+  }
+}
+
 /* shadcn/ui token surface, retuned to the CreativeOS palette so any component
    pulled from the registry later lands on-brand by default. */
 :root {

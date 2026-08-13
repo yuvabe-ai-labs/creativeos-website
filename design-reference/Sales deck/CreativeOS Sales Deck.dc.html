@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>CreativeOS — Sales Deck</title>
+<style>
+@font-face{font-family:"Clash Display";src:url("fonts/ClashDisplayRegular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Clash Display";src:url("fonts/ClashDisplayMedium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Clash Display";src:url("fonts/ClashDisplaySemibold.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-Medium.ttf") format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-SemiBold.ttf") format("truetype");font-weight:600;font-display:swap}
+html,body{margin:0;padding:0;background:#0b0f19;font-family:"Gilroy",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#5829c7;text-decoration:none}
+a:hover{color:#4c24ab}
+@keyframes cosray{to{stroke-dashoffset:-140}}
+@keyframes cosrayA{to{stroke-dashoffset:-252}}
+@keyframes cosrayB{to{stroke-dashoffset:-212}}
+@keyframes cosloopW{to{stroke-dashoffset:-2488}}
+@keyframes cosloopC{0%,40%{stroke:#e3a900}45%,90%{stroke:#5829c7}95%,100%{stroke:#e3a900}}
+@keyframes cosloopTrail{0%{stroke-dashoffset:2483;opacity:.75}88%{opacity:.75}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes cosstageW{0%{transform:scale(.8);opacity:0}1.5%{opacity:.7}12%{transform:scale(2.6);opacity:0}100%{transform:scale(2.6);opacity:0}}
+@keyframes cosstageFY{0%{fill:#fff;stroke:#aab1bf;transform:scale(1)}1.5%{fill:#ffca2d;stroke:#e3a900;transform:scale(1.2);animation-timing-function:cubic-bezier(.22,1.25,.36,1)}6%{fill:#ffca2d;stroke:#e3a900;transform:scale(1.03)}18%,100%{fill:#fff;stroke:#aab1bf;transform:scale(1)}}
+@keyframes cosstageF{0%{fill:#fff;stroke:#aab1bf;transform:scale(1)}1.5%{fill:#5829c7;stroke:#5829c7;transform:scale(1.2);animation-timing-function:cubic-bezier(.22,1.25,.36,1)}6%{fill:#5829c7;stroke:#5829c7;transform:scale(1.03)}18%,100%{fill:#fff;stroke:#aab1bf;transform:scale(1)}}
+@keyframes cosburst{0%{stroke-dashoffset:0;opacity:0}2%{opacity:1}22%{stroke-dashoffset:-235;opacity:1}24%{opacity:0}100%{stroke-dashoffset:-235;opacity:0}}
+@keyframes cosflash{0%,20%{fill:rgba(255,255,255,.06);stroke:rgba(255,255,255,.3)}23%,33%{fill:rgba(255,202,45,.38);stroke:#ffca2d}43%,100%{fill:rgba(255,255,255,.06);stroke:rgba(255,255,255,.3)}}
+@keyframes cosring{0%{transform:scale(.7);opacity:0}4%{opacity:.9}22%{transform:scale(2.1);opacity:0}100%{transform:scale(2.1);opacity:0}}
+@keyframes cosloopT{0%{stroke-dashoffset:0;opacity:1}20%{stroke-dashoffset:-460;opacity:1}20.5%{opacity:0}100%{stroke-dashoffset:-460;opacity:0}}
+@keyframes cosloopR{0%{stroke-dashoffset:0;opacity:1}50%{stroke-dashoffset:-400;opacity:1}50.5%{opacity:0}100%{stroke-dashoffset:-400;opacity:0}}
+@keyframes cosloopS{0%{stroke-dashoffset:0;opacity:1}25%{stroke-dashoffset:-400;opacity:1}25.5%{opacity:0}100%{stroke-dashoffset:-400;opacity:0}}
+@keyframes cosloopL{0%{stroke-dashoffset:0;opacity:1}33%{stroke-dashoffset:-270;opacity:1}33.5%{opacity:0}100%{stroke-dashoffset:-270;opacity:0}}
+@keyframes cosloopA{0%{stroke-dashoffset:0;opacity:1}33%{stroke-dashoffset:-780;opacity:1}33.5%{opacity:0}100%{stroke-dashoffset:-780;opacity:0}}
+@keyframes cosraceT{0%{stroke-dashoffset:0;opacity:1}28%{stroke-dashoffset:-500;opacity:1}28.5%{opacity:0}100%{stroke-dashoffset:-500;opacity:0}}
+@keyframes cosraceS{0%{stroke-dashoffset:0;opacity:1}10%{stroke-dashoffset:-150;opacity:1}10.5%{opacity:0}100%{stroke-dashoffset:-150;opacity:0}}
+@keyframes cosraceB{0%,13%{stroke-dashoffset:0;opacity:0}13.5%{opacity:1}33%{stroke-dashoffset:-300;opacity:1}33.5%{opacity:0}100%{stroke-dashoffset:-300;opacity:0}}
+@keyframes cosendT{0%,27%{fill:#fff;stroke:#aab1bf}29%,38%{fill:#5829c7;stroke:#5829c7}48%,100%{fill:#fff;stroke:#aab1bf}}
+@keyframes cosflashL{0%,31%{fill:rgba(88,41,199,.04);stroke:#c3c9d4}34%,45%{fill:rgba(88,41,199,.16);stroke:#5829c7}56%,100%{fill:rgba(88,41,199,.04);stroke:#c3c9d4}}
+@keyframes coslblA{0%,28%{opacity:1}32%,100%{opacity:0}}
+@keyframes coslblAc{0%,28%{opacity:0}32%,100%{opacity:1}}
+@keyframes coslblB{0%,28%{opacity:0}32%,57%{opacity:1}61%,100%{opacity:0}}
+@keyframes coslblBc{0%,28%{opacity:1}32%,57%{opacity:0}61%,100%{opacity:1}}
+@keyframes coslblC{0%,57%{opacity:0}61%,98%{opacity:1}100%{opacity:0}}
+@keyframes coslblCc{0%,57%{opacity:1}61%,98%{opacity:0}100%{opacity:1}}
+@keyframes costick1{0%,33%{opacity:0}36%{opacity:1}98%{opacity:1}100%{opacity:0}}
+@keyframes costick2{0%,61%{opacity:0}64%{opacity:1}98%{opacity:1}100%{opacity:0}}
+@keyframes costick3{0%,89%{opacity:0}92%{opacity:1}98%{opacity:1}100%{opacity:0}}
+@keyframes cosraceP{0%,13%{stroke-dashoffset:0;opacity:0}13.5%{opacity:1}30%{stroke-dashoffset:-194;opacity:1}30.5%{opacity:0}100%{stroke-dashoffset:-194;opacity:0}}
+@keyframes cosflashG{0%,31%{fill:rgba(107,114,128,.04);stroke:#c3c9d4}34%,45%{fill:rgba(107,114,128,.16);stroke:#6b7280}56%,100%{fill:rgba(107,114,128,.04);stroke:#c3c9d4}}
+@keyframes cosringD{0%,10%{transform:scale(.7);opacity:0}13%{opacity:.9}30%{transform:scale(2.1);opacity:0}100%{transform:scale(2.1);opacity:0}}
+
+</style>
+<script src="image-slot.js"></script>
+</helmet>
+
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-label="Title" data-speaker-notes="Intro: we build creative production software at Yuvabe Studios. CreativeOS is a canvas-based production system for agencies producing reels and static posts for D2C brands. One line: everything the agency knows, in every asset." style="background-color:#140f2b;background-image:radial-gradient(54% 42% at 88% 10%, rgba(150,136,192,.24) 0%, rgba(150,136,192,0) 100%),radial-gradient(44% 32% at 20% 100%, rgba(255,202,45,.14) 0%, rgba(255,202,45,0) 100%),linear-gradient(180deg,#1a1237 0%,#140f2b 46%,#0f0c22 100%);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:100px 120px">
+  <svg viewBox="0 0 1920 1080" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;opacity:.5">
+    <g fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.6">
+      <path d="M1210,180 C1420,180 1440,540 1600,540"></path>
+      <path d="M1210,360 C1420,360 1440,540 1600,540"></path>
+      <path d="M1210,540 C1420,540 1440,540 1600,540"></path>
+      <path d="M1210,720 C1420,720 1440,540 1600,540"></path>
+      <path d="M1210,900 C1420,900 1440,540 1600,540"></path>
+    </g>
+    <g fill="none" stroke="rgba(255,202,45,.9)" stroke-width="4" stroke-linecap="round">
+      <path d="M1210,180 C1420,180 1440,540 1600,540" stroke-dasharray="12 240" style="animation:cosrayA 4s linear infinite"></path>
+      <path d="M1210,540 C1420,540 1440,540 1600,540" stroke-dasharray="12 240" style="animation:cosrayA 4s linear infinite;animation-delay:1.3s"></path>
+      <path d="M1210,900 C1420,900 1440,540 1600,540" stroke-dasharray="12 240" style="animation:cosrayA 4s linear infinite;animation-delay:2.6s"></path>
+    </g>
+    <circle cx="1648" cy="540" r="30" fill="#5829c7"></circle>
+    <circle cx="1648" cy="540" r="48" fill="none" stroke="rgba(255,202,45,.35)" stroke-width="2"></circle>
+  </svg>
+  <div style="position:relative;font:500 22px/1.4 'Gilroy',sans-serif;text-transform:uppercase;letter-spacing:.24em;color:rgba(255,255,255,.55)">Yuvabe Studios</div>
+  <h1 style="position:relative;margin:36px 0 0;max-width:14ch;font-family:'Clash Display',sans-serif;font-size:96px;font-weight:500;line-height:1.04;letter-spacing:-.02em"><span>Produce D2C content at the speed of the </span><span style="display:inline-block;background-image:linear-gradient(#ffca2d,#ffca2d);background-repeat:no-repeat;background-size:100% .1em;background-position:0 92%;padding-bottom:.04em">market</span><span>.</span></h1>
+  <p style="position:relative;margin:44px 0 0;max-width:44ch;font:400 34px/1.5 'Gilroy',sans-serif;color:rgba(255,255,255,.72)">CreativeOS is a canvas-based production system for agencies making reels and static posts for D2C brands.</p>
+  <div style="position:relative;margin-top:64px;font:500 24px/1.4 'Gilroy',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#ffca2d">Everything the agency knows, in every asset</div>
+</section>
+
+<section data-label="Problem" data-speaker-notes="The pain every agency knows: context is rebuilt before every single generation, and one chat can only produce one thing at a time — so reels cascade. Diagram: top lane, three reels each re-running setup, one after another. Bottom lane, setup happens once, then all three reels generate in parallel. Same output, a fraction of the time." style="background:#fcfcfd;color:#111827;display:flex;flex-direction:column;padding:100px 120px 80px">
+  <div style="font:500 22px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7">01 · THE PROBLEM</div>
+  <h2 style="margin:40px 0 0;max-width:22ch;font-family:'Clash Display',sans-serif;font-size:72px;font-weight:600;line-height:1.05;letter-spacing:-.02em">Every new asset rebuilds the same context.</h2>
+  <div style="margin-top:72px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;flex:1">
+    <div style="display:flex;flex-direction:column;gap:36px">
+      <div style="display:flex;gap:24px;align-items:flex-start"><span style="flex:none;display:flex;width:52px;height:52px;border-radius:999px;border:2px solid #e5e7eb;background:#fff;align-items:center;justify-content:center;font:600 22px/1 'Gilroy',sans-serif;color:#5829c7">1</span><p style="margin:6px 0 0;font:400 32px/1.4 'Gilroy',sans-serif;color:#374151">Brand rules explained to every tool, every time.</p></div>
+      <div style="display:flex;gap:24px;align-items:flex-start"><span style="flex:none;display:flex;width:52px;height:52px;border-radius:999px;border:2px solid #e5e7eb;background:#fff;align-items:center;justify-content:center;font:600 22px/1 'Gilroy',sans-serif;color:#5829c7">2</span><p style="margin:6px 0 0;font:400 32px/1.4 'Gilroy',sans-serif;color:#374151">One chat, one generation at a time — reels cascade instead of running in parallel.</p></div>
+      <div style="display:flex;gap:24px;align-items:flex-start"><span style="flex:none;display:flex;width:52px;height:52px;border-radius:999px;border:2px solid #e5e7eb;background:#fff;align-items:center;justify-content:center;font:600 22px/1 'Gilroy',sans-serif;color:#5829c7">3</span><p style="margin:6px 0 0;font:400 32px/1.4 'Gilroy',sans-serif;color:#374151">What worked never reaches the next project.</p></div>
+    </div>
+    <div style="border:1px solid #e5e7eb;border-radius:24px;background:#fff;padding:48px 40px;box-shadow:0 8px 20px rgba(11,15,25,.06)">
+      <svg viewBox="0 0 720 580" style="display:block;width:100%;height:auto" aria-hidden="true">
+        <text x="46" y="40" style="font:600 19px 'Gilroy',sans-serif;letter-spacing:1.4px" fill="#6b7280">TODAY · SET CONTEXT FOR EVERY REEL</text>
+        <rect x="124" y="60" width="168" height="206" rx="12" fill="rgba(107,114,128,.06)"></rect>
+        <text x="204" y="288" text-anchor="middle" style="font:500 15px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">INPUTS × EVERY REEL</text>
+        <g style="animation:coslblA 12s linear infinite"><text x="120" y="75" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#9ca3af">Brand context</text><text x="120" y="101" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#9ca3af">Market</text><text x="120" y="127" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#9ca3af">Visual aesthetics</text></g><g style="animation:coslblAc 12s linear infinite"><text x="120" y="101" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#9ca3af">Context #1</text></g>
+        <path d="M130,70 C190,70 230,96 282,96" fill="none" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></path>
+        <line x1="130" y1="96" x2="282" y2="96" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></line>
+        <path d="M130,122 C190,122 230,96 282,96" fill="none" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></path>
+        <path d="M130,70 C190,70 230,96 282,96" fill="none" stroke="#6b7280" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceS 12s linear infinite;animation-delay:0s"></path>
+        <line x1="130" y1="96" x2="282" y2="96" fill="none" stroke="#6b7280" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceS 12s linear infinite;animation-delay:0s"></line>
+        <path d="M130,122 C190,122 230,96 282,96" fill="none" stroke="#6b7280" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceS 12s linear infinite;animation-delay:0s"></path>
+        <circle cx="300" cy="96" r="10" fill="#6b7280"></circle>
+        <circle cx="300" cy="96" r="17" fill="none" stroke="rgba(107,114,128,.3)" stroke-width="2"></circle>
+        <line x1="320" y1="96" x2="500" y2="96" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></line>
+        <line x1="320" y1="96" x2="500" y2="96" fill="none" stroke="#6b7280" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceP 12s linear infinite;animation-delay:0s"></line>
+        <rect x="510" y="72" width="118" height="48" rx="10" fill="rgba(107,114,128,.04)" stroke="#c3c9d4" stroke-width="2" style="animation:cosflashG 12s linear infinite;animation-delay:0s"></rect>
+        <text x="569" y="102" text-anchor="middle" style="font:500 18px 'Gilroy',sans-serif" fill="#374151">Reel 1</text>
+        <g style="animation:costick1 12s linear infinite"><circle cx="628" cy="72" r="11" fill="#16a34a"></circle><path d="M622.5,72 L626.5,76 L634,67.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></g>
+        <g style="animation:coslblB 12s linear infinite"><text x="120" y="145" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#9ca3af">Brand context</text><text x="120" y="171" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#9ca3af">Market</text><text x="120" y="197" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#9ca3af">Visual aesthetics</text></g><g style="animation:coslblBc 12s linear infinite"><text x="120" y="171" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#9ca3af">Context #2</text></g>
+        <path d="M130,140 C190,140 230,166 282,166" fill="none" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></path>
+        <line x1="130" y1="166" x2="282" y2="166" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></line>
+        <path d="M130,192 C190,192 230,166 282,166" fill="none" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></path>
+        <path d="M130,140 C190,140 230,166 282,166" fill="none" stroke="#6b7280" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceS 12s linear infinite;animation-delay:3.4s"></path>
+        <line x1="130" y1="166" x2="282" y2="166" fill="none" stroke="#6b7280" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceS 12s linear infinite;animation-delay:3.4s"></line>
+        <path d="M130,192 C190,192 230,166 282,166" fill="none" stroke="#6b7280" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceS 12s linear infinite;animation-delay:3.4s"></path>
+        <circle cx="300" cy="166" r="10" fill="#6b7280"></circle>
+        <circle cx="300" cy="166" r="17" fill="none" stroke="rgba(107,114,128,.3)" stroke-width="2"></circle>
+        <line x1="320" y1="166" x2="500" y2="166" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></line>
+        <line x1="320" y1="166" x2="500" y2="166" fill="none" stroke="#6b7280" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceP 12s linear infinite;animation-delay:3.4s"></line>
+        <rect x="510" y="142" width="118" height="48" rx="10" fill="rgba(107,114,128,.04)" stroke="#c3c9d4" stroke-width="2" style="animation:cosflashG 12s linear infinite;animation-delay:3.4s"></rect>
+        <text x="569" y="172" text-anchor="middle" style="font:500 18px 'Gilroy',sans-serif" fill="#374151">Reel 2</text>
+        <g style="animation:costick2 12s linear infinite"><circle cx="628" cy="142" r="11" fill="#16a34a"></circle><path d="M622.5,142 L626.5,146 L634,137.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></g>
+        <g style="animation:coslblC 12s linear infinite"><text x="120" y="215" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#9ca3af">Brand context</text><text x="120" y="241" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#9ca3af">Market</text><text x="120" y="267" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#9ca3af">Visual aesthetics</text></g><g style="animation:coslblCc 12s linear infinite"><text x="120" y="241" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#9ca3af">Context #3</text></g>
+        <path d="M130,210 C190,210 230,236 282,236" fill="none" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></path>
+        <line x1="130" y1="236" x2="282" y2="236" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></line>
+        <path d="M130,262 C190,262 230,236 282,236" fill="none" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></path>
+        <path d="M130,210 C190,210 230,236 282,236" fill="none" stroke="#6b7280" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceS 12s linear infinite;animation-delay:6.8s"></path>
+        <line x1="130" y1="236" x2="282" y2="236" fill="none" stroke="#6b7280" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceS 12s linear infinite;animation-delay:6.8s"></line>
+        <path d="M130,262 C190,262 230,236 282,236" fill="none" stroke="#6b7280" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceS 12s linear infinite;animation-delay:6.8s"></path>
+        <circle cx="300" cy="236" r="10" fill="#6b7280"></circle>
+        <circle cx="300" cy="236" r="17" fill="none" stroke="rgba(107,114,128,.3)" stroke-width="2"></circle>
+        <line x1="320" y1="236" x2="500" y2="236" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></line>
+        <line x1="320" y1="236" x2="500" y2="236" fill="none" stroke="#6b7280" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceP 12s linear infinite;animation-delay:6.8s"></line>
+        <rect x="510" y="212" width="118" height="48" rx="10" fill="rgba(107,114,128,.04)" stroke="#c3c9d4" stroke-width="2" style="animation:cosflashG 12s linear infinite;animation-delay:6.8s"></rect>
+        <text x="569" y="242" text-anchor="middle" style="font:500 18px 'Gilroy',sans-serif" fill="#374151">Reel 3</text>
+        <g style="animation:costick3 12s linear infinite"><circle cx="628" cy="212" r="11" fill="#16a34a"></circle><path d="M622.5,212 L626.5,216 L634,207.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></g>
+        <line x1="46" y1="306" x2="674" y2="306" stroke="#e5e7eb" stroke-width="1.4"></line>
+        <text x="46" y="350" style="font:600 19px 'Gilroy',sans-serif;letter-spacing:1.4px" fill="#4c24ab">CREATIVEOS · SET ONCE, RUN PARALLEL</text>
+        <rect x="124" y="400" width="168" height="72" rx="12" fill="rgba(88,41,199,.06)"></rect>
+        <text x="208" y="496" text-anchor="middle" style="font:500 15px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9688c0">INPUTS × 1</text>
+        <text x="120" y="415" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#6b7280">Brand context</text>
+        <text x="120" y="441" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#6b7280">Market</text>
+        <text x="120" y="467" text-anchor="end" style="font:500 14px 'Gilroy',sans-serif" fill="#6b7280">Visual aesthetics</text>
+        <path d="M130,410 C190,410 230,436 282,436" fill="none" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></path>
+        <line x1="130" y1="436" x2="282" y2="436" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></line>
+        <path d="M130,462 C190,462 230,436 282,436" fill="none" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></path>
+        <path d="M130,410 C190,410 230,436 282,436" fill="none" stroke="#5829c7" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceS 12s linear infinite;animation-delay:0s"></path>
+        <line x1="130" y1="436" x2="282" y2="436" fill="none" stroke="#5829c7" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceS 12s linear infinite;animation-delay:0s"></line>
+        <path d="M130,462 C190,462 230,436 282,436" fill="none" stroke="#5829c7" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceS 12s linear infinite;animation-delay:0s"></path>
+        <path d="M320,436 C400,436 420,364 500,364" fill="none" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></path>
+        <line x1="320" y1="436" x2="500" y2="436" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></line>
+        <path d="M320,436 C400,436 420,508 500,508" fill="none" stroke="#c3c9d4" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"></path>
+        <path d="M320,436 C400,436 420,364 500,364" fill="none" stroke="#5829c7" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceB 12s linear infinite"></path>
+        <line x1="320" y1="436" x2="500" y2="436" fill="none" stroke="#5829c7" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceP 12s linear infinite"></line>
+        <path d="M320,436 C400,436 420,508 500,508" fill="none" stroke="#5829c7" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 900" style="animation:cosraceB 12s linear infinite"></path>
+        <circle cx="300" cy="436" r="10" fill="#5829c7"></circle>
+        <circle cx="300" cy="436" r="17" fill="none" stroke="rgba(88,41,199,.35)" stroke-width="2"></circle>
+        <circle cx="300" cy="436" r="17" fill="none" stroke="rgba(88,41,199,.5)" stroke-width="2" style="transform-box:fill-box;transform-origin:center;animation:cosringD 12s linear infinite"></circle>
+        <rect x="510" y="340" width="118" height="48" rx="10" fill="rgba(88,41,199,.04)" stroke="#c3c9d4" stroke-width="2" style="animation:cosflashL 12s linear infinite"></rect>
+        <text x="569" y="370" text-anchor="middle" style="font:500 18px 'Gilroy',sans-serif" fill="#374151">Reel 1</text>
+        <g style="animation:costick1 12s linear infinite"><circle cx="628" cy="340" r="11" fill="#16a34a"></circle><path d="M622.5,340 L626.5,344 L634,335.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></g>
+        <rect x="510" y="412" width="118" height="48" rx="10" fill="rgba(88,41,199,.04)" stroke="#c3c9d4" stroke-width="2" style="animation:cosflashL 12s linear infinite"></rect>
+        <text x="569" y="442" text-anchor="middle" style="font:500 18px 'Gilroy',sans-serif" fill="#374151">Reel 2</text>
+        <g style="animation:costick1 12s linear infinite"><circle cx="628" cy="412" r="11" fill="#16a34a"></circle><path d="M622.5,412 L626.5,416 L634,407.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></g>
+        <rect x="510" y="484" width="118" height="48" rx="10" fill="rgba(88,41,199,.04)" stroke="#c3c9d4" stroke-width="2" style="animation:cosflashL 12s linear infinite"></rect>
+        <text x="569" y="514" text-anchor="middle" style="font:500 18px 'Gilroy',sans-serif" fill="#374151">Reel 3</text>
+        <g style="animation:costick1 12s linear infinite"><circle cx="628" cy="484" r="11" fill="#16a34a"></circle><path d="M622.5,484 L626.5,488 L634,479.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></g>
+        <text x="360" y="572" text-anchor="middle" style="font:500 19px 'Gilroy',sans-serif;letter-spacing:1px" fill="#9ca3af">SAME 3 REELS · A FRACTION OF THE TIME</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section data-label="Tool switching" data-speaker-notes="Today one asset means bouncing between ChatGPT, Canva, Kling, open art tools, Gemini — copy the output of one into the next, re-explaining the brand each hop. Any edit means going back through the chain. In CreativeOS the same pipeline lives on one canvas, so any change is iterated inside the platform." style="background:#fcfcfd;color:#111827;display:flex;flex-direction:column;padding:64px 120px 48px;box-sizing:border-box;height:100%;overflow:hidden">
+  <div style="font:500 22px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7">01 · THE PROBLEM</div>
+  <h2 style="margin:32px 0 0;max-width:22ch;font-family:'Clash Display',sans-serif;font-size:72px;font-weight:600;line-height:1.05;letter-spacing:-.02em;font-size:64px">One asset, five tools.</h2>
+  <div style="margin-top:40px;flex:1;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch">
+    <div style="display:flex;flex-direction:column;border:1px solid #e5e7eb;border-radius:24px;background:#fff;padding:32px 36px 28px;box-shadow:0 8px 20px rgba(11,15,25,.06)">
+      <div style="display:flex;align-items:center;gap:12px"><span style="width:10px;height:10px;border-radius:50%;background:#9ca3af"></span><span style="font:600 24px/1.3 'Gilroy',sans-serif;color:#374151">Today — five tools</span></div>
+      <div style="flex:1;display:flex;align-items:center"><svg viewBox="0 0 800 470" style="display:block;width:100%;height:auto" aria-hidden="true">
+        <g fill="none" stroke="#c3c9d4" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 14">
+          <line x1="400" y1="85" x2="495" y2="360"></line>
+          <line x1="495" y1="360" x2="245" y2="190"></line>
+          <line x1="245" y1="190" x2="555" y2="190"></line>
+          <line x1="555" y1="190" x2="305" y2="360"></line>
+          <line x1="305" y1="360" x2="400" y2="85"></line>
+          </g>
+        <g fill="none" stroke="#f04e28" stroke-width="5" stroke-linecap="round">
+          <line x1="400" y1="85" x2="495" y2="360" stroke-dasharray="14 900" style="animation:cosloopT 6s linear infinite;animation-delay:0s"></line>
+          <line x1="495" y1="360" x2="245" y2="190" stroke-dasharray="14 900" style="animation:cosloopT 6s linear infinite;animation-delay:1.2s"></line>
+          <line x1="245" y1="190" x2="555" y2="190" stroke-dasharray="14 900" style="animation:cosloopT 6s linear infinite;animation-delay:2.4s"></line>
+          <line x1="555" y1="190" x2="305" y2="360" stroke-dasharray="14 900" style="animation:cosloopT 6s linear infinite;animation-delay:3.5999999999999996s"></line>
+          <line x1="305" y1="360" x2="400" y2="85" stroke-dasharray="14 900" style="animation:cosloopT 6s linear infinite;animation-delay:4.8s"></line>
+          </g>
+        <circle cx="400" cy="85" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><image href="assets/logo-chatgpt.png" x="360" y="62" width="80" height="45" preserveAspectRatio="xMidYMid meet"></image><text x="400" y="30" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">ChatGPT</text>
+        <circle cx="555" cy="190" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><image href="assets/logo-gemini.png" x="533" y="168" width="44" height="44" preserveAspectRatio="xMidYMid meet"></image><text x="612" y="196" text-anchor="start" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">Gemini</text>
+        <circle cx="495" cy="360" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><image href="assets/logo-kling.png" x="471" y="336" width="48" height="48" preserveAspectRatio="xMidYMid meet"></image><text x="495" y="430" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">Kling</text>
+        <circle cx="305" cy="360" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><image href="assets/logo-canva.png" x="283" y="338" width="44" height="44" preserveAspectRatio="xMidYMid meet"></image><text x="305" y="430" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">Canva</text>
+        <circle cx="245" cy="190" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><image href="assets/logo-openart.png" x="221" y="177" width="48" height="27" preserveAspectRatio="xMidYMid meet"></image><text x="188" y="196" text-anchor="end" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">Open art</text>
+      </svg></div>
+      <p style="margin:12px 0 0;font:400 24px/1.4 'Gilroy',sans-serif;color:#6b7280;text-align:center">Every fix bounces back across every platform — re-brief, re-upload, regenerate.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;border:1px solid #e5e7eb;border-radius:24px;background:#fff;padding:32px 36px 28px;box-shadow:0 8px 20px rgba(11,15,25,.06)">
+      <div style="display:flex;align-items:center;gap:12px"><span style="width:10px;height:10px;border-radius:50%;background:#5829c7"></span><span style="font:600 24px/1.3 'Gilroy',sans-serif;color:#4c24ab">With CreativeOS</span></div>
+      <div style="flex:1;display:flex;align-items:center"><svg viewBox="0 0 800 470" style="display:block;width:100%;height:auto" aria-hidden="true">
+        <defs><marker id="cosArrow2" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto"><path d="M0.5,0.5 L5.5,3 L0.5,5.5 Z" fill="#5829c7"></path></marker></defs>
+        <rect x="46" y="36" width="708" height="400" rx="30" fill="rgba(88,41,199,.04)" stroke="rgba(88,41,199,.35)" stroke-width="2"></rect>
+        <text x="84" y="76" style="font:600 19px 'Gilroy',sans-serif;letter-spacing:2px" fill="#5829c7">CREATIVEOS</text>
+        <g fill="none" stroke="#9688c0" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="2 14">
+          <line x1="278" y1="170" x2="514" y2="170"></line>
+          <line x1="560" y1="218" x2="560" y2="286"></line>
+          <line x1="240" y1="286" x2="240" y2="218"></line>
+        </g>
+        <path d="M512,334 L288,334" fill="none" stroke="#5829c7" stroke-width="4" stroke-linecap="round" marker-end="url(#cosArrow2)"></path>
+        <circle cx="560" cy="334" r="40" fill="none" stroke="#f04e28" stroke-width="3" stroke-dasharray="5 8"></circle>
+        <g fill="none" stroke="#5829c7" stroke-width="5" stroke-linecap="round">
+          <path d="M278,170 L514,170" stroke-dasharray="14 900" style="animation:cosloopS 4.8s linear infinite;animation-delay:0s"></path>
+          <path d="M560,218 L560,286" stroke-dasharray="14 900" style="animation:cosloopS 4.8s linear infinite;animation-delay:1.2s"></path>
+          <path d="M512,334 L288,334" stroke-dasharray="14 900" style="animation:cosloopS 4.8s linear infinite;animation-delay:2.4s"></path>
+          <path d="M240,286 L240,218" stroke-dasharray="14 900" style="animation:cosloopS 4.8s linear infinite;animation-delay:3.6s"></path>
+        </g>
+        <circle cx="240" cy="170" r="40" fill="rgba(150,136,192,.30)"></circle><circle cx="240" cy="170" r="26" fill="#fff" stroke="#5829c7" stroke-width="4"></circle><circle cx="560" cy="170" r="40" fill="rgba(150,136,192,.30)"></circle><circle cx="560" cy="170" r="26" fill="#fff" stroke="#5829c7" stroke-width="4"></circle><circle cx="560" cy="334" r="40" fill="rgba(150,136,192,.30)"></circle><circle cx="560" cy="334" r="26" fill="#fff" stroke="#5829c7" stroke-width="4"></circle><circle cx="240" cy="334" r="40" fill="rgba(150,136,192,.30)"></circle><circle cx="240" cy="334" r="26" fill="#fff" stroke="#5829c7" stroke-width="4"></circle>
+        <text x="240" y="120" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">Script</text>
+        <text x="560" y="120" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">Images</text>
+        <text x="560" y="404" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">Video</text>
+        <text x="240" y="404" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">Review</text>
+      </svg></div>
+      <p style="margin:12px 0 0;font:400 24px/1.4 'Gilroy',sans-serif;color:#6b7280;text-align:center">An error found in review goes straight back — fixed on the same canvas, context intact.</p>
+    </div>
+  </div>
+</section>
+
+<section data-label="Cost of errors" data-speaker-notes="Second half of the problem: when a flawed image slips into video generation, the cost multiplies — four rejected videos instead of one cheap image fix. CreativeOS puts a senior review checkpoint before video." style="background:#fcfcfd;color:#111827;display:flex;flex-direction:column;padding:72px 120px 56px">
+  <div style="font:500 22px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7">01 · THE PROBLEM</div>
+  <h2 style="margin:40px 0 0;max-width:22ch;font-family:'Clash Display',sans-serif;font-size:64px;font-weight:600;line-height:1.05;letter-spacing:-.02em">Errors caught late are the expensive ones.</h2>
+  <div style="margin-top:40px;flex:1;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch">
+    <div style="display:flex;flex-direction:column;border:1px solid #e5e7eb;border-radius:24px;background:#fff;padding:32px 36px 28px;box-shadow:0 8px 20px rgba(11,15,25,.06)">
+      <div style="display:flex;align-items:center;gap:12px"><span style="width:10px;height:10px;border-radius:50%;background:#9ca3af"></span><span style="font:600 24px/1.3 'Gilroy',sans-serif;color:#374151">Today — no checkpoint</span></div>
+      <div style="flex:1;display:flex;align-items:center"><svg viewBox="0 0 800 470" style="display:block;width:100%;height:auto" aria-hidden="true">
+        <g fill="none" stroke="#c3c9d4" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 14">
+          <line x1="206" y1="200" x2="364" y2="200"></line>
+          <line x1="418" y1="200" x2="592" y2="90"></line>
+          <line x1="418" y1="200" x2="592" y2="170"></line>
+          <line x1="418" y1="200" x2="592" y2="250"></line>
+          <line x1="418" y1="200" x2="592" y2="330"></line>
+        </g>
+        <g fill="none" stroke="#f04e28" stroke-width="5" stroke-linecap="round">
+          <line x1="206" y1="200" x2="364" y2="200" stroke-dasharray="14 900" style="animation:cosloopS 4.8s linear infinite;animation-delay:0s"></line>
+          <line x1="418" y1="200" x2="592" y2="90" stroke-dasharray="14 900" style="animation:cosloopS 4.8s linear infinite;animation-delay:1.2s"></line>
+          <line x1="418" y1="200" x2="592" y2="170" stroke-dasharray="14 900" style="animation:cosloopS 4.8s linear infinite;animation-delay:1.2s"></line>
+          <line x1="418" y1="200" x2="592" y2="250" stroke-dasharray="14 900" style="animation:cosloopS 4.8s linear infinite;animation-delay:1.2s"></line>
+          <line x1="418" y1="200" x2="592" y2="330" stroke-dasharray="14 900" style="animation:cosloopS 4.8s linear infinite;animation-delay:1.2s"></line>
+        </g>
+        <circle cx="180" cy="200" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><circle cx="180" cy="200" r="40" fill="#6b728022"></circle><circle cx="180" cy="200" r="26" fill="#fff" stroke="#6b7280" stroke-width="4"></circle><circle cx="180" cy="200" r="8" fill="#f04e28"></circle>
+        <circle cx="390" cy="200" r="26" fill="none" stroke="#9ca3af" stroke-width="3" stroke-dasharray="5 8"></circle>
+        <circle cx="620" cy="90" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><circle cx="620" cy="90" r="40" fill="#f04e2822"></circle><circle cx="620" cy="90" r="26" fill="#fff" stroke="#f04e28" stroke-width="4"></circle><path d="M611,81 L629,99 M629,81 L611,99" stroke="#f04e28" stroke-width="4" stroke-linecap="round"></path>
+        <circle cx="620" cy="170" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><circle cx="620" cy="170" r="40" fill="#f04e2822"></circle><circle cx="620" cy="170" r="26" fill="#fff" stroke="#f04e28" stroke-width="4"></circle><path d="M611,161 L629,179 M629,161 L611,179" stroke="#f04e28" stroke-width="4" stroke-linecap="round"></path>
+        <circle cx="620" cy="250" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><circle cx="620" cy="250" r="40" fill="#f04e2822"></circle><circle cx="620" cy="250" r="26" fill="#fff" stroke="#f04e28" stroke-width="4"></circle><path d="M611,241 L629,259 M629,241 L611,259" stroke="#f04e28" stroke-width="4" stroke-linecap="round"></path>
+        <circle cx="620" cy="330" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><circle cx="620" cy="330" r="40" fill="#f04e2822"></circle><circle cx="620" cy="330" r="26" fill="#fff" stroke="#f04e28" stroke-width="4"></circle><path d="M611,321 L629,339 M629,321 L611,339" stroke="#f04e28" stroke-width="4" stroke-linecap="round"></path>
+        <text x="180" y="130" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">Image</text>
+        <text x="390" y="266" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#9ca3af">No review</text>
+        <text x="620" y="420" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#8a2e18">4x more expensive</text>
+      </svg></div>
+      <p style="margin:12px 0 0;font:400 24px/1.4 'Gilroy',sans-serif;color:#6b7280;text-align:center">A flawed image slips through — errors caught later are 4x more expensive.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;border:1px solid #e5e7eb;border-radius:24px;background:#fff;padding:32px 36px 28px;box-shadow:0 8px 20px rgba(11,15,25,.06)">
+      <div style="display:flex;align-items:center;gap:12px"><span style="width:10px;height:10px;border-radius:50%;background:#5829c7"></span><span style="font:600 24px/1.3 'Gilroy',sans-serif;color:#4c24ab">With CreativeOS</span></div>
+      <div style="flex:1;display:flex;align-items:center"><svg viewBox="0 0 800 470" style="display:block;width:100%;height:auto" aria-hidden="true">
+        <defs><marker id="cosArrowP4" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto"><path d="M0.5,0.5 L5.5,3 L0.5,5.5 Z" fill="#5829c7"></path></marker></defs>
+        <rect x="46" y="36" width="708" height="400" rx="30" fill="rgba(88,41,199,.04)" stroke="rgba(88,41,199,.35)" stroke-width="2"></rect>
+        <text x="84" y="76" style="font:600 19px 'Gilroy',sans-serif;letter-spacing:2px" fill="#5829c7">CREATIVEOS</text>
+        <g fill="none" stroke="#9688c0" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="2 14">
+          <line x1="226" y1="200" x2="364" y2="200"></line>
+          <line x1="426" y1="200" x2="574" y2="200"></line>
+        </g>
+        <path d="M374,232 C340,300 260,300 226,232" fill="none" stroke="#5829c7" stroke-width="4" stroke-linecap="round" marker-end="url(#cosArrowP4)"></path>
+        <circle cx="400" cy="200" r="38" fill="none" stroke="#f04e28" stroke-width="3" stroke-dasharray="5 8"></circle>
+        <g fill="none" stroke="#5829c7" stroke-width="5" stroke-linecap="round">
+          <line x1="226" y1="200" x2="364" y2="200" stroke-dasharray="14 900" style="animation:cosloopS 6s linear infinite;animation-delay:0s"></line>
+          <path d="M374,232 C340,300 260,300 226,232" stroke="#f04e28" stroke-width="10" stroke-dasharray="14 900" style="animation:cosloopR 6s linear infinite;animation-delay:0.6s"></path>
+          <line x1="226" y1="200" x2="574" y2="200" stroke-dasharray="14 900" style="animation:cosloopS 6s linear infinite;animation-delay:2.6s"></line>
+        </g>
+        <circle cx="200" cy="200" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><circle cx="200" cy="200" r="40" fill="#5829c722"></circle><circle cx="200" cy="200" r="26" fill="#fff" stroke="#5829c7" stroke-width="4"></circle><circle cx="200" cy="200" r="8" fill="#f04e28"></circle>
+        <circle cx="400" cy="200" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><circle cx="400" cy="200" r="40" fill="#5829c722"></circle><circle cx="400" cy="200" r="26" fill="#fff" stroke="#5829c7" stroke-width="4"></circle><path d="M390,200 L397,207 L412,190" fill="none" stroke="#5829c7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+        <circle cx="600" cy="200" r="40" fill="#fff" stroke="#e5e7eb" stroke-width="2"></circle><circle cx="600" cy="200" r="40" fill="#5829c722"></circle><circle cx="600" cy="200" r="26" fill="#fff" stroke="#5829c7" stroke-width="4"></circle><circle cx="600" cy="200" r="14" fill="#5829c7"></circle>
+        <text x="200" y="130" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">Image</text>
+        <text x="400" y="130" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">Review</text>
+        <text x="600" y="130" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif" fill="#374151">Video</text>
+        <text x="300" y="330" text-anchor="middle" style="font:500 19px 'Gilroy',sans-serif" fill="#7a68ad">fixed at the image ↺</text>
+      </svg></div>
+      <p style="margin:12px 0 0;font:400 24px/1.4 'Gilroy',sans-serif;color:#6b7280;text-align:center">Review sits before video — the error is fixed once, at the image.</p>
+    </div>
+  </div>
+</section>
+
+<section data-label="Product" data-speaker-notes="What CreativeOS is: a node canvas where brand context, market signals, references, and past work all connect into each generation. Script to shots to images to clips — one workspace, every attempt saved with what produced it." style="background-color:#140f2b;background-image:radial-gradient(54% 42% at 88% 10%, rgba(150,136,192,.24) 0%, rgba(150,136,192,0) 100%),linear-gradient(180deg,#1a1237 0%,#140f2b 46%,#0f0c22 100%);color:#fff;display:flex;flex-direction:column;padding:100px 120px 80px">
+  <div style="font:500 22px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#ffca2d">02 · THE PRODUCT</div>
+  <h2 style="margin:40px 0 0;max-width:20ch;font-family:'Clash Display',sans-serif;font-size:72px;font-weight:500;line-height:1.05;letter-spacing:-.02em;color:#fff">One canvas holds the whole production.</h2>
+  <div style="margin-top:64px;display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:center;flex:1">
+    <svg viewBox="-45 0 925 460" style="display:block;width:100%;height:auto" aria-hidden="true">
+      <g fill="none" stroke="rgba(255,255,255,.2)" stroke-width="2">
+        <path d="M150,90 C280,90 300,230 400,230"></path>
+        <path d="M150,230 C280,230 300,230 400,230"></path>
+        <path d="M150,370 C280,370 300,230 400,230"></path>
+        <path d="M470,230 C560,230 580,140 660,140" stroke="rgba(255,255,255,.45)" stroke-width="2.4"></path>
+        <path d="M470,230 C560,230 580,320 660,320" stroke="rgba(255,255,255,.45)" stroke-width="2.4"></path>
+      </g>
+      <g fill="none" stroke="rgba(255,202,45,.9)" stroke-width="4.5" stroke-linecap="round">
+        <path d="M150,90 C280,90 300,230 400,230" stroke-dasharray="12 200" style="animation:cosrayB 3.6s linear infinite"></path>
+        <path d="M150,230 C280,230 300,230 400,230" stroke-dasharray="12 200" style="animation:cosrayB 3.6s linear infinite;animation-delay:1.2s"></path>
+        <path d="M150,370 C280,370 300,230 400,230" stroke-dasharray="12 200" style="animation:cosrayB 3.6s linear infinite;animation-delay:2.4s"></path>
+      </g>
+      <text x="128" y="96" text-anchor="end" style="font:500 20px 'Gilroy',sans-serif" fill="rgba(255,255,255,.85)">Brand context</text>
+      <circle cx="150" cy="90" r="5" fill="rgba(255,255,255,.5)"></circle>
+      <text x="128" y="236" text-anchor="end" style="font:500 20px 'Gilroy',sans-serif" fill="rgba(255,255,255,.85)">Market signals</text>
+      <circle cx="150" cy="230" r="5" fill="rgba(255,255,255,.5)"></circle>
+      <text x="128" y="376" text-anchor="end" style="font:500 20px 'Gilroy',sans-serif" fill="rgba(255,255,255,.85)">Past work</text>
+      <circle cx="150" cy="370" r="5" fill="rgba(255,255,255,.5)"></circle>
+      <circle cx="435" cy="230" r="34" fill="#5829c7"></circle>
+      <path d="M424,230 L446,230 M438,222 L446,230 L438,238" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"></path>
+      <circle cx="435" cy="230" r="48" fill="none" stroke="rgba(255,202,45,.35)" stroke-width="2"></circle>
+      <circle cx="435" cy="230" r="40" fill="none" stroke="rgba(255,202,45,.8)" stroke-width="3" style="transform-box:fill-box;transform-origin:center;animation:cosring 6s linear infinite" opacity="0"></circle>
+      <g fill="none" stroke="rgba(255,202,45,.95)" stroke-width="5" stroke-linecap="round">
+        <path d="M470,230 C560,230 580,140 660,140" stroke-dasharray="14 400" style="animation:cosburst 6s linear infinite" opacity="0"></path>
+        <path d="M470,230 C560,230 580,320 660,320" stroke-dasharray="14 400" style="animation:cosburst 6s linear infinite" opacity="0"></path>
+      </g>
+      <rect x="660" y="96" width="150" height="88" rx="14" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.3)" stroke-width="1.6" style="animation:cosflash 6s linear infinite"></rect>
+      <text x="735" y="146" text-anchor="middle" style="font:500 20px 'Gilroy',sans-serif" fill="rgba(255,255,255,.85)">Reels</text>
+      <rect x="660" y="276" width="150" height="88" rx="14" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.3)" stroke-width="1.6" style="animation:cosflash 6s linear infinite"></rect>
+      <text x="735" y="326" text-anchor="middle" style="font:500 20px 'Gilroy',sans-serif" fill="rgba(255,255,255,.85)">Static posts</text>
+    </svg>
+    <div style="display:flex;flex-direction:column;gap:40px">
+      <div><div style="font:600 30px/1.3 'Gilroy',sans-serif;color:#fff">Script to clips, one workspace</div><p style="margin:10px 0 0;font:400 26px/1.5 'Gilroy',sans-serif;color:rgba(255,255,255,.65)">Parse a script, fan out shots, generate stills, then videos grounded in the approved frame.</p></div>
+      <div><div style="font:600 30px/1.3 'Gilroy',sans-serif;color:#fff">Controls, not vibes</div><p style="margin:10px 0 0;font:400 26px/1.5 'Gilroy',sans-serif;color:rgba(255,255,255,.65)">Lens, lighting, and palette as set values that carry across every shot.</p></div>
+      <div><div style="font:600 30px/1.3 'Gilroy',sans-serif;color:#fff">Every attempt saved</div><p style="margin:10px 0 0;font:400 26px/1.5 'Gilroy',sans-serif;color:rgba(255,255,255,.65)">Edits, versions, and approvals stay attached to the asset that shipped.</p></div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Canvas screenshot" data-speaker-notes="Show the real canvas: script node parsed into shots, image gens, video gen — all connected. Point out statuses (pending, approved, running) and that every card is a tracked attempt." style="background:#fcfcfd;color:#111827;display:flex;flex-direction:column;padding:80px 120px 72px">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:40px">
+    <div>
+      <div style="font:500 22px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7">02 · THE PRODUCT</div>
+      <h2 style="margin:32px 0 0;font-family:'Clash Display',sans-serif;font-size:64px;font-weight:600;line-height:1.05;letter-spacing:-.02em">The canvas, in production.</h2>
+    </div>
+    <p style="margin:0;max-width:34ch;font:400 26px/1.5 'Gilroy',sans-serif;color:#6b7280">Script → shots → stills → video, every node a tracked attempt with its status.</p>
+  </div>
+  <div style="margin-top:48px;flex:1;border:1px solid #e5e7eb;border-radius:24px;background:#fff;box-shadow:0 8px 20px rgba(11,15,25,.06);overflow:hidden">
+    <image-slot id="deck-canvas" shape="rect" placeholder="Drop the canvas screenshot here" style="width:100%;height:100%"></image-slot>
+  </div>
+</section>
+
+<section data-label="Brand context screenshot" data-speaker-notes="Show brand context and master controls: versioned brand knowledge on the left, lens/lighting/palette as set values on the right. This is why the first attempt lands closer." style="background:#fcfcfd;color:#111827;display:flex;flex-direction:column;padding:80px 120px 72px">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:40px">
+    <div>
+      <div style="font:500 22px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7">02 · THE PRODUCT</div>
+      <h2 style="margin:32px 0 0;font-family:'Clash Display',sans-serif;font-size:64px;font-weight:600;line-height:1.05;letter-spacing:-.02em">Context is set once, not retyped.</h2>
+    </div>
+    <p style="margin:0;max-width:34ch;font:400 26px/1.5 'Gilroy',sans-serif;color:#6b7280">Versioned brand knowledge and master controls carried into every generation.</p>
+  </div>
+  <div style="margin-top:48px;flex:1;display:grid;grid-template-columns:1fr 1fr;gap:40px;min-height:0">
+    <div style="display:flex;flex-direction:column;gap:18px;min-height:0">
+      <div style="flex:1;border:1px solid #e5e7eb;border-radius:24px;background:#fff;box-shadow:0 8px 20px rgba(11,15,25,.06);overflow:hidden;min-height:0">
+        <image-slot id="deck-brand-kb" shape="rect" placeholder="Drop the Brand Context screenshot" style="width:100%;height:100%"></image-slot>
+      </div>
+      <div style="font:600 22px/1.3 'Gilroy',sans-serif;color:#374151;text-align:center">Brand context</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;min-height:0">
+      <div style="flex:1;border:1px solid #e5e7eb;border-radius:24px;background:#fff;box-shadow:0 8px 20px rgba(11,15,25,.06);overflow:hidden;min-height:0">
+        <image-slot id="deck-controls" shape="rect" placeholder="Drop the Master Controls screenshot" style="width:100%;height:100%"></image-slot>
+      </div>
+      <div style="font:600 22px/1.3 'Gilroy',sans-serif;color:#374151;text-align:center">Master controls</div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Workflow" data-speaker-notes="The workflow is a loop, not a line. Create: start from existing context, add a market signal, explore directions, produce. Learn: review, approve, and everything learned feeds the next asset. The second project is easier than the first." style="background:#fcfcfd;color:#111827;display:flex;flex-direction:column;padding:100px 120px 80px">
+  <div style="font:500 22px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7">03 · HOW IT WORKS</div>
+  <h2 style="margin:40px 0 0;max-width:22ch;font-family:'Clash Display',sans-serif;font-size:72px;font-weight:600;line-height:1.05;letter-spacing:-.02em">Work compounds instead of restarting.</h2>
+  <div style="margin-top:56px;flex:1;display:flex;align-items:center">
+    <svg viewBox="0 0 1560 560" style="display:block;width:100%;height:auto" aria-hidden="true">
+      <path d="M355,190 A130,130 0 0 1 485,320 A130,130 0 0 1 355,450 L1205,450 A130,130 0 0 1 1075,320 A130,130 0 0 1 1205,190 Z" fill="none" opacity="0"></path>
+      <path d="M340,205 L1220,205 A115,115 0 0 1 1220,435 L340,435 A115,115 0 0 1 340,205 Z" fill="none" stroke="#c3c9d4" stroke-width="2.4" stroke-dasharray="2 14" stroke-linecap="round"></path>
+      <path d="M340,205 L1220,205 A115,115 0 0 1 1220,435 L340,435 A115,115 0 0 1 340,205 Z" fill="none" stroke="#e3a900" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2483 2483" opacity="0" style="animation:cosloopTrail 12s linear infinite,cosloopC 12s linear infinite"></path>
+      <path d="M340,205 L1220,205 A115,115 0 0 1 1220,435 L340,435 A115,115 0 0 1 340,205 Z" fill="none" stroke="#e3a900" stroke-width="6" stroke-linecap="round" stroke-dasharray="18 2470" style="animation:cosloopW 12s linear infinite,cosloopC 12s linear infinite"></path>
+      <defs>
+        <linearGradient id="cosLobeTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(150,136,192,.28)"></stop><stop offset="100%" stop-color="rgba(150,136,192,.06)"></stop></linearGradient>
+        <linearGradient id="cosLobeBot" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="rgba(88,41,199,.22)"></stop><stop offset="100%" stop-color="rgba(88,41,199,.04)"></stop></linearGradient>
+      </defs>
+      <defs>
+        <radialGradient id="cosCloudY" cx="35%" cy="18%" r="75%"><stop offset="0%" stop-color="rgba(255,202,45,.38)"></stop><stop offset="55%" stop-color="rgba(255,202,45,.10)"></stop><stop offset="100%" stop-color="rgba(255,202,45,0)"></stop></radialGradient>
+        <radialGradient id="cosCloudP" cx="68%" cy="85%" r="80%"><stop offset="0%" stop-color="rgba(88,41,199,.26)"></stop><stop offset="55%" stop-color="rgba(88,41,199,.08)"></stop><stop offset="100%" stop-color="rgba(88,41,199,0)"></stop></radialGradient>
+      </defs>
+      <path d="M250,320 A85,85 0 0 1 335,235 L1225,235 A85,85 0 0 1 1310,320 A85,85 0 0 1 1225,405 L335,405 A85,85 0 0 1 250,320 Z" fill="url(#cosCloudY)"></path>
+      <path d="M250,320 A85,85 0 0 1 335,235 L1225,235 A85,85 0 0 1 1310,320 A85,85 0 0 1 1225,405 L335,405 A85,85 0 0 1 250,320 Z" fill="url(#cosCloudP)"></path>
+      <line x1="290" y1="320" x2="1270" y2="320" stroke="#fff" stroke-width="3" stroke-linecap="round"></line>
+      
+      <text x="780" y="291" text-anchor="middle" style="font:600 38px 'Clash Display',sans-serif;letter-spacing:.18em" fill="rgba(176,132,0,.75)">CREATE</text>
+      <text x="780" y="376" text-anchor="middle" style="font:600 38px 'Clash Display',sans-serif;letter-spacing:.18em" fill="rgba(88,41,199,.55)">LEARN</text>
+      <circle cx="360" cy="205" r="16" fill="none" stroke="rgba(227,169,0,.55)" stroke-width="1.6" opacity="0" style="transform-box:fill-box;transform-origin:center;animation:cosstageW 12s linear infinite;animation-delay:0.1s"></circle><circle cx="360" cy="205" r="13" fill="#fff" stroke="#aab1bf" stroke-width="3.4" style="transform-box:fill-box;transform-origin:center;animation:cosstageFY 12s linear infinite;animation-delay:0.1s"></circle>
+      <circle cx="640" cy="205" r="16" fill="none" stroke="rgba(227,169,0,.55)" stroke-width="1.6" opacity="0" style="transform-box:fill-box;transform-origin:center;animation:cosstageW 12s linear infinite;animation-delay:1.45s"></circle><circle cx="640" cy="205" r="13" fill="#fff" stroke="#aab1bf" stroke-width="3.4" style="transform-box:fill-box;transform-origin:center;animation:cosstageFY 12s linear infinite;animation-delay:1.45s"></circle>
+      <circle cx="920" cy="205" r="16" fill="none" stroke="rgba(227,169,0,.55)" stroke-width="1.6" opacity="0" style="transform-box:fill-box;transform-origin:center;animation:cosstageW 12s linear infinite;animation-delay:2.8s"></circle><circle cx="920" cy="205" r="13" fill="#fff" stroke="#aab1bf" stroke-width="3.4" style="transform-box:fill-box;transform-origin:center;animation:cosstageFY 12s linear infinite;animation-delay:2.8s"></circle>
+      <circle cx="1200" cy="205" r="16" fill="none" stroke="rgba(227,169,0,.55)" stroke-width="1.6" opacity="0" style="transform-box:fill-box;transform-origin:center;animation:cosstageW 12s linear infinite;animation-delay:4.15s"></circle><circle cx="1200" cy="205" r="13" fill="#fff" stroke="#aab1bf" stroke-width="3.4" style="transform-box:fill-box;transform-origin:center;animation:cosstageFY 12s linear infinite;animation-delay:4.15s"></circle>
+      <circle cx="960" cy="435" r="16" fill="none" stroke="rgba(88,41,199,.5)" stroke-width="1.6" opacity="0" style="transform-box:fill-box;transform-origin:center;animation:cosstageW 12s linear infinite;animation-delay:7.23s"></circle><circle cx="960" cy="435" r="13" fill="#fff" stroke="#aab1bf" stroke-width="3.4" style="transform-box:fill-box;transform-origin:center;animation:cosstageF 12s linear infinite;animation-delay:7.23s"></circle>
+      <circle cx="580" cy="435" r="16" fill="none" stroke="rgba(88,41,199,.5)" stroke-width="1.6" opacity="0" style="transform-box:fill-box;transform-origin:center;animation:cosstageW 12s linear infinite;animation-delay:9.07s"></circle><circle cx="580" cy="435" r="13" fill="#fff" stroke="#aab1bf" stroke-width="3.4" style="transform-box:fill-box;transform-origin:center;animation:cosstageF 12s linear infinite;animation-delay:9.07s"></circle>
+      <text x="360" y="92" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif;letter-spacing:1.4px" fill="#4c24ab">01</text>
+      <text x="360" y="124" text-anchor="middle" style="font:600 19px 'Gilroy',sans-serif;letter-spacing:1px" fill="#6b7280">BEGIN WITH CONTEXT</text>
+      <line x1="360" y1="142" x2="360" y2="184" stroke="#c3c9d4" stroke-width="2"></line>
+      <text x="640" y="92" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif;letter-spacing:1.4px" fill="#4c24ab">02</text>
+      <text x="640" y="124" text-anchor="middle" style="font:600 19px 'Gilroy',sans-serif;letter-spacing:1px" fill="#6b7280">ADD A MARKET SIGNAL</text>
+      <line x1="640" y1="142" x2="640" y2="184" stroke="#c3c9d4" stroke-width="2"></line>
+      <text x="920" y="92" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif;letter-spacing:1.4px" fill="#4c24ab">03</text>
+      <text x="920" y="124" text-anchor="middle" style="font:600 19px 'Gilroy',sans-serif;letter-spacing:1px" fill="#6b7280">EXPLORE DIRECTIONS</text>
+      <line x1="920" y1="142" x2="920" y2="184" stroke="#c3c9d4" stroke-width="2"></line>
+      <text x="1200" y="92" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif;letter-spacing:1.4px" fill="#4c24ab">04</text>
+      <text x="1200" y="124" text-anchor="middle" style="font:600 19px 'Gilroy',sans-serif;letter-spacing:1px" fill="#6b7280">PRODUCE THE ASSET</text>
+      <line x1="1200" y1="142" x2="1200" y2="184" stroke="#c3c9d4" stroke-width="2"></line>
+      <text x="960" y="500" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif;letter-spacing:1.4px" fill="#4c24ab">05</text>
+      <text x="960" y="532" text-anchor="middle" style="font:600 19px 'Gilroy',sans-serif;letter-spacing:1px" fill="#6b7280">REVIEW AND REFINE</text>
+      <text x="580" y="500" text-anchor="middle" style="font:600 20px 'Gilroy',sans-serif;letter-spacing:1.4px" fill="#4c24ab">06</text>
+      <text x="580" y="532" text-anchor="middle" style="font:600 19px 'Gilroy',sans-serif;letter-spacing:1px" fill="#6b7280">REUSE WHAT WAS LEARNED</text>
+    </svg>
+  </div>
+</section>
+
+<section data-label="Results" data-speaker-notes="Numbers from running this on our own production workflows: up to 75% less production time, roughly half the cost per approved asset, up to 4x faster turnaround. The saving comes from removing the work around generation — briefing, retries, late-stage errors." style="background:#fcfcfd;color:#111827;display:flex;flex-direction:column;padding:100px 120px 80px">
+  <div style="font:500 22px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7">04 · RESULTS</div>
+  <h2 style="margin:40px 0 0;max-width:24ch;font-family:'Clash Display',sans-serif;font-size:72px;font-weight:600;line-height:1.05;letter-spacing:-.02em"><span>Up to </span><span style="color:#5829c7">75% less production time</span><span>.</span></h2>
+  <div style="margin-top:80px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px">
+    <div style="border-top:4px solid #5829c7;padding-top:36px"><div style="font-family:'Clash Display',sans-serif;font-size:120px;font-weight:600;line-height:1;letter-spacing:-.02em;color:#111827">75%</div><p style="margin:20px 0 0;font:400 30px/1.4 'Gilroy',sans-serif;color:#6b7280">less production time per approved asset</p></div>
+    <div style="border-top:4px solid #5829c7;padding-top:36px"><div style="font-family:'Clash Display',sans-serif;font-size:120px;font-weight:600;line-height:1;letter-spacing:-.02em;color:#111827">2x</div><p style="margin:20px 0 0;font:400 30px/1.4 'Gilroy',sans-serif;color:#6b7280">reduction in production cost</p></div>
+    <div style="border-top:4px solid #5829c7;padding-top:36px"><div style="font-family:'Clash Display',sans-serif;font-size:120px;font-weight:600;line-height:1;letter-spacing:-.02em;color:#111827">4x</div><p style="margin:20px 0 0;font:400 30px/1.4 'Gilroy',sans-serif;color:#6b7280">faster turnaround on recurring formats</p></div>
+  </div>
+  <p style="margin-top:auto;max-width:60ch;font:400 28px/1.5 'Gilroy',sans-serif;color:#6b7280">The saving comes from removing work around generation — repeated briefing, off-brand retries, and errors caught at the video stage.</p>
+</section>
+
+<section data-label="Pilot" data-speaker-notes="The offer: no platform migration, no commitment. Pick one active D2C client, one recurring format, produce a defined batch, and compare time, attempts, cost, and review cycles against their current process. We review findings together." style="background:#fcfcfd;color:#111827;display:flex;flex-direction:column;padding:100px 120px 80px">
+  <div style="font:500 22px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#5829c7">05 · THE OFFER</div>
+  <h2 style="margin:40px 0 0;max-width:22ch;font-family:'Clash Display',sans-serif;font-size:72px;font-weight:600;line-height:1.05;letter-spacing:-.02em">Pilot it on one D2C brand.</h2>
+  <div style="margin-top:72px;display:grid;grid-template-columns:1fr 1fr;gap:44px 96px">
+    <div style="display:flex;gap:28px;align-items:flex-start"><span style="flex:none;display:flex;width:56px;height:56px;border-radius:999px;background:#fff;border:2px solid #d1d5db;align-items:center;justify-content:center;font:600 24px/1 'Gilroy',sans-serif;color:#374151">1</span><p style="margin:10px 0 0;font:400 30px/1.4 'Gilroy',sans-serif;color:#374151">Select one active D2C client.</p></div>
+    <div style="display:flex;gap:28px;align-items:flex-start"><span style="flex:none;display:flex;width:56px;height:56px;border-radius:999px;background:#fff;border:2px solid #d1d5db;align-items:center;justify-content:center;font:600 24px/1 'Gilroy',sans-serif;color:#374151">4</span><p style="margin:10px 0 0;font:400 30px/1.4 'Gilroy',sans-serif;color:#374151">Produce a defined batch of assets.</p></div>
+    <div style="display:flex;gap:28px;align-items:flex-start"><span style="flex:none;display:flex;width:56px;height:56px;border-radius:999px;background:#fff;border:2px solid #d1d5db;align-items:center;justify-content:center;font:600 24px/1 'Gilroy',sans-serif;color:#374151">2</span><p style="margin:10px 0 0;font:400 30px/1.4 'Gilroy',sans-serif;color:#374151">Import its brand and product context.</p></div>
+    <div style="display:flex;gap:28px;align-items:flex-start"><span style="flex:none;display:flex;width:56px;height:56px;border-radius:999px;background:#fff;border:2px solid #d1d5db;align-items:center;justify-content:center;font:600 24px/1 'Gilroy',sans-serif;color:#374151">5</span><p style="margin:10px 0 0;font:400 30px/1.4 'Gilroy',sans-serif;color:#374151">Compare time, attempts, cost, and review cycles.</p></div>
+    <div style="display:flex;gap:28px;align-items:flex-start"><span style="flex:none;display:flex;width:56px;height:56px;border-radius:999px;background:#fff;border:2px solid #d1d5db;align-items:center;justify-content:center;font:600 24px/1 'Gilroy',sans-serif;color:#374151">3</span><p style="margin:10px 0 0;font:400 30px/1.4 'Gilroy',sans-serif;color:#374151">Choose a recurring reel or post workflow.</p></div>
+    <div style="display:flex;gap:28px;align-items:flex-start"><span style="flex:none;display:flex;width:56px;height:56px;border-radius:999px;background:#fff;border:2px solid #d1d5db;align-items:center;justify-content:center;font:600 24px/1 'Gilroy',sans-serif;color:#374151">6</span><p style="margin:10px 0 0;font:400 30px/1.4 'Gilroy',sans-serif;color:#374151">Review the findings together.</p></div>
+  </div>
+  <div style="margin-top:auto;display:inline-flex;align-items:center;gap:14px;align-self:flex-start;background:#f8f8fa;border:1px solid #e5e7eb;border-radius:999px;padding:18px 32px">
+    <span style="width:10px;height:10px;border-radius:50%;background:#5829c7"></span>
+    <span style="font:500 26px/1.4 'Gilroy',sans-serif;color:#374151">No migration. No commitment. Your own client, your own numbers.</span>
+  </div>
+</section>
+
+<section data-label="Close" data-speaker-notes="Close: ask for the pilot. One brand, one format, measurable difference. Book the demo on the call if possible." style="background-color:#140f2b;background-image:radial-gradient(54% 42% at 88% 10%, rgba(150,136,192,.24) 0%, rgba(150,136,192,0) 100%),radial-gradient(44% 32% at 20% 100%, rgba(255,202,45,.14) 0%, rgba(255,202,45,0) 100%),linear-gradient(180deg,#1a1237 0%,#140f2b 46%,#0f0c22 100%);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 120px">
+  <div style="font:500 22px/1.4 'Gilroy',sans-serif;text-transform:uppercase;letter-spacing:.24em;color:rgba(255,255,255,.55)">CreativeOS · by Yuvabe Studios</div>
+  <h2 style="margin:44px 0 0;max-width:18ch;font-family:'Clash Display',sans-serif;font-size:88px;font-weight:500;line-height:1.05;letter-spacing:-.02em;color:#fff">See the difference on your own workflow.</h2>
+  <p style="margin:40px 0 0;max-width:40ch;font:400 32px/1.5 'Gilroy',sans-serif;color:rgba(255,255,255,.72)">One brand. One recurring format. Measured against your current process.</p>
+  <div style="margin-top:64px;display:inline-flex;align-items:center;gap:14px;background:#5829c7;border-radius:16px;padding:24px 48px">
+    <span style="font:500 30px/1 'Gilroy',sans-serif;color:#fff">Book a demo</span>
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"></path></svg>
+  </div>
+  <div style="margin-top:36px;font:400 24px/1.5 'Gilroy',sans-serif;color:rgba(255,255,255,.5)">studios@yuvabe.com</div>
+</section>
+
+</x-import>
+</x-dc>
+</body>
+</html>
