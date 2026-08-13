@@ -64,8 +64,8 @@ const OUTPUTS: Array<{
     alt: "Summer look reel crop",
     caption: "Summer look · Reel",
     x: 1010,
-    y: 140,
-    w: 110,
+    y: 142,
+    w: 138,
     ratio: "9 / 16",
   },
   {
@@ -73,7 +73,7 @@ const OUTPUTS: Array<{
     alt: "Launch post crop",
     caption: "Launch post · 1:1",
     x: 1050,
-    y: 350,
+    y: 381,
     w: 130,
     ratio: "1 / 1",
   },
@@ -82,7 +82,7 @@ const OUTPUTS: Array<{
     alt: "Restock story crop",
     caption: "Restock story · 4:5",
     x: 1010,
-    y: 555,
+    y: 573,
     w: 120,
     ratio: "4 / 5",
   },
@@ -105,14 +105,14 @@ const BLOOM: Array<{
   { x: 1130, y: 190, w: 48, ratio: "1 / 1", blur: 1.5, delay: 0.08, border: "rgba(150,136,192,.55)" },
   { x: 920, y: 120, w: 40, ratio: "9 / 16", blur: 2, delay: 0.15, border: "rgba(88,41,199,.4)" },
   // around the Post
-  { x: 950, y: 290, w: 54, ratio: "1 / 1", blur: 1, delay: 0.03, border: "rgba(88,41,199,.45)" },
-  { x: 1150, y: 320, w: 66, ratio: "4 / 5", blur: 0.5, delay: 0.12, border: "rgba(88,41,199,.5)" },
-  { x: 1145, y: 425, w: 44, ratio: "1 / 1", blur: 2, delay: 0.1, border: "rgba(150,136,192,.55)" },
-  { x: 945, y: 415, w: 38, ratio: "3 / 4", blur: 2.5, delay: 0.1, border: "rgba(150,136,192,.5)" },
+  { x: 950, y: 320, w: 54, ratio: "1 / 1", blur: 1, delay: 0.03, border: "rgba(88,41,199,.45)" },
+  { x: 1150, y: 350, w: 66, ratio: "4 / 5", blur: 0.5, delay: 0.12, border: "rgba(88,41,199,.5)" },
+  { x: 1145, y: 455, w: 44, ratio: "1 / 1", blur: 2, delay: 0.1, border: "rgba(150,136,192,.55)" },
+  { x: 945, y: 445, w: 38, ratio: "3 / 4", blur: 2.5, delay: 0.1, border: "rgba(150,136,192,.5)" },
   // around the Story
-  { x: 925, y: 545, w: 52, ratio: "4 / 5", blur: 1, delay: 0.03, border: "rgba(88,41,199,.45)" },
-  { x: 1110, y: 500, w: 62, ratio: "1 / 1", blur: 0.8, delay: 0.18, border: "rgba(88,41,199,.5)" },
-  { x: 1105, y: 625, w: 46, ratio: "3 / 4", blur: 1.8, delay: 0.22, border: "rgba(150,136,192,.55)" },
+  { x: 925, y: 565, w: 52, ratio: "4 / 5", blur: 1, delay: 0.03, border: "rgba(88,41,199,.45)" },
+  { x: 1110, y: 520, w: 62, ratio: "1 / 1", blur: 0.8, delay: 0.18, border: "rgba(88,41,199,.5)" },
+  { x: 1105, y: 645, w: 46, ratio: "3 / 4", blur: 1.8, delay: 0.22, border: "rgba(150,136,192,.55)" },
 ];
 
 /* A softened S — four shallow bends past the alternating steps, entering the
@@ -122,9 +122,9 @@ const THREAD =
 
 /* From the centre card's right edge to each deliverable's left edge. */
 const FANS = [
-  "M750,318 C850,282 922,208 952,158",
-  "M750,340 C845,344 908,348 982,350",
-  "M750,362 C850,398 922,482 948,548",
+  "M750,318 C850,282 922,208 941,160",
+  "M750,340 C845,350 908,368 985,381",
+  "M750,362 C850,400 922,500 950,566",
 ];
 
 const pct = (x: number, y: number) => ({
@@ -286,6 +286,9 @@ export function ContextWeb() {
                   }}
                 />
               ))}
+              <div className="absolute -top-7 left-1/2 -translate-x-1/2 text-[11px] leading-none font-medium tracking-[0.14em] whitespace-nowrap text-ink-soft uppercase">
+                Image reference
+              </div>
               <div className="relative h-full w-full rounded-[18px] border-2 border-dashed border-purple/35">
                 {/* Skeleton: the grey fill and its sweep exist only for the
                     ~1s shimmer window after the dot arrives. */}
@@ -353,7 +356,7 @@ export function ContextWeb() {
                   style={{ aspectRatio: out.ratio }}
                 >
                   <div
-                    className="absolute -inset-[2px] overflow-hidden rounded-[14px] border-2 border-purple/50 shadow-[0_16px_40px_rgba(11,15,25,.16)]"
+                    className="absolute -inset-[2px] overflow-hidden rounded-[14px] shadow-[0_16px_40px_rgba(11,15,25,.18)] ring-1 ring-black/5"
                     style={{ animation: "coswebFlash 7s linear infinite" }}
                   >
                     <Image
