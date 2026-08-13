@@ -39,8 +39,8 @@ const CARDS: Array<{
   {
     src: "/assets/hero/placeholder-11.jpg",
     alt: "Amber dropper bottle still",
-    pos: { left: "31%", top: "4%", width: "clamp(100px, 10.5vw, 165px)" },
-    ratio: "3 / 4",
+    pos: { left: "31%", top: "5%", width: "clamp(110px, 12vw, 190px)" },
+    ratio: "4 / 3",
     delay: 0.24,
     float: "7.5s",
   },
