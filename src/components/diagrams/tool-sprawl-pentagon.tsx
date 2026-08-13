@@ -53,8 +53,8 @@ export function ToolSprawlPentagon() {
             x={tool.label.x}
             y={tool.label.y}
             textAnchor={tool.label.anchor}
-            style={{ fontWeight: "600", fontSize: "20px" }}
-            fill="#374151"
+            style={{ fontWeight: "500", fontSize: "20px" }}
+            fill="#6b7280"
           >
             {tool.name}
           </text>

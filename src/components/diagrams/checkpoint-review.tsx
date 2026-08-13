@@ -16,7 +16,7 @@ export function CheckpointReview() {
         </marker>
       </defs>
       <rect x="46" y="36" width="708" height="400" rx="30" fill="rgba(88,41,199,.04)" stroke="rgba(88,41,199,.35)" strokeWidth="2" />
-      <text x="84" y="76" style={{ fontWeight: "600", fontSize: "19px", letterSpacing: "2px" }} fill="#5829c7">CREATIVEOS</text>
+      <text x="84" y="76" style={{ fontWeight: "500", fontSize: "18px", letterSpacing: "3.9px" }} fill="#5829c7">CREATIVEOS</text>
       <g fill="none" stroke="#9688c0" strokeWidth="3.4" strokeLinecap="round" strokeDasharray="2 14">
         <line x1="226" y1="200" x2="364" y2="200" />
         <line x1="426" y1="200" x2="574" y2="200" />
@@ -40,10 +40,10 @@ export function CheckpointReview() {
       <circle cx="600" cy="200" r="40" fill="#5829c722" />
       <circle cx="600" cy="200" r="26" fill="#fff" stroke="#5829c7" strokeWidth="4" />
       <circle cx="600" cy="200" r="14" fill="#5829c7" />
-      <text x="200" y="130" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px" }} fill="#374151">Image</text>
-      <text x="400" y="130" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px" }} fill="#374151">Review</text>
-      <text x="600" y="130" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px" }} fill="#374151">Video</text>
-      <text x="300" y="330" textAnchor="middle" style={{ fontWeight: "500", fontSize: "19px" }} fill="#7a68ad">fixed at the image ↺</text>
+      <text x="200" y="130" textAnchor="middle" style={{ fontWeight: "500", fontSize: "20px" }} fill="#6b7280">Image</text>
+      <text x="400" y="130" textAnchor="middle" style={{ fontWeight: "500", fontSize: "20px" }} fill="#6b7280">Review</text>
+      <text x="600" y="130" textAnchor="middle" style={{ fontWeight: "500", fontSize: "20px" }} fill="#6b7280">Video</text>
+      <text x="300" y="330" textAnchor="middle" style={{ fontWeight: "500", fontSize: "19px" }} fill="#9688c0">fixed at the image ↺</text>
     </svg>
   );
 }

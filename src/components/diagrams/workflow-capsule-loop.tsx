@@ -56,30 +56,30 @@ export function WorkflowCapsuleLoop() {
     <path d="M250,320 A85,85 0 0 1 335,235 L1225,235 A85,85 0 0 1 1310,320 A85,85 0 0 1 1225,405 L335,405 A85,85 0 0 1 250,320 Z" fill="url(#cosCloudP)" />
     <line x1="290" y1="320" x2="1270" y2="320" stroke="#fff" strokeWidth="3" strokeLinecap="round" />
     
-    <text x="780" y="291" textAnchor="middle" style={{ fontWeight: "600", fontSize: "38px", fontFamily: "var(--font-clash-display), sans-serif", letterSpacing: ".18em" }} fill="rgba(176,132,0,.75)">CREATE</text>
-    <text x="780" y="376" textAnchor="middle" style={{ fontWeight: "600", fontSize: "38px", fontFamily: "var(--font-clash-display), sans-serif", letterSpacing: ".18em" }} fill="rgba(88,41,199,.55)">LEARN</text>
+    <text x="780" y="291" textAnchor="middle" style={{ fontWeight: "600", fontSize: "38px", fontFamily: "var(--font-clash-display), sans-serif", letterSpacing: ".18em" }} fill="var(--color-amber-deep)" opacity="0.8">CREATE</text>
+    <text x="780" y="376" textAnchor="middle" style={{ fontWeight: "600", fontSize: "38px", fontFamily: "var(--font-clash-display), sans-serif", letterSpacing: ".18em" }} fill="var(--color-purple)" opacity="0.55">LEARN</text>
     <circle cx="360" cy="205" r="16" fill="none" stroke="rgba(227,169,0,.55)" strokeWidth="1.6" opacity="0" style={{ transformBox: "fill-box", transformOrigin: "center", animation: "cosstageW 12s linear infinite", animationDelay: "0.1s" }} /><circle cx="360" cy="205" r="13" fill="#fff" stroke="#aab1bf" strokeWidth="3.4" style={{ transformBox: "fill-box", transformOrigin: "center", animation: "cosstage1 12s linear infinite" }} />
     <circle cx="640" cy="205" r="16" fill="none" stroke="rgba(227,169,0,.55)" strokeWidth="1.6" opacity="0" style={{ transformBox: "fill-box", transformOrigin: "center", animation: "cosstageW 12s linear infinite", animationDelay: "1.45s" }} /><circle cx="640" cy="205" r="13" fill="#fff" stroke="#aab1bf" strokeWidth="3.4" style={{ transformBox: "fill-box", transformOrigin: "center", animation: "cosstage2 12s linear infinite" }} />
     <circle cx="920" cy="205" r="16" fill="none" stroke="rgba(227,169,0,.55)" strokeWidth="1.6" opacity="0" style={{ transformBox: "fill-box", transformOrigin: "center", animation: "cosstageW 12s linear infinite", animationDelay: "2.8s" }} /><circle cx="920" cy="205" r="13" fill="#fff" stroke="#aab1bf" strokeWidth="3.4" style={{ transformBox: "fill-box", transformOrigin: "center", animation: "cosstage3 12s linear infinite" }} />
     <circle cx="1200" cy="205" r="16" fill="none" stroke="rgba(227,169,0,.55)" strokeWidth="1.6" opacity="0" style={{ transformBox: "fill-box", transformOrigin: "center", animation: "cosstageW 12s linear infinite", animationDelay: "4.15s" }} /><circle cx="1200" cy="205" r="13" fill="#fff" stroke="#aab1bf" strokeWidth="3.4" style={{ transformBox: "fill-box", transformOrigin: "center", animation: "cosstage4 12s linear infinite" }} />
     <circle cx="960" cy="435" r="16" fill="none" stroke="rgba(88,41,199,.5)" strokeWidth="1.6" opacity="0" style={{ transformBox: "fill-box", transformOrigin: "center", animation: "cosstageW 12s linear infinite", animationDelay: "7.23s" }} /><circle cx="960" cy="435" r="13" fill="#fff" stroke="#aab1bf" strokeWidth="3.4" style={{ transformBox: "fill-box", transformOrigin: "center", animation: "cosstage5 12s linear infinite" }} />
     <circle cx="580" cy="435" r="16" fill="none" stroke="rgba(88,41,199,.5)" strokeWidth="1.6" opacity="0" style={{ transformBox: "fill-box", transformOrigin: "center", animation: "cosstageW 12s linear infinite", animationDelay: "9.07s" }} /><circle cx="580" cy="435" r="13" fill="#fff" stroke="#aab1bf" strokeWidth="3.4" style={{ transformBox: "fill-box", transformOrigin: "center", animation: "cosstage6 12s linear infinite" }} />
-    <text x="360" y="92" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px", letterSpacing: "1.4px" }} fill="#4c24ab">01</text>
-    <text x="360" y="124" textAnchor="middle" style={{ fontWeight: "600", fontSize: "19px", letterSpacing: "1px" }} fill="#6b7280">BEGIN WITH CONTEXT</text>
+    <text x="360" y="92" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px", letterSpacing: "1.4px" }} fill="#5829c7">01</text>
+    <text x="360" y="124" textAnchor="middle" style={{ fontWeight: "500", fontSize: "19px" }} fill="#6b7280">Begin with context</text>
     <line x1="360" y1="142" x2="360" y2="184" stroke="#c3c9d4" strokeWidth="2" />
-    <text x="640" y="92" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px", letterSpacing: "1.4px" }} fill="#4c24ab">02</text>
-    <text x="640" y="124" textAnchor="middle" style={{ fontWeight: "600", fontSize: "19px", letterSpacing: "1px" }} fill="#6b7280">ADD A MARKET SIGNAL</text>
+    <text x="640" y="92" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px", letterSpacing: "1.4px" }} fill="#5829c7">02</text>
+    <text x="640" y="124" textAnchor="middle" style={{ fontWeight: "500", fontSize: "19px" }} fill="#6b7280">Add a market signal</text>
     <line x1="640" y1="142" x2="640" y2="184" stroke="#c3c9d4" strokeWidth="2" />
-    <text x="920" y="92" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px", letterSpacing: "1.4px" }} fill="#4c24ab">03</text>
-    <text x="920" y="124" textAnchor="middle" style={{ fontWeight: "600", fontSize: "19px", letterSpacing: "1px" }} fill="#6b7280">EXPLORE DIRECTIONS</text>
+    <text x="920" y="92" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px", letterSpacing: "1.4px" }} fill="#5829c7">03</text>
+    <text x="920" y="124" textAnchor="middle" style={{ fontWeight: "500", fontSize: "19px" }} fill="#6b7280">Explore directions</text>
     <line x1="920" y1="142" x2="920" y2="184" stroke="#c3c9d4" strokeWidth="2" />
-    <text x="1200" y="92" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px", letterSpacing: "1.4px" }} fill="#4c24ab">04</text>
-    <text x="1200" y="124" textAnchor="middle" style={{ fontWeight: "600", fontSize: "19px", letterSpacing: "1px" }} fill="#6b7280">PRODUCE THE ASSET</text>
+    <text x="1200" y="92" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px", letterSpacing: "1.4px" }} fill="#5829c7">04</text>
+    <text x="1200" y="124" textAnchor="middle" style={{ fontWeight: "500", fontSize: "19px" }} fill="#6b7280">Produce the asset</text>
     <line x1="1200" y1="142" x2="1200" y2="184" stroke="#c3c9d4" strokeWidth="2" />
-    <text x="960" y="500" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px", letterSpacing: "1.4px" }} fill="#4c24ab">05</text>
-    <text x="960" y="532" textAnchor="middle" style={{ fontWeight: "600", fontSize: "19px", letterSpacing: "1px" }} fill="#6b7280">REVIEW AND REFINE</text>
-    <text x="580" y="500" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px", letterSpacing: "1.4px" }} fill="#4c24ab">06</text>
-    <text x="580" y="532" textAnchor="middle" style={{ fontWeight: "600", fontSize: "19px", letterSpacing: "1px" }} fill="#6b7280">REUSE WHAT WAS LEARNED</text>
+    <text x="960" y="500" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px", letterSpacing: "1.4px" }} fill="#5829c7">05</text>
+    <text x="960" y="532" textAnchor="middle" style={{ fontWeight: "500", fontSize: "19px" }} fill="#6b7280">Review and refine</text>
+    <text x="580" y="500" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px", letterSpacing: "1.4px" }} fill="#5829c7">06</text>
+    <text x="580" y="532" textAnchor="middle" style={{ fontWeight: "500", fontSize: "19px" }} fill="#6b7280">Reuse what was learned</text>
     </svg>
   );
 }

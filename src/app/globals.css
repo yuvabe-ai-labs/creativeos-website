@@ -72,6 +72,9 @@
   --color-yellow: #ffca2d;
   --color-flame: #f04e28;
   --color-flame-deep: #8a2e18;
+  /* The amber the capsule sets CREATE in — dark enough to read on its own
+     pale cloud, where #e3a900 is not. Was an unnamed literal. */
+  --color-amber-deep: #b08400;
 
   /* Surfaces + rules */
   --color-canvas: #fcfcfd;
@@ -86,10 +89,45 @@
   --breakpoint-hero: 1081px;
 }
 
+/* --- DIAGRAM TYPE SYSTEM ---------------------------------------------------
+   Every diagram states these in its own units, because each has a different
+   viewBox width in a different frame. What is held constant is the RENDERED
+   size, which is the only thing the eye compares across sections.
+
+     group heading  ~13px rendered  caps, 0.22em tracking, 500, --color-purple
+     item label     ~14px rendered  sentence case, no tracking, 500, ink-soft
+     annotation     ~14px rendered  sentence case, 1px tracking, 500,
+                                    ink-faint (muted side) / lavender (product)
+
+   Caps mark a heading, never an item. Anything else is a deliberate exception
+   and should say why.
+   --------------------------------------------------------------------------- */
+
 /* --- signal-flow keyframes -------------------------------------------------
    Comet dots travel a path whose stroke-dasharray gap exceeds the path length;
    the dashoffset travel must equal the dash period or the loop visibly snaps.
+
+   THAT CAVEAT ONLY HOLDS WHILE THE GAP EXCEEDS THE PATH. Once a path is longer
+   than `dash + gap`, two dashes are on it at once and any mismatch shows as a
+   jump every cycle. The hero's rays are 308-338 units against periods of 167,
+   205 and 224, so each period gets its own keyframe below rather than sharing
+   `cosray`'s -140.
    --------------------------------------------------------------------------- */
+@keyframes cosray167 {
+  to {
+    stroke-dashoffset: -167;
+  }
+}
+@keyframes cosray205 {
+  to {
+    stroke-dashoffset: -205;
+  }
+}
+@keyframes cosray224 {
+  to {
+    stroke-dashoffset: -224;
+  }
+}
 @keyframes cosray {
   to {
     stroke-dashoffset: -140;
@@ -113,48 +151,57 @@
   }
 }
 @keyframes cosripple {
-  0%,
-  28% {
+  0% {
     transform: scale(1);
-    opacity: 0;
+    opacity: 0.85;
   }
-  34% {
-    opacity: 0.8;
-    transform: scale(1.1);
+  6% {
+    transform: scale(1.5);
+    opacity: 0.7;
   }
+  70%,
   100% {
     transform: scale(24);
     opacity: 0;
   }
 }
-/* The wide hero's ripple lives in an overflow-clipped HTML box, so scaling to
-   24 is invisible past the edge. Inside a portrait SVG viewBox there is no such
-   clip — a 24x ring becomes two huge arcs across the drawing. This is the same
-   effect at a scale that stays inside the canvas. */
+/* Same effect at a scale that stays inside the portrait's viewBox. The wide
+   hero's ripple lives in an overflow-clipped HTML box so it can scale to 24;
+   inside an SVG a 24x ring becomes two huge arcs across the drawing. */
 @keyframes cosripplesm {
-  0%,
-  28% {
+  0% {
     transform: scale(1);
-    opacity: 0;
+    opacity: 0.8;
   }
-  34% {
-    opacity: 0.7;
-    transform: scale(1.1);
+  6% {
+    transform: scale(1.4);
+    opacity: 0.65;
   }
+  70%,
   100% {
     transform: scale(4.2);
     opacity: 0;
   }
 }
+/* THE PULSE IS A REACTION, so its action sits at 0% of the keyframe and the
+   `animation-delay` is simply when the beam's dot lands — 1.85s on both hero
+   variants.
+
+   That is the moment the dash is FULLY absorbed, not when its leading edge
+   touches: the dot has to go in before anything reacts to it. Leading edge is
+   1.60s on the wide beam and 1.56s on the portrait; trailing edge is 1.85s on
+   both, since each is (length / 90-unit travel) of the 3.2s cycle.
+
+   These keyframes previously idled until 28%, firing ~0.9s after the dot had
+   already landed, which read as unrelated to it. */
 @keyframes cospulse {
-  0%,
-  28% {
+  0% {
     transform: scale(1);
   }
-  36% {
+  8% {
     transform: scale(1.35);
   }
-  52%,
+  26%,
   100% {
     transform: scale(1);
   }

@@ -43,6 +43,7 @@ export function Hero() {
           <RevealItem>
             <h1 className="font-display m-0 max-w-[17ch] text-[clamp(2.5rem,4.6vw,4.1rem)] leading-[1.04] font-normal tracking-[-0.03em] text-ink">
               Produce D2C content at the speed of the{" "}
+              <span className="whitespace-nowrap">
               <span
                 className="inline-block pb-[0.04em]"
                 style={{
@@ -55,6 +56,7 @@ export function Hero() {
                 market
               </span>
               .
+              </span>
             </h1>
           </RevealItem>
 
@@ -100,7 +102,7 @@ export function Hero() {
             />
             <HeroSignalFlowPortrait />
           </div>
-          <div className="mt-3 text-center text-[10px] leading-[1.5] font-semibold tracking-[1.4px] text-ink-faint">
+          <div className="mt-3 text-center text-[12px] leading-[1.5] font-medium tracking-[0.22em] text-ink-soft uppercase">
             EVERYTHING THE AGENCY KNOWS, IN EVERY ASSET
           </div>
         </Reveal>
@@ -124,26 +126,26 @@ export function Hero() {
             <HeroSignalFlow />
 
             {/* Output node: a solid dot with a ripple expanding out of it. */}
-            <div className="absolute top-1/2 right-11 w-[110px] -translate-y-[55px]">
+            <div className="absolute top-1/2 right-4 w-[26px] -translate-y-[55px]">
               <div className="relative flex h-[110px] items-center justify-center">
                 <span
                   className="absolute size-[26px] rounded-full border-[0.5px] border-purple/45"
                   style={{
                     animation: "cosripple 3.2s ease-out infinite",
-                    animationDelay: "1.6s",
+                    animationDelay: "1.85s",
                   }}
                 />
                 <span
                   className="relative size-[26px] rounded-full bg-purple shadow-[0_0_18px_rgba(88,41,199,0.5)]"
                   style={{
                     animation: "cospulse 3.2s ease-out infinite",
-                    animationDelay: "1.6s",
+                    animationDelay: "1.85s",
                   }}
                 />
               </div>
             </div>
 
-            <div className="absolute bottom-6 left-[34px] text-[10px] leading-[1.5] font-semibold tracking-[1.4px] text-ink-faint">
+            <div className="absolute bottom-6 left-[34px] text-[12px] leading-[1.5] font-medium tracking-[0.22em] text-ink-soft uppercase">
               EVERYTHING THE AGENCY KNOWS, IN EVERY ASSET
             </div>
           </div>

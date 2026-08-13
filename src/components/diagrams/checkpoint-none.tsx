@@ -43,9 +43,9 @@ export function CheckpointNone() {
           <path d={`M611,${y - 9} L629,${y + 9} M629,${y - 9} L611,${y + 9}`} stroke="#f04e28" strokeWidth="4" strokeLinecap="round" />
         </g>
       ))}
-      <text x="180" y="130" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px" }} fill="#374151">Image</text>
-      <text x="390" y="266" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px" }} fill="#9ca3af">No review</text>
-      <text x="620" y="420" textAnchor="middle" style={{ fontWeight: "600", fontSize: "20px" }} fill="#8a2e18">4x more expensive</text>
+      <text x="180" y="130" textAnchor="middle" style={{ fontWeight: "500", fontSize: "20px" }} fill="#6b7280">Image</text>
+      <text x="390" y="266" textAnchor="middle" style={{ fontWeight: "500", fontSize: "20px" }} fill="#9ca3af">No review</text>
+      <text x="620" y="420" textAnchor="middle" style={{ fontWeight: "500", fontSize: "20px" }} fill="#8a2e18">4x more expensive</text>
     </svg>
   );
 }

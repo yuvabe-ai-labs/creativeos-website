@@ -214,7 +214,7 @@ export function ContextRepeatSnake() {
             strokeWidth="2"
             style={{ animation: `cosflashG ${CYCLE} linear infinite`, animationDelay: reel.flashDelay }}
           />
-          <text x="557" y={reel.y + 30} textAnchor="middle" style={{ fontWeight: "500", fontSize: "18px" }} fill="#374151">
+          <text x="557" y={reel.y + 30} textAnchor="middle" style={{ fontWeight: "500", fontSize: "18px" }} fill="#6b7280">
             {reel.label}
           </text>
           {/* Tick sits on the box's top-right corner, as in the other card. */}

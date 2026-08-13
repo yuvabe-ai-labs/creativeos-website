@@ -209,7 +209,7 @@ export function ContextSetOnce() {
             strokeWidth="2"
             style={{ animation: `cosflashP ${CYCLE} linear infinite` }}
           />
-          <text x="609" y={reel.y + 30} textAnchor="middle" style={{ fontWeight: "500", fontSize: "18px" }} fill="#374151">
+          <text x="609" y={reel.y + 30} textAnchor="middle" style={{ fontWeight: "500", fontSize: "18px" }} fill="#6b7280">
             {reel.label}
           </text>
           <g style={{ animation: `costickP ${CYCLE} linear infinite` }}>
