@@ -18,8 +18,10 @@ import { Section, SectionHeading, SectionLede } from "@/components/site/section"
 
 const CHIPS: Array<{
   label: string;
-  /** Reference thumbnail beside the pill; compliance is a check, not a visual. */
+  /** Reference thumbnail beside the pill. */
   thumb?: string;
+  /** Renders a typeset Mender brand-book tile instead of a photo. */
+  wordmark?: boolean;
   /** Rendered thumb edge in px — varied, comparable to the deliverables. */
   size?: number;
   x: number;
@@ -38,11 +40,11 @@ const CHIPS: Array<{
   // scales around the anchor, so the thread stays in sync.
   // Steps alternate sides of the S: units left of the path carry their label
   // on the left (thumb kissing the line), units right of it the reverse.
-  { label: "Explain the brand", thumb: "/assets/hero/placeholder-09.jpg", size: 96, x: 200, y: 110, arrival: 0.05, depth: 1.05, labelFirst: true },
+  { label: "Explain the brand", wordmark: true, size: 96, x: 200, y: 110, arrival: 0.05, depth: 1.05, labelFirst: true },
   { label: "Tone of voice", thumb: "/assets/hero/placeholder-14.jpg", size: 72, x: 450, y: 190, arrival: 0.47, depth: 0.82 },
   { label: "Product details", thumb: "/assets/hero/placeholder-11.jpg", size: 112, x: 170, y: 290, arrival: 1.06, depth: 1.12, labelFirst: true },
-  { label: "Mood + lighting", thumb: "/assets/hero/placeholder-06.jpg", size: 80, x: 385, y: 370, arrival: 0.76, depth: 0.88 },
-  { label: "Colors + refs", thumb: "/assets/hero/placeholder-05.jpg", size: 104, x: 200, y: 470, arrival: 1.3, depth: 1.0, labelFirst: true },
+  { label: "Mood + lighting", thumb: "/assets/hero/placeholder-17.jpg", size: 80, x: 385, y: 370, arrival: 0.76, depth: 0.88 },
+  { label: "Colors + refs", thumb: "/assets/hero/placeholder-18.jpg", size: 104, x: 200, y: 470, arrival: 1.3, depth: 1.0, labelFirst: true },
   { label: "Market trends", thumb: "/assets/hero/placeholder-15.jpg", size: 88, x: 450, y: 545, arrival: 1.84, depth: 0.94 },
   { label: "Compliance check", thumb: "/assets/hero/placeholder-16.jpg", size: 76, x: 260, y: 620, arrival: 1.53, depth: 0.88, labelFirst: true },
 ];
@@ -186,6 +188,19 @@ export function ContextWeb() {
                   opacity: Math.min(1, 0.25 + 0.72 * chip.depth),
                 }}
               >
+                {chip.wordmark ? (
+                  <span
+                    className="flex shrink-0 flex-col items-center justify-center gap-1.5 rounded-[12px] bg-[#f6f1e7] shadow-[0_8px_24px_rgba(11,15,25,.14)] ring-1 ring-black/5"
+                    style={{ width: chip.size, height: chip.size }}
+                  >
+                    <span className="font-display text-[20px] leading-none font-semibold tracking-[-0.02em] text-ink">
+                      Mender
+                    </span>
+                    <span className="text-[6.5px] leading-none font-medium tracking-[0.3em] text-ink-soft uppercase">
+                      Brand book
+                    </span>
+                  </span>
+                ) : null}
                 {chip.thumb ? (
                   <span
                     className="relative block shrink-0 overflow-hidden rounded-[12px] shadow-[0_8px_24px_rgba(11,15,25,.14)] ring-1 ring-black/5"
