@@ -1,28 +1,27 @@
-import Image from "next/image";
-import { ImageIcon } from "lucide-react";
-
 import { WorkflowCapsuleLoop } from "@/components/diagrams/workflow-capsule-loop";
 import { Reveal } from "@/components/motion/reveal";
 import { Section, SectionHeading } from "@/components/site/section";
 
+const DEMO_VIDEO_SRC =
+  "https://storage.googleapis.com/creativeos-assets/demo-assets/Demo(comp).mp4";
+
 /**
  * Stand-in for the source's `<image-slot>`, which ships empty in the Design
- * Canvas file — the canvas screenshot was never dropped into it. Pass `src` once
- * a real capture exists and the placeholder disappears.
+ * Canvas file — the canvas screenshot was never dropped into it. Now filled
+ * with a screen-capture demo of the production canvas.
  */
-function ProductionCanvas({ src }: { src?: string }) {
+function ProductionCanvas() {
   return (
     <div className="relative h-[560px] bg-[#120d26]">
-      {src ? (
-        <Image src={src} alt="The CreativeOS production canvas" fill className="object-cover" />
-      ) : (
-        <div className="flex h-full flex-col items-center justify-center gap-3 text-white/35">
-          <ImageIcon className="size-8" strokeWidth={1.4} aria-hidden="true" />
-          <p className="m-0 text-[14px] leading-[21px]">
-            A wide crop of the CreativeOS canvas goes here.
-          </p>
-        </div>
-      )}
+      <video
+        src={DEMO_VIDEO_SRC}
+        autoPlay
+        loop
+        muted
+        playsInline
+        controls
+        className="h-full w-full object-cover"
+      />
     </div>
   );
 }
