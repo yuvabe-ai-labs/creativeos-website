@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>CreativeOS — Plan. Create. Compound.</title>
+<style>
+@font-face{font-family:"Clash Display";src:url("fonts/ClashDisplayRegular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Clash Display";src:url("fonts/ClashDisplayMedium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Clash Display";src:url("fonts/ClashDisplaySemibold.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-Medium.ttf") format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-SemiBold.ttf") format("truetype");font-weight:600;font-display:swap}
+html,body{margin:0;padding:0;background:#fcfcfd;font-family:"Gilroy",ui-sans-serif,system-ui,sans-serif;color:#111827;-webkit-font-smoothing:antialiased}
+a{color:#5829c7;text-decoration:none}
+a:hover{color:#4c24ab}
+</style>
+<script src="image-slot.js"></script>
+</helmet>
+
+<section data-screen-label="Plan Create Compound" style="min-height:100vh;padding:96px 56px 110px;box-sizing:border-box">
+  <div style="max-width:1400px;margin:0 auto">
+    <div style="font:500 13px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#6b7280">ONE CANVAS, NOT FIVE TOOLS</div>
+    <h2 style="margin:22px 0 0;max-width:24ch;font-family:'Clash Display',sans-serif;font-size:52px;font-weight:500;line-height:1.05;letter-spacing:-.03em">Plan. Create. <span style="color:#5829c7">Compound.</span></h2>
+    <p style="margin:18px 0 0;max-width:54ch;font:400 19px/1.55 'Gilroy',sans-serif;color:#6b7280;text-wrap:pretty">Script, posts, and reels live on the same canvas — every fix happens where the context already is.</p>
+    <div style="margin-top:56px;display:flex;gap:20px;align-items:stretch">
+    <div onMouseEnter="{{ hov1 }}" onMouseLeave="{{ hovOff }}" style="position:relative;flex:{{ f1 }} 1 0%;min-width:0;overflow:hidden;border-radius:24px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 20px rgba(11,15,25,.06);min-height:640px;transition:flex-grow .55s cubic-bezier(.22,1,.36,1)">
+      <image-slot id="pcc-plan" shape="rect" placeholder="Script parsed into shot fields" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(252,252,253,.92) 0%,rgba(252,252,253,0) 30%,rgba(252,252,253,0) 58%,rgba(252,252,253,.94) 100%);pointer-events:none"></div>
+      <div style="position:absolute;left:36px;top:32px;right:36px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;pointer-events:none">
+        <span style="font-family:'Clash Display',sans-serif;font-size:{{ h1 }};font-weight:500;letter-spacing:-.02em;color:rgba(88,41,199,.28);transition:font-size .55s cubic-bezier(.22,1,.36,1)">01</span>
+        <span style="font-family:'Clash Display',sans-serif;font-size:{{ h1 }};font-weight:500;letter-spacing:-.02em;color:#111827;transition:font-size .55s cubic-bezier(.22,1,.36,1)">Plan</span>
+      </div>
+      <div style="position:absolute;left:36px;right:36px;bottom:30px;pointer-events:none;opacity:{{ txt }};transition:opacity .22s ease-out">
+        <div style="font:600 22px/1.3 'Gilroy',sans-serif;color:#111827">The script becomes the plan</div>
+        <p style="margin:8px 0 0;font:400 16px/1.55 'Gilroy',sans-serif;color:#4b5563;text-wrap:pretty">Paste a finished script — it parses into asset-ready shots, with brand context already attached.</p>
+      </div>
+    </div>
+    <div onMouseEnter="{{ hov2 }}" onMouseLeave="{{ hovOff }}" style="position:relative;flex:{{ f2 }} 1 0%;min-width:0;overflow:hidden;border-radius:24px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 20px rgba(11,15,25,.06);min-height:640px;transition:flex-grow .55s cubic-bezier(.22,1,.36,1)">
+      <image-slot id="pcc-create" shape="rect" placeholder="Stills and posts on the canvas" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(252,252,253,.92) 0%,rgba(252,252,253,0) 30%,rgba(252,252,253,0) 58%,rgba(252,252,253,.94) 100%);pointer-events:none"></div>
+      <div style="position:absolute;left:36px;top:32px;right:36px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;pointer-events:none">
+        <span style="font-family:'Clash Display',sans-serif;font-size:{{ h2 }};font-weight:500;letter-spacing:-.02em;color:rgba(88,41,199,.28);transition:font-size .55s cubic-bezier(.22,1,.36,1)">02</span>
+        <span style="font-family:'Clash Display',sans-serif;font-size:{{ h2 }};font-weight:500;letter-spacing:-.02em;color:#111827;transition:font-size .55s cubic-bezier(.22,1,.36,1)">Create</span>
+      </div>
+      <div style="position:absolute;left:36px;right:36px;bottom:30px;pointer-events:none;opacity:{{ txt }};transition:opacity .22s ease-out">
+        <div style="font:600 22px/1.3 'Gilroy',sans-serif;color:#111827">Posts and stills, reviewed early</div>
+        <p style="margin:8px 0 0;font:400 16px/1.55 'Gilroy',sans-serif;color:#4b5563;text-wrap:pretty">Shots fan into stills and static posts — a review checkpoint catches errors before video, where fixes are cheap.</p>
+      </div>
+    </div>
+    <div onMouseEnter="{{ hov3 }}" onMouseLeave="{{ hovOff }}" style="position:relative;flex:{{ f3 }} 1 0%;min-width:0;overflow:hidden;border-radius:24px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 20px rgba(11,15,25,.06);min-height:640px;transition:flex-grow .55s cubic-bezier(.22,1,.36,1)">
+      <image-slot id="pcc-compound" shape="rect" placeholder="Finished reel frame (9:16)" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(252,252,253,.92) 0%,rgba(252,252,253,0) 30%,rgba(252,252,253,0) 58%,rgba(252,252,253,.94) 100%);pointer-events:none"></div>
+      <div style="position:absolute;left:36px;top:32px;right:36px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;pointer-events:none">
+        <span style="font-family:'Clash Display',sans-serif;font-size:{{ h3 }};font-weight:500;letter-spacing:-.02em;color:rgba(88,41,199,.28);transition:font-size .55s cubic-bezier(.22,1,.36,1)">03</span>
+        <span style="font-family:'Clash Display',sans-serif;font-size:{{ h3 }};font-weight:500;letter-spacing:-.02em;color:#111827;transition:font-size .55s cubic-bezier(.22,1,.36,1)">Compound</span>
+      </div>
+      <div style="position:absolute;left:36px;right:36px;bottom:30px;pointer-events:none;opacity:{{ txt }};transition:opacity .22s ease-out">
+        <div style="font:600 22px/1.3 'Gilroy',sans-serif;color:#111827">Reels ship, learning stays</div>
+        <p style="margin:8px 0 0;font:400 16px/1.55 'Gilroy',sans-serif;color:#4b5563;text-wrap:pretty">Every attempt and approval is captured — reel 2 starts where reel 1 ended.</p>
+        <div style="display:flex;gap:26px;margin-top:16px;flex-wrap:wrap"><div style="white-space:nowrap"><span style="font-family:'Clash Display',sans-serif;font-size:24px;font-weight:600;color:#5829c7">75%</span><span style="font:400 14px/1.3 'Gilroy',sans-serif;color:#6b7280"> less time</span></div><div style="white-space:nowrap"><span style="font-family:'Clash Display',sans-serif;font-size:24px;font-weight:600;color:#5829c7">2x</span><span style="font:400 14px/1.3 'Gilroy',sans-serif;color:#6b7280"> lower cost</span></div><div style="white-space:nowrap"><span style="font-family:'Clash Display',sans-serif;font-size:24px;font-weight:600;color:#5829c7">4x</span><span style="font:400 14px/1.3 'Gilroy',sans-serif;color:#6b7280"> faster</span></div></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { hov: 0, txt: 1 };
+  setHov(i) {
+    if (i === this.state.hov) return;
+    clearTimeout(this._t);
+    this.setState({ hov: i, txt: 0 });
+    this._t = setTimeout(() => this.setState({ txt: 1 }), 570);
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+  renderVals() {
+    const h = this.state.hov;
+    const v = { txt: this.state.txt };
+    for (let i = 1; i <= 3; i++) {
+      v['f' + i] = h === i ? '2.1' : '1';
+      v['h' + i] = h === i ? 'clamp(30px,4vw,58px)' : (h === 0 ? 'clamp(24px,2.6vw,38px)' : 'clamp(20px,2.1vw,30px)');
+      v['hov' + i] = () => this.setHov(i);
+    }
+    v.hovOff = () => this.setHov(0);
+    return v;
+  }
+}
+</script>
+</body>
+</html>

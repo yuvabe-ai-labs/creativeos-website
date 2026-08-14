@@ -17,3 +17,7 @@ The signature animation used across the CreativeOS site and sales deck. When the
 **Canonical keyframes** (in `CreativeOS Sales Deck.dc.html` helmet): `cosray`/`cosrayA`/`cosrayB` (continuous comets), `cosburst` (paced output burst), `cosflash` (target light-up), `cosring` (node pulse), `cosloopS`/`cosloopR`/`cosloopT` (sequenced one-dot-at-a-time hops in the light-mode diagrams).
 
 **Reference implementations**: Sales Deck slide 5 "Product" (dark, full effect), slides 3–4 comparison cards (light mode, sequenced hops); site hero in `CreativeOS Home.dc.html` (dark converging rays).
+
+## Motion preferences
+- Easing: use ease-out everywhere (brand curve `cubic-bezier(0.22, 1, 0.36, 1)` or plain `ease-out`). No bounces or springs unless explicitly asked.
+- Text over resizing/expanding containers must NOT visibly reflow: fade the text out (~0.2s ease-out) when the resize starts and fade it back in once the layout transition finishes (see the hover-expanding beat cards in `CreativeOS Home v3.dc.html` — state-driven `txt` opacity with a timeout matching the flex transition).

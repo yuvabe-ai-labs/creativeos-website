@@ -43,3 +43,9 @@ next-env.d.ts
 # design-canvas reference uploads (large screenshots)
 design-reference/**/uploads/
 design-reference/**/.thumbnail
+
+# claude worktrees + local state
+/.claude/
+
+# windows explorer junk
+desktop.ini

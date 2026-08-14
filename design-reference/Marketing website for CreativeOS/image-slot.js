@@ -148,7 +148,7 @@
   };
   // 2× a ~600px slot in a 1920-wide deck — retina-sharp without making the
   // sidecar enormous. A 1200px WebP at q=0.85 is ~150-300KB.
-  const MAX_DIM = 1200;
+  const MAX_DIM = 1600;
   // Raster formats only. SVG is excluded (can carry script; createImageBitmap
   // on SVG blobs is inconsistent). GIF is excluded because the canvas
   // re-encode keeps only the first frame, so an animated GIF would silently
@@ -259,7 +259,9 @@
   async function toDataUrl(file, targetW) {
     const bitmap = await createImageBitmap(file);
     try {
-      const cap = Math.min(MAX_DIM, Math.max(1, Math.round(targetW * 2)) || MAX_DIM);
+      // 4× headroom: slots often sit inside transform:scale()-down stages, so
+      // the rendered rect under-reports the size the image is really shown at.
+      const cap = Math.min(MAX_DIM, Math.max(1, Math.round(targetW * 4)) || MAX_DIM);
       const scale = Math.min(1, cap / Math.max(bitmap.width, bitmap.height));
       const w = Math.max(1, Math.round(bitmap.width * scale));
       const h = Math.max(1, Math.round(bitmap.height * scale));

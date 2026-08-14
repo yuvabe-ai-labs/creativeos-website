@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>CreativeOS — Create with everything you know</title>
+<style>
+@font-face{font-family:"Clash Display";src:url("fonts/ClashDisplayRegular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Clash Display";src:url("fonts/ClashDisplayMedium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Clash Display";src:url("fonts/ClashDisplaySemibold.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-Medium.ttf") format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:"Gilroy";src:url("fonts/Gilroy-SemiBold.ttf") format("truetype");font-weight:600;font-display:swap}
+html,body{margin:0;padding:0;background:#fcfcfd;font-family:"Gilroy",ui-sans-serif,system-ui,sans-serif;color:#111827;-webkit-font-smoothing:antialiased}
+a{color:#5829c7;text-decoration:none}
+a:hover{color:#4c24ab}
+@keyframes cosray{to{stroke-dashoffset:-212}}
+@keyframes cosring{0%,72%{transform:scale(.7);opacity:0}78%{opacity:.7;transform:scale(.9)}100%{transform:scale(2.1);opacity:0}}
+</style>
+<script src="image-slot.js"></script>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:72px;background:rgba(252,252,253,.92);backdrop-filter:blur(8px);border-bottom:1px solid #eceef2">
+  <div style="display:flex;align-items:center;gap:12px">
+    <span style="width:26px;height:26px;border-radius:8px;background:#5829c7;display:inline-flex;align-items:center;justify-content:center"><span style="width:10px;height:10px;border-radius:50%;background:#ffca2d"></span></span>
+    <span style="font-family:'Clash Display',sans-serif;font-size:21px;font-weight:600;letter-spacing:-.01em">CreativeOS</span>
+    <span style="font:500 12px/1 'Gilroy',sans-serif;letter-spacing:.18em;color:#9ca3af;margin-left:4px">BY YUVABE STUDIOS</span>
+  </div>
+  <nav style="display:flex;align-items:center;gap:36px">
+    <a href="#made" style="font:500 15px/1 'Gilroy',sans-serif;color:#374151">What it makes</a>
+    <a href="#how" style="font:500 15px/1 'Gilroy',sans-serif;color:#374151">How it works</a>
+    <a href="#pilot" style="font:500 15px/1 'Gilroy',sans-serif;color:#374151">Pilot</a>
+    <a href="#pilot" style="font:500 15px/1 'Gilroy',sans-serif;color:#fff;background:#5829c7;border-radius:12px;padding:12px 22px" style-hover="background:#4c24ab">Book a demo</a>
+  </nav>
+</header>
+
+<section data-screen-label="Hero" style="position:relative;overflow:hidden;background-color:#fcfcfd;background-image:radial-gradient(#d7dbe2 1.3px, transparent 1.3px);background-size:26px 26px;padding:56px 64px 40px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:48px;flex-wrap:wrap">
+    <h1 style="margin:0;font-family:'Clash Display',sans-serif;font-size:clamp(56px,6.8vw,110px);font-weight:500;line-height:.95;letter-spacing:-.045em">Everything the agency knows,</h1>
+    <h1 style="margin:0;font-family:'Clash Display',sans-serif;font-size:clamp(56px,6.8vw,110px);font-weight:500;line-height:.95;letter-spacing:-.045em;color:#5829c7">in every asset.</h1>
+  </div>
+  <p style="margin:44px 0 0;max-width:560px;font:500 16px/1.6 'Gilroy',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5829c7">{{ heroTagline }}</p>
+  <div style="height:{{ heroOuterH }};margin-top:56px;display:flex;justify-content:center">
+  <div style="position:relative;width:1400px;height:480px;flex:none;transform:scale({{ heroScale }});transform-origin:top center">
+    <div style="position:absolute;left:120px;top:96px;right:-36px;bottom:4px;border-radius:32px;background-color:rgba(243,240,250,.92);background-image:radial-gradient(46% 40% at 10% 0%, rgba(255,202,45,.3) 0%, rgba(255,202,45,0) 100%),radial-gradient(44% 38% at 92% 6%, rgba(150,136,192,.34) 0%, rgba(150,136,192,0) 100%),radial-gradient(50% 46% at 50% 112%, rgba(88,41,199,.22) 0%, rgba(88,41,199,0) 100%);box-shadow:0 24px 48px rgba(11,15,25,.05);-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 300px);mask-image:linear-gradient(180deg,transparent 0%,#000 300px)"></div>
+    <svg viewBox="0 0 1400 480" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true">
+      <g fill="none" stroke="#c9ced6" stroke-width="1.5">
+        <path d="M194,130 C300,130 330,134 430,130"></path>
+        <path d="M303,356 C350,356 372,352 430,350"></path>
+        <path d="M719,160 C772,160 784,110 838,110"></path>
+        <path d="M988,110 C1052,110 1072,168 1130,175"></path>
+        <path d="M1014,350 C1062,350 1082,362 1130,365"></path>
+      </g>
+    </svg>
+    <div style="position:absolute;left:50px;top:64px;width:144px">
+      <div style="display:flex;gap:12px;align-items:baseline;padding:0 2px 7px"><span style="font:600 11px/1 'Gilroy',sans-serif;letter-spacing:.06em;color:#111827">CONTEXT</span><span style="font:500 11px/1 'Gilroy',sans-serif;letter-spacing:.2em;color:#6b7280">BRAND KB V3</span></div>
+      <div style="height:139px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid #e2e5ea;box-shadow:0 8px 20px rgba(11,15,25,.07)"><image-slot id="v3-hero-brand" shape="rect" placeholder="Brand context screenshot" style="width:100%;height:100%"></image-slot></div>
+    </div>
+    <div style="position:absolute;left:84px;top:286px;width:219px">
+      <div style="display:flex;gap:12px;align-items:baseline;padding:0 2px 7px"><span style="font:600 11px/1 'Gilroy',sans-serif;letter-spacing:.06em;color:#111827">COLOR REFERENCE</span><span style="font:500 11px/1 'Gilroy',sans-serif;letter-spacing:.2em;color:#6b7280">MASTER CONTROLS</span></div>
+      <div style="height:106px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid #e2e5ea;box-shadow:0 8px 20px rgba(11,15,25,.07)"><image-slot id="v3-hero-signal" shape="rect" placeholder="Palette / master controls" style="width:100%;height:100%"></image-slot></div>
+    </div>
+    <div style="position:absolute;left:430px;top:38px;width:289px">
+      <div style="display:flex;gap:12px;align-items:baseline;padding:0 2px 7px"><span style="font:600 11px/1 'Gilroy',sans-serif;letter-spacing:.06em;color:#111827">IMAGE</span><span style="font:500 11px/1 'Gilroy',sans-serif;letter-spacing:.2em;color:#6b7280">SHOT 03</span></div>
+      <div style="height:361px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid #e2e5ea;box-shadow:0 8px 20px rgba(11,15,25,.07)"><image-slot id="v3-hero-canvas" shape="rect" placeholder="Approved still — shot 03" style="width:100%;height:100%"></image-slot></div>
+    </div>
+    <div style="position:absolute;left:868px;top:252px;width:146px">
+      <div style="display:flex;gap:12px;align-items:baseline;padding:0 2px 7px"><span style="font:600 11px/1 'Gilroy',sans-serif;letter-spacing:.06em;color:#111827">IMAGE</span><span style="font:500 11px/1 'Gilroy',sans-serif;letter-spacing:.2em;color:#6b7280">PACKSHOT</span></div>
+      <div style="height:198px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid #e2e5ea;box-shadow:0 8px 20px rgba(11,15,25,.07)"><image-slot id="v3-hero-post" shape="rect" placeholder="Packshot" style="width:100%;height:100%"></image-slot></div>
+    </div>
+    <div style="position:absolute;left:1130px;top:58px;width:283px">
+      <div style="display:flex;gap:12px;align-items:baseline;padding:0 2px 7px"><span style="font:600 11px/1 'Gilroy',sans-serif;letter-spacing:.06em;color:#111827">VIDEO</span><span style="font:500 11px/1 'Gilroy',sans-serif;letter-spacing:.2em;color:#6b7280">REEL · DROP 04</span></div>
+      <div style="height:380px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid #e2e5ea;box-shadow:0 8px 20px rgba(11,15,25,.07)"><image-slot id="v3-hero-reel" shape="rect" placeholder="Finished reel frame (9:16)" style="width:100%;height:100%"></image-slot></div>
+    </div>
+    <div style="position:absolute;left:838px;top:56px;width:150px">
+      <div style="display:flex;gap:12px;align-items:baseline;padding:0 2px 7px"><span style="font:600 11px/1 'Gilroy',sans-serif;letter-spacing:.06em;color:#111827">TEXT</span></div>
+      <div style="border-radius:12px;background:#fff;border:1px solid #e2e5ea;box-shadow:0 8px 20px rgba(11,15,25,.07);padding:13px 14px;font:400 11.5px/1.5 'Gilroy',sans-serif;color:#6b7280">30s reel for the summer drop. Hook: morning routine, product on marble, warm light. Bottle turns to camera, splash, logo end-card.</div>
+    </div>
+    <svg viewBox="0 0 1400 480" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" aria-hidden="true">
+      <g fill="#fff" stroke="#b6bcc6" stroke-width="1.5">
+        <circle cx="194" cy="130" r="5"></circle><circle cx="303" cy="356" r="5"></circle>
+        <circle cx="430" cy="130" r="5"></circle><circle cx="430" cy="350" r="5"></circle>
+        <circle cx="719" cy="160" r="5"></circle><circle cx="838" cy="110" r="5"></circle>
+        <circle cx="988" cy="110" r="5"></circle><circle cx="1014" cy="350" r="5"></circle>
+        <circle cx="1130" cy="175" r="5"></circle><circle cx="1130" cy="365" r="5"></circle>
+      </g>
+    </svg>
+  </div>
+  </div>
+</section>
+
+<section id="made" data-screen-label="Verb wall" style="max-width:1280px;margin:0 auto;padding:110px 56px 40px">
+  <div style="font:500 13px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:#6b7280">MADE FOR D2C PRODUCTION</div>
+  <h2 style="margin:22px 0 0;max-width:22ch;font-family:'Clash Display',sans-serif;font-size:52px;font-weight:500;line-height:1.05;letter-spacing:-.03em">Every act of production, on one canvas.</h2>
+  <div style="margin-top:56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:120px;gap:24px">
+    <div style="grid-row:span 3;min-width:0;background:#fff;border:1px solid #e5e7eb;border-radius:20px;box-shadow:0 8px 20px rgba(11,15,25,.06);padding:14px;display:flex;flex-direction:column" style-hover="transform:translateY(-2px)">
+      <image-slot id="v3-act-script" shape="rounded" radius="12" placeholder="Script parsed into shot fields" style="width:100%;flex:1"></image-slot>
+      <div style="padding:16px 8px 6px"><div style="font:600 19px/1.3 'Gilroy',sans-serif">Script → shot list</div><div style="margin-top:4px;font:400 15px/1.45 'Gilroy',sans-serif;color:#6b7280">Paste a finished script. Get asset-ready shots.</div></div>
+    </div>
+    <div style="grid-row:span 4;min-width:0;background:#fff;border:1px solid #e5e7eb;border-radius:20px;box-shadow:0 8px 20px rgba(11,15,25,.06);padding:14px;display:flex;flex-direction:column" style-hover="transform:translateY(-2px)">
+      <image-slot id="v3-act-lifestyle" shape="rounded" radius="12" placeholder="Packshot placed in a lifestyle scene" style="width:100%;flex:1"></image-slot>
+      <div style="padding:16px 8px 6px"><div style="font:600 19px/1.3 'Gilroy',sans-serif">Packshot → lifestyle scene</div><div style="margin-top:4px;font:400 15px/1.45 'Gilroy',sans-serif;color:#6b7280">Your product, staged anywhere — on brand.</div></div>
+    </div>
+    <div style="grid-row:span 3;min-width:0;background:#fff;border:1px solid #e5e7eb;border-radius:20px;box-shadow:0 8px 20px rgba(11,15,25,.06);padding:14px;display:flex;flex-direction:column" style-hover="transform:translateY(-2px)">
+      <image-slot id="v3-act-swap" shape="rounded" radius="12" placeholder="Product swapped, scene kept" style="width:100%;flex:1"></image-slot>
+      <div style="padding:16px 8px 6px"><div style="font:600 19px/1.3 'Gilroy',sans-serif">Swap the product, keep the scene</div><div style="margin-top:4px;font:400 15px/1.45 'Gilroy',sans-serif;color:#6b7280">Remove, replace, add — each edit a tracked attempt.</div></div>
+    </div>
+    <div style="grid-row:span 4;min-width:0;background:#fff;border:1px solid #e5e7eb;border-radius:20px;box-shadow:0 8px 20px rgba(11,15,25,.06);padding:14px;display:flex;flex-direction:column" style-hover="transform:translateY(-2px)">
+      <image-slot id="v3-act-clip" shape="rounded" radius="12" placeholder="Approved still animated into a clip" style="width:100%;flex:1"></image-slot>
+      <div style="padding:16px 8px 6px"><div style="font:600 19px/1.3 'Gilroy',sans-serif">One still → reel clip</div><div style="margin-top:4px;font:400 15px/1.45 'Gilroy',sans-serif;color:#6b7280">Video grounded in the frame you already approved.</div></div>
+    </div>
+    <div style="grid-row:span 3;min-width:0;background:#fff;border:1px solid #e5e7eb;border-radius:20px;box-shadow:0 8px 20px rgba(11,15,25,.06);padding:14px;display:flex;flex-direction:column" style-hover="transform:translateY(-2px)">
+      <image-slot id="v3-act-takes" shape="rounded" radius="12" placeholder="4 role-aware takes of one shot" style="width:100%;flex:1"></image-slot>
+      <div style="padding:16px 8px 6px"><div style="font:600 19px/1.3 'Gilroy',sans-serif">Four takes per shot</div><div style="margin-top:4px;font:400 15px/1.45 'Gilroy',sans-serif;color:#6b7280">Role-aware variations. Pick, don't prompt.</div></div>
+    </div>
+    <div style="grid-row:span 2;min-width:0;background:#140f2b;border-radius:20px;box-shadow:0 8px 20px rgba(11,15,25,.12);padding:28px;display:flex;flex-direction:column;justify-content:center;background-image:radial-gradient(60% 80% at 90% 0%, rgba(150,136,192,.3) 0%, rgba(150,136,192,0) 100%)">
+      <div style="font:600 19px/1.3 'Gilroy',sans-serif;color:#fff">Same lens, same light, every asset</div>
+      <div style="margin-top:6px;font:400 15px/1.5 'Gilroy',sans-serif;color:rgba(255,255,255,.65)">Lens, lighting, and palette are set values, not vibes — they carry across the whole batch.</div>
+    </div>
+  </div>
+</section>
+
+<section id="how" data-screen-label="Three beats" style="background:#050506;padding:110px 56px 120px">
+  <div style="max-width:1400px;margin:0 auto">
+    <h2 style="margin:0;max-width:24ch;font-family:'Clash Display',sans-serif;font-size:52px;font-weight:500;line-height:1.05;letter-spacing:-.03em;color:#fff">Remember. Create. Compound.</h2>
+    <p style="margin:18px 0 0;max-width:52ch;font:400 19px/1.55 'Gilroy',sans-serif;color:rgba(255,255,255,.55)">The canvas carries what your studio knows, so every asset starts ahead of the last.</p>
+    <div style="margin-top:64px;display:flex;gap:20px;align-items:stretch">
+    <div onMouseEnter="{{ hov1 }}" onMouseLeave="{{ hovOff }}" style="position:relative;flex:{{ f1 }} 1 0%;min-width:0;overflow:hidden;border-radius:24px;background:#0e0e11;border:1px solid rgba(255,255,255,.08);min-height:660px;transition:flex-grow .55s cubic-bezier(.22,1,.36,1)">
+      <image-slot id="v3-beat-remember" shape="rect" placeholder="Brand context screenshot" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 56%,rgba(0,0,0,.74) 100%);pointer-events:none"></div>
+      <div style="position:absolute;left:36px;top:32px;right:36px;display:flex;align-items:baseline;gap:14px;white-space:nowrap;pointer-events:none">
+        <span style="font-family:'Clash Display',sans-serif;font-size:{{ h1 }};font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.32);transition:font-size .55s cubic-bezier(.22,1,.36,1)">01</span>
+        <span style="font-family:'Clash Display',sans-serif;font-size:{{ h1 }};font-weight:500;letter-spacing:-.02em;color:#fff;transition:font-size .55s cubic-bezier(.22,1,.36,1)">Remember</span>
+      </div>
+      <div style="position:absolute;left:36px;right:36px;bottom:30px;pointer-events:none;opacity:{{ txt }};transition:opacity .22s ease-out">
+        <div style="font:600 22px/1.3 'Gilroy',sans-serif;color:#fff">The brand is set up once</div>
+        <p style="margin:8px 0 0;font:400 16px/1.55 'Gilroy',sans-serif;color:rgba(255,255,255,.75);text-wrap:pretty">Versioned brand context — voice, claims, palette, guardrails — attached to every generation.</p>
+      </div>
+    </div>
+    <div onMouseEnter="{{ hov2 }}" onMouseLeave="{{ hovOff }}" style="position:relative;flex:{{ f2 }} 1 0%;min-width:0;overflow:hidden;border-radius:24px;background:#0e0e11;border:1px solid rgba(255,255,255,.08);min-height:660px;transition:flex-grow .55s cubic-bezier(.22,1,.36,1)">
+      <image-slot id="v3-beat-create" shape="rect" placeholder="Node canvas with a full production" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 56%,rgba(0,0,0,.74) 100%);pointer-events:none"></div>
+      <div style="position:absolute;left:36px;top:32px;right:36px;display:flex;align-items:baseline;gap:14px;white-space:nowrap;pointer-events:none">
+        <span style="font-family:'Clash Display',sans-serif;font-size:{{ h2 }};font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.32);transition:font-size .55s cubic-bezier(.22,1,.36,1)">02</span>
+        <span style="font-family:'Clash Display',sans-serif;font-size:{{ h2 }};font-weight:500;letter-spacing:-.02em;color:#fff;transition:font-size .55s cubic-bezier(.22,1,.36,1)">Create</span>
+      </div>
+      <div style="position:absolute;left:36px;right:36px;bottom:30px;pointer-events:none;opacity:{{ txt }};transition:opacity .22s ease-out">
+        <div style="font:600 22px/1.3 'Gilroy',sans-serif;color:#fff">Script to reel, one canvas</div>
+        <p style="margin:8px 0 0;font:400 16px/1.55 'Gilroy',sans-serif;color:rgba(255,255,255,.75);text-wrap:pretty">Fan a script into shots, stills, clips — with a review checkpoint before video.</p>
+      </div>
+    </div>
+    <div onMouseEnter="{{ hov3 }}" onMouseLeave="{{ hovOff }}" style="position:relative;flex:{{ f3 }} 1 0%;min-width:0;overflow:hidden;border-radius:24px;background:#0e0e11;border:1px solid rgba(255,255,255,.08);min-height:660px;transition:flex-grow .55s cubic-bezier(.22,1,.36,1)">
+      <image-slot id="v3-beat-out1" shape="rect" placeholder="Output — a finished reel frame" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 56%,rgba(0,0,0,.74) 100%);pointer-events:none"></div>
+      <div style="position:absolute;left:36px;top:32px;right:36px;display:flex;align-items:baseline;gap:14px;white-space:nowrap;pointer-events:none">
+        <span style="font-family:'Clash Display',sans-serif;font-size:{{ h3 }};font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.32);transition:font-size .55s cubic-bezier(.22,1,.36,1)">03</span>
+        <span style="font-family:'Clash Display',sans-serif;font-size:{{ h3 }};font-weight:500;letter-spacing:-.02em;color:#fff;transition:font-size .55s cubic-bezier(.22,1,.36,1)">Compound</span>
+      </div>
+      <div style="position:absolute;left:36px;right:36px;bottom:30px;pointer-events:none;opacity:{{ txt }};transition:opacity .22s ease-out">
+        <div style="font:600 22px/1.3 'Gilroy',sans-serif;color:#fff">Reel 2 starts where reel 1 ended</div>
+        <p style="margin:8px 0 0;font:400 16px/1.55 'Gilroy',sans-serif;color:rgba(255,255,255,.75);text-wrap:pretty">Every attempt and approval is captured. What worked feeds the next asset.</p><div style="display:flex;gap:26px;margin-top:16px;flex-wrap:wrap"><div style="white-space:nowrap"><span style="font-family:'Clash Display',sans-serif;font-size:24px;font-weight:600;color:#ffca2d">75%</span><span style="font:400 14px/1.3 'Gilroy',sans-serif;color:rgba(255,255,255,.65)"> less time</span></div><div style="white-space:nowrap"><span style="font-family:'Clash Display',sans-serif;font-size:24px;font-weight:600;color:#ffca2d">2x</span><span style="font:400 14px/1.3 'Gilroy',sans-serif;color:rgba(255,255,255,.65)"> lower cost</span></div><div style="white-space:nowrap"><span style="font-family:'Clash Display',sans-serif;font-size:24px;font-weight:600;color:#ffca2d">4x</span><span style="font:400 14px/1.3 'Gilroy',sans-serif;color:rgba(255,255,255,.65)"> faster</span></div></div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section id="pilot" data-screen-label="Pilot CTA" style="background-color:#140f2b;background-image:radial-gradient(54% 42% at 88% 10%, rgba(150,136,192,.24) 0%, rgba(150,136,192,0) 100%),radial-gradient(44% 32% at 20% 100%, rgba(255,202,45,.14) 0%, rgba(255,202,45,0) 100%);padding:120px 56px;text-align:center">
+  <div style="font:500 13px/1 'Gilroy',sans-serif;letter-spacing:.22em;color:rgba(255,255,255,.55)">THE PILOT</div>
+  <h2 style="margin:26px auto 0;max-width:18ch;font-family:'Clash Display',sans-serif;font-size:60px;font-weight:500;line-height:1.05;letter-spacing:-.03em;color:#fff">Pilot it on one D2C brand.</h2>
+  <p style="margin:24px auto 0;max-width:44ch;font:400 19px/1.6 'Gilroy',sans-serif;color:rgba(255,255,255,.68)">One client, one recurring format, a defined batch — measured against your current process. No migration, no commitment.</p>
+  <a href="mailto:studios@yuvabe.com" style="margin-top:40px;display:inline-flex;align-items:center;gap:10px;background:#5829c7;color:#fff;border-radius:12px;padding:18px 36px;font:500 18px/1 'Gilroy',sans-serif" style-hover="background:#4c24ab">Book a demo</a>
+  <div style="margin-top:28px;font:400 15px/1.5 'Gilroy',sans-serif;color:rgba(255,255,255,.45)">studios@yuvabe.com · CreativeOS by Yuvabe Studios</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroTagline&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Everything the agency knows, in every asset&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { hov: 0, txt: 1, w: typeof window !== 'undefined' ? window.innerWidth : 1440 };
+  componentDidMount() {
+    this._onR = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this._onR);
+  }
+  setHov(i) {
+    if (i === this.state.hov) return;
+    clearTimeout(this._t);
+    this.setState({ hov: i, txt: 0 });
+    this._t = setTimeout(() => this.setState({ txt: 1 }), 570);
+  }
+  componentWillUnmount() { clearTimeout(this._t); window.removeEventListener('resize', this._onR); }
+  renderVals() {
+    const h = this.state.hov;
+    const scale = Math.min(1, (this.state.w - 40) / 1400);
+    const v = { txt: this.state.txt, heroScale: scale, heroOuterH: Math.round(496 * scale) + 'px', heroTagline: this.props.heroTagline ?? 'Everything the agency knows, in every asset' };
+    for (let i = 1; i <= 3; i++) {
+      v['f' + i] = h === i ? '2.1' : '1';
+      v['h' + i] = h === i ? 'min(58px,4vw)' : (h === 0 ? 'min(38px,2.6vw)' : 'min(30px,1.9vw)');
+      v['hov' + i] = () => this.setHov(i);
+    }
+    v.hovOff = () => this.setHov(0);
+    return v;
+  }
+}
+</script>
+</body>
+</html>
