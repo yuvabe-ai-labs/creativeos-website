@@ -119,7 +119,3 @@ instead all leave that SSR opacity in place and the content never appears.
 
 - `/product` and `/pilot`. The header, footer and every CTA already link to
   them; both routes 404 until their Design Canvas pages are ported.
-- The **production canvas** screenshot in section 03. The source's `<image-slot>`
-  ships empty, so a placeholder renders instead — pass `src` to
-  `ProductionCanvas` in `src/components/sections/workflow.tsx` once a capture
-  exists.
