@@ -43,7 +43,7 @@ export function Pilot() {
         </RevealGroup>
 
         <Reveal delay={0.08} className="mt-8 flex flex-wrap items-center gap-4">
-          <CtaLink href="/pilot">Apply for a Pilot</CtaLink>
+          <CtaLink href="/pilot">Start with a Pilot</CtaLink>
           <span className="text-[15px] leading-[22px] text-ink-soft">
             Best suited to agencies producing recurring reels and static posts
             for D2C clients.

@@ -29,18 +29,18 @@ export function SiteHeader({ tone = "light" }: SiteHeaderProps) {
       )}
     >
       <div className="mx-auto flex h-[72px] max-w-[1240px] items-center justify-between gap-6 px-8">
-        <Link
-          href="/"
-          className={cn("flex items-center gap-2.5", dark ? "text-white" : "text-ink")}
-        >
-          <span
-            className={cn(
-              "block size-2.5 rounded-[3px]",
-              dark ? "bg-lavender" : "bg-purple",
-            )}
-          />
+        <Link href="/" className={dark ? "text-white" : "text-ink"}>
           <span className="font-display text-[19px] leading-none font-medium tracking-[-0.02em]">
-            CreativeOS
+            Creative
+            <span
+              className={
+                dark
+                  ? "text-[#7343e3] [text-shadow:0_0_16px_rgba(115,67,227,.6)]"
+                  : "text-purple"
+              }
+            >
+              OS
+            </span>
           </span>
         </Link>
 
@@ -64,7 +64,7 @@ export function SiteHeader({ tone = "light" }: SiteHeaderProps) {
             size="compact"
             className={cn(dark && "rounded-full bg-yellow text-ink hover:bg-[#ffd75c]")}
           >
-            Apply for a Pilot
+            Start with a Pilot
           </CtaLink>
         </nav>
       </div>

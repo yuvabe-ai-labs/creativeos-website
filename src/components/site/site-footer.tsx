@@ -42,10 +42,12 @@ export function SiteFooter() {
     <footer className="bg-night bg-[linear-gradient(180deg,#1a1237_0%,#0f0c22_100%)]">
       <RevealGroup className="mx-auto grid max-w-[1240px] grid-cols-1 gap-10 px-8 pt-16 pb-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <RevealItem>
-          <div className="mb-[18px] flex items-center gap-2.5">
-            <span className="block size-2.5 rounded-[3px] bg-purple" />
+          <div className="mb-[18px]">
             <span className="font-display text-[19px] leading-none font-medium tracking-[-0.02em] text-white">
-              CreativeOS
+              Creative
+              <span className="text-[#7343e3] [text-shadow:0_0_16px_rgba(115,67,227,.6)]">
+                OS
+              </span>
             </span>
           </div>
           <p className="mt-0 mb-6 max-w-[34ch] text-[14px] leading-[21px] text-white/55">

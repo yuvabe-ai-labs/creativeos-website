@@ -8,7 +8,7 @@ import { SITE } from "@/lib/site";
 import { planFromQuery } from "@/lib/submissions";
 
 export const metadata: Metadata = {
-  title: `Apply for a pilot | ${SITE.product}`,
+  title: `Start with a pilot | ${SITE.product}`,
   description:
     "Pilot CreativeOS with one active D2C brand. One recurring workflow, measured against how you produce today — findings shared either way.",
   alternates: { canonical: "/pilot" },
