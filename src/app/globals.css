@@ -277,6 +277,51 @@
     opacity: 0;
   }
 }
+/* Bounce light: as the dot reaches a marker, its patch of capsule eases on
+   to a steady bulb-glow — no flash, no pop — and holds it as long as the
+   marker stays lit. A hold must run to the diagram's absolute 88% reset,
+   which animation-delay cannot express (see the latch note below), so these
+   are six keyframes with the arrival percentages baked in — the same numbers
+   as `cosstage1`-`cosstage6`. Opacity only, so light and dark tones share
+   them; the colour lives in the gradient fills. The held level reads
+   `--cos-glow-bulb` (set on the svg by the temporary tuning panel) with the
+   shipped value as fallback. */
+@keyframes cosstageGlow1 {
+  0%, 0.833% { opacity: 0; }
+  2.733% { opacity: var(--cos-glow-bulb, 0.09); }
+  88% { opacity: var(--cos-glow-bulb, 0.09); }
+  99%, 100% { opacity: 0; }
+}
+@keyframes cosstageGlow2 {
+  0%, 12.083% { opacity: 0; }
+  13.983% { opacity: var(--cos-glow-bulb, 0.09); }
+  88% { opacity: var(--cos-glow-bulb, 0.09); }
+  99%, 100% { opacity: 0; }
+}
+@keyframes cosstageGlow3 {
+  0%, 23.333% { opacity: 0; }
+  25.233% { opacity: var(--cos-glow-bulb, 0.09); }
+  88% { opacity: var(--cos-glow-bulb, 0.09); }
+  99%, 100% { opacity: 0; }
+}
+@keyframes cosstageGlow4 {
+  0%, 34.583% { opacity: 0; }
+  36.483% { opacity: var(--cos-glow-bulb, 0.09); }
+  88% { opacity: var(--cos-glow-bulb, 0.09); }
+  99%, 100% { opacity: 0; }
+}
+@keyframes cosstageGlow5 {
+  0%, 60.25% { opacity: 0; }
+  62.15% { opacity: var(--cos-glow-bulb, 0.09); }
+  88% { opacity: var(--cos-glow-bulb, 0.09); }
+  99%, 100% { opacity: 0; }
+}
+@keyframes cosstageGlow6 {
+  0%, 75.583% { opacity: 0; }
+  77.483% { opacity: var(--cos-glow-bulb, 0.09); }
+  88% { opacity: var(--cos-glow-bulb, 0.09); }
+  99%, 100% { opacity: 0; }
+}
 /* Each stage marker latches when the dot reaches it and holds until the loop
    restarts — the same device as section 01's chips, and for the same reason:
    a latch has to run to an absolute 100%, so `animation-delay` cannot express
