@@ -18,8 +18,8 @@ import { useReducedMotion } from "motion/react";
   Each panel's ground is a product capture (public/assets/help-videos) that
   sits still on its first frame and plays only while its panel is hovered —
   the same `hovered` state that drives the expansion, so the panel that
-  grows is the one that moves. Paused, not reset, on leave; skipped
-  entirely under reduced motion.
+  grows is the one that moves. Every hover restarts the take from the
+  beginning; skipped entirely under reduced motion.
 
   The captures are light product UI on a dark page, so the panels run a
   tone flip: idle, the video is ghosted to 15% into the night card and the
@@ -79,14 +79,18 @@ export function CanvasPipelinePanels() {
 
   useEffect(() => () => window.clearTimeout(timer.current), []);
 
-  // The hovered panel's capture plays; the rest hold their frame. Paused,
-  // not reset, so re-hovering resumes. play() rejects if a pause interrupts
-  // the load — harmless, swallow it.
+  // The hovered panel's capture plays from the top — every hover replays
+  // the take from its first beat; the rest hold their frame. play() rejects
+  // if a pause interrupts the load — harmless, swallow it.
   useEffect(() => {
     videos.current.forEach((v, i) => {
       if (!v) return;
-      if (hovered === i + 1 && !reduced) v.play().catch(() => {});
-      else v.pause();
+      if (hovered === i + 1 && !reduced) {
+        v.currentTime = 0;
+        v.play().catch(() => {});
+      } else {
+        v.pause();
+      }
     });
   }, [hovered, reduced]);
 
