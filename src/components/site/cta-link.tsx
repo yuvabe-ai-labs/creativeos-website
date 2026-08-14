@@ -38,8 +38,11 @@ export function CtaLink({
   withArrow = true,
   className,
 }: CtaLinkProps) {
-  const isExternal = /^(https?:|mailto:)/.test(href);
-  const Anchor = isExternal ? "a" : Link;
+  // Hash links render native <a> as well: the App Router's client-side
+  // navigation is unreliable at scrolling to same-page fragments, while the
+  // browser's own fragment handling always lands.
+  const isNative = /^(https?:|mailto:)/.test(href) || href.includes("#");
+  const Anchor = isNative ? "a" : Link;
 
   return (
     <Button

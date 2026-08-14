@@ -69,15 +69,20 @@ export function SiteFooter() {
             <div className="mb-1 text-[12px] leading-none font-medium tracking-[0.22em] text-white/40 uppercase">
               {column.heading}
             </div>
-            {column.links.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-[14px] leading-none text-white/75 hover:text-white"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {/* Hash links are native <a>s — the client router is unreliable
+                at scrolling to fragments; the browser always lands. */}
+            {column.links.map((link) => {
+              const Anchor = link.href.includes("#") ? "a" : Link;
+              return (
+                <Anchor
+                  key={link.label}
+                  href={link.href}
+                  className="text-[14px] leading-none text-white/75 hover:text-white"
+                >
+                  {link.label}
+                </Anchor>
+              );
+            })}
           </RevealItem>
         ))}
       </RevealGroup>

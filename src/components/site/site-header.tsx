@@ -45,20 +45,25 @@ export function SiteHeader({ tone = "light" }: SiteHeaderProps) {
         </Link>
 
         <nav className="flex items-center gap-[30px]">
-          {NAV.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={cn(
-                "hidden text-[14px] leading-none font-medium sm:inline",
-                dark
-                  ? "text-white/65 hover:text-white"
-                  : "text-ink-muted hover:text-ink",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {/* Hash links are native <a>s — the client router is unreliable at
+              scrolling to same-page fragments; the browser always lands. */}
+          {NAV.map((item) => {
+            const Anchor = item.href.includes("#") ? "a" : Link;
+            return (
+              <Anchor
+                key={item.label}
+                href={item.href}
+                className={cn(
+                  "hidden text-[14px] leading-none font-medium sm:inline",
+                  dark
+                    ? "text-white/65 hover:text-white"
+                    : "text-ink-muted hover:text-ink",
+                )}
+              >
+                {item.label}
+              </Anchor>
+            );
+          })}
           <CtaLink
             href="/pilot"
             size="compact"

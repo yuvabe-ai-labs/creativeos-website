@@ -27,7 +27,13 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("border-b", dark ? "border-white/10 bg-night" : "border-line", className)}
+      className={cn(
+        // scroll-mt keeps anchored sections from landing under the 72px
+        // sticky header.
+        "scroll-mt-[72px] border-b",
+        dark ? "border-white/10 bg-night" : "border-line",
+        className,
+      )}
     >
       <div className="mx-auto flex max-w-[1240px] flex-col gap-7 px-8 py-24">
         {eyebrow ? (
