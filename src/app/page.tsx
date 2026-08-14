@@ -1,3 +1,4 @@
+import { CanvasPipeline } from "@/components/sections/canvas-pipeline";
 import { ContextWeb } from "@/components/sections/context-web";
 import { Faq } from "@/components/sections/faq";
 import { FinalCta } from "@/components/sections/final-cta";
@@ -5,7 +6,6 @@ import { HeroFlora } from "@/components/sections/hero-flora";
 import { MarketSignals } from "@/components/sections/market-signals";
 import { Pilot } from "@/components/sections/pilot";
 import { Pricing } from "@/components/sections/pricing";
-import { ToolSprawl } from "@/components/sections/tool-sprawl";
 import { Workflow } from "@/components/sections/workflow";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -25,7 +25,7 @@ export default function HomePage() {
         <ContextWeb />
         <MarketSignals />
         <Workflow />
-        <ToolSprawl />
+        <CanvasPipeline />
         <Pilot />
         <Pricing />
         <Faq />
