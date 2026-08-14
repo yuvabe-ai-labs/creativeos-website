@@ -227,7 +227,9 @@ export function CanvasPipelinePanels() {
                 {panel.copy}
               </p>
               {panel.stats ? (
-                <div className={`mt-4 flex-wrap gap-[26px] ${active ? "hidden" : "flex"}`}>
+                <div
+                  className={`mt-3 flex-wrap gap-x-[26px] gap-y-2 ${active ? "hidden" : "flex"}`}
+                >
                   {panel.stats.map((stat) => (
                     <div key={stat.value} className="whitespace-nowrap">
                       <span
