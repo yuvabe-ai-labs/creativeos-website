@@ -30,7 +30,7 @@ export function LegalPage({
       <SiteHeader />
       <main className="w-full">
         <section className="border-b border-line bg-white">
-          <div className="mx-auto max-w-[1240px] px-8 pt-20 pb-14">
+          <div className="mx-auto max-w-[1240px] px-5 pt-14 pb-10 sm:px-8 sm:pt-20 sm:pb-14">
             <Reveal>
               <div className="text-[12px] leading-[1.4] font-medium tracking-[0.22em] text-ink-soft uppercase">
                 Legal
@@ -38,7 +38,7 @@ export function LegalPage({
               <h1 className="font-display mt-6 mb-0 max-w-[20ch] text-[clamp(2rem,3.4vw,3.2rem)] leading-[1.06] font-semibold tracking-[-0.025em] text-ink">
                 {title}
               </h1>
-              <p className="mt-6 mb-0 max-w-[62ch] text-[18px] leading-[28px] text-ink-muted text-pretty">
+              <p className="mt-5 mb-0 max-w-[62ch] text-[17px] leading-[26px] text-ink-muted text-pretty sm:mt-6 sm:text-[18px] sm:leading-[28px]">
                 {summary}
               </p>
               <p className="mt-6 mb-0 text-[14px] leading-[21px] text-ink-faint">
@@ -50,10 +50,10 @@ export function LegalPage({
         </section>
 
         <section className="border-b border-line">
-          <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-12 px-8 py-16 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-16">
+          <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-10 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-16">
             <nav
               aria-label="On this page"
-              className="top-28 h-max lg:sticky lg:block"
+              className="top-16 h-max sm:top-28 lg:sticky lg:block"
             >
               <div className="mb-4 text-[12px] leading-none font-medium tracking-[0.22em] text-ink-faint uppercase">
                 On this page

@@ -41,7 +41,7 @@ export default async function PilotPage({
           which puts the form directly after the headline.
         */}
         <section className="border-b border-line bg-white">
-          <div className="mx-auto grid max-w-[1240px] grid-cols-1 items-start gap-12 px-8 pt-16 pb-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+          <div className="mx-auto grid max-w-[1240px] grid-cols-1 items-start gap-10 px-5 pt-12 pb-16 sm:px-8 sm:pt-16 sm:pb-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
             <Reveal>
               <div className="mb-6 text-[12px] leading-[1.4] font-medium tracking-[0.22em] text-ink-soft uppercase">
                 Pilot programme
@@ -49,7 +49,7 @@ export default async function PilotPage({
               <h1 className="font-display m-0 max-w-[20ch] text-[clamp(2.3rem,4.4vw,3.8rem)] leading-[1.05] font-normal tracking-[-0.03em] text-ink">
                 Pilot CreativeOS with one active D2C brand.
               </h1>
-              <p className="mt-[26px] mb-0 max-w-[52ch] text-[18px] leading-[28px] text-ink-muted text-pretty">
+              <p className="mt-5 mb-0 max-w-[52ch] text-[17px] leading-[26px] text-ink-muted text-pretty sm:mt-[26px] sm:text-[18px] sm:leading-[28px]">
                 One brand. One recurring workflow. Measured against how you
                 produce today — findings shared either way.
               </p>

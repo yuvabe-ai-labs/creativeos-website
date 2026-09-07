@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Reveal } from "@/components/motion/reveal";
+import { ScaleToFit } from "@/components/site/scale-to-fit";
 import { Section, SectionHeading, SectionLede } from "@/components/site/section";
 
 /*
@@ -11,9 +12,15 @@ import { Section, SectionHeading, SectionLede } from "@/components/site/section"
   up as they land. Set once, inherited by every asset — said in one 9s loop.
 
   HTML overlays and the SVG underlay share one coordinate system: the SVG is
-  1200x680 with preserveAspectRatio="none", and every HTML element is placed
-  at (x/1200, y/680) percentages with a centre translate — so the drawn paths
-  meet the chips and cards at any container width.
+  1200x680 and every HTML element is placed at (x/1200, y/680) percentages
+  with a centre translate, so the drawn paths meet the chips and cards.
+
+  That agreement only holds at 1200x680 — the chips and thumbs are sized in
+  literal px, which do not stretch with the box. So the board keeps its native
+  1200x680 at every screen and `ScaleToFit` shrinks the whole thing to the
+  width available. Below `lg` it is not drawn at all and the stacked version
+  runs, because past roughly 0.85 scale the 13px chip labels stop being
+  readable.
 */
 
 const CHIPS: Array<{
@@ -151,9 +158,22 @@ export function ContextWeb() {
           </SectionLede>
         </Reveal>
 
-        {/* The canvas. */}
+        {/*
+          The canvas, at its authored 1200x680, scaled down to fit.
+
+          It used to be drawn from `md` up in a box free to reflow, which
+          pulled its two halves apart: the SVG stretched with
+          preserveAspectRatio="none" while the px-sized chips kept their size,
+          so by 768px the chips had collided with each other and run off the
+          left edge. Scaling keeps them in register at every width.
+        */}
         <Reveal delay={0.08}>
-          <div data-signal-flow className="relative mt-14 hidden h-[680px] md:block">
+          <ScaleToFit
+            width={1200}
+            height={680}
+            className="mt-14 hidden lg:block"
+          >
+            <div data-signal-flow className="relative h-full w-full">
             <svg
               aria-hidden="true"
               className="absolute inset-0 h-full w-full"
@@ -385,12 +405,16 @@ export function ContextWeb() {
             >
               One context · many outputs
             </p>
-          </div>
+            </div>
+          </ScaleToFit>
         </Reveal>
 
-        {/* The same story stacked, for phones: chips, asset, deliverables. */}
+        {/* The same story stacked, for phones and tablets: chips, asset,
+            deliverables. It runs up to `lg` because that is where the scaled
+            board's 13px chip type stops being readable — below ~1024 the
+            scale drops under 0.85 and the labels fall to ~11px. */}
         <Reveal delay={0.08}>
-          <div className="mt-12 md:hidden">
+          <div className="mt-12 lg:hidden">
             <div className="flex flex-wrap justify-center gap-2.5">
               {CHIPS.map((chip) => (
                 <span
@@ -410,9 +434,11 @@ export function ContextWeb() {
                 className="object-cover"
               />
             </div>
-            <div className="mt-8 flex items-start justify-center gap-4">
+            <div className="mt-8 flex items-start justify-center gap-3 sm:gap-4">
               {OUTPUTS.map((out) => (
-                <div key={out.caption} className="w-[96px]">
+                /* Percentage-first so three of these plus their gaps still fit
+                   inside a 320px viewport's 280px of content width. */
+                <div key={out.caption} className="w-[28%] max-w-[96px]">
                   <div
                     className="relative w-full overflow-hidden rounded-[12px] shadow-[0_10px_28px_rgba(11,15,25,.14)] ring-1 ring-black/5"
                     style={{ aspectRatio: out.ratio }}

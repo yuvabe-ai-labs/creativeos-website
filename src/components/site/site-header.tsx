@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { CtaLink } from "@/components/site/cta-link";
+import { SiteNavToggle } from "@/components/site/site-nav-toggle";
 import { cn } from "@/lib/utils";
 
 /*
@@ -24,13 +25,15 @@ export function SiteHeader({ tone = "light" }: SiteHeaderProps) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b backdrop-blur-[10px]",
+        // `relative` anchors the phone nav sheet, which drops from the bar's
+        // underside rather than covering the page.
+        "relative sticky top-0 z-40 border-b backdrop-blur-[10px]",
         dark ? "border-white/10 bg-night/85" : "border-line bg-canvas/92",
       )}
     >
-      <div className="mx-auto flex h-[72px] max-w-[1240px] items-center justify-between gap-6 px-8">
+      <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-4 px-5 sm:h-[72px] sm:gap-6 sm:px-8">
         <Link href="/" className={dark ? "text-white" : "text-ink"}>
-          <span className="font-display text-[19px] leading-none font-medium tracking-[-0.02em]">
+          <span className="font-display text-[17px] leading-none font-medium tracking-[-0.02em] sm:text-[19px]">
             Creative
             <span
               className={
@@ -44,7 +47,7 @@ export function SiteHeader({ tone = "light" }: SiteHeaderProps) {
           </span>
         </Link>
 
-        <nav className="flex items-center gap-[30px]">
+        <nav className="flex items-center gap-5 sm:gap-[30px]">
           {/* Hash links are native <a>s — the client router is unreliable at
               scrolling to same-page fragments; the browser always lands. */}
           {NAV.map((item) => {
@@ -64,13 +67,25 @@ export function SiteHeader({ tone = "light" }: SiteHeaderProps) {
               </Anchor>
             );
           })}
+          {/*
+            The CTA stays in the bar at every width — it is the page's one
+            persistent conversion point — but at 320px a wordmark, a labelled
+            button and a menu control do not all fit at full size. So below
+            `sm` it drops the arrow, tightens its padding and shortens its
+            label, which is what buys the menu control its room.
+          */}
           <CtaLink
             href="/pilot"
             size="compact"
-            className={cn(dark && "rounded-full bg-yellow text-ink hover:bg-[#ffd75c]")}
+            className={cn(
+              "px-3 py-2.5 text-[13px] max-sm:gap-0 max-sm:[&>svg]:hidden sm:px-[18px] sm:py-[10px] sm:text-[14px]",
+              dark && "rounded-full bg-yellow text-ink hover:bg-[#ffd75c]",
+            )}
           >
-            Start with a Pilot
+            <span className="sm:hidden">Start a Pilot</span>
+            <span className="hidden sm:inline">Start with a Pilot</span>
           </CtaLink>
+          <SiteNavToggle items={NAV} dark={dark} />
         </nav>
       </div>
     </header>

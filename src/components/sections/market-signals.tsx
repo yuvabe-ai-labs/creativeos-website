@@ -1,6 +1,11 @@
 import { SignalLens } from "@/components/diagrams/signal-lens";
 import { Reveal } from "@/components/motion/reveal";
-import { Section, SectionHeading, SectionLede } from "@/components/site/section";
+import {
+  ScrollHint,
+  Section,
+  SectionHeading,
+  SectionLede,
+} from "@/components/site/section";
 
 export function MarketSignals() {
   return (
@@ -22,11 +27,31 @@ export function MarketSignals() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          {/* The lens draws straight on the washed canvas — no panel. */}
-          <div data-signal-flow className="mt-11 overflow-x-auto">
-            <div className="min-w-[720px]">
-              <SignalLens />
+          {/*
+            The lens draws straight on the washed canvas — no panel.
+
+            Its labels are set to render at ~14px against a 1080-unit viewBox,
+            so it cannot simply shrink to a phone: under ~720px the type stops
+            being readable and it scrolls sideways instead. Two things make
+            that scroll honest rather than a silent crop — the strip runs
+            edge-to-edge (negative margins cancel the section gutter, so the
+            diagram visibly continues past the screen instead of stopping at a
+            padding line), and a hint sits under it. The hint is hidden by a
+            container query the moment the section is wide enough to show the
+            whole lens, so it never lies.
+          */}
+          <div className="mt-9 @container sm:mt-11">
+            <div
+              data-signal-flow
+              className="-mx-5 overflow-x-auto px-5 [-webkit-overflow-scrolling:touch] sm:-mx-8 sm:px-8"
+            >
+              <div className="min-w-[720px]">
+                <SignalLens />
+              </div>
             </div>
+            <ScrollHint className="@min-[720px]:hidden">
+              Scroll to follow the signals through
+            </ScrollHint>
           </div>
         </Reveal>
       </div>

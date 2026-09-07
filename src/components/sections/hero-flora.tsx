@@ -14,6 +14,13 @@ import { CtaLink } from "@/components/site/cta-link";
   Positions are percentages of the hero, not a grid: the scatter *is* the
   layout. Two cards clip the viewport edge on purpose — the canvas reads as
   continuing past the frame.
+
+  BELOW `md` THE SCATTER DOES NOT SURVIVE AS A SCATTER. A phone viewport is
+  narrow and tall: percentage positions that clear the headline at 1440px sit
+  straight on top of it at 390px, and the cards land over the eyebrow and the
+  floor caption. So the whole absolute layer is desktop-only, and phones get
+  `MobileCluster` below — the same frames, the same float, laid out in normal
+  flow above the headline where nothing can collide with it.
 */
 const CARDS: Array<{
   src: string;
@@ -23,8 +30,8 @@ const CARDS: Array<{
   /** Staggered entrance order; also seeds the float phase. */
   delay: number;
   float: string;
-  /** Cards that survive below md — the scatter thins on a phone. */
-  mobile?: boolean;
+  /** Above the fold on a wide screen, so it is worth an eager fetch. */
+  priority?: boolean;
   watermark?: boolean;
 }> = [
   {
@@ -34,7 +41,7 @@ const CARDS: Array<{
     ratio: "3 / 4",
     delay: 0.15,
     float: "9s",
-    mobile: true,
+    priority: true,
   },
   {
     src: "/assets/hero/placeholder-11.jpg",
@@ -51,7 +58,7 @@ const CARDS: Array<{
     ratio: "16 / 10",
     delay: 0.33,
     float: "10s",
-    mobile: true,
+    priority: true,
     watermark: true,
   },
   {
@@ -85,7 +92,7 @@ const CARDS: Array<{
     ratio: "4 / 3",
     delay: 0.69,
     float: "9.5s",
-    mobile: true,
+    priority: true,
   },
   {
     src: "/assets/hero/placeholder-14.jpg",
@@ -96,6 +103,68 @@ const CARDS: Array<{
     float: "8s",
   },
 ];
+
+/*
+  The phone reading of the scatter: three frames overlapped into one cluster,
+  tilted alternately so the pile still reads as work on a table rather than a
+  carousel. Sized in `vw` so it stays proportional from 320 to 640, capped so
+  it never outgrows the headline it introduces.
+*/
+const CLUSTER = [
+  { src: "/assets/hero/placeholder-02.jpg", alt: "Campaign fashion still", ratio: "3 / 4", rotate: -7, w: "clamp(84px, 26vw, 128px)", float: "9s", delay: 0.15 },
+  { src: "/assets/hero/placeholder-05.jpg", alt: "Beauty close-up", ratio: "4 / 5", rotate: 3, w: "clamp(96px, 30vw, 148px)", float: "7.5s", delay: 0.24, watermark: true },
+  { src: "/assets/hero/placeholder-13.jpg", alt: "Haircare range still", ratio: "3 / 4", rotate: 8, w: "clamp(84px, 26vw, 128px)", float: "8.5s", delay: 0.33 },
+];
+
+function MobileCluster() {
+  return (
+    <div
+      data-hero-cards
+      className="mb-9 flex items-center justify-center md:hidden"
+    >
+      {CLUSTER.map((card, i) => (
+        <div
+          key={card.src}
+          // Negative margins overlap the frames; the middle card is lifted by
+          // z-index so the watermark it carries is never underneath a
+          // neighbour.
+          className={i === 1 ? "relative z-[1] -mx-3" : "relative"}
+          style={{
+            width: card.w,
+            aspectRatio: card.ratio,
+            animation: `cosheroin .9s cubic-bezier(.2,.7,.2,1) ${card.delay}s both`,
+          }}
+        >
+          <div
+            className="relative h-full w-full overflow-hidden rounded-[14px] shadow-[0_18px_50px_rgba(0,0,0,.5)] ring-1 ring-white/10"
+            style={{
+              rotate: `${card.rotate}deg`,
+              animation: `cosfloat ${card.float} ease-in-out infinite`,
+              animationDelay: `-${card.delay * 4}s`,
+            }}
+          >
+            <Image
+              src={card.src}
+              alt={card.alt}
+              fill
+              sizes="30vw"
+              className="object-cover"
+              priority
+            />
+            {card.watermark ? (
+              // The desktop scatter sets this over a dark corner of its
+              // photo; the cluster's middle card is a bright flat-lay, so it
+              // needs its own ground to stay readable.
+              <span className="absolute top-2 left-2 rounded-full bg-black/45 px-2 py-1 text-[7px] leading-none font-medium tracking-[0.18em] text-white uppercase backdrop-blur-[2px]">
+                Made in CreativeOS
+              </span>
+            ) : null}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function HeroFlora() {
   return (
@@ -163,11 +232,11 @@ export function HeroFlora() {
 
       {/* The scatter. Entrance and float live on separate elements so the two
           transforms never fight. */}
-      <div data-hero-cards className="absolute inset-0">
+      <div data-hero-cards className="absolute inset-0 hidden md:block">
         {CARDS.map((card) => (
           <div
             key={card.src}
-            className={card.mobile ? "absolute" : "absolute hidden md:block"}
+            className="absolute"
             style={{
               ...card.pos,
               aspectRatio: card.ratio,
@@ -187,7 +256,7 @@ export function HeroFlora() {
                 fill
                 sizes="(max-width: 768px) 32vw, 24vw"
                 className="object-cover"
-                priority={card.mobile}
+                priority={card.priority}
               />
               {card.watermark ? (
                 <span className="absolute top-3 left-4 text-[10px] leading-none font-medium tracking-[0.22em] text-white/75 uppercase">
@@ -200,7 +269,8 @@ export function HeroFlora() {
       </div>
 
       {/* The centered argument. */}
-      <div className="relative z-[2] mx-auto flex w-full max-w-[860px] flex-1 flex-col items-center justify-center px-6 pt-[140px] pb-16 text-center">
+      <div className="relative z-[2] mx-auto flex w-full max-w-[860px] flex-1 flex-col items-center justify-center px-5 pt-14 pb-14 text-center sm:px-6 md:pt-[140px] md:pb-16">
+        <MobileCluster />
         <RevealGroup>
           <RevealItem className="mb-6 text-[12px] leading-[1.4] font-medium tracking-[0.24em] text-lavender uppercase">
             Built for high-volume D2C agencies
@@ -254,7 +324,7 @@ export function HeroFlora() {
       </div>
 
       {/* The floor of the stage: the hero diagram's caption, carried over. */}
-      <div className="relative z-[2] mx-auto w-full max-w-[1240px] px-8 pb-12">
+      <div className="relative z-[2] mx-auto w-full max-w-[1240px] px-5 pb-10 sm:px-8 sm:pb-12">
         <p className="m-0 text-center text-[12px] leading-[1.9] font-medium tracking-[0.24em] text-white/50 uppercase">
           Everything the agency knows,
           <br />

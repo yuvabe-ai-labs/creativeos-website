@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 
+import { cn } from "@/lib/utils";
+
 /*
   The Plan / Create / Compound expanding panels, ported from the Design Canvas
   draft (design-reference/.../CreativeOS Pipeline.dc.html), running dark in
@@ -22,11 +24,19 @@ import { useReducedMotion } from "motion/react";
   beginning; skipped entirely under reduced motion.
 
   The captures are light product UI on a dark page, so the panels run a
-  tone flip: idle, the video is ghosted to 15% into the night card and the
+  tone flip: idle, the video is ghosted to 22% into the night card and the
   type is white; the hovered panel brings its video up to full brightness
   and inverts to ink-on-light (the light Pipeline draft's palette). The
   bottom text block swaps colour instantly — the `textShown` fade has it
   hidden while the flip happens.
+
+  NONE OF THE HOVER CHOREOGRAPHY EXISTS ON A PHONE. Below `lg` the panels
+  stack, there is no pointer to hover with, and no panel is ever `active` — so
+  the desktop composition (a 660px card with its type pinned to the top and
+  bottom edges of a fixed 170px block) becomes a tall void with a clipped
+  third stat at the end of it. Below `lg` the content is therefore laid out in
+  normal flow at the panel's foot and the panel takes its height from that;
+  the absolute pinning and the fixed block height are both `lg:` only.
 */
 
 /** Matches the flex-grow transition; the text fade waits it out (see below). */
@@ -130,11 +140,23 @@ export function CanvasPipelinePanels() {
             onMouseLeave={() => setHov(0)}
             onFocus={() => setHov(i)}
             onBlur={() => setHov(0)}
-            className="relative min-h-[420px] min-w-0 overflow-hidden rounded-[24px] border border-white/10 bg-[#1a1237] shadow-[0_24px_70px_rgba(0,0,0,.35)] outline-none focus-visible:ring-2 focus-visible:ring-lavender lg:min-h-[660px]"
+            className={cn(
+              "relative flex min-h-[300px] min-w-0 flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[#1a1237] shadow-[0_24px_70px_rgba(0,0,0,.35)] outline-none focus-visible:ring-2 focus-visible:ring-lavender lg:block lg:min-h-[660px]",
+              // The grow ratio is the whole expansion mechanism, and it only
+              // means anything in the `lg` row. Left unscoped it still applies
+              // in the stacked column below `lg`, where flex runs vertically —
+              // so `flex-basis: 0%` becomes a height of zero that only
+              // `min-height` rescues, and any panel whose copy runs past 300px
+              // is clipped by the `overflow-hidden` above. Hence `lg:` on both
+              // the ratio and the transition that animates it.
+              "lg:[flex:var(--panel-grow)_1_0%]",
+              !reduced && "lg:transition-[flex-grow]",
+            )}
             style={{
-              flex: `${active ? 2.1 : 1} 1 0%`,
-              transition: reduced ? undefined : `flex-grow ${GROW_MS}ms ${EASE}`,
-            }}
+              "--panel-grow": active ? 2.1 : 1,
+              transitionDuration: `${GROW_MS}ms`,
+              transitionTimingFunction: EASE,
+            } as React.CSSProperties}
           >
             <video
               ref={(el) => {
@@ -148,7 +170,10 @@ export function CanvasPipelinePanels() {
               aria-hidden="true"
               className="absolute inset-0 size-full object-cover"
               style={{
-                opacity: active ? 1 : 0.15,
+                // 0.15 is tuned for a 660px desktop card standing next to two
+                // others; on a phone the panel is half that and the ghost has
+                // to carry the card on its own, so it comes up a little.
+                opacity: active ? 1 : 0.22,
                 transition: reduced ? undefined : `opacity ${GROW_MS}ms ${EASE}`,
               }}
             />
@@ -183,7 +208,7 @@ export function CanvasPipelinePanels() {
               }}
             />
 
-            <div className="pointer-events-none absolute top-8 right-9 left-9 flex items-baseline gap-3.5 whitespace-nowrap">
+            <div className="pointer-events-none relative flex items-baseline gap-3.5 px-6 pt-6 whitespace-nowrap sm:px-9 sm:pt-8 lg:absolute lg:top-8 lg:right-9 lg:left-9 lg:p-0">
               <span
                 className={`font-display font-medium tracking-[-0.02em] ${active ? "text-purple/[.28]" : "text-white/[.32]"}`}
                 style={{
@@ -213,16 +238,16 @@ export function CanvasPipelinePanels() {
                 the video: copy and stats drop out and the lone title sinks
                 to the bottom edge — the swap happens behind the text fade. */}
             <div
-              className={`pointer-events-none absolute right-9 bottom-[30px] left-9 flex h-[170px] flex-col transition-opacity duration-[220ms] ease-out ${active ? "justify-end" : "justify-start"}`}
+              className={`pointer-events-none relative mt-auto flex flex-col px-6 pt-10 pb-6 transition-opacity duration-[220ms] ease-out sm:px-9 sm:pb-8 lg:absolute lg:right-9 lg:bottom-[30px] lg:left-9 lg:mt-0 lg:h-[170px] lg:p-0 ${active ? "justify-end" : "justify-start"}`}
               style={{ opacity: textShown ? 1 : 0 }}
             >
               <div
-                className={`text-[22px] leading-[1.3] font-semibold ${active ? "text-ink" : "text-white"}`}
+                className={`text-[20px] leading-[1.3] font-semibold sm:text-[22px] ${active ? "text-ink" : "text-white"}`}
               >
                 {panel.title}
               </div>
               <p
-                className={`m-0 mt-2 text-[16px] leading-[1.55] text-pretty ${active ? "hidden" : "text-white/75"}`}
+                className={`m-0 mt-2 text-[15px] leading-[1.55] text-pretty sm:text-[16px] ${active ? "hidden" : "text-white/75"}`}
               >
                 {panel.copy}
               </p>

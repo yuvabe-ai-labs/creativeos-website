@@ -14,11 +14,18 @@ import { cn } from "@/lib/utils";
   which is the vocabulary the section eyebrows already speak.
 */
 
+/*
+  16px below `sm`, 14px above. Not a taste call: iOS Safari zooms the whole
+  page in when a focused field's text is under 16px, and there is no way back
+  out of that zoom except pinching — so a 14px field turns every tap into a
+  broken-looking layout shift. The design's 14px resumes at `sm`, where the
+  rule does not apply.
+*/
 const FIELD =
-  "w-full rounded-[4px] border border-line-strong bg-surface px-3 py-[9px] text-[14px] leading-[21px] text-ink outline-none transition-[border-color,box-shadow] duration-150 placeholder:text-ink-faint focus:border-purple focus:shadow-[0_0_0_3px_rgba(88,41,199,0.10)]";
+  "w-full rounded-[4px] border border-line-strong bg-surface px-3 py-[11px] text-[16px] leading-[21px] text-ink outline-none transition-[border-color,box-shadow] duration-150 placeholder:text-ink-faint focus:border-purple focus:shadow-[0_0_0_3px_rgba(88,41,199,0.10)] sm:py-[9px] sm:text-[14px]";
 
 const CARD =
-  "panel p-7";
+  "panel p-5 sm:p-7";
 
 const LABEL =
   "text-[11px] leading-none font-semibold tracking-[0.1em] text-ink-soft uppercase";
@@ -220,7 +227,7 @@ export function PilotForm({ defaultPlan }: { defaultPlan: Plan }) {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-[4px] bg-purple px-6 py-[13px] text-[14px] leading-none font-medium tracking-[0.01em] text-white transition-colors duration-150 hover:bg-purple-deep disabled:cursor-not-allowed disabled:opacity-70"
+          className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-[4px] bg-purple px-6 py-[15px] text-[15px] sm:py-[13px] sm:text-[14px] leading-none font-medium tracking-[0.01em] text-white transition-colors duration-150 hover:bg-purple-deep disabled:cursor-not-allowed disabled:opacity-70"
         >
           {status === "submitting" ? "Sending…" : "Send"}
           {status === "submitting" ? null : (

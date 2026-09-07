@@ -28,16 +28,17 @@ export function Section({
     <section
       id={id}
       className={cn(
-        // scroll-mt keeps anchored sections from landing under the 72px
-        // sticky header.
-        "scroll-mt-[72px] border-b",
+        // scroll-mt keeps anchored sections from landing under the sticky
+        // header — it must track the header's own responsive height (h-16,
+        // then 72px from `sm`), or every /#hash lands 8px short on a phone.
+        "scroll-mt-16 border-b sm:scroll-mt-[72px]",
         dark ? "border-white/10 bg-night" : "border-line",
         className,
       )}
     >
-      <div className="mx-auto flex max-w-[1240px] flex-col gap-7 px-8 py-24">
+      <div className="mx-auto flex max-w-[1240px] flex-col gap-7 px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
         {eyebrow ? (
-          <Reveal className="flex items-baseline gap-4">
+          <Reveal className="flex items-baseline gap-3 sm:gap-4">
             {index ? (
               <div
                 className={cn(
@@ -95,11 +96,47 @@ export function SectionLede({
   return (
     <p
       className={cn(
-        "mt-6 mb-0 max-w-[62ch] text-[18px] leading-[28px] text-ink-muted text-pretty",
+        "mt-5 mb-0 max-w-[62ch] text-[17px] leading-[26px] text-ink-muted text-pretty sm:mt-6 sm:text-[18px] sm:leading-[28px]",
         className,
       )}
     >
       {children}
+    </p>
+  );
+}
+
+/**
+ * The affordance under a diagram that is too wide to fit and scrolls sideways.
+ *
+ * Two diagrams on the page have a floor width below which their type stops
+ * being legible, so on a phone they scroll rather than shrink. A scroll
+ * container gives no signal that it has more inside it, and a diagram that
+ * quietly ends at the screen edge just looks broken — this says it does not.
+ *
+ * The caller passes the container query that hides it (`@min-[720px]:hidden`
+ * and so on, matching the diagram's own min-width) so it disappears exactly
+ * when there is nothing left to scroll to. Tailwind needs those literal in
+ * source, which is why the variant is a prop rather than a number.
+ */
+export function ScrollHint({
+  children,
+  tone = "light",
+  className,
+}: {
+  children: React.ReactNode;
+  tone?: "light" | "dark";
+  className?: string;
+}) {
+  return (
+    <p
+      className={cn(
+        "m-0 mt-3 flex items-center gap-2 text-[12px] leading-none font-medium tracking-[0.14em] uppercase",
+        tone === "dark" ? "text-white/40" : "text-ink-faint",
+        className,
+      )}
+    >
+      {children}
+      <span aria-hidden="true">→</span>
     </p>
   );
 }
